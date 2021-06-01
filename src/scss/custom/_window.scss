@@ -1,0 +1,77 @@
+$window-border-radius: 5px;
+$window-border-line: 3px;
+$window-header-height: 30;
+
+.handle,
+svg.handle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 15px;
+    height: 15px;
+    stroke: white;
+    cursor: se-resize;
+}
+
+.window {
+    position: relative;
+    background-color: _palette(bg-transparent);
+    border: #{$window-border-line} solid _palette(bg-header);
+    min-width: 400px;
+    min-height: 300px;
+    display: inline-block;
+    box-sizing: content-box;
+    border-radius: $window-border-radius;
+
+    >*,
+    >*>* {
+        color: _palette(fg);
+    }
+
+    .window-header {
+        position: absolute;
+        top: -#{$window-border-line};
+        left: -#{$window-border-line};
+        right: -#{$window-border-line};
+        width: 100%;
+        min-height: #{$window-header-height}px;
+        box-sizing: content-box;
+        background-color: _palette(bg-header);
+        border-top-left-radius: $window-border-radius;
+        border-top-right-radius: $window-border-radius;
+        border: #{$window-border-line} solid _palette(bg-header);
+
+        .content {
+            width: 100%;
+            text-align: center;
+            color: _palette(fg);
+            margin-top: 2px;
+        }
+
+        .window-actions {
+            position: absolute;
+            top: 4px;
+            right: 10px;
+
+            .window-buttons {
+                padding-top: 3px;
+                line-height: 0px;
+
+                a {
+                    text-decoration: none;
+                    padding-left: 2px;
+
+                }
+
+                &:hover a {
+                    visibility: visible;
+                }
+            }
+        }
+    }
+
+    .window-content {
+        max-height: 100%;
+        overflow: hidden;
+    }
+}

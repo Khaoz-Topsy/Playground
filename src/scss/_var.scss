@@ -1,0 +1,46 @@
+$base-bg: #2f2f2f;
+$base-bg-transparent: rgba(47, 47, 47, 0.85);
+$base-fg: #f2f2f2;
+
+// Palette.
+$palette: ( //
+    bg: $base-bg,
+    bg-transparent: $base-bg-transparent,
+    bg-header: lighten($base-bg, 10%),
+    bg-sidebar: lighten($base-bg, 20%),
+
+    fg: $base-fg,
+
+    windows-select: #CCE8FF,
+    windows-select-border: #99D1FF,
+
+
+    //
+    // fg-bold: #ffffff,
+    // fg-light: rgba(255, 255, 255, 0.5),
+    // border: rgba(255, 255, 255, 0.35),
+    // border-bg: rgba(255, 255, 255, 0.075),
+    // border2: rgba(255, 255, 255, 0.75),
+    // border2-bg: rgba(255, 255, 255, 0.2),
+
+    // invert: (bg: whitesmoke,
+    //     bg-alt: rgb(235, 235, 235),
+    //     fg: #636363,
+    //     fg-bold: #636363,
+    //     fg-light: rgba(99, 99, 99, 0.25),
+    //     border: #dddddd,
+    //     border-bg: rgba(222, 222, 222, 0.25),
+    //     border2: #dddddd,
+    //     border2-bg: rgba(222, 222, 222, 0.5),
+    // ),
+
+    accent: #0d6372,
+    accent1: #40e2ff,
+    accent2: #009fbb,
+    accent3: #404dff,
+    accent4: #8f6aff,
+    accent5: #5f2aff,
+    loading: #89edff,
+    bg1: #0d6372,
+    bg2: #341e77,
+);

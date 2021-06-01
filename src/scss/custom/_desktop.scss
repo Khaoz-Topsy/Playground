@@ -1,0 +1,48 @@
+.desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(50px, 10%));
+    grid-template-rows: repeat(5, minmax(50px, 20%));
+    grid-row-gap: 4px;
+    grid-column-gap: 4px;
+    grid-auto-flow: column;
+
+    .desktop-icon-slot {
+        padding: 0.5em 0 0.25em 0;
+        border-radius: 3px;
+        background-color: transparent;
+        border: 2px solid transparent;
+        transition-property: background-color, border-color;
+        transition-duration: 100ms;
+        transition-timing-function: ease-in-out;
+
+        &.selected {
+            background-color: _palette(windows-select);
+            border-color: _palette(windows-select-border);
+
+            p {
+                -webkit-line-clamp: 2;
+            }
+        }
+
+        img {
+            // width: calc(100% - 3em);
+            height: 60%;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+
+        p {
+            text-align: center;
+            color: _palette(fg);
+            text-shadow: 0 0 3px _palette(bg);
+            margin-top: 1px;
+            //
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            /* number of lines to show */
+            -webkit-box-orient: vertical;
+        }
+    }
+}

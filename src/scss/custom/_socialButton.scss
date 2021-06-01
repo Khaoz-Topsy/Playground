@@ -1,0 +1,44 @@
+.base-social-btn {
+    display: block;
+    height: 50px;
+    width: 100%;
+    border: 0px;
+    border-radius: 3px;
+    box-shadow: rgb(0, 0, 0 / 50%) 0px 1px 2px;
+    cursor: pointer;
+    font-size: 19px;
+    margin: 0;
+    overflow: hidden;
+    padding-left: 10px;
+    user-select: none;
+
+    .inner {
+        align-items: center;
+        display: flex;
+        height: 100%;
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            min-width: 26px;
+        }
+    }
+}
+
+.github-btn {
+    @extend .base-social-btn;
+    color: #ffffff;
+    background: #484848;
+}
+
+.twitter-btn {
+    @extend .base-social-btn;
+    color: #ffffff;
+    background: #5aa4eb;
+}
+
+.discord-btn {
+    @extend .base-social-btn;
+    color: #ffffff;
+    background: #7289da;
+}

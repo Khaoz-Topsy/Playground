@@ -1,0 +1,49 @@
+// Base
+@import './_var.scss';
+@import './_functions.scss';
+//
+@import './custom/_base.scss';
+@import './custom/_socialButton.scss';
+@import './custom/_desktop.scss';
+@import './custom/_taskbar.scss';
+@import './custom/_window.scss';
+
+.react-draggable {
+    display: inline-block;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+.m-h-1 {
+    margin: 0 1em;
+}
+
+.mt1 {
+    margin-top: 1em;
+}
+
+.p1 {
+    padding: 1em;
+}
+
+.layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
