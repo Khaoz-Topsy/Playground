@@ -1,4 +1,4 @@
-$taskbar-height: 60;
+$taskbar-height: 4;
 
 .taskbar {
     position: absolute;
@@ -10,18 +10,55 @@ $taskbar-height: 60;
     background: rgba(0, 0, 0, 0.40);
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5.0px);
-    -webkit-backdrop-filter: blur(8.0px);
-    height: #{$taskbar-height}px;
+    -webkit-backdrop-filter: blur(5.0px);
+    height: #{$taskbar-height}em;
 
     .applet-shortcut {
-        width: #{$taskbar-height}px;
-        height: #{$taskbar-height - 3}px;
+        position: relative;
+        width: #{$taskbar-height + 0.5}em;
+        height: #{$taskbar-height}em;
         display: inline-block;
-        padding: 5px 10px;
-        margin: 2px 10px 0 0;
+        padding: 7px 14px 5px 14px;
+        margin: 0 5px 0 5px;
+        cursor: pointer;
+
+        &:first-child {
+            margin-left: 0;
+        }
 
         img {
             border-radius: 5px;
+            max-height: #{$taskbar-height - 1}em;
+            margin: 0 auto;
+        }
+
+        &:before {
+            position: absolute;
+            left: 50%;
+            bottom: 5px;
+            content: "";
+            height: 4px;
+            width: 4px;
+            background-color: rgba(255, 255, 255, 0.85);
+            border-radius: 4px;
+            margin-left: -2px;
+            opacity: 0;
+            transition: all 500ms ease-in-out;
+            transition-property: opacity width;
+        }
+
+        &.selected:before {
+            width: 20px;
+            margin-left: -10px;
+            opacity: 1;
+        }
+
+        &.minimised:before {
+            opacity: 1;
+        }
+
+        &.initial:before {
+            opacity: 0;
         }
     }
 
@@ -29,9 +66,9 @@ $taskbar-height: 60;
         position: absolute;
         bottom: 0;
         right: 0;
-        height: #{$taskbar-height}px;
+        height: #{$taskbar-height}em;
         color: _palette(fg);
-        width: #{$taskbar-height * 2}px;
+        width: #{$taskbar-height * 2}em;
 
         p {
             text-align: center;

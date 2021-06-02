@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { Drawer, useDisclosure } from '@chakra-ui/react';
 
 import { Desktop } from './components/common/desktop/desktop';
-import { Taskbar } from './components/common/taskbar';
+import { Taskbar } from './components/common/taskbar/taskbar';
 import { WindowManager } from './components/window/windowManager';
 import { NotificationDrawer } from './components/notificationDrawer';
 
@@ -16,7 +16,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className={classNames('fullscreen', 'bg1')}>
+    <div className={classNames('fullscreen', 'bg', 'bg1')}>
       <Desktop />
       <WindowManager />
       <Taskbar />

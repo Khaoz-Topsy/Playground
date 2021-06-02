@@ -21,7 +21,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
                 ...aa,
                 additionalProps: {
                     ...aa.additionalProps,
-                    isMinimised: (aa.appType == appType)
+                    isMinimised: (aa.appType === appType)
                         ? !aa.additionalProps.isMinimised
                         : aa.additionalProps.isMinimised,
                 }
@@ -44,7 +44,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
             onMaximise: onMaximise(currentlyFocused),
             onClose: onClose(currentlyFocused),
         };
-        debugger;
+
         switch (app.appType) {
             case AppletType.setting:
                 return <SettingApplet key={AppletType.setting} {...appProps} />

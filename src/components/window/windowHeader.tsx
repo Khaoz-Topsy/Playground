@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 
-import { windowIcon } from './windowIcon';
 import { WindowActions } from './windowActions';
 
 interface IProps {
