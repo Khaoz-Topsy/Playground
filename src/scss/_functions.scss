@@ -23,3 +23,10 @@
 @function _palette($keys...) {
     @return val($palette, $keys...);
 }
+
+/// Gets a z-index value.
+/// @param {string} $keys Key(s).
+/// @return {string} Value.
+@function _zindex($keys...) {
+    @return val($zindex, $keys...);
+}

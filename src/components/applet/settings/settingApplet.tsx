@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
 
+import { AppletType } from '../../../constants/enum/appletType';
+import { IApplet } from '../../../contracts/interface/IApplet';
 import { Window } from '../../window/window';
 import { SettingItem } from './settingItem';
 import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
 import { SettingGithub } from './section/github';
 import { SettingSocials } from './section/socials';
+import { windowIcon } from '../../window/windowIcon';
 
-interface IProps { }
+interface IProps extends IApplet { }
 
 interface IState {
     pageIndex: number;
@@ -40,13 +43,17 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
             new: true,
             comp: <SettingAbout />
         },
-    ]
+    ];
 
     return (
         <Window
             title="Settings"
             defaultWidth={700}
             defaultHeight={500}
+            windowIcon={windowIcon(AppletType.setting)}
+            isMinimised={props.isMinimised}
+            onMinimise={props.onMinimise}
+            onClose={props.onClose}
         >
             <Container maxW={"container.xl"}>
                 <Box mt={50}>
@@ -79,4 +86,3 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
         </Window>
     );
 }
-

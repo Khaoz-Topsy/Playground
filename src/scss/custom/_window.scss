@@ -13,6 +13,15 @@ svg.handle {
     cursor: se-resize;
 }
 
+.window-manager {
+    z-index: _zindex(window-base);
+    pointer-events: none;
+
+    >* {
+        pointer-events: all;
+    }
+}
+
 .window {
     position: relative;
     background-color: _palette(bg-transparent);
@@ -40,6 +49,17 @@ svg.handle {
         border-top-left-radius: $window-border-radius;
         border-top-right-radius: $window-border-radius;
         border: #{$window-border-line} solid _palette(bg-header);
+
+        .window-icon {
+            position: absolute;
+            top: 0;
+            left: 2px;
+            height: 100%;
+
+            img {
+                height: 100%;
+            }
+        }
 
         .content {
             width: 100%;

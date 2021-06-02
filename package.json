@@ -15,8 +15,10 @@
     "@types/react": "^17.0.8",
     "@types/react-dom": "^17.0.5",
     "classnames": "^2.3.1",
+    "dragselect": "^2.0.3",
     "framer-motion": "^4.1.17",
     "node-sass": "^6.0.0",
+    "pullstate": "^1.22.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-draggable": "^4.4.3",
@@ -51,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "@types/dragselect": "^1.13.1",
     "@types/react-resizable": "^1.7.2",
     "@types/react-router-dom": "^5.1.7"
   }

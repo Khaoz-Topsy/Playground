@@ -2,6 +2,12 @@ $base-bg: #2f2f2f;
 $base-bg-transparent: rgba(47, 47, 47, 0.85);
 $base-fg: #f2f2f2;
 
+$zindex: ( //
+    desktop: 1,
+    window-base: 10000,
+    taskbar: 10050,
+);
+
 // Palette.
 $palette: ( //
     bg: $base-bg,

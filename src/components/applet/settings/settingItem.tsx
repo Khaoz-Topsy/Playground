@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Badge, Box, useColorMode } from "@chakra-ui/react";
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Badge, Box } from "@chakra-ui/react";
 
 interface ISettingItem {
     name: string;

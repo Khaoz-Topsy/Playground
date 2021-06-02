@@ -1,4 +1,4 @@
-.desktop-grid {
+#desktop-grid {
     display: grid;
     grid-template-columns: repeat(12, minmax(50px, 10%));
     grid-template-rows: repeat(5, minmax(50px, 20%));
@@ -23,6 +23,9 @@
                 -webkit-line-clamp: 2;
             }
         }
+>* {
+    pointer-events: none;
+}
 
         img {
             // width: calc(100% - 3em);
