@@ -19,11 +19,11 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
             store.currentFocused = AppletType.none;
             store.activeApps = [...store.activeApps.map(aa => ({
                 ...aa,
-                additionalProps: {
-                    ...aa.additionalProps,
+                meta: {
+                    ...aa.meta,
                     isMinimised: (aa.appType === appType)
-                        ? !aa.additionalProps.isMinimised
-                        : aa.additionalProps.isMinimised,
+                        ? !aa.meta.isMinimised
+                        : aa.meta.isMinimised,
                 }
             }))];
         });
@@ -39,7 +39,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
     const renderSupportedWindows = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
         const appProps = {
             isFocused: AppletType.setting === currentlyFocused,
-            ...app.additionalProps,
+            ...app.meta,
             onMinimise: onMinimise(currentlyFocused),
             onMaximise: onMaximise(currentlyFocused),
             onClose: onClose(currentlyFocused),

@@ -27,7 +27,7 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
         closed: { scale: 0, opacity: 0, marginTop: 0 },
     }
     const classes = classNames('applet-shortcut noselect', {
-        'minimised': (props.applet.additionalProps.isMinimised ?? false),
+        'minimised': (props.applet.meta.isMinimised ?? false),
         'selected': (props.selected ?? false),
         'initial': initial,
     });
@@ -37,7 +37,7 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
                 key={props.applet.appType}
                 initial={variants.initial}
                 transition={{ duration: 0.5 }}
-                animate={(props.applet.additionalProps.isMinimised ?? false) ? "minimised" : "open"}
+                animate={(props.applet.meta.isMinimised ?? false) ? "minimised" : "open"}
                 variants={variants}
                 exit={variants.closed}
             >

@@ -25,16 +25,16 @@ export const Taskbar: React.FC = () => {
 
     const openApp = (index: number) => (e: any) => {
         WindowStore.update(store => {
-            store.currentFocused = windStore.activeApps[index].additionalProps.isMinimised
+            store.currentFocused = windStore.activeApps[index].meta.isMinimised
                 ? windStore.activeApps[index].appType
                 : AppletType.none;
             store.activeApps = [
                 ...store.activeApps.map(aa => {
                     return {
                         ...aa,
-                        additionalProps: {
-                            ...aa.additionalProps,
-                            isMinimised: !aa.additionalProps.isMinimised,
+                        meta: {
+                            ...aa.meta,
+                            isMinimised: !aa.meta.isMinimised,
                         }
                     }
                 })

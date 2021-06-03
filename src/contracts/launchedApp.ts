@@ -3,5 +3,5 @@ import { IAdditionalAppletProps } from "./interface/IApplet";
 
 export interface LaunchedApp {
     appType: AppletType;
-    additionalProps: IAdditionalAppletProps
+    meta: IAdditionalAppletProps
 }

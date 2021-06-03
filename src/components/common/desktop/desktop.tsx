@@ -66,7 +66,7 @@ export const Desktop: React.FC = () => {
         if (appType !== AppletType.none) {
             const newActiveApp: LaunchedApp = {
                 appType,
-                additionalProps: anyObject,
+                meta: anyObject,
             };
             WindowStore.update(store => {
                 store.currentFocused = appType;
