@@ -35,7 +35,7 @@ export const openAppFromTaskbar = (appType: AppletType) => (store: IWindowStore)
         return store;
     }
 
-    if (currentAppIsOnTop === false && isNotMinimised == false) {
+    if (currentAppIsOnTop === false && isNotMinimised === false) {
         store.currentFocused = currentApp?.appType ?? AppletType.none;
         store = setMinimiseForApp(store, appType, false);
         return store;
