@@ -1,0 +1,13 @@
+.smooth,
+img.smooth {
+    opacity: 0;
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    transition: opacity 150ms;
+
+    &.visible {
+        filter: none;
+        -webkit-filter: none;
+        opacity: 1;
+    }
+}

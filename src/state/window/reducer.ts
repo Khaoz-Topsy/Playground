@@ -53,10 +53,12 @@ export const closeApp = (appType: AppletType) => (store: IWindowStore): IWindowS
 }
 
 export const minimiseApp = (appType: AppletType) => (store: IWindowStore): IWindowStore => {
+    console.log('minimiseApp');
     return setMinimiseForApp(store, appType, true);
 }
 
 export const setMinimiseForApp = (store: IWindowStore, appType: AppletType, newMin?: boolean): IWindowStore => {
+    console.log('setMinimiseForApp');
     const currentApps = store.activeApps.map(aa => ({ ...aa }));
     const currentApp = currentApps.find(aa => aa.appType === appType);
     const currentAppIsMin = (currentApp?.meta.isMinimised ?? false);
@@ -86,11 +88,13 @@ export const setMinimiseForApp = (store: IWindowStore, appType: AppletType, newM
 }
 
 export const setNewFocusForApp = (appType: AppletType) => (store: IWindowStore): IWindowStore => {
+    console.log('setNewFocusForApp');
     store.currentFocused = appType ?? AppletType.none
     return store
 }
 
 const InternalSetNewFocusForApp = (store: IWindowStore, appType: AppletType): IWindowStore => {
+    console.log('InternalSetNewFocusForApp');
     const currentApps = store.activeApps.map(aa => ({ ...aa }));
     const sortOrderArray = currentApps.filter(aa => aa.appType !== appType).map(aa => aa.openOrder);
     const nextAppToFocus = currentApps.find(aa => aa.openOrder === Math.max(...sortOrderArray));

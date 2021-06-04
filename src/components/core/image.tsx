@@ -1,4 +1,6 @@
 import React from "react";
+import classNames from "classnames";
+import { Center, Spinner } from "@chakra-ui/react";
 
 interface IBasicImageProps {
     alt?: string;
@@ -16,6 +18,37 @@ export const BasicImage: React.FC<IBasicImageProps> = (props: IBasicImageProps) 
             alt={(props.alt ?? props.imageName) ?? 'unknown image'}
             draggable={false}
         />
+    );
+}
+
+interface IBasicImageProps {
+    alt?: string;
+    imageUrl: string;
+    imageName?: string;
+    classNames?: string;
+    style?: any;
+}
+export const BasicLazyImage: React.FC<IBasicImageProps> = (props: IBasicImageProps) => {
+    const [isLoaded, setIsLoaded] = React.useState(false);
+
+    const classes = classNames('smooth', props.classNames, {
+        'visible': isLoaded,
+    });
+
+    return (
+        <div className={props.classNames}>
+            <img
+                src={props.imageUrl}
+                className={classes}
+                style={props.style}
+                alt={(props.alt ?? props.imageName) ?? 'unknown image'}
+                draggable={false}
+                onLoad={() => setIsLoaded(true)}
+            />
+            {(isLoaded === false) && <Center>
+                <Spinner size="xl" thickness="2px" />
+            </Center>}
+        </div>
     );
 }
 

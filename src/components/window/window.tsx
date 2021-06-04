@@ -77,6 +77,8 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         closed: { scale: 0, opacity: 0, marginTop: 0 },
     }
 
+    const { isFocused } = props;
+
     return (
         <div style={topLevelStyle}>
             <Draggable
@@ -98,9 +100,9 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                         exit={variants.closed}
                     >
                         <div
-                            className={classNames('window box', { 'is-focused': props.isFocused })}
+                            className={classNames('window box', { 'is-focused': isFocused })}
                             style={windowStyle}
-                            onClick={props?.onSetFocus}
+                            onClick={isFocused ? (_) => { } : props?.onSetFocus}
                         >
                             <WindowHeader
                                 title={props.title}

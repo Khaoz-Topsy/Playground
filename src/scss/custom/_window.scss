@@ -20,6 +20,10 @@ svg.handle {
     >* {
         pointer-events: all;
     }
+
+    .react-draggable-dragging {
+        z-index: _zindex(window-base);
+    }
 }
 
 .window {
@@ -95,25 +99,30 @@ svg.handle {
         }
     }
 
-    .window-header-margin-top {
-        margin-top: #{$window-header-height}px;
-    }
-
     .window-content {
-        max-height: 100%;
-        overflow: hidden;
+        margin-top: #{$window-header-height + 4}px;
+        padding-bottom: #{$window-header-height}px;
+        max-height: calc(100% - #{$window-header-height + 4}px);
+        overflow: hidden auto;
 
         &.full-content,
         &.full-content>* {
             width: 100%;
             height: 100%;
+            padding-bottom: 0;
         }
     }
 }
 
-img.settings-about {
+.settings-about {
+    position: relative;
     width: 150px;
     height: 150px;
     background-color: _palette(bg);
     border-radius: 100%;
+
+    .chakra-spinner {
+        position: absolute;
+        top: calc(50% - 24px);
+    }
 }

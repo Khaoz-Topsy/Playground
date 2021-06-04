@@ -54,7 +54,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
             windowIcon={windowIcon(AppletType.setting)}
         >
             <Container maxW={"container.xl"}>
-                <Box mt={50}>
+                <Box mt={4}>
                     <Grid templateColumns="repeat(3, 1fr)" gap={10}>
                         <GridItem colSpan={1}>
                             <Box borderColor={'whiteAlpha.400'} borderRadius={'md'} borderWidth={'1px'} >

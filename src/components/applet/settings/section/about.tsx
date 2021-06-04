@@ -1,13 +1,13 @@
 import React from 'react';
 import { Center } from '@chakra-ui/react';
 import { BasicLink } from '../../../core/link';
-import { BasicImage } from '../../../core/image';
+import { BasicLazyImage } from '../../../core/image';
 
 export const SettingAbout: React.FC = () => {
     return (
         <>
-            <Center>
-                <BasicImage
+            <Center position="relative">
+                <BasicLazyImage
                     classNames="settings-about"
                     imageUrl="https://kurtlourens.com/assets/images/KurtAvatar.svg"
                     imageName="Kurt Lourens"

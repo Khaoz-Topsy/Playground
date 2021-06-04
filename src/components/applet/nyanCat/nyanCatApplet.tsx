@@ -22,7 +22,7 @@ export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
                 id="nyanIframe"
                 key="nyanIframe"
                 title="nyanIframe"
-                className="window-header-margin-top"
+                style={{ pointerEvents: 'none' }}
                 src="https://cristurm.github.io/nyan-cat/"
             />
         </Window>
