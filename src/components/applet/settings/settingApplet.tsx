@@ -11,7 +11,9 @@ import { SettingGithub } from './section/github';
 import { SettingSocials } from './section/socials';
 import { windowIcon } from '../../window/windowIcon';
 
-interface IProps extends IApplet { }
+interface IProps extends IApplet {
+    pageIndex?: number;
+}
 
 interface IState {
     pageIndex: number;
@@ -19,7 +21,7 @@ interface IState {
 
 export const SettingApplet: React.FC<IProps> = (props: IProps) => {
     const [state, setState] = useState<IState>({
-        pageIndex: 0,
+        pageIndex: props.pageIndex ?? 0,
     });
 
     const pages = [
@@ -49,8 +51,6 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
         <Window
             {...props}
             title="Settings"
-            defaultWidth={700}
-            defaultHeight={500}
             windowIcon={windowIcon(AppletType.setting)}
         >
             <Container maxW={"container.xl"}>

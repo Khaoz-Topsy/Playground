@@ -9,6 +9,7 @@ import { WindowDragHandle } from './windowDragHandle';
 import { WindowHeader } from './windowHeader';
 import { WindowContent } from './windowContent';
 import classNames from 'classnames';
+import { Center, Spinner } from '@chakra-ui/react';
 
 interface IProps {
     title: string;
@@ -20,6 +21,7 @@ interface IProps {
     classNames?: string;
     children: ReactNode;
     windowIcon?: ReactNode;
+    showLoading?: boolean;
     isFocused?: boolean;
     isMinimised?: boolean;
     onSetFocus: () => void;
@@ -111,6 +113,13 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                                 onClose={props.onClose}
                             />
                             <WindowContent classNames={props.classNames}>
+                                {
+                                    props.showLoading && (
+                                        <Center zIndex="1">
+                                            <Spinner size="xl" thickness="2px" />
+                                        </Center>
+                                    )
+                                }
                                 {props.children}
                             </WindowContent>
                         </div>

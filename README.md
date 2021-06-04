@@ -3,6 +3,7 @@ https://portfolio.zxh.io/
 
 https://github.com/1egoman/funnies
 https://github.com/milkandsour/nyanloader/blob/master/nyanloader.js
+https://www.npmjs.com/package/react-animated-term
 
 # Getting Started with Create React App
 

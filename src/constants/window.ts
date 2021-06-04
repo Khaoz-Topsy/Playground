@@ -1,2 +1,2 @@
-export const minWidth = 400;
-export const minHeight = 300;
+export const minWidth = 700;
+export const minHeight = 500;

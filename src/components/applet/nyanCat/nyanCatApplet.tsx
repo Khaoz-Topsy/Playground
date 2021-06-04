@@ -1,3 +1,4 @@
+import { Center, Spinner } from '@chakra-ui/react';
 import React from 'react';
 
 import { AppletType } from '../../../constants/enum/appletType';
@@ -13,8 +14,7 @@ export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
             {...props}
             key="nyanWindow"
             title="Nyan Cat"
-            defaultWidth={700}
-            defaultHeight={500}
+            showLoading={true}
             windowIcon={windowIcon(AppletType.nyanCat)}
             classNames="full-content"
         >
@@ -22,7 +22,8 @@ export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
                 id="nyanIframe"
                 key="nyanIframe"
                 title="nyanIframe"
-                style={{ pointerEvents: 'none' }}
+                className="pos-abs-top-left"
+                style={{ pointerEvents: 'none', zIndex: 2 }}
                 src="https://cristurm.github.io/nyan-cat/"
             />
         </Window>
