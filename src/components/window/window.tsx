@@ -15,6 +15,8 @@ interface IProps {
     defaultWidth?: number;
     defaultX?: number;
     defaultY?: number;
+    zIndex?: number;
+    classNames?: string;
     children: ReactNode;
     windowIcon?: ReactNode;
     isMinimised?: boolean;
@@ -41,7 +43,14 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         });
     };
 
-    const windowStyle = { width: state.width + 'px', height: state.height + 'px' };
+    const topLevelStyle = {
+        zIndex: props.zIndex ?? 1,
+    };
+
+    const windowStyle = {
+        width: state.width + 'px',
+        height: state.height + 'px',
+    };
 
     const CustomResizeHandle = React.forwardRef((props, ref: any) => {
         return (
@@ -64,39 +73,42 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         minimised: { scale: 0, opacity: 0, marginTop: '100vh' },
         closed: { scale: 0, opacity: 0, marginTop: 0 },
     }
+
     return (
-        <Draggable
-            handle=".window-header"
-            defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
-            scale={1}>
-            <ResizableBox
-                height={state.height}
-                width={state.width}
-                onResize={onResize}
-                minConstraints={[minWidth, minHeight]}
-                handle={<CustomResizeHandle />}
+        <div style={topLevelStyle}>
+            <Draggable
+                handle=".window-header"
+                defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
             >
-                <motion.div
-                    initial={variants.initial}
-                    transition={{ duration: 0.5 }}
-                    animate={(props.isMinimised ?? false) ? "minimised" : "open"}
-                    variants={variants}
-                    exit={variants.closed}
+                <ResizableBox
+                    height={state.height}
+                    width={state.width}
+                    onResize={onResize}
+                    minConstraints={[minWidth, minHeight]}
+                    handle={<CustomResizeHandle />}
                 >
-                    <div className="window box" style={windowStyle}>
-                        <WindowHeader
-                            title={props.title}
-                            windowIcon={props.windowIcon}
-                            onMinimise={props.onMinimise}
-                            onClose={props.onClose}
-                        />
-                        <WindowContent>
-                            {props.children}
-                        </WindowContent>
-                    </div>
-                </motion.div>
-            </ResizableBox>
-        </Draggable>
+                    <motion.div
+                        initial={variants.initial}
+                        transition={{ duration: 0.5 }}
+                        animate={(props.isMinimised ?? false) ? "minimised" : "open"}
+                        variants={variants}
+                        exit={variants.closed}
+                    >
+                        <div className="window box" style={windowStyle}>
+                            <WindowHeader
+                                title={props.title}
+                                windowIcon={props.windowIcon}
+                                onMinimise={props.onMinimise}
+                                onClose={props.onClose}
+                            />
+                            <WindowContent classNames={props.classNames}>
+                                {props.children}
+                            </WindowContent>
+                        </div>
+                    </motion.div>
+                </ResizableBox>
+            </Draggable>
+        </div>
     );
 }
 

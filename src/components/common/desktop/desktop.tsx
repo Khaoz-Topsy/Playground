@@ -3,10 +3,9 @@ import DragSelect from 'dragselect';
 
 import { AppletType } from '../../../constants/enum/appletType';
 import { DesktopIcons } from '../../../constants/desktopIconList';
-import { LaunchedApp } from '../../../contracts/launchedApp';
-import { anyObject } from '../../../helper/typescriptHacks';
-import { WindowStore } from '../../../state/window';
+import { WindowStore } from '../../../state/window/store';
 import { DesktopIcon } from './desktopIcon';
+import { openAppFromDesktop } from '../../../state/window/reducer';
 
 export const Desktop: React.FC = () => {
     const [selectedIconIndexes, setSelectedIconIndexes] = useState<Array<number>>([]);
@@ -36,7 +35,6 @@ export const Desktop: React.FC = () => {
     }, [0]);
 
     const handleDragSelect = (name: string) => (data: any) => {
-        console.log(name);
         const newArr = [
             ...selectedIconIndexes,
             ...getNewItemsFromDragSelect(data),
@@ -47,10 +45,11 @@ export const Desktop: React.FC = () => {
     const getNewItemsFromDragSelect = (data: any) => (data?.items ?? [])
         .map((htmlElem: any) => +(htmlElem?.attributes?.['data-index']?.value ?? -1))
         .filter((i: number) => i >= 0)
-        .map(((i: number) => {
-            console.log(i);
-            return i;
-        }));
+        // .map(((i: number) => {
+        //     console.log(i);
+        //     return i;
+        // }))
+        ;
 
     const setIndex = (index: number) => (e: any) => {
         e?.preventDefault();
@@ -64,16 +63,7 @@ export const Desktop: React.FC = () => {
         e?.stopPropagation();
         const appType = DesktopIcons[index]?.appletType ?? AppletType.none;
         if (appType !== AppletType.none) {
-            const newActiveApp: LaunchedApp = {
-                appType,
-                meta: anyObject,
-            };
-            WindowStore.update(store => {
-                store.currentFocused = appType;
-                store.activeApps = (store.activeApps.findIndex(aa => aa.appType === appType) < 0)
-                    ? [...store.activeApps, newActiveApp]
-                    : [...store.activeApps]
-            });
+            WindowStore.update(openAppFromDesktop(appType));
             setSelectedIconIndexes(selectedIconIndexes.filter(si => si === appType));
         }
     }

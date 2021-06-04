@@ -1,4 +1,7 @@
 $taskbar-height: 4;
+$taskbar-bottom-highlight-focus: 20;
+$taskbar-bottom-highlight-minimised: 4;
+$taskbar-bottom-highlight-background: 10;
 
 .taskbar {
     position: absolute;
@@ -38,23 +41,29 @@ $taskbar-height: 4;
             bottom: 5px;
             content: "";
             height: 4px;
-            width: 4px;
             background-color: rgba(255, 255, 255, 0.85);
             border-radius: 4px;
-            margin-left: -2px;
             opacity: 0;
             transition: all 500ms ease-in-out;
             transition-property: opacity width;
         }
 
+        &.open:before {
+            width: #{$taskbar-bottom-highlight-background}px;
+            margin-left: -#{$taskbar-bottom-highlight-background / 2}px;
+            opacity: 0.7;
+        }
+
         &.selected:before {
-            width: 20px;
-            margin-left: -10px;
+            width: #{$taskbar-bottom-highlight-focus}px;
+            margin-left: -#{$taskbar-bottom-highlight-focus / 2}px;
             opacity: 1;
         }
 
         &.minimised:before {
-            opacity: 1;
+            width: #{$taskbar-bottom-highlight-minimised}px;
+            margin-left: -#{$taskbar-bottom-highlight-minimised / 2}px;
+            opacity: 0.7;
         }
 
         &.initial:before {

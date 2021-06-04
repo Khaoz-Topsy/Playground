@@ -3,4 +3,7 @@ export enum AppletType {
     setting,
     assistantNMS,
     assistantSMS,
+
+    // Funny
+    nyanCat,
 }

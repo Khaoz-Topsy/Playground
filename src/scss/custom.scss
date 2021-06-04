@@ -9,7 +9,8 @@
 @import './custom/_window.scss';
 
 .react-draggable {
-    display: inline-block;
+    // display: inline-block;
+    position: absolute;
 }
 
 .noselect {

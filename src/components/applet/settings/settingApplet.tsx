@@ -47,13 +47,11 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
 
     return (
         <Window
+            {...props}
             title="Settings"
             defaultWidth={700}
             defaultHeight={500}
             windowIcon={windowIcon(AppletType.setting)}
-            isMinimised={props.isMinimised}
-            onMinimise={props.onMinimise}
-            onClose={props.onClose}
         >
             <Container maxW={"container.xl"}>
                 <Box mt={50}>

@@ -1,6 +1,9 @@
 https://goodmanwen.github.io/#/login
 https://portfolio.zxh.io/
 
+https://github.com/1egoman/funnies
+https://github.com/milkandsour/nyanloader/blob/master/nyanloader.js
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

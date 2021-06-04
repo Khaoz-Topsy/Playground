@@ -4,7 +4,8 @@ import classNames from 'classnames';
 import { AnimatePresence } from 'framer-motion';
 
 import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
-import { WindowStore } from '../../../state/window';
+import { WindowStore } from '../../../state/window/store';
+import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { TaskbarIcon } from './taskbarIcon';
 import { AppletType } from '../../../constants/enum/appletType';
 
@@ -23,23 +24,8 @@ export const Taskbar: React.FC = () => {
         },
     ];
 
-    const openApp = (index: number) => (e: any) => {
-        WindowStore.update(store => {
-            store.currentFocused = windStore.activeApps[index].meta.isMinimised
-                ? windStore.activeApps[index].appType
-                : AppletType.none;
-            store.activeApps = [
-                ...store.activeApps.map(aa => {
-                    return {
-                        ...aa,
-                        meta: {
-                            ...aa.meta,
-                            isMinimised: !aa.meta.isMinimised,
-                        }
-                    }
-                })
-            ]
-        });
+    const openApp = (appType: AppletType) => (e: any) => {
+        WindowStore.update(openAppFromTaskbar(appType));
     }
 
     return (

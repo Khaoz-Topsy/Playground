@@ -12,7 +12,7 @@ export const DesktopIcons: Array<IDesktopIcon> = [
     {
         imgUrl: AppImage.assistantNMS,
         title: 'Assistant for No Man\'s Sky',
-        appletType: AppletType.assistantNMS,
+        appletType: AppletType.nyanCat,
     },
     {
         imgUrl: AppImage.assistantSMS,
