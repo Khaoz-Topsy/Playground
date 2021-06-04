@@ -10,7 +10,7 @@ export const appPreloadAssets = async () => {
             img.onerror = reject();
         });
     });
-    promises.push(wait(5000));
+    promises.push(wait(1000));
 
     await Promise.all(promises);
 }
