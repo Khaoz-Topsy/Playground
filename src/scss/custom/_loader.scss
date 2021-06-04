@@ -1,0 +1,139 @@
+//https://beautifytools.com/scss-compiler.php
+
+$duration: 3000ms;
+
+$loader-size: 200px;
+$pip-size: 35px;
+
+$small-loader-size: 50px;
+$small-pip-size: 8px;
+
+.fullscreen {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.fullscreen .center-loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fullscreen.initial {
+    opacity: 1;
+    background-color: #7f5a83;
+    background-image: linear-gradient(315deg, #5a7683 0%, #0d324d 74%);
+    transition: opacity 1s ease-in-out;
+    z-index: 10000;
+
+    &.fade {
+        opacity: 0;
+    }
+}
+
+.loader {
+    position: relative;
+    display: inline-block;
+    width: $loader-size;
+    height: $loader-size+50;
+    border-radius: 50%;
+    transform-origin: #{$loader-size/2} #{$loader-size/2};
+    animation: $duration*1.5 linear 0s normal none infinite running;
+    animation-name: rotate;
+
+    span::after {
+        position: absolute;
+        width: $pip-size;
+        height: $pip-size;
+        border-radius: 50%;
+        background-color: #fff;
+        content: "";
+        display: block;
+        transform-origin: $loader-size/2 $loader-size/2;
+        animation-duration: $duration;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+    }
+
+    &.small {
+        width: $small-loader-size;
+        height: $small-loader-size;
+        transform-origin: #{$small-loader-size/2} #{$small-loader-size/2};
+
+        span::after {
+            width: $small-pip-size;
+            height: $small-pip-size;
+            transform-origin: $small-loader-size/2 $small-loader-size/2;
+        }
+    }
+}
+
+.loading-container {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+        text-align: center;
+        font-size: 3em;
+        color: white;
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@for $i from 0 through 5 {
+    $start: $i * 20;
+    $delay: 900 - ($i * 125);
+    $mid: 180 + $start;
+    $finish: 360 + $start;
+
+    .pip-#{$i} {
+        &::after {
+            transform: rotate(#{$start}deg);
+            animation-name: rotate-#{$i};
+            animation-delay: #{$delay}ms;
+        }
+    }
+
+    @keyframes rotate-#{$i} {
+
+        0%,
+        20% {
+            transform: rotate(#{$start}deg);
+        }
+
+        40%,
+        60% {
+            transform: rotate(#{$mid}deg);
+        }
+
+        80%,
+        100% {
+            transform: rotate(#{$finish}deg);
+        }
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+    }
+}

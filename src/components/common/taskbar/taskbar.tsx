@@ -3,24 +3,25 @@ import { Image, Center } from '@chakra-ui/react';
 import classNames from 'classnames';
 import { AnimatePresence } from 'framer-motion';
 
+import { AppImage } from '../../../constants/appImage';
+import { AppletType } from '../../../constants/enum/appletType';
 import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
 import { WindowStore } from '../../../state/window/store';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { TaskbarIcon } from './taskbarIcon';
-import { AppletType } from '../../../constants/enum/appletType';
 
 export const Taskbar: React.FC = () => {
     const windStore = WindowStore.useState(store => store);
 
     const baseShortcuts = [
         {
-            imgUrl: '/assets/img/appIcons/windows.svg',
+            imgUrl: AppImage.windows,
         },
         {
-            imgUrl: '/assets/img/appIcons/assistantNMS.png',
+            imgUrl: AppImage.assistantNMS,
         },
         {
-            imgUrl: '/assets/img/appIcons/assistantSMS.png',
+            imgUrl: AppImage.assistantSMS,
         },
     ];
 
