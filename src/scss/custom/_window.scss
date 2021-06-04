@@ -32,6 +32,10 @@ svg.handle {
     box-sizing: content-box;
     border-radius: $window-border-radius;
 
+    &.is-focused {
+        background-color: _palette(bg-transparent-focused);
+    }
+
     >*,
     >*>* {
         color: _palette(fg);
@@ -105,4 +109,11 @@ svg.handle {
             height: 100%;
         }
     }
+}
+
+img.settings-about {
+    width: 150px;
+    height: 150px;
+    background-color: _palette(bg);
+    border-radius: 100%;
 }

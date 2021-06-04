@@ -1,15 +1,16 @@
 import React from 'react';
-import { Image, Center } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import { BasicLink } from '../../../core/link';
+import { BasicImage } from '../../../core/image';
 
 export const SettingAbout: React.FC = () => {
     return (
         <>
             <Center>
-                <Image
-                    borderRadius="full"
-                    boxSize="150px"
-                    src="https://kurtlourens.com/assets/images/KurtAvatar.svg"
+                <BasicImage
+                    classNames="settings-about"
+                    imageUrl="https://kurtlourens.com/assets/images/KurtAvatar.svg"
+                    imageName="Kurt Lourens"
                     alt="Kurt Lourens"
                 />
             </Center>

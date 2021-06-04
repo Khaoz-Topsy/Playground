@@ -8,6 +8,7 @@ import { minWidth, minHeight } from '../../constants/window';
 import { WindowDragHandle } from './windowDragHandle';
 import { WindowHeader } from './windowHeader';
 import { WindowContent } from './windowContent';
+import classNames from 'classnames';
 
 interface IProps {
     title: string;
@@ -19,7 +20,9 @@ interface IProps {
     classNames?: string;
     children: ReactNode;
     windowIcon?: ReactNode;
+    isFocused?: boolean;
     isMinimised?: boolean;
+    onSetFocus: () => void;
     onMinimise: () => void;
     onClose: () => void;
 }
@@ -94,7 +97,11 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                         variants={variants}
                         exit={variants.closed}
                     >
-                        <div className="window box" style={windowStyle}>
+                        <div
+                            className={classNames('window box', { 'is-focused': props.isFocused })}
+                            style={windowStyle}
+                            onClick={props?.onSetFocus}
+                        >
                             <WindowHeader
                                 title={props.title}
                                 windowIcon={props.windowIcon}

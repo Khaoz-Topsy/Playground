@@ -11,7 +11,7 @@ import { LaunchedApp } from '../../contracts/launchedApp';
 import { sortByOpenOrder } from '../../helper/launchedAppHelper';
 import { WindowStore } from '../../state/window/store';
 import { IApplet } from '../../contracts/interface/IApplet';
-import { minimiseApp } from '../../state/window/reducer';
+import { closeApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 
 interface IProps { }
 
@@ -30,26 +30,16 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
 
     const onMaximise = (appType: AppletType) => () => { };
 
-    const onMinimise = (appType: AppletType) => () => {
-        WindowStore.update(minimiseApp(appType));
-    };
+    const onSetFocus = (appType: AppletType) => () => WindowStore.update(setNewFocusForApp(appType));
+    const onMinimise = (appType: AppletType) => () => WindowStore.update(minimiseApp(appType));
+    const onClose = (appType: AppletType) => () => WindowStore.update(closeApp(appType));
 
-    const onClose = (appType: AppletType) => () => {
-        WindowStore.update(store => {
-            store.currentFocused = AppletType.none;
-            store.activeApps = [...store.activeApps.filter(aa => aa.appType !== appType)]
-        });
-    };
-
-    const onCloseModal = () => {
-        WindowStore.update(store => {
-            store.currentFocused = AppletType.none;
-            store.activeApps = [...store.activeApps.filter(aa => aa.appType !== modalData.applet)]
-        }, () => setModalData({
+    const onCloseModal = () => WindowStore.update(closeApp(modalData.applet),
+        () => setModalData({
             isOpen: false,
             applet: AppletType.none,
-        }));
-    };
+        })
+    );
 
     const mapWindow = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
         const isFocused = app.appType === currentlyFocused;
@@ -64,6 +54,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
             isFocused: app.appType === currentlyFocused,
             zIndex: app.openOrder,
             ...app.meta,
+            onSetFocus: onSetFocus(app.appType),
             onMinimise: onMinimise(app.appType),
             onMaximise: onMaximise(app.appType),
             onClose: onClose(app.appType),

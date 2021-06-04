@@ -41,8 +41,14 @@ export const openAppFromTaskbar = (appType: AppletType) => (store: IWindowStore)
         return store;
     }
 
-    store = setNewFocusForApp(store, appType);
+    store = InternalSetNewFocusForApp(store, appType);
     store = setMinimiseForApp(store, appType);
+    return store;
+}
+
+export const closeApp = (appType: AppletType) => (store: IWindowStore): IWindowStore => {
+    store = InternalSetNewFocusForApp(store, appType);
+    store.activeApps = [...store.activeApps.filter(aa => aa.appType !== appType)];
     return store;
 }
 
@@ -65,7 +71,7 @@ export const setMinimiseForApp = (store: IWindowStore, appType: AppletType, newM
     if (currentAppIsMin) {
         store.currentFocused = currentApp?.appType ?? AppletType.none;
     } else {
-        store = setNewFocusForApp(store, appType);
+        store = InternalSetNewFocusForApp(store, appType);
     }
     store.activeApps = [
         ...store.activeApps.map(aa => ({
@@ -79,11 +85,16 @@ export const setMinimiseForApp = (store: IWindowStore, appType: AppletType, newM
     return store;
 }
 
-export const setNewFocusForApp = (store: IWindowStore, appType: AppletType): IWindowStore => {
+export const setNewFocusForApp = (appType: AppletType) => (store: IWindowStore): IWindowStore => {
+    store.currentFocused = appType ?? AppletType.none
+    return store
+}
+
+const InternalSetNewFocusForApp = (store: IWindowStore, appType: AppletType): IWindowStore => {
     const currentApps = store.activeApps.map(aa => ({ ...aa }));
     const sortOrderArray = currentApps.filter(aa => aa.appType !== appType).map(aa => aa.openOrder);
     const nextAppToFocus = currentApps.find(aa => aa.openOrder === Math.max(...sortOrderArray));
 
-    store.currentFocused = (nextAppToFocus?.appType ?? AppletType.none)
+    store.currentFocused = (nextAppToFocus?.appType ?? AppletType.none);
     return store;
 }
