@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
 
-import { AppletType } from '../../../constants/enum/appletType';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { Window } from '../../window/window';
 import { SettingItem } from './settingItem';
@@ -9,7 +8,6 @@ import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
 import { SettingGithub } from './section/github';
 import { SettingSocials } from './section/socials';
-import { windowIcon } from '../../window/windowIcon';
 
 interface IProps extends IApplet {
     pageIndex?: number;
@@ -48,11 +46,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
     ];
 
     return (
-        <Window
-            {...props}
-            title="Settings"
-            windowIcon={windowIcon(AppletType.setting)}
-        >
+        <Window {...props} >
             <Container maxW={"container.xl"}>
                 <Box mt={4}>
                     <Grid templateColumns="repeat(3, 1fr)" gap={10}>

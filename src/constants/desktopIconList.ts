@@ -10,13 +10,13 @@ export const DesktopIcons: Array<IDesktopIcon> = [
         appletType: AppletType.setting,
     },
     {
-        imgUrl: AppImage.assistantNMS,
-        title: 'Assistant for No Man\'s Sky',
+        imgUrl: AppImage.nyanCat,
+        title: 'Nyan Cat',
         appletType: AppletType.nyanCat,
     },
     {
-        imgUrl: AppImage.assistantSMS,
-        title: 'Assistant for Scrap Mechanic',
-        appletType: AppletType.assistantSMS,
+        imgUrl: AppImage.terminal,
+        title: 'Terminal',
+        appletType: AppletType.terminal,
     },
 ];

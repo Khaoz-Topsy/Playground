@@ -1,26 +1,34 @@
+/// <reference path='../../../types.d.ts' />
 import React from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import Terminal from 'react-terminal-app';
 
-import { AppletType } from '../../../constants/enum/appletType';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { Window } from '../../window/window';
-import { windowIcon } from '../../window/windowIcon';
+import { staticList } from './commands/static';
+import { dynamicList } from './commands/dynamic';
 
 interface IProps extends IApplet { }
 
 export const TerminalApplet: React.FC<IProps> = (props: IProps) => {
+    const cmd = {
+        dynamicList,
+        staticList,
+    }
+
+    const config = {
+        prompt: '➜  ~ ',
+        version: '1.0.0',
+        initialDirectory: 'workspace',
+        bootCmd: 'intro'
+    }
 
     return (
         <Window
             {...props}
-            title="Terminal"
-            windowIcon={windowIcon(AppletType.setting)}
+            classNames="terminal"
+            isFullscreen={true}
         >
-            <Container maxW={"container.xl"}>
-                <Box mt={4}>
-
-                </Box>
-            </Container>
+            <Terminal cmd={cmd} config={config} />
         </Window>
     );
 }

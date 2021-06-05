@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import DragSelect from 'dragselect';
+import DragSelect from 'dragselect'
+import React, { useEffect, useState } from 'react'
 
-import { AppletType } from '../../../constants/enum/appletType';
-import { DesktopIcons } from '../../../constants/desktopIconList';
-import { WindowStore } from '../../../state/window/store';
-import { DesktopIcon } from './desktopIcon';
-import { openAppFromDesktop } from '../../../state/window/reducer';
+import { AppletType } from '../../../constants/enum/appletType'
+import { DesktopIcons } from '../../../constants/desktopIconList'
+import { WindowStore } from '../../../state/window/store'
+import { DesktopIcon } from './desktopIcon'
+import { openAppFromDesktop } from '../../../state/window/reducer'
 
 export const Desktop: React.FC = () => {
     const [selectedIconIndexes, setSelectedIconIndexes] = useState<Array<number>>([]);
@@ -14,7 +14,6 @@ export const Desktop: React.FC = () => {
     // eslint-disable-next-line
     useEffect(() => {
         if (dragSelect != null) return;
-        console.log('useEffect');
 
         const ds = new DragSelect({
             area: document.getElementById('desktop-grid') as any,
@@ -58,13 +57,12 @@ export const Desktop: React.FC = () => {
     }
 
     const openApp = (index: number) => (e: any) => {
-        console.log('openApp', index);
         e?.preventDefault();
         e?.stopPropagation();
-        const appType = DesktopIcons[index]?.appletType ?? AppletType.none;
-        if (appType !== AppletType.none) {
-            WindowStore.update(openAppFromDesktop(appType));
-            setSelectedIconIndexes(selectedIconIndexes.filter(si => si === appType));
+        const icon = DesktopIcons[index];
+        if (icon.appletType !== AppletType.none) {
+            WindowStore.update(openAppFromDesktop(icon.appletType, icon.title));
+            setSelectedIconIndexes([]);
         }
     }
 

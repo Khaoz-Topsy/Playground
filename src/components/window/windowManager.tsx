@@ -5,12 +5,13 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 // Applets
 import { SettingApplet } from '../applet/settings/settingApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
+import { TerminalApplet } from '../applet/terminal/terminalApplet';
 
+import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
 import { LaunchedApp } from '../../contracts/launchedApp';
 import { sortByOpenOrder } from '../../helper/launchedAppHelper';
 import { WindowStore } from '../../state/window/store';
-import { IApplet } from '../../contracts/interface/IApplet';
 import { closeApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 
 interface IProps { }
@@ -51,6 +52,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
 
     const renderSupportedWindows = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
         const appProps: IApplet = {
+            ...app,
             isFocused: app.appType === currentlyFocused,
             zIndex: app.openOrder,
             ...app.meta,
@@ -63,6 +65,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         switch (app.appType) {
             case AppletType.setting: return <SettingApplet key={`AppletType-${app.appType}`} {...appProps} />
             case AppletType.nyanCat: return <NyanCatApplet key={`AppletType-${app.appType}`} {...appProps} />
+            case AppletType.terminal: return <TerminalApplet key={`AppletType-${app.appType}`} {...appProps} />
         }
 
         if (!modalData.isOpen) {
@@ -94,8 +97,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
                     </ModalBody>
 
                     <ModalFooter>
-                        <Button colorScheme="blue" mr={3} onClick={onCloseModal}>Close</Button>
-                        <Button variant="ghost">Secondary Action</Button>
+                        <Button colorScheme="blue" onClick={onCloseModal}>Close</Button>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

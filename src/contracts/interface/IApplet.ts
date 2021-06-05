@@ -1,4 +1,8 @@
+import { AppletType } from "../../constants/enum/appletType";
+
 export interface IApplet {
+    appType: AppletType;
+    title: string;
     isFocused?: boolean;
     isMinimised?: boolean;
     zIndex?: number;

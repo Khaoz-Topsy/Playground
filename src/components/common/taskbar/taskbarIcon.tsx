@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
-
-import { windowTaskbarIcon } from '../../window/windowIcon';
-import { LaunchedApp } from '../../../contracts/launchedApp';
 import { motion } from 'framer-motion';
+
+import { LaunchedApp } from '../../../contracts/launchedApp';
+import { windowTaskbarIcon } from '../../window/windowIcon';
 
 interface IProps {
     index: number;
@@ -21,10 +21,18 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
         // eslint-disable-next-line
     }, []);
     const variants = {
-        initial: { scale: 0, opacity: 0, marginTop: '100%' },
-        open: { scale: 1, opacity: 1, marginTop: 0 },
-        minimised: { scale: 1, opacity: 1, marginTop: 0 },
-        closed: { scale: 0, opacity: 0, marginTop: 0 },
+        initial: {
+            scale: 0, opacity: 0, width: '4.5em',
+        },
+        open: {
+            scale: 1, opacity: 1, width: '4.5em',
+        },
+        minimised: {
+            scale: 1, opacity: 1, width: '4.5em',
+        },
+        closed: {
+            scale: 1, scaleX: 0, opacity: 0, width: 0,
+        },
     }
     const classes = classNames('applet-shortcut open noselect', {
         'minimised': (props.applet.meta.isMinimised ?? false),
@@ -32,18 +40,19 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
         'initial': initial,
     });
     return (
-        <div className={classes} onClick={props?.openApp?.(props.applet.appType)}>
-            <motion.div
-                key={props.applet.appType}
-                initial={variants.initial}
-                transition={{ duration: 0.5 }}
-                animate={(props.applet.meta.isMinimised ?? false) ? "minimised" : "open"}
-                variants={variants}
-                exit={variants.closed}
-            >
+        <motion.div
+            key={props.applet.appType}
+            className={classes}
+            initial={variants.initial}
+            transition={{ duration: 0.5 }}
+            animate={(props.applet.meta.isMinimised ?? false) ? "minimised" : "open"}
+            variants={variants}
+            exit={variants.closed}
+        >
+            <div onClick={props?.openApp?.(props.applet.appType)}>
                 {windowTaskbarIcon(props.applet.appType)}
-            </motion.div>
-        </div>
+            </div>
+        </motion.div>
     );
 }
 

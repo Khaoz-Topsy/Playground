@@ -21,9 +21,10 @@ $taskbar-bottom-highlight-background: 10;
         width: #{$taskbar-height + 0.5}em;
         height: #{$taskbar-height}em;
         display: inline-block;
-        padding: 7px 14px 5px 14px;
         margin: 0 5px 0 5px;
         cursor: pointer;
+        padding-top: 7px;
+        padding-bottom: 5px;
 
         &:first-child {
             margin-left: 0;
@@ -31,7 +32,7 @@ $taskbar-bottom-highlight-background: 10;
 
         img {
             border-radius: 5px;
-            max-height: #{$taskbar-height - 1}em;
+            height: #{$taskbar-height - 1.25}em;
             margin: 0 auto;
         }
 
@@ -63,7 +64,7 @@ $taskbar-bottom-highlight-background: 10;
         &.minimised:before {
             width: #{$taskbar-bottom-highlight-minimised}px;
             margin-left: -#{$taskbar-bottom-highlight-minimised / 2}px;
-            opacity: 0.7;
+            opacity: 0.6;
         }
 
         &.initial:before {

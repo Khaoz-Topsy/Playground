@@ -29,6 +29,16 @@ svg.handle {
         pointer-events: all;
     }
 
+    .is-minimised {
+        .react-draggable {
+            pointer-events: none !important;
+        }
+
+        .handle {
+            opacity: 0;
+        }
+    }
+
     .window:after {
         content: '';
         position: absolute;
@@ -164,4 +174,38 @@ svg.handle {
         position: absolute;
         top: calc(50% - 24px);
     }
+}
+
+.terminal {
+
+    .react-terimnal-app {
+        overflow: hidden;
+        margin: 0 !important;
+
+        .sc-pNWdM,
+        .kGAbsr {
+            display: none;
+        }
+
+        .sc-dlnjwi,
+        .bfXWqo {
+            padding-top: 0;
+        }
+
+        .sc-pNWdM,
+        .kGAbsr,
+        .sc-gtsrHT,
+        .huxEFV {
+            max-height: 100%;
+        }
+    }
+
+    // .Terminal-window {
+    //     overflow: hidden;
+    // }
+
+    // .Terminal-header,
+    // .Terminal-control-btn {
+    //     display: none;
+    // }
 }

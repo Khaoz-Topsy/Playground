@@ -1,22 +1,17 @@
-import { Center, Spinner } from '@chakra-ui/react';
-import React from 'react';
+import React from 'react'
 
-import { AppletType } from '../../../constants/enum/appletType';
-import { IApplet } from '../../../contracts/interface/IApplet';
-import { Window } from '../../window/window';
-import { windowIcon } from '../../window/windowIcon';
+import { IApplet } from '../../../contracts/interface/IApplet'
+import { Window } from '../../window/window'
 
 interface IProps extends IApplet { }
 
 export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
     return (
         <Window
-            {...props}
             key="nyanWindow"
-            title="Nyan Cat"
+            {...props}
             showLoading={true}
-            windowIcon={windowIcon(AppletType.nyanCat)}
-            classNames="full-content"
+            isFullscreen={true}
         >
             <iframe
                 id="nyanIframe"

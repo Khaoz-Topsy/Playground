@@ -5,6 +5,7 @@ export class AppImage {
     static assistantSMS = '/assets/img/appIcons/assistantSMS.png';
     static settings = '/assets/img/appIcons/setting.png';
     static nyanCat = '/assets/img/appIcons/nyanCat.png';
+    static terminal = '/assets/img/appIcons/terminal.png';
     static error = '/assets/img/appIcons/error.png';
 }
 

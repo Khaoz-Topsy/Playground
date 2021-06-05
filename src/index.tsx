@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 
 import { App } from './App';
 import './scss/custom.scss';
-import 'react-animated-term/dist/react-animated-term.css'
 
 ReactDOM.render(
   <ChakraProvider>

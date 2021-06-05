@@ -1,31 +1,31 @@
-import React, { ReactNode, useState } from 'react';
-import Draggable from 'react-draggable';
-import { ResizableBox } from 'react-resizable';
-import { motion } from "framer-motion"
+import classNames from 'classnames'
+import Draggable from 'react-draggable'
+import React, { ReactNode, useState } from 'react'
+import { ResizableBox } from 'react-resizable'
+import { Box, Center, Container, Spinner } from '@chakra-ui/react'
+import { motion } from 'framer-motion'
 
-import { minWidth, minHeight } from '../../constants/window';
+import { minHeight, minWidth, defaultHeight, defaultWidth } from '../../constants/window'
+import { WindowDragHandle } from './windowDragHandle'
+import { WindowHeader } from './windowHeader'
+import { WindowContent } from './windowContent'
+import { windowIcon } from './windowIcon'
+import { IApplet } from '../../contracts/interface/IApplet'
 
-import { WindowDragHandle } from './windowDragHandle';
-import { WindowHeader } from './windowHeader';
-import { WindowContent } from './windowContent';
-import classNames from 'classnames';
-import { Center, Spinner } from '@chakra-ui/react';
-
-interface IProps {
-    title: string;
+interface IProps extends IApplet {
     defaultHeight?: number;
     defaultWidth?: number;
     defaultX?: number;
     defaultY?: number;
-    zIndex?: number;
     classNames?: string;
     children: ReactNode;
-    windowIcon?: ReactNode;
     showLoading?: boolean;
+    isFullscreen?: boolean;
     isFocused?: boolean;
     isMinimised?: boolean;
     onSetFocus: () => void;
     onMinimise: () => void;
+    onMaximise: () => void;
     onClose: () => void;
 }
 
@@ -36,8 +36,8 @@ interface IState {
 
 export const Window: React.FC<IProps> = (props: IProps) => {
     const [state, setState] = useState<IState>({
-        height: props.defaultHeight ?? minHeight,
-        width: props.defaultWidth ?? minWidth,
+        height: props.defaultHeight ?? defaultHeight,
+        width: props.defaultWidth ?? defaultWidth,
     });
 
     const onResize = (event: any, data: any) => {
@@ -59,15 +59,9 @@ export const Window: React.FC<IProps> = (props: IProps) => {
 
     const CustomResizeHandle = React.forwardRef((props, ref: any) => {
         return (
-            <motion.div
-                initial={{ opacity: 0 }}
-                transition={{ duration: 2 }}
-                animate={{ opacity: 1 }}
-            >
-                <div className="handle" ref={ref} {...props}>
-                    <WindowDragHandle />
-                </div >
-            </motion.div>
+            <div className="handle" ref={ref} {...props}>
+                <WindowDragHandle />
+            </div >
         )
     });
 
@@ -79,10 +73,10 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         closed: { scale: 0, opacity: 0, marginTop: 0 },
     }
 
-    const { isFocused } = props;
+    const { isFocused, isMinimised } = props;
 
     return (
-        <div style={topLevelStyle}>
+        <div style={topLevelStyle} className={classNames({ 'is-minimised': isMinimised })}>
             <Draggable
                 handle=".window-header"
                 defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
@@ -108,11 +102,11 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                         >
                             <WindowHeader
                                 title={props.title}
-                                windowIcon={props.windowIcon}
+                                windowIcon={windowIcon(props.appType)}
                                 onMinimise={props.onMinimise}
                                 onClose={props.onClose}
                             />
-                            <WindowContent classNames={props.classNames}>
+                            <WindowContent classNames={classNames(props.classNames, { 'full-content': props.isFullscreen })}>
                                 {
                                     props.showLoading && (
                                         <Center zIndex="1">
@@ -120,7 +114,15 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                                         </Center>
                                     )
                                 }
-                                {props.children}
+                                {
+                                    props.isFullscreen
+                                        ? props.children
+                                        : <Container maxW={"container.xl"}>
+                                            <Box mt={4}>
+                                                {props.children}
+                                            </Box>
+                                        </Container>
+                                }
                             </WindowContent>
                         </div>
                     </motion.div>
