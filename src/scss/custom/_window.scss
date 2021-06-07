@@ -192,11 +192,27 @@ svg.handle {
             padding-top: 0;
         }
 
+        // .hqwNgP,
+        // .sc-gKAaRy,
+        // .sc-gKAaRy.hqwNgP {
+        //     font-size: 2em;
+        //     line-height: 1em;
+        // }
+
         .sc-pNWdM,
         .kGAbsr,
         .sc-gtsrHT,
         .huxEFV {
             max-height: 100%;
+        }
+
+        .enter-done,
+        .enter-active,
+        .enter.enter-active,
+        .exit,
+        .exit.exit-active {
+            margin-block-end: 0;
+            margin-block-start: 0;
         }
     }
 

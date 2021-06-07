@@ -1,84 +1,40 @@
-const getTime = () => {
-    const date = new Date()
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-    return `${hours}${minutes < 10 ? ':0' : ':'}${minutes}${seconds < 10 ? ':0' : ':'}${seconds}`
-}
-
-const introduction = [
-    `Welcome to 一个坏掉的番茄.`,
-    {
-        type: 'system',
-        label: 'System',
-        content: `cd 一个坏掉的番茄`
-    },
-    {
-        type: 'system',
-        label: 'System',
-        content: 'Thanks for your visit, let me introduce myself.'
-    },
-    {
-        time: getTime(),
-        type: 'info',
-        label: 'Name:',
-        content: 'Simon Ma'
-    },
-    {
-        time: getTime(),
-        type: 'info',
-        label: 'Sex:',
-        content: 'Male'
-    },
-    {
-        time: getTime(),
-        type: 'info',
-        label: 'Age:',
-        content: '23'
-    },
-    {
-        time: getTime(),
-        type: 'info',
-        label: 'Email:',
-        content: 'simon@tomotoes.com'
-    },
-    {
-        time: getTime(),
-        type: 'info',
-        label: 'Aim:',
-        content: 'Three goals as follows:'
-    },
-    {
-        type: 'black',
-        label: '=> 1.',
-        content: 'To make outstanding contributions to open source.'
-    },
-    {
-        type: 'black',
-        label: '=> 2.',
-        content: 'Become a full stack engineer.'
-    },
-    {
-        type: 'black',
-        label: '=> 3.',
-        content: 'Find a good job.'
-    }
-]
+import { IReactTerminalPrintProps } from '../../../../contracts/terminal';
+import { currentMediumTime } from '../../../../helper/dateHelper';
+import { getFunnyMessages } from '../../../../helper/funnyLoadingMessagesHelper';
 
 export const dynamicList = {
     intro: {
         description: 'Introducting myself again.',
-        run(print: any) {
+        run(print: (printProps: string | IReactTerminalPrintProps) => void) {
             let i = 0
+            const funnyMessages = getFunnyMessages(3);
+            const introduction: Array<string | IReactTerminalPrintProps> = [
+                `Welcome to Kurt's Terminal`,
+                ...funnyMessages.map(funny => ({
+                    type: 'info',
+                    label: 'Loading',
+                    content: funny,
+                })),
+                {
+                    type: 'success',
+                    label: 'Success',
+                    content: 'Successfully loaded!',
+                }
+            ];
             return new Promise(resolve => {
                 const interval = setInterval(() => {
-                    print(introduction[i])
-                    i++
-                    if (!introduction[i]) {
-                        clearInterval(interval)
-                        resolve({ type: 'success', label: 'Done', content: 'Myself introduction is over!' })
+                    try {
+                        print(introduction[i]);
+                    } catch (ex) {
+                        clearInterval(interval);
+                        return;
                     }
-                }, 500)
+                    i++
+                    if ((i + 1) >= introduction.length) {
+                        clearInterval(interval);
+                        setTimeout(() => resolve(introduction[i]), 1000);
+                    }
+                }, 1000)
             })
         }
     },
@@ -87,7 +43,7 @@ export const dynamicList = {
         run(print: any, input: any) {
             return new Promise(resolve => {
                 print({
-                    time: getTime(),
+                    time: currentMediumTime(),
                     label: 'Echo',
                     type: 'success',
                     content: input

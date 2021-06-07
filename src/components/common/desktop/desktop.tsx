@@ -63,6 +63,9 @@ export const Desktop: React.FC = () => {
         if (icon.appletType !== AppletType.none) {
             WindowStore.update(openAppFromDesktop(icon.appletType, icon.title));
             setSelectedIconIndexes([]);
+
+            const dsNoType = dragSelect as any;
+            dsNoType.clearSelection();
         }
     }
 

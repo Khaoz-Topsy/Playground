@@ -1,27 +1,52 @@
 export const staticList = {
     contact: {
-        description: 'Return a list of my contact information.',
+        description: 'Get my contact information.',
         list: [
             {
                 type: 'info',
                 label: 'Email:',
-                content: '`simon@tomotoes.com`'
+                content: 'hi@kurtlourens.com'
             },
             {
                 type: 'info',
                 label: 'Github:',
-                content: '`https://github.com/tomotoes`'
+                content: 'https://github.com/khaoz-topsy'
             },
             {
                 type: 'info',
                 label: 'Twitter:',
-                content: '`https://twitter.com/simon_aking`'
+                content: 'https://twitter.com/khaoztopsy'
             },
             {
                 type: 'info',
-                label: 'Telegram:',
-                content: '`https://t.me/tomotoes`'
-            }
+                label: 'blog:',
+                content: 'https://blog.kurtlourens.com'
+            },
+        ]
+    },
+    current: {
+        description: 'Get my contact information.',
+        list: [
+            {
+                type: 'info',
+                label: '2021',
+                content: 'What I have been doing:'
+            },
+            {
+                type: 'black',
+                label: ' ➜ ',
+                content: '🔭 Creating a bunch of Apps and Tools for AssistantApps!'
+            },
+            {
+                type: 'black',
+                label: ' ➜ ',
+                content: '🌱 Getting really good at Flutter.'
+            },
+            {
+                type: 'black',
+                label: ' ➜ ',
+                content: 'Creating another app for the AssistantApps group.'
+            },
         ]
     },
     whoami: {

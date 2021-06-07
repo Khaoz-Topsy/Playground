@@ -16,8 +16,8 @@ export const TerminalApplet: React.FC<IProps> = (props: IProps) => {
     }
 
     const config = {
-        prompt: '➜  ~ ',
-        version: '1.0.0',
+        prompt: '➜ ',
+        version: '0.0.1',
         initialDirectory: 'workspace',
         bootCmd: 'intro'
     }
