@@ -14,10 +14,9 @@ interface IProps extends IWindowProps {
 export const Applet: React.FC<IProps> = (props: IProps) => {
     const headerFunc = (app: IApplet): ReactNode => (
         <WindowHeader
+            {...app}
             title={app.title}
             windowIcon={windowIcon(app.appType)}
-            onMinimise={app.onMinimise}
-            onClose={app.onClose}
         />
     );
     return (

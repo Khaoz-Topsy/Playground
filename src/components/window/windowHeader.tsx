@@ -6,6 +6,7 @@ interface IProps {
     title: string;
     windowIcon?: ReactNode;
     onMinimise: () => void;
+    onMaximise: () => void;
     onClose: () => void;
 }
 
@@ -21,10 +22,7 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
             <div className="content noselect">
                 {props.title}
             </div>
-            <WindowActions
-                onMinimise={props.onMinimise}
-                onClose={props.onClose}
-            />
+            <WindowActions {...props} />
         </div>
     );
 }

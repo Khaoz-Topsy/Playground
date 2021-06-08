@@ -1,6 +1,7 @@
 $base-bg: #2f2f2f;
 $base-bg-transparent: rgba(47, 47, 47, 0.6);
 $base-bg-transparent-focused: rgba(47, 47, 47, 0.9);
+$base-bg-divider: rgba(47, 47, 47, 0.4);
 $base-fg: #f2f2f2;
 
 $zindex: ( //
@@ -14,8 +15,9 @@ $palette: ( //
     bg: $base-bg,
     bg-transparent: $base-bg-transparent,
     bg-transparent-focused: $base-bg-transparent-focused,
+    bg-divider: $base-bg-divider,
+    bg-sidebar: lighten($base-bg, 5%),
     bg-header: lighten($base-bg, 10%),
-    bg-sidebar: lighten($base-bg, 20%),
 
     fg: $base-fg,
 

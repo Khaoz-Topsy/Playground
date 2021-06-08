@@ -1,26 +1,26 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode } from 'react';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
 
-import { Window } from '../window'
-import { windowIcon } from '../windowIcon'
-import { ExplorerHeader } from './explorerHeader'
+import { Window } from '../window';
+import { windowIcon } from '../windowIcon';
+import { ExplorerHeader } from './explorerHeader';
+import { ExplorerSidebar } from './explorerSidebar';
 
 export const Explorer: React.FC<IWindowProps> = (props: IWindowProps) => {
     const headerFunc = (app: IApplet): ReactNode => (
         <ExplorerHeader
-            title={app.title}
+            {...app}
             windowIcon={windowIcon(app.appType)}
-            onMinimise={app.onMinimise}
-            onClose={app.onClose}
         />
     );
     return (
         <Window
             {...props}
+            classNames="explorer"
             headerFunc={headerFunc}
-            sidebar={<div style={{ background: 'red' }}>Hi</div>}
+            sidebar={<ExplorerSidebar />}
         >
             <div>content</div>
         </Window>
