@@ -3,7 +3,7 @@ import React from 'react';
 import Terminal from 'react-terminal-app';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { Window } from '../../window/window';
+import { Applet } from '../../window/applet/applet';
 import { staticList } from './commands/static';
 import { dynamicList } from './commands/dynamic';
 
@@ -23,12 +23,12 @@ export const TerminalApplet: React.FC<IProps> = (props: IProps) => {
     }
 
     return (
-        <Window
+        <Applet
             {...props}
             classNames="terminal"
             isFullscreen={true}
         >
             <Terminal cmd={cmd} config={config} />
-        </Window>
+        </Applet>
     );
 }

@@ -6,27 +6,16 @@ import { Box, Center, Container, Spinner } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
 import { minHeight, minWidth, defaultHeight, defaultWidth } from '../../constants/window'
-import { WindowDragHandle } from './windowDragHandle'
-import { WindowHeader } from './windowHeader'
-import { WindowContent } from './windowContent'
-import { windowIcon } from './windowIcon'
 import { IApplet } from '../../contracts/interface/IApplet'
+import { IWindowProps } from '../../contracts/interface/IWindowProps'
 
-interface IProps extends IApplet {
-    defaultHeight?: number;
-    defaultWidth?: number;
-    defaultX?: number;
-    defaultY?: number;
-    classNames?: string;
+import { WindowDragHandle } from './windowDragHandle'
+import { WindowContent } from './windowContent'
+
+interface IProps extends IWindowProps {
     children: ReactNode;
-    showLoading?: boolean;
-    isFullscreen?: boolean;
-    isFocused?: boolean;
-    isMinimised?: boolean;
-    onSetFocus: () => void;
-    onMinimise: () => void;
-    onMaximise: () => void;
-    onClose: () => void;
+    sidebar?: ReactNode;
+    headerFunc: (appletProps: IApplet) => ReactNode;
 }
 
 interface IState {
@@ -75,6 +64,27 @@ export const Window: React.FC<IProps> = (props: IProps) => {
 
     const { isFocused, isMinimised } = props;
 
+    const windowContentNode = (
+        <>
+            {
+                props.showLoading && (
+                    <Center zIndex="1">
+                        <Spinner size="xl" thickness="2px" />
+                    </Center>
+                )
+            }
+            {
+                props.isFullscreen
+                    ? props.children
+                    : <Container maxW={"container.xl"}>
+                        <Box mt={4}>
+                            {props.children}
+                        </Box>
+                    </Container>
+            }
+        </>
+    )
+
     return (
         <div style={topLevelStyle} className={classNames({ 'is-minimised': isMinimised })}>
             <Draggable
@@ -100,28 +110,19 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                             style={windowStyle}
                             onClick={isFocused ? (_) => { } : props?.onSetFocus}
                         >
-                            <WindowHeader
-                                title={props.title}
-                                windowIcon={windowIcon(props.appType)}
-                                onMinimise={props.onMinimise}
-                                onClose={props.onClose}
-                            />
+                            {
+                                props.headerFunc(props)
+                            }
                             <WindowContent classNames={classNames(props.classNames, { 'full-content': props.isFullscreen })}>
                                 {
-                                    props.showLoading && (
-                                        <Center zIndex="1">
-                                            <Spinner size="xl" thickness="2px" />
-                                        </Center>
-                                    )
-                                }
-                                {
-                                    props.isFullscreen
-                                        ? props.children
-                                        : <Container maxW={"container.xl"}>
-                                            <Box mt={4}>
-                                                {props.children}
-                                            </Box>
-                                        </Container>
+                                    (props.sidebar != null)
+                                        ? (
+                                            <div className="window-with-sidebar">
+                                                <div className="sidebar">{props.sidebar}</div>
+                                                <div className="offset-content">{windowContentNode}</div>
+                                            </div>
+                                        )
+                                        : windowContentNode
                                 }
                             </WindowContent>
                         </div>

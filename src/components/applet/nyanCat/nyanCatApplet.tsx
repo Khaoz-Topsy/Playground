@@ -1,13 +1,13 @@
 import React from 'react'
 
 import { IApplet } from '../../../contracts/interface/IApplet'
-import { Window } from '../../window/window'
+import { Applet } from '../../window/applet/applet'
 
 interface IProps extends IApplet { }
 
 export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
     return (
-        <Window
+        <Applet
             key="nyanWindow"
             {...props}
             showLoading={true}
@@ -21,6 +21,6 @@ export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
                 style={{ pointerEvents: 'none', zIndex: 2 }}
                 src="https://cristurm.github.io/nyan-cat/"
             />
-        </Window>
+        </Applet>
     );
 }

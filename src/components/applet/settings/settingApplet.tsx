@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { Window } from '../../window/window';
+import { Applet } from '../../window/applet/applet';
 import { SettingItem } from './settingItem';
 import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
@@ -46,7 +46,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
     ];
 
     return (
-        <Window {...props} >
+        <Applet {...props} >
             <Container maxW={"container.xl"}>
                 <Box mt={4}>
                     <Grid templateColumns="repeat(3, 1fr)" gap={10}>
@@ -75,6 +75,6 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
                     </Grid>
                 </Box>
             </Container>
-        </Window>
+        </Applet>
     );
 }

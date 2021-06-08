@@ -5,6 +5,8 @@ export enum AppletType {
     assistantNMS,
     assistantSMS,
 
+    explorer,
+
     // Funny
     nyanCat,
 }
