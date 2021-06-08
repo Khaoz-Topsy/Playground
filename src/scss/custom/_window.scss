@@ -140,63 +140,6 @@ svg.handle {
                 }
             }
         }
-
-        &.explorer {
-            display: flex;
-            flex-direction: row;
-            height: #{$window-header-explorer-height}px;
-
-            .window-icon img {
-                padding: 0.5em;
-            }
-
-            .v-divider {
-                display: inline-block;
-                border-left: 2px solid _palette(bg-divider);
-                margin-top: #{$window-header-divider-space / 2}px;
-                height: #{$window-header-explorer-height - $window-header-divider-space}px;
-
-                &.icon-space {
-                    margin-left: #{$window-header-explorer-height + $window-header-divider-space}px;
-                    margin-right: #{$window-header-divider-space}px;
-                }
-            }
-
-            .icon-button {
-                position: relative;
-                display: inline-block;
-                height: #{$window-header-explorer-height - $window-header-divider-space}px;
-                min-width: #{$window-header-explorer-height - $window-header-divider-space}px;
-                margin: #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px;
-                background-color: _palette(bg-transparent);
-                border-radius: $window-border-radius;
-                opacity: 1;
-
-                &:hover {
-                    opacity: 0.8;
-                }
-
-                &.disabled {
-                    opacity: 0.4;
-                }
-
-                svg {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
-            }
-
-            .content {
-                overflow: hidden;
-                max-height: #{$window-header-explorer-height}px;
-            }
-
-            .window-actions {
-                position: relative;
-            }
-        }
     }
 
     .window-content {
@@ -207,6 +150,8 @@ svg.handle {
         overflow: hidden auto;
         z-index: 0;
 
+        .full-content,
+        .full-content>*,
         &.full-content,
         &.full-content>* {
             width: 100%;
@@ -218,44 +163,6 @@ svg.handle {
             position: absolute;
             top: 0;
             left: 0
-        }
-
-        &.explorer {
-            margin-top: #{$window-header-explorer-height + 3}px;
-            height: calc(100% - #{$window-header-explorer-height + 3}px);
-            padding-bottom: 0;
-        }
-
-        .window-with-sidebar {
-            display: flex;
-            height: 100%;
-
-            .sidebar {
-                width: 200px;
-                border-right: 3px solid _palette(bg-sidebar);
-
-                .item {
-                    cursor: pointer;
-                    padding: 0.75em 1em;
-                    transition: color 250ms ease-in-out;
-
-                    &:hover {
-                        color: rgba(0, 200, 255, 0.7);
-                    }
-                }
-            }
-
-            .offset-content {
-                //
-            }
-
-            hr {
-                border-color: _palette(bg-sidebar);
-                border-width: 2px;
-                border-radius: 5px;
-                margin-left: 0.5em;
-                margin-right: 0.5em;
-            }
         }
     }
 }
@@ -301,6 +208,9 @@ svg.handle {
         .sc-gtsrHT,
         .huxEFV {
             max-height: 100%;
+            margin-top: 0;
+            padding-top: 10px;
+            background-color: transparent;
         }
 
         .enter-done,

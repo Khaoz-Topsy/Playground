@@ -25,11 +25,11 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         applet: AppletType.none,
     });
 
-    const onMaximise = (appType: AppletType) => () => { };
+    const onMaximise = (appletType: AppletType) => () => { };
 
-    const onSetFocus = (appType: AppletType) => () => WindowStore.update(setNewFocusForApp(appType));
-    const onMinimise = (appType: AppletType) => () => WindowStore.update(minimiseApp(appType));
-    const onClose = (appType: AppletType) => () => WindowStore.update(closeApp(appType));
+    const onSetFocus = (appletType: AppletType) => () => WindowStore.update(setNewFocusForApp(appletType));
+    const onMinimise = (appletType: AppletType) => () => WindowStore.update(minimiseApp(appletType));
+    const onClose = (appletType: AppletType) => () => WindowStore.update(closeApp(appletType));
 
     const onCloseModal = () => WindowStore.update(closeApp(modalData.applet),
         () => setModalData({
@@ -39,7 +39,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
     );
 
     const mapWindow = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
-        const isFocused = app.appType === currentlyFocused;
+        const isFocused = app.appletType === currentlyFocused;
         return {
             ...app,
             openOrder: app.openOrder + (isFocused ? 100 : 0),
@@ -49,13 +49,13 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
     const renderSupportedWindows = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
         const appProps: IApplet = {
             ...app,
-            isFocused: app.appType === currentlyFocused,
+            isFocused: app.appletType === currentlyFocused,
             zIndex: app.openOrder,
             ...app.meta,
-            onSetFocus: onSetFocus(app.appType),
-            onMinimise: onMinimise(app.appType),
-            onMaximise: onMaximise(app.appType),
-            onClose: onClose(app.appType),
+            onSetFocus: onSetFocus(app.appletType),
+            onMinimise: onMinimise(app.appletType),
+            onMaximise: onMaximise(app.appletType),
+            onClose: onClose(app.appletType),
         };
 
         const applet = windowDisplayer(appProps);
@@ -64,7 +64,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         if (!modalData.isOpen) {
             setModalData({
                 isOpen: true,
-                applet: app.appType,
+                applet: app.appletType,
             });
         }
         return <span key={`notFound-${index}`}></span>

@@ -11,11 +11,11 @@ import { AppletType } from '../../constants/enum/appletType';
 
 export const windowDisplayer = (appProps: IApplet): ReactNode => {
 
-    switch (appProps.appType) {
-        case AppletType.setting: return <SettingApplet key={`AppletType-${appProps.appType}`} {...appProps} />
-        case AppletType.nyanCat: return <NyanCatApplet key={`AppletType-${appProps.appType}`} {...appProps} />
-        case AppletType.terminal: return <TerminalApplet key={`AppletType-${appProps.appType}`} {...appProps} />
-        case AppletType.explorer: return <Explorer key={`AppletType-${appProps.appType}`} {...appProps} />
+    switch (appProps.appletType) {
+        case AppletType.setting: return <SettingApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
+        case AppletType.nyanCat: return <NyanCatApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
+        case AppletType.terminal: return <TerminalApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
+        case AppletType.explorer: return <Explorer key={`AppletType-${appProps.appletType}`} {...appProps} />
     }
 
     return null;

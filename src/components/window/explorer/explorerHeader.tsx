@@ -1,12 +1,21 @@
 import React, { ReactNode } from 'react';
-import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon, SearchIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Breadcrumb, BreadcrumbItem, Button } from '@chakra-ui/react';
+
+import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
+import { IFolder } from '../../../contracts/interface/IFolder';
+import { IFile } from '../../../contracts/interface/IFile';
+import { filesOnDisk } from '../../../constants/filesOnDisk';
+
+import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowActions } from '../windowActions';
 
-// import { WindowActions } from './windowActions';
-
 interface IProps {
+    selectedId: number;
     windowIcon: ReactNode;
+    breadcrumbs: Array<IBreadcrumb>;
+    openFileOrFolder: (file: IFolder | IFile) => (e: any) => void;
+
     onMinimise: () => void;
     onMaximise: () => void;
     onClose: () => void;
@@ -14,25 +23,29 @@ interface IProps {
 
 export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
 
-    const notActiveBreadcrumb = (name: string) => {
-        return (
-            <BreadcrumbItem>
-                <Button color="whiteAlpha.800" variant="ghost" padding={2}
-                    _hover={{ backgroundColor: 'blackAlpha.200' }}
-                    _active={{ backgroundColor: 'blackAlpha.200' }}
-                >{name}</Button>
-            </BreadcrumbItem>
-        );
+    const onBreadCrumbClick = (id: number) => (e: any) => {
+        if (id === props.selectedId) return;
+        const file = searchFilesOnDisk(filesOnDisk, id);
+        if (file == null) return;
+        props.openFileOrFolder?.(file)(e);
     }
 
-    const activeBreadcrumb = (name: string) => {
-        return (
-            <BreadcrumbItem>
+    const displayBreadcrumb = (bread: IBreadcrumb) => {
+        if (bread.isActive && props.breadcrumbs.length > 1) {
+            return (
                 <Button color="blue.400" variant="ghost" padding={2}
+                    onClick={onBreadCrumbClick(bread.id)}
                     _hover={{ backgroundColor: 'blackAlpha.200' }}
                     _active={{ backgroundColor: 'blackAlpha.200' }}
-                >{name}</Button>
-            </BreadcrumbItem>
+                >{bread.name}</Button>
+            );
+        }
+        return (
+            <Button color="whiteAlpha.800" variant="ghost" padding={2}
+                onClick={onBreadCrumbClick(bread.id)}
+                _hover={{ backgroundColor: 'blackAlpha.200' }}
+                _active={{ backgroundColor: 'blackAlpha.200' }}
+            >{bread.name}</Button>
         );
     }
 
@@ -46,9 +59,13 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
             <div className="icon-button disabled"><ArrowForwardIcon /></div>
             <div className="content noselect" style={{ marginRight: '1.25em' }}>
                 <Breadcrumb style={{ marginTop: '2px' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>
-                    {notActiveBreadcrumb('Home')}
-                    {notActiveBreadcrumb('Docs')}
-                    {activeBreadcrumb('Details')}
+                    {
+                        props.breadcrumbs.map((bread: IBreadcrumb) => (
+                            <BreadcrumbItem key={`${bread.id}-${bread.name}`}>
+                                {displayBreadcrumb(bread)}
+                            </BreadcrumbItem>
+                        ))
+                    }
                 </Breadcrumb>
             </div>
             {/* <div className="icon-button disabled" style={{ marginRight: '1.25em' }}><SearchIcon /></div> */}

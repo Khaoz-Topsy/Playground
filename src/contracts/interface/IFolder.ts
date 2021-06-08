@@ -1,6 +1,14 @@
-import { IFile } from "./IFile";
+import { IAppletFile, IFile } from "./IFile";
 
-export interface IFolder {
+export interface IFileFolderCommon {
+    id: number;
     name: string;
-    contents: Array<IFile | IFolder>;
+}
+
+export interface IFolder extends IFileFolderCommon {
+    contents: Array<IFile | IAppletFile | IFolder>;
+}
+
+export const isFolder = (fileOrFolder: IFile | IFolder): fileOrFolder is IFolder => {
+    return (fileOrFolder as IFolder).contents !== undefined;
 }

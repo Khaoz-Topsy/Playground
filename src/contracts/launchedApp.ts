@@ -2,8 +2,8 @@ import { AppletType } from "../constants/enum/appletType";
 import { IAdditionalAppletProps } from "./interface/IApplet";
 
 export interface LaunchedApp {
-    title: string;
+    name: string;
     openOrder: number;
-    appType: AppletType;
+    appletType: AppletType;
     meta: IAdditionalAppletProps;
 }

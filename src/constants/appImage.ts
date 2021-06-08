@@ -1,25 +1,38 @@
-export class AppImage {
-    static kurt = '/assets/img/appIcons/kurt.png';
-    static windows = '/assets/img/appIcons/windows.svg';
-    static assistantNMS = '/assets/img/appIcons/assistantNMS.png';
-    static assistantSMS = '/assets/img/appIcons/assistantSMS.png';
-    static settings = '/assets/img/appIcons/setting.png';
-    static nyanCat = '/assets/img/appIcons/nyanCat.png';
-    static terminal = '/assets/img/appIcons/terminal.png';
-    static folder = '/assets/img/appIcons/folder.png';
-    static error = '/assets/img/appIcons/error.png';
+const imgFolder = '/assets/img/';
+
+export class AppletIcon {
+    static kurt = imgFolder + 'appIcons/kurt.png';
+    static windows = imgFolder + 'appIcons/windows.svg';
+    static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
+    static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
+    static settings = imgFolder + 'appIcons/setting.png';
+    static nyanCat = imgFolder + 'appIcons/nyanCat.png';
+    static terminal = imgFolder + 'appIcons/terminal.png';
+    static folder = imgFolder + 'appIcons/folder.png';
+    static error = imgFolder + 'appIcons/error.png';
+}
+
+export class FileIcon {
+    static markdown = imgFolder + 'fileIcons/markdown2.png';
+}
+
+export class Background {
+    static bg1 = imgFolder + 'spaceBluePurple.jpg';
+    static bg2 = imgFolder + 'deepSpace.jpg';
 }
 
 export const imagesToPrecache = [
-    AppImage.kurt,
-    AppImage.windows,
-    AppImage.assistantNMS,
-    AppImage.assistantSMS,
-    AppImage.settings,
-    AppImage.nyanCat,
-    AppImage.folder,
-    AppImage.error,
+    AppletIcon.kurt,
+    AppletIcon.windows,
+    AppletIcon.assistantNMS,
+    AppletIcon.assistantSMS,
+    AppletIcon.settings,
+    AppletIcon.nyanCat,
+    AppletIcon.folder,
+    AppletIcon.error,
+    //Files
+    FileIcon.markdown,
     // Backgrounds
-    '/assets/img/spaceBluePurple.jpg',
-    '/assets/img/deepSpace.jpg',
+    Background.bg1,
+    Background.bg2,
 ];

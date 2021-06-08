@@ -15,8 +15,8 @@ export const Applet: React.FC<IProps> = (props: IProps) => {
     const headerFunc = (app: IApplet): ReactNode => (
         <WindowHeader
             {...app}
-            title={app.title}
-            windowIcon={windowIcon(app.appType)}
+            name={app.name}
+            windowIcon={windowIcon(app.appletType)}
         />
     );
     return (

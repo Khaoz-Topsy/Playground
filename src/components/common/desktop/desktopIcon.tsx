@@ -2,11 +2,11 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { BasicImage } from '../../../components/core/image';
-import { IDesktopIcon } from '../../../contracts/interface/IDesktopIcon';
+import { IAppletFile } from '../../../contracts/interface/IFile';
 
 interface IProps {
     index: number;
-    iconData: IDesktopIcon;
+    iconData: IAppletFile;
     selectedIconIndexes: Array<number>
     setSelected: (index: number) => (e: any) => void;
     openApp: (index: number) => (e: any) => void;
@@ -26,9 +26,9 @@ export const DesktopIcon: React.FC<IProps> = (props: IProps) => {
             onDoubleClick={props?.openApp?.(props.index)}>
             <BasicImage
                 imageUrl={props.iconData.imgUrl}
-                alt={props.iconData.title}
+                alt={props.iconData.name}
             />
-            <p draggable={false}>{props.iconData.title}</p>
+            <p draggable={false}>{props.iconData.name}</p>
         </div>
     );
 }

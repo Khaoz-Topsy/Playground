@@ -119,7 +119,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                                         ? (
                                             <div className="window-with-sidebar">
                                                 <div className="sidebar">{props.sidebar}</div>
-                                                <div className="offset-content">{windowContentNode}</div>
+                                                <div className={classNames('offset-content', { 'full-content': props.isFullscreen })}>{windowContentNode}</div>
                                             </div>
                                         )
                                         : windowContentNode

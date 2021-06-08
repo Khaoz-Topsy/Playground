@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react';
 import { WindowActions } from './windowActions';
 
 interface IProps {
-    title: string;
+    name: string;
     windowIcon?: ReactNode;
     onMinimise: () => void;
     onMaximise: () => void;
@@ -20,7 +20,7 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
                 </div>
             }
             <div className="content noselect">
-                {props.title}
+                {props.name}
             </div>
             <WindowActions {...props} />
         </div>

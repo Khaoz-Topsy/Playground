@@ -23,9 +23,10 @@
                 -webkit-line-clamp: 2;
             }
         }
->* {
-    pointer-events: none;
-}
+
+        >* {
+            pointer-events: none;
+        }
 
         img {
             // width: calc(100% - 3em);

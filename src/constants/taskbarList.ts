@@ -2,8 +2,7 @@
 import { KnownApplets } from '../constants/knownApplets';
 import { IAppletFile } from '../contracts/interface/IFile';
 
-export const DesktopIcons: Array<IAppletFile> = [
+export const TaskbarList: Array<IAppletFile> = [
+    KnownApplets.explorer,
     KnownApplets.settings,
-    KnownApplets.nyanCat,
-    KnownApplets.terminal
 ];

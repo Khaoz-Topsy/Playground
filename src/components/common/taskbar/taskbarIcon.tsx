@@ -41,7 +41,7 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
     });
     return (
         <motion.div
-            key={props.applet.appType}
+            key={props.applet.appletType}
             className={classes}
             initial={variants.initial}
             transition={{ duration: 0.5 }}
@@ -49,8 +49,8 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
             variants={variants}
             exit={variants.closed}
         >
-            <div onClick={props?.openApp?.(props.applet.appType)}>
-                {windowTaskbarIcon(props.applet.appType)}
+            <div onClick={props?.openApp?.(props.applet.appletType)}>
+                {windowTaskbarIcon(props.applet.appletType)}
             </div>
         </motion.div>
     );

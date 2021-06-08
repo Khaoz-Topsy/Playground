@@ -1,6 +1,7 @@
 import { IReactTerminalPrintProps } from '../../../../contracts/terminal';
 import { currentMediumTime } from '../../../../helper/dateHelper';
 import { getFunnyMessages } from '../../../../helper/funnyLoadingMessagesHelper';
+import { cowMessageAsArray } from '../../../../helper/cowHelper';
 
 export const dynamicList = {
     intro: {
@@ -52,6 +53,19 @@ export const dynamicList = {
             })
         }
     },
+    cow: {
+        description: 'Says a message with an ASCII cow',
+        run(print: any, input: any) {
+            console.log(input)
+            return new Promise((resolve) => {
+                const cowArray: Array<string> = cowMessageAsArray(input);
+                for (let cowIndex = 0; cowIndex < cowArray.length; cowIndex++) {
+                    print(cowArray[cowIndex]);
+                }
+                resolve('');
+            });
+        }
+    },
     open: {
         description: 'Open a specified url in a new tab.',
         run(print: any, input: any) {
@@ -68,7 +82,7 @@ export const dynamicList = {
 
                 window.open(input, '_blank')
                 resolve({ type: 'success', label: 'Done', content: 'Page Opened!' })
-            })
+            });
         }
     },
     blog: {
