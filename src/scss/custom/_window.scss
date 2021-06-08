@@ -146,6 +146,10 @@ svg.handle {
             flex-direction: row;
             height: #{$window-header-explorer-height}px;
 
+            .window-icon img {
+                padding: 0.5em;
+            }
+
             .v-divider {
                 display: inline-block;
                 border-left: 2px solid _palette(bg-divider);
@@ -185,9 +189,12 @@ svg.handle {
             }
 
             .content {
-                padding-right: 80px;
                 overflow: hidden;
                 max-height: #{$window-header-explorer-height}px;
+            }
+
+            .window-actions {
+                position: relative;
             }
         }
     }
@@ -228,13 +235,26 @@ svg.handle {
                 border-right: 3px solid _palette(bg-sidebar);
 
                 .item {
-                    padding: 1em;
-                    background-color: _palette(bg);
+                    cursor: pointer;
+                    padding: 0.75em 1em;
+                    transition: color 250ms ease-in-out;
+
+                    &:hover {
+                        color: rgba(0, 200, 255, 0.7);
+                    }
                 }
             }
 
             .offset-content {
                 //
+            }
+
+            hr {
+                border-color: _palette(bg-sidebar);
+                border-width: 2px;
+                border-radius: 5px;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
             }
         }
     }

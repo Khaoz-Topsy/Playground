@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon, SearchIcon } from '@chakra-ui/icons';
 import { Breadcrumb, BreadcrumbItem, Button } from '@chakra-ui/react';
 import { WindowActions } from '../windowActions';
 
@@ -44,13 +44,14 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
             <div className="v-divider icon-space"></div>
             <div className="icon-button disabled"><ArrowBackIcon /></div>
             <div className="icon-button disabled"><ArrowForwardIcon /></div>
-            <div className="content noselect">
+            <div className="content noselect" style={{ marginRight: '1.25em' }}>
                 <Breadcrumb style={{ marginTop: '2px' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>
                     {notActiveBreadcrumb('Home')}
                     {notActiveBreadcrumb('Docs')}
                     {activeBreadcrumb('Details')}
                 </Breadcrumb>
             </div>
+            {/* <div className="icon-button disabled" style={{ marginRight: '1.25em' }}><SearchIcon /></div> */}
             <WindowActions {...props} />
         </div>
     );

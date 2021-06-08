@@ -7,6 +7,7 @@ export const windowIconString = (appType: AppletType): string => {
         case AppletType.setting: return AppImage.settings;
         case AppletType.nyanCat: return AppImage.nyanCat;
         case AppletType.terminal: return AppImage.terminal;
+        case AppletType.explorer: return AppImage.folder;
     }
     return AppImage.error;
 }

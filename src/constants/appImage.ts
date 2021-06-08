@@ -6,6 +6,7 @@ export class AppImage {
     static settings = '/assets/img/appIcons/setting.png';
     static nyanCat = '/assets/img/appIcons/nyanCat.png';
     static terminal = '/assets/img/appIcons/terminal.png';
+    static folder = '/assets/img/appIcons/folder.png';
     static error = '/assets/img/appIcons/error.png';
 }
 
@@ -16,6 +17,7 @@ export const imagesToPrecache = [
     AppImage.assistantSMS,
     AppImage.settings,
     AppImage.nyanCat,
+    AppImage.folder,
     AppImage.error,
     // Backgrounds
     '/assets/img/spaceBluePurple.jpg',
