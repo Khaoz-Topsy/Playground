@@ -1,11 +1,17 @@
 import React from 'react';
-import { Box, Select } from '@chakra-ui/react';
+import { Box, Checkbox, Select, Text } from '@chakra-ui/react';
 
 import { SettingItemSection } from '../settingItemSection';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
 import { Background } from '../../../../constants/appImage';
+import { withServices } from '../../../../integration/dependencyInjection';
 
-export const SettingHome: React.FC = () => {
+import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
+
+interface IWithoutExpectedServices { }
+interface IProps extends IWithoutExpectedServices, IExpectedServices { }
+
+export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSettings = SettingStore.useState(store => store);
 
     const bgOptions = [
@@ -28,29 +34,29 @@ export const SettingHome: React.FC = () => {
         })
     }
 
+    const onEnableClippyChange = (e: any) => {
+        if (currentSettings.enabledClippy) {
+            props.virtualAssistantService?.hide?.();
+        } else {
+            props.virtualAssistantService?.show?.();
+        }
+        SettingStore.update((store: ISettingStore) => {
+            store.enabledClippy = !currentSettings.enabledClippy;
+        })
+    }
+
     return (
         <Box>
             <SettingItemSection
                 heading="Settings"
                 subTexts={['Customise the site to your preferences']}
             >
-                {/* <Box my={4}>
-                    <Checkbox colorScheme={'primary'} defaultIsChecked>Participate in official tournaments.</Checkbox>
-                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Whether or not your bot will be added to the official tournament lineup.</Text>
-                </Box>
-                <Box my={4}>
-                    <Checkbox colorScheme={'primary'} defaultIsChecked>Participate in friendly tournaments.</Checkbox>
-                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Whether or not your bot will be added to the friendly tournament lineup.</Text>
-                </Box> */}
-                <Box my={4}>
+                <Box my={5}>
                     <Select isFullWidth={true} value={currentSettings.background} onChange={backgroundDropDownChange}>
                         {
                             bgOptions.map(dropdownOpt => {
                                 return (
-                                    <option
-                                        key={dropdownOpt.value}
-                                        value={dropdownOpt.value}
-                                    >
+                                    <option key={dropdownOpt.value} value={dropdownOpt.value}>
                                         {dropdownOpt.name}
                                     </option>
                                 );
@@ -58,8 +64,17 @@ export const SettingHome: React.FC = () => {
                         }
                     </Select>
                 </Box>
+                <Box my={5}>
+                    <Checkbox colorScheme={'primary'} isChecked={currentSettings.enabledClippy} onChange={onEnableClippyChange}>Enable Clippy</Checkbox>
+                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Get tips from the best virtual assistant to have ever lived! Disable to ensure that Clippy stays hidden.</Text>
+                </Box>
             </SettingItemSection>
         </Box>
     );
 }
 
+
+export const SettingHome = withServices<IWithoutExpectedServices, IExpectedServices>(
+    SettingHomeUnconnected,
+    dependencyInjectionToProps
+);

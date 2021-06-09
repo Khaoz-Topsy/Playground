@@ -31,7 +31,8 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
             scale: 1, opacity: 1, width: '4.5em',
         },
         closed: {
-            scale: 1, scaleX: 0, opacity: 0, width: 0,
+            // scale: 1, scaleX: 0, opacity: 0, width: 0,
+            scale: 1, opacity: 0,
         },
     }
     const classes = classNames('applet-shortcut open noselect', {

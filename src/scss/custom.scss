@@ -70,3 +70,12 @@
 .fullscreen.initial.fade {
     pointer-events: none;
 }
+
+.clippy,
+.clippy-balloon {
+    position: absolute;
+    top: 1em !important;
+    right: 1em !important;
+    left: unset !important;
+    z-index: 30000 !important;
+}

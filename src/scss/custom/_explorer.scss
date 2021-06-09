@@ -154,6 +154,7 @@ $window-no-shadow: 0px 0px 0px 0px transparent;
 
             hr {
                 border-color: _palette(bg-sidebar);
+                background-color: _palette(bg-sidebar);
                 border-width: 2px;
                 border-radius: 5px;
                 margin-left: 0.5em;

@@ -64,9 +64,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         />
     );
 
-    const clickAway = (e: any) => {
-        setSelectedId(-1);
-    }
+    const clickAway = (e: any) => setSelectedId(-1);
 
     const openFileOrFolder = (fileOrFolder: IFolder | IFile) => (e: any) => {
         const breadcrumbs = getBreadcrumbList(fileOrFolder.id);

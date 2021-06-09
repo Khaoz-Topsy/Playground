@@ -5,13 +5,32 @@ import Terminal from 'react-terminal-app';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { Applet } from '../../window/applet/applet';
 import { staticList } from './commands/static';
-import { dynamicList } from './commands/dynamic';
+import { dynamicListFunc } from './commands/dynamic';
+import { withServices } from '../../../integration/dependencyInjection';
 
-interface IProps extends IApplet { }
+import { IExpectedServices, dependencyInjectionToProps } from './terminalApplet.dependencyInjection';
+import { ISettingStore, SettingStore } from '../../../state/setting/store';
 
-export const TerminalApplet: React.FC<IProps> = (props: IProps) => {
+interface IWithoutExpectedServices { }
+interface IProps extends IApplet, IWithoutExpectedServices, IExpectedServices { }
+
+export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
+    const currentSettings = SettingStore.useState(store => store);
+
+    const enableClippy = (enabled: boolean) => {
+        SettingStore.update((store: ISettingStore) => {
+            store.enabledClippy = enabled;
+        })
+    }
+
+    const dynListProps = {
+        enableClippy: enableClippy,
+        clippyIsEnabled: currentSettings.enabledClippy,
+        virtualAssistantService: props.virtualAssistantService,
+    }
+
     const cmd = {
-        dynamicList,
+        dynamicList: dynamicListFunc(dynListProps),
         staticList,
     }
 
@@ -32,3 +51,8 @@ export const TerminalApplet: React.FC<IProps> = (props: IProps) => {
         </Applet>
     );
 }
+
+export const TerminalApplet = withServices<IWithoutExpectedServices, IExpectedServices>(
+    TerminalAppletUnconnected,
+    dependencyInjectionToProps
+);
