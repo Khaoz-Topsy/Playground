@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
+import { Center } from '@chakra-ui/react';
 
+import { BasicImage } from '../../core/image';
 import { Background } from '../../../constants/appImage'
+import { defaultPictureViewerHeight, defaultPictureViewerWidth } from '../../../constants/window';
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { LightBox } from '../../../components/common/lightbox';
+
 import { Applet } from '../../window/applet/applet';
-import { BasicImage } from '../../core/image';
-import { Center } from '@chakra-ui/react';
 
 interface IProps extends IApplet {
     meta?: any;
@@ -14,6 +16,8 @@ interface IProps extends IApplet {
 
 export const PictureApplet: React.FC<IProps> = (props: IProps) => {
     const [isMaximised, setMaximised] = useState(props?.isMaximised ?? false);
+
+    console.log({ props });
     const images = props?.meta?.images ?? [Background.bg1, Background.bg2];
 
     if (isMaximised) {
@@ -24,6 +28,8 @@ export const PictureApplet: React.FC<IProps> = (props: IProps) => {
         <Applet
             key="picViewer"
             {...props}
+            defaultHeight={defaultPictureViewerHeight}
+            defaultWidth={defaultPictureViewerWidth}
             classNames="img-viewer"
             isFullscreen={true}
             onMaximise={() => setMaximised(!isMaximised)}

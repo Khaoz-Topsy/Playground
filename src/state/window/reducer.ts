@@ -6,7 +6,14 @@ import { IWindowStore } from "./store";
 export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: any) => (store: IWindowStore): IWindowStore => {
     const currentApp = store.activeApps.find(aa => aa.appletType === appletType);
     if (currentApp != null) {
-        store = setMinimiseForApp(store, appletType);
+        const currentAppIsMin = currentApp?.meta?.isMinimised ?? false;
+        if (currentAppIsMin) store = setMinimiseForApp(store, appletType, false);
+        if (meta) {
+            store = setMetaForApp(store, appletType, meta);
+            if (appletType == AppletType.picture || appletType == AppletType.explorer) {
+                store.activeApps = [...store.activeApps.map(aa => ({ ...aa, name: name }))];
+            }
+        }
         store.currentFocused = currentApp.appletType;
         return store;
     }
@@ -81,6 +88,16 @@ export const setMinimiseForApp = (store: IWindowStore, appletType: AppletType, n
                 ...aa.meta,
                 isMinimised: getNewMin(aa),
             }
+        }))
+    ];
+    return store;
+}
+
+export const setMetaForApp = (store: IWindowStore, appletType: AppletType, newMeta?: any): IWindowStore => {
+    store.activeApps = [
+        ...store.activeApps.map(aa => ({
+            ...aa,
+            meta: (aa.appletType === appletType) ? { ...newMeta } : { ...aa.meta }
         }))
     ];
     return store;
