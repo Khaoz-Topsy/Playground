@@ -1,6 +1,6 @@
 $base-bg: #2f2f2f;
 $base-bg-transparent: rgba(47, 47, 47, 0.6);
-$base-bg-transparent-focused: rgba(47, 47, 47, 0.9);
+$base-bg-transparent-focused: rgba(47, 47, 47, 0.95);
 $base-bg-divider: rgba(47, 47, 47, 0.4);
 $base-fg: #f2f2f2;
 
@@ -21,8 +21,8 @@ $palette: ( //
 
     fg: $base-fg,
 
-    windows-select: #CCE8FF,
-    windows-select-border: #99D1FF,
+    windows-select: #91cdff,
+    windows-select-border: #46a1ec,
 
 
     //

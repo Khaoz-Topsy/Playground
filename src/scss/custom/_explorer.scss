@@ -105,8 +105,7 @@ $window-no-shadow: 0px 0px 0px 0px transparent;
                     .explorer-icon {
                         margin: 0.5em 1em;
                         padding: 0.5em 0.5em 0.25em 0.5em;
-                        max-height: 120px;
-                        border-radius: 3px;
+                        border-radius: 5px;
                         background-color: transparent;
                         border: 2px solid transparent;
                         transition-property: background-color, border-color;
@@ -127,8 +126,9 @@ $window-no-shadow: 0px 0px 0px 0px transparent;
                         }
 
                         img {
-                            width: 75px;
-                            height: 75px;
+                            width: 100px;
+                            height: auto;
+                            padding: 0 0.5em;
                             margin: 0 auto;
                             border-radius: 5px;
                         }
@@ -138,6 +138,8 @@ $window-no-shadow: 0px 0px 0px 0px transparent;
                             color: _palette(fg);
                             text-shadow: 0 0 3px _palette(bg);
                             margin-top: 1px;
+                            width: 100%;
+                            max-width: 100px;
                             //
                             overflow: hidden;
                             text-overflow: ellipsis;

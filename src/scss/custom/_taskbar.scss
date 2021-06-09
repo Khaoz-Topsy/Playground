@@ -15,6 +15,7 @@ $taskbar-bottom-highlight-background: 10;
     backdrop-filter: blur(5.0px);
     -webkit-backdrop-filter: blur(5.0px);
     height: #{$taskbar-height}em;
+    z-index: _zindex(taskbar);
 
     .applet-shortcut {
         position: relative;

@@ -4,6 +4,7 @@ import { Circle, HStack } from '@chakra-ui/react';
 
 interface IProps {
     onMinimise: () => void;
+    onMaximise: () => void;
     onClose: () => void;
 }
 
@@ -18,7 +19,7 @@ export const WindowActions: React.FC<IProps> = (props: IProps) => {
                         _hover={{ color: 'black', background: 'orange.500' }}>
                         <MinusIcon w={iconSize} h={iconSize} />
                     </Circle>
-                    <Circle size={circleSize} bg="green.300" color="green.300"
+                    <Circle size={circleSize} bg="green.300" color="green.300" onClick={props?.onMaximise}
                         _hover={{ color: 'black', background: 'green.500' }}>
                         <UpDownIcon w={iconSize} h={iconSize} />
                     </Circle>

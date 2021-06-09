@@ -2,12 +2,15 @@ import React, { ReactNode, useState } from 'react';
 import { Center } from '@chakra-ui/react';
 
 import { filesOnDisk } from '../../../constants/filesOnDisk';
+import { AppletType } from '../../../constants/enum/appletType';
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { IFile } from '../../../contracts/interface/IFile';
+import { FileType, IAppletFile, IFile, isApplet } from '../../../contracts/interface/IFile';
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
+import { WindowStore } from '../../../state/window/store'
+import { openAppFromDesktop } from '../../../state/window/reducer';
 
 import { Window } from '../window';
 import { windowIcon } from '../windowIcon';
@@ -66,13 +69,13 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         setSelectedId(-1);
     }
 
-    const openFileOrFolder = (file: IFolder | IFile) => (e: any) => {
-        const breadcrumbs = getBreadcrumbList(file.id);
-        if (isFolder(file)) {
-            const newFolder = file as IFolder;
+    const openFileOrFolder = (fileOrFolder: IFolder | IFile) => (e: any) => {
+        const breadcrumbs = getBreadcrumbList(fileOrFolder.id);
+        if (isFolder(fileOrFolder)) {
+            const newFolder = fileOrFolder as IFolder;
             const newBreadcrumbs = [
                 ...breadcrumbs,
-                { id: file.id, isActive: true, name: newFolder.name, }
+                { id: fileOrFolder.id, isActive: true, name: newFolder.name, }
             ];
             setFolderState({
                 currentFolder: {
@@ -82,6 +85,20 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
                 previousFolders: [...folderState.previousFolders, folderState.currentFolder],
                 nextFolders: [],
             });
+            return;
+        }
+
+        if (isApplet(fileOrFolder)) {
+            const applet = fileOrFolder as IAppletFile;
+            if (applet.appletType !== AppletType.none) {
+                WindowStore.update(openAppFromDesktop(applet.appletType, applet.name, applet.meta));
+            }
+            return;
+        } else {
+            const newFile = fileOrFolder as IFile;
+            let appletType: AppletType = AppletType.none;
+            if (newFile.type === FileType.image) appletType = AppletType.picture;
+            WindowStore.update(openAppFromDesktop(appletType, newFile.name, newFile.meta));
         }
     }
 
@@ -103,7 +120,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
     const goToNext = () => {
         if (folderState.nextFolders.length < 1) return;
         const curr: IFolderMeta = { ...folderState.currentFolder };
-        const next: IFolderMeta | undefined = folderState.nextFolders.pop();
+        const next: IFolderMeta | undefined = [...folderState.nextFolders].pop();
         if (next == null) return;
 
         const newNext: Array<IFolderMeta> = folderState.nextFolders.slice(0, folderState.nextFolders.length - 1);

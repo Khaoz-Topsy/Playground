@@ -40,7 +40,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
         },
         {
             title: 'About',
-            new: true,
+            new: false,
             comp: <SettingAbout />
         },
     ];

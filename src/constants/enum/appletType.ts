@@ -4,6 +4,7 @@ export enum AppletType {
     setting,
     terminal,
     explorer,
+    picture,
 
     vsCode,
     assistantNMS,

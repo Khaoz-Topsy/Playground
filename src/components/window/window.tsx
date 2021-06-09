@@ -90,6 +90,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
             <Draggable
                 handle=".window-header"
                 defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
+                bounds={{ top: 0, left: 0 }}
             >
                 <ResizableBox
                     height={state.height}

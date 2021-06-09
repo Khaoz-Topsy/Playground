@@ -5,7 +5,6 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
 import { LaunchedApp } from '../../contracts/launchedApp';
-import { sortByOpenOrder } from '../../helper/launchedAppHelper';
 import { WindowStore } from '../../state/window/store';
 import { closeApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 import { windowDisplayer } from './windowDisplayer';

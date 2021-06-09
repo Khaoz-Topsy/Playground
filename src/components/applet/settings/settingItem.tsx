@@ -29,7 +29,7 @@ export const SettingItem: React.FC<ISettingItem> = (props: ISettingItem) => {
             borderBottomRadius={isLast ? 'md' : ''}
 
             cursor={'pointer'}
-            background={isActive ? 'gray.600' : ''}
+            background={isActive ? 'gray.500' : ''}
             _hover={{ background: 'gray.600' }}
         >
 

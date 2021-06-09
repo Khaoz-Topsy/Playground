@@ -39,7 +39,7 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
         if (bread.isActive && props.breadcrumbs.length > 1) {
             return (
                 <Button color="blue.400" variant="ghost" padding={2}
-                    onClick={onBreadCrumbClick(bread.id)}
+                    disabled={true}
                     _hover={{ backgroundColor: 'blackAlpha.200' }}
                     _active={{ backgroundColor: 'blackAlpha.200' }}
                 >{bread.name}</Button>

@@ -38,6 +38,11 @@
     margin: 0 1em;
 }
 
+.m-h-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .mt0-5 {
     margin-top: 0.5em;
 }
@@ -56,4 +61,12 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open {
+    z-index: 20000 !important;
+}
+
+.fullscreen.initial.fade {
+    pointer-events: none;
 }

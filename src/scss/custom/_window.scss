@@ -17,12 +17,6 @@ svg.handle {
     cursor: se-resize;
 }
 
-.window-on-top {
-    box-shadow: $window-shadow;
-    -webkit-box-shadow: $window-shadow;
-    -moz-box-shadow: $window-shadow;
-}
-
 .window-manager {
     z-index: _zindex(window-base);
     pointer-events: none;
@@ -50,18 +44,17 @@ svg.handle {
         bottom: 0;
         width: 100%;
         height: 100%;
-        opacity: 0;
+        // opacity: 0;
         transition: all 500ms ease-in-out;
         z-index: -1;
-        @extend .window-on-top;
+
+        box-shadow: $window-shadow;
+        -webkit-box-shadow: $window-shadow;
+        -moz-box-shadow: $window-shadow;
     }
 
     .react-draggable-dragging {
         z-index: _zindex(window-base);
-
-        .window:after {
-            opacity: 1;
-        }
     }
 }
 
@@ -77,10 +70,6 @@ svg.handle {
 
     &.is-focused {
         background-color: _palette(bg-transparent-focused);
-    }
-
-    &.is-focused::after {
-        opacity: 1;
     }
 
     >*,
@@ -231,4 +220,14 @@ svg.handle {
     // .Terminal-control-btn {
     //     display: none;
     // }
+}
+
+.img-viewer img {
+    max-height: 100%;
+}
+
+.css-v9b9hc,
+.chakra-modal__content-container,
+.chakra-modal__content-container.css-v9b9hc {
+    z-index: 20000;
 }

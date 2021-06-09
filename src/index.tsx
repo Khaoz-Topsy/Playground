@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 
 import { App } from './App';
 import './scss/custom.scss';
+import 'react-image-lightbox/style.css';
 
 ReactDOM.render(
   <ChakraProvider>
