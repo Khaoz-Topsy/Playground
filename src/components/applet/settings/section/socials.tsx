@@ -1,5 +1,5 @@
 import React from 'react';
-import { SimpleGrid, Text } from '@chakra-ui/react';
+import { SimpleGrid } from '@chakra-ui/react';
 
 import { PersonalGithub, PersonalTwitter, AssistantAppsDiscord, AssistantAppsTwitter } from '../../../socialButtons';
 import { SettingItemSection } from '../settingItemSection';

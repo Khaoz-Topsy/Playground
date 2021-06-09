@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Divider, Grid, GridItem, Text } from "@chakra-ui/react";
+import { Box, Divider, Text } from "@chakra-ui/react";
 
 interface ISettingItemSection {
     heading: string;
