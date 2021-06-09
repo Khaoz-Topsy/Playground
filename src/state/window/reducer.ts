@@ -3,7 +3,7 @@ import { LaunchedApp } from "../../contracts/launchedApp";
 import { anyObject } from "../../helper/typescriptHacks";
 import { IWindowStore } from "./store";
 
-export const openAppFromDesktop = (appletType: AppletType, name: string) => (store: IWindowStore): IWindowStore => {
+export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: any) => (store: IWindowStore): IWindowStore => {
     const currentApp = store.activeApps.find(aa => aa.appletType === appletType);
     if (currentApp != null) {
         store = setMinimiseForApp(store, appletType);
@@ -15,7 +15,7 @@ export const openAppFromDesktop = (appletType: AppletType, name: string) => (sto
     const newActiveApp: LaunchedApp = {
         name,
         appletType,
-        meta: anyObject,
+        meta: meta ?? anyObject,
         openOrder: Math.max(...sortOrderArray, 0) + 5,
     };
 

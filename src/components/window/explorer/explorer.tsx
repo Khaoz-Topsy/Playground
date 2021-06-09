@@ -25,8 +25,8 @@ interface IFolderMeta extends IFolder {
 
 interface IState {
     currentFolder: IFolderMeta;
-    previousFolder?: IFolderMeta;
-    nextFolder?: IFolderMeta;
+    previousFolders: Array<IFolderMeta>;
+    nextFolders: Array<IFolderMeta>;
 }
 
 export const Explorer: React.FC<IProps> = (props: IProps) => {
@@ -43,9 +43,9 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
                 name: file?.name ?? 'unknown',
             }]
         },
+        previousFolders: [],
+        nextFolders: [],
     });
-
-    const { currentFolder } = folderState;
 
     const headerFunc = (app: IApplet): ReactNode => (
         <ExplorerHeader
@@ -53,6 +53,10 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
             selectedId={selectedId}
             windowIcon={windowIcon(app.appletType)}
             breadcrumbs={currentFolder.breadcrumbs}
+            hasPrev={folderState.previousFolders.length > 0}
+            hasNext={folderState.nextFolders.length > 0}
+            goToPrev={goToPrevious}
+            goToNext={goToNext}
             openFileOrFolder={openFileOrFolder}
         />
     );
@@ -71,16 +75,48 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
                 { id: file.id, isActive: true, name: newFolder.name, }
             ];
             setFolderState({
-                ...folderState,
                 currentFolder: {
                     ...newFolder,
                     breadcrumbs: newBreadcrumbs,
                 },
-                previousFolder: folderState.currentFolder,
+                previousFolders: [...folderState.previousFolders, folderState.currentFolder],
+                nextFolders: [],
             });
         }
     }
 
+    const goToPrevious = () => {
+        if (folderState.previousFolders.length < 1) return;
+        const curr: IFolderMeta = { ...folderState.currentFolder };
+        const prev: IFolderMeta | undefined = [...folderState.previousFolders].pop();
+        if (prev == null) return;
+
+        const newPrevs: Array<IFolderMeta> = folderState.previousFolders.slice(0, folderState.previousFolders.length - 1);
+        setFolderState({
+            ...folderState,
+            currentFolder: prev,
+            previousFolders: newPrevs,
+            nextFolders: [...folderState.nextFolders, curr],
+        });
+    }
+
+    const goToNext = () => {
+        if (folderState.nextFolders.length < 1) return;
+        const curr: IFolderMeta = { ...folderState.currentFolder };
+        const next: IFolderMeta | undefined = folderState.nextFolders.pop();
+        if (next == null) return;
+
+        const newNext: Array<IFolderMeta> = folderState.nextFolders.slice(0, folderState.nextFolders.length - 1);
+        setFolderState({
+            ...folderState,
+            currentFolder: next,
+            previousFolders: [...folderState.previousFolders, curr],
+            nextFolders: newNext,
+        });
+    }
+
+
+    const { currentFolder } = folderState;
     const noItems = (currentFolder.contents == null || currentFolder.contents.length < 1);
 
     return (
@@ -89,7 +125,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
             isFullscreen={true}
             classNames="explorer"
             headerFunc={headerFunc}
-            sidebar={<ExplorerSidebar />}
+            sidebar={<ExplorerSidebar openFileOrFolder={openFileOrFolder} />}
         >
             {
                 noItems

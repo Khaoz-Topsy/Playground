@@ -9,11 +9,16 @@ import { filesOnDisk } from '../../../constants/filesOnDisk';
 
 import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowActions } from '../windowActions';
+import classNames from 'classnames';
 
 interface IProps {
     selectedId: number;
     windowIcon: ReactNode;
     breadcrumbs: Array<IBreadcrumb>;
+    hasPrev: boolean;
+    hasNext: boolean;
+    goToPrev: () => void;
+    goToNext: () => void;
     openFileOrFolder: (file: IFolder | IFile) => (e: any) => void;
 
     onMinimise: () => void;
@@ -55,8 +60,10 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
                 {props.windowIcon}
             </div>
             <div className="v-divider icon-space"></div>
-            <div className="icon-button disabled"><ArrowBackIcon /></div>
-            <div className="icon-button disabled"><ArrowForwardIcon /></div>
+
+            <div className={classNames('icon-button', { 'disabled': !props.hasPrev })} onClick={props.hasPrev ? props.goToPrev : () => { }}><ArrowBackIcon /></div>
+            <div className={classNames('icon-button', { 'disabled': !props.hasNext })} onClick={props.hasNext ? props.goToNext : () => { }}><ArrowForwardIcon /></div>
+
             <div className="content noselect" style={{ marginRight: '1.25em' }}>
                 <Breadcrumb style={{ marginTop: '2px' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>
                     {

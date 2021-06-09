@@ -3,9 +3,12 @@ import React from 'react'
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { Applet } from '../../window/applet/applet'
 
-interface IProps extends IApplet { }
+interface IProps extends IApplet {
+    meta?: any;
+}
 
-export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
+export const VsCodeApplet: React.FC<IProps> = (props: IProps) => {
+    const githubUrl = props?.meta?.url ?? 'https://github1s.com/Khaoz-Topsy/KurtLourens-CV/blob/master/README.md';
     return (
         <Applet
             key="nyanWindow"
@@ -14,12 +17,12 @@ export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
             isFullscreen={true}
         >
             <iframe
-                id="nyanIframe"
-                key="nyanIframe"
-                title="nyanIframe"
+                id="vsCodeIframe"
+                key="vsCodeIframe"
+                title="vsCodeIframe"
                 className="pos-abs-top-left"
-                style={{ pointerEvents: 'none', zIndex: 2 }}
-                src="https://cristurm.github.io/nyan-cat/"
+                style={{ zIndex: 2 }}
+                src={githubUrl}
                 frameBorder="0"
             />
         </Applet>

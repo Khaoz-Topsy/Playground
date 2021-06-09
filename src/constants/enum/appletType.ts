@@ -1,11 +1,13 @@
 export enum AppletType {
     none,
+
     setting,
     terminal,
+    explorer,
+
+    vsCode,
     assistantNMS,
     assistantSMS,
-
-    explorer,
 
     // Funny
     nyanCat,

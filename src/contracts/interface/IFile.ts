@@ -15,4 +15,5 @@ export interface IFile extends IFileFolderCommon {
 
 export interface IAppletFile extends IFile {
     appletType: AppletType;
+    meta?: any;
 }

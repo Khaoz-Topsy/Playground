@@ -38,6 +38,7 @@ $window-no-shadow: 0px 0px 0px 0px transparent;
                 margin: #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px;
                 background-color: _palette(bg-transparent);
                 border-radius: $window-border-radius;
+                cursor: pointer;
                 opacity: 1;
 
                 &:hover {
@@ -45,6 +46,7 @@ $window-no-shadow: 0px 0px 0px 0px transparent;
                 }
 
                 &.disabled {
+                    cursor: unset;
                     opacity: 0.4;
                 }
 

@@ -31,4 +31,11 @@ export class KnownApplets {
         appletType: AppletType.nyanCat,
         type: FileType.applet,
     };
+    static vsCode: IAppletFile = {
+        id: 105,
+        name: 'VS Code',
+        imgUrl: AppletIcon.kurt,
+        appletType: AppletType.vsCode,
+        type: FileType.applet,
+    };
 }

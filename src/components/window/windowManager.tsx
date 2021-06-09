@@ -76,7 +76,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
                 {
                     activeApps
                         .map(mapWindow(currentFocused))
-                        .sort(sortByOpenOrder)
+                        // .sort(sortByOpenOrder)
                         .map(renderSupportedWindows(currentFocused))
                 }
             </AnimatePresence>
