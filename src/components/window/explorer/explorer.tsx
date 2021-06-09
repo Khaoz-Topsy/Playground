@@ -65,7 +65,6 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
     );
 
     const clickAway = (e: any) => {
-        e?.stopPropagation?.();
         setSelectedId(-1);
     }
 
