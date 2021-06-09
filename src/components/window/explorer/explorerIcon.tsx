@@ -40,7 +40,9 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             draggable={false}
             onClick={clickFileOrFolder}
             onDoubleClick={props?.openFileOrFolder?.(props.iconData)}>
-            {renderImage(props.iconData)}
+            <div className="img-container">
+                {renderImage(props.iconData)}
+            </div>
             <p draggable={false}>{props.iconData.name}</p>
         </div>
     );

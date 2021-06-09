@@ -1,20 +1,20 @@
 import { FileType } from "../contracts/interface/IFile";
 import { IFolder } from "../contracts/interface/IFolder";
-import { Background, FileIcon } from "./appImage";
+import { Background, FileIcon, External } from "./appImage";
 import { KnownApplets } from "./knownApplets";
 
 export const documentFolder = {
-    id: 12,
+    id: 120,
     name: 'Documents',
     contents: [
         {
-            id: 201,
+            id: 121,
             name: 'ReadMe.md',
             imgUrl: FileIcon.markdown,
             type: FileType.markdown,
         },
         {
-            id: 202,
+            id: 122,
             name: 'background1.png',
             imgUrl: FileIcon.picture,
             type: FileType.image,
@@ -23,7 +23,7 @@ export const documentFolder = {
             }
         },
         {
-            id: 203,
+            id: 123,
             name: 'background2.png',
             imgUrl: FileIcon.picture,
             type: FileType.image,
@@ -34,12 +34,28 @@ export const documentFolder = {
     ]
 };
 
+export const projectsFolder = {
+    id: 130,
+    name: 'AssistantNMS',
+    contents: [
+        {
+            id: 131,
+            name: 'loader.svg',
+            imgUrl: External.assistantNmsLoader,
+            type: FileType.image,
+            meta: {
+                images: [External.assistantNmsLoader]
+            }
+        }
+    ]
+};
+
 export const filesOnDisk: IFolder = {
     id: 0,
     name: 'root',
     contents: [
         {
-            id: 10,
+            id: 100,
             name: 'Applications',
             contents: [
                 KnownApplets.nyanCat,
@@ -49,7 +65,7 @@ export const filesOnDisk: IFolder = {
             ]
         },
         {
-            id: 11,
+            id: 110,
             name: 'Desktop',
             contents: [
                 KnownApplets.settings,
@@ -58,5 +74,6 @@ export const filesOnDisk: IFolder = {
             ]
         },
         documentFolder,
+        projectsFolder,
     ]
 };

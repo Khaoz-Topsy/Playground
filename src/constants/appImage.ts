@@ -27,6 +27,7 @@ export class Background {
 export class External {
     static githubGeneralStats = 'https://github-readme-stats.vercel.app/api?username=Khaoz-Topsy&amp;show_icons=true&amp;line_height=24';
     static githubLanguageStats = 'https://github-readme-stats.vercel.app/api/top-langs?username=Khaoz-Topsy';
+    static assistantNmsLoader = 'https://raw.githubusercontent.com/AssistantNMS/nms-loader/main/loader.svg';
 }
 
 export const imagesToPrecache = [
@@ -42,6 +43,7 @@ export const imagesToPrecache = [
     // External
     External.githubGeneralStats,
     External.githubLanguageStats,
+    External.assistantNmsLoader,
     // Status
     error,
     // Backgrounds

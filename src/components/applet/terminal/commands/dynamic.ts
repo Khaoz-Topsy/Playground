@@ -56,6 +56,7 @@ export const dynamicListFunc = (props: IProps) => {
             run(print: any, input: any) {
                 return new Promise(resolve => {
                     let newValue: boolean = !props.clippyIsEnabled;
+                    // eslint-disable-next-line
                     if (input == 'false' || input == 'f' || input == false) {
                         newValue = false;
                     }
