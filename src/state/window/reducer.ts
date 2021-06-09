@@ -10,7 +10,7 @@ export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: 
         if (currentAppIsMin) store = setMinimiseForApp(store, appletType, false);
         if (meta) {
             store = setMetaForApp(store, appletType, meta);
-            if (appletType == AppletType.picture || appletType == AppletType.explorer) {
+            if (appletType === AppletType.picture || appletType === AppletType.explorer) {
                 store.activeApps = [...store.activeApps.map(aa => ({ ...aa, name: name }))];
             }
         }
