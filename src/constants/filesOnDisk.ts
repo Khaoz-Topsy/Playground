@@ -3,7 +3,7 @@ import { IFolder } from "../contracts/interface/IFolder";
 import { Background, FileIcon, External, AppletIcon } from "./appImage";
 import { DataFile } from "./dataFile";
 import { DesktopIcons } from "./desktopIconList";
-import { allKnownApps, KnownApplets } from "./knownApplets";
+import { allKnownApps } from "./knownApplets";
 import { site } from "./site";
 
 export const documentFolder = {
