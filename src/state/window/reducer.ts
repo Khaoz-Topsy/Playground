@@ -14,7 +14,7 @@ export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: 
                 store.activeApps = [...store.activeApps.map(aa => ({ ...aa, name: name }))];
             }
         }
-        store.currentFocused = currentApp.appletType;
+        store = setNewFocusForApp(appletType)(store);
         return store;
     }
 
@@ -40,18 +40,14 @@ export const openAppFromTaskbar = (appletType: AppletType) => (store: IWindowSto
     const currentAppIsOnTop = currentApp?.appletType === store.currentFocused;
     const isNotMinimised = !(currentApp?.meta?.isMinimised);
 
-    if (currentAppIsOnTop === false && isNotMinimised) {
-        store.currentFocused = currentApp?.appletType ?? AppletType.none;
-        return store;
-    }
+    store = setNewFocusForApp(appletType)(store);
+    if (currentAppIsOnTop === false && isNotMinimised) return store;
 
     if (currentAppIsOnTop === false && isNotMinimised === false) {
-        store.currentFocused = currentApp?.appletType ?? AppletType.none;
         store = setMinimiseForApp(store, appletType, false);
         return store;
     }
 
-    store = InternalSetNewFocusForApp(store, appletType);
     store = setMinimiseForApp(store, appletType);
     return store;
 }
@@ -106,10 +102,8 @@ export const setMetaForApp = (store: IWindowStore, appletType: AppletType, newMe
 }
 
 export const setNewFocusForApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
-    // console.log('setNewFocusForApp');
     const currentApps = store.activeApps.map(aa => ({ ...aa }));
     const currentApp = currentApps.find(aa => aa.appletType === appletType);
-    // console.log([...currentApps]);
     if (currentApp == null) return store;
 
     const sortOrderArray = currentApps
@@ -117,7 +111,6 @@ export const setNewFocusForApp = (appletType: AppletType) => (store: IWindowStor
         .sort((a: LaunchedApp, b: LaunchedApp) => a.openOrder - b.openOrder)
         .map((aa, index) => ({ appletType: aa.appletType, openOrder: index }));
     const fullSortOrderArray = [...sortOrderArray, { appletType: currentApp.appletType, openOrder: sortOrderArray.length }];
-    // console.log([...fullSortOrderArray]);
 
     const newApps = currentApps.map((app: LaunchedApp, index: number) => {
         return {
@@ -127,7 +120,6 @@ export const setNewFocusForApp = (appletType: AppletType) => (store: IWindowStor
     });
     store.activeApps = [...newApps];
     store.currentFocused = appletType;
-    // console.log([...newApps]);
     return store
 }
 

@@ -1,38 +1,52 @@
 import { FileType, IAppletFile } from '../contracts/interface/IFile';
-import { AppletIcon } from './appImage';
+import { AppletIcon, FileIcon } from './appImage';
 import { AppletType } from './enum/appletType';
 
 export class KnownApplets {
     static settings: IAppletFile = {
-        id: 1.1,
+        id: 1.01,
         name: 'Settings',
         imgUrl: AppletIcon.settings,
         appletType: AppletType.setting,
         type: FileType.applet,
     };
-    static terminal: IAppletFile = {
-        id: 1.2,
-        name: 'Terminal',
-        imgUrl: AppletIcon.terminal,
-        appletType: AppletType.terminal,
-        type: FileType.applet,
-    };
     static explorer: IAppletFile = {
-        id: 1.3,
+        id: 1.02,
         name: 'Explorer',
         imgUrl: AppletIcon.folder,
         appletType: AppletType.explorer,
         type: FileType.applet,
     };
+    static picture: IAppletFile = {
+        id: 1.03,
+        name: 'Picture Viewer',
+        imgUrl: FileIcon.picture,
+        appletType: AppletType.picture,
+        type: FileType.applet,
+    };
+    static notes: IAppletFile = {
+        id: 1.04,
+        name: 'Notes',
+        imgUrl: FileIcon.markdown,
+        appletType: AppletType.notes,
+        type: FileType.applet,
+    };
+    static terminal: IAppletFile = {
+        id: 1.20,
+        name: 'Terminal',
+        imgUrl: AppletIcon.terminal,
+        appletType: AppletType.terminal,
+        type: FileType.applet,
+    };
     static kurtLourens: IAppletFile = {
-        id: 1.4,
+        id: 1.21,
         name: 'Kurt Lourens CV',
         imgUrl: AppletIcon.kurt,
         appletType: AppletType.kurt,
         type: FileType.applet,
     };
     static vsCode: IAppletFile = {
-        id: 1.5,
+        id: 1.22,
         name: 'VS Code',
         imgUrl: AppletIcon.vsCode,
         appletType: AppletType.vsCode,

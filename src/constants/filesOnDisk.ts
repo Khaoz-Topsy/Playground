@@ -1,6 +1,6 @@
 import { FileType } from "../contracts/interface/IFile";
 import { IFolder } from "../contracts/interface/IFolder";
-import { Background, FileIcon, External, AppletIcon } from "./appImage";
+import { Backgrounds, FileIcon, External, AppletIcon } from "./appImage";
 import { DataFile } from "./dataFile";
 import { DesktopIcons } from "./desktopIconList";
 import { allKnownApps } from "./knownApplets";
@@ -16,24 +16,15 @@ export const documentFolder = {
             imgUrl: FileIcon.markdown,
             type: FileType.markdown,
         },
-        {
-            id: 3.2,
-            name: 'background1.png',
+        ...Backgrounds.map((b, index) => ({
+            id: 3.1 + ((index + 1) / 100),
+            name: b.name,
             imgUrl: FileIcon.picture,
             type: FileType.image,
             meta: {
-                images: [Background.bg1]
+                images: [b.url]
             }
-        },
-        {
-            id: 3.3,
-            name: 'background2.png',
-            imgUrl: FileIcon.picture,
-            type: FileType.image,
-            meta: {
-                images: [Background.bg2]
-            }
-        }
+        })),
     ]
 };
 

@@ -10,11 +10,13 @@ import './scss/custom.scss';
 import 'react-image-lightbox/style.css';
 
 ReactDOM.render(
-  <DependencyInjectionProvider>
-    <ChakraProvider>
-      <App />
-    </ChakraProvider>
-  </DependencyInjectionProvider>,
+  <React.Fragment>
+    <DependencyInjectionProvider>
+      <ChakraProvider>
+        <App />
+      </ChakraProvider>
+    </DependencyInjectionProvider>
+  </React.Fragment>,
   document.getElementById('kurt-lourens-desktop')
 );
 

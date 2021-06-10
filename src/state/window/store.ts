@@ -13,7 +13,7 @@ export const WindowStore = new Store<IWindowStore>({
         // id: 0,
         name: 'explorer',
         appletType: AppletType.explorer,
-        openOrder: 100,
+        openOrder: 1,
         meta: {},
     }],
 });

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
-import { Drawer, useDisclosure } from '@chakra-ui/react';
+import { DarkMode, Drawer, useDisclosure } from '@chakra-ui/react';
 
 import { Desktop } from './components/common/desktop/desktop';
 import { Taskbar } from './components/common/taskbar/taskbar';
@@ -23,21 +22,23 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className={classNames('fullscreen', 'bg', 'bg1')}>
-      <Desktop />
-      <WindowManager />
-      <Taskbar />
-      <Drawer
-        isOpen={isOpen}
-        placement="right"
-        onClose={onClose}
-      >
-        <NotificationDrawer onClose={onClose} />
-      </Drawer>
-      {
-        (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
-      }
-    </div>
+    <DarkMode>
+      <div className="fullscreen">
+        <Desktop />
+        <WindowManager />
+        <Taskbar />
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+        >
+          <NotificationDrawer onClose={onClose} />
+        </Drawer>
+        {
+          (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
+        }
+      </div>
+    </DarkMode>
   );
 }
 

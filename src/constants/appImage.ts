@@ -23,10 +23,18 @@ export class FileIcon {
     static web = imgFolder + 'fileIcons/web.png';
 }
 
-export class Background {
-    static bg1 = imgFolder + 'spaceBluePurple.jpg';
-    static bg2 = imgFolder + 'deepSpace.jpg';
-}
+export const Backgrounds = [
+    {
+        value: 'bg1',
+        name: 'background1.png',
+        url: imgFolder + 'spaceBluePurple.jpg',
+    },
+    {
+        value: 'bg2',
+        name: 'background2.png',
+        url: imgFolder + 'deepSpace.jpg',
+    }
+];
 
 export class External {
     static githubGeneralStats = 'https://github-readme-stats.vercel.app/api?username=Khaoz-Topsy&amp;show_icons=true&amp;line_height=24';
@@ -50,7 +58,4 @@ export const imagesToPrecache = [
     External.assistantNmsLoader,
     // Status
     error,
-    // Backgrounds
-    Background.bg1,
-    Background.bg2,
 ];

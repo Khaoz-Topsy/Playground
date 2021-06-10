@@ -11,6 +11,7 @@ import { IWindowProps } from '../../contracts/interface/IWindowProps'
 
 import { WindowDragHandle } from './windowDragHandle'
 import { WindowContent } from './windowContent'
+import { AppletType } from '../../constants/enum/appletType'
 
 interface IProps extends IWindowProps {
     children: ReactNode;
@@ -107,7 +108,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                         exit={variants.closed}
                     >
                         <div
-                            className={classNames('window box', { 'is-focused': isFocused })}
+                            className={classNames('window box', AppletType[props.appletType], { 'is-focused': isFocused })}
                             style={windowStyle}
                             onClick={isFocused ? (_) => { } : props?.onSetFocus}
                         >

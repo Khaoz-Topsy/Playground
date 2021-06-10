@@ -3,6 +3,8 @@ import { currentMediumTime } from '../../../../helper/dateHelper';
 import { getFunnyMessages } from '../../../../helper/funnyLoadingMessagesHelper';
 import { cowMessageAsArray } from '../../../../helper/cowHelper';
 import { VirtualAssistantService } from '../../../../services/VirtualAssistantService';
+import { site } from '../../../../constants/site';
+import { openExternal } from '../../../../helper/linkHelper';
 
 interface IProps {
     virtualAssistantService: VirtualAssistantService;
@@ -47,7 +49,7 @@ export const dynamicListFunc = (props: IProps) => {
                                 props.virtualAssistantService.play('GetAttention');
                             }, 1000);
                         }
-                    }, 1000)
+                    }, 1000);
                 })
             }
         },
@@ -62,9 +64,9 @@ export const dynamicListFunc = (props: IProps) => {
                     }
                     props.enableClippy(newValue);
                     if (newValue) {
-                        props.virtualAssistantService?.show?.()
+                        props.virtualAssistantService?.show?.();
                     } else {
-                        props.virtualAssistantService?.hide?.()
+                        props.virtualAssistantService?.hide?.();
                     }
 
                     resolve({
@@ -98,8 +100,8 @@ export const dynamicListFunc = (props: IProps) => {
                         label: 'Echo',
                         type: 'success',
                         content: input
-                    })
-                    resolve({ type: 'success', label: '', content: '' })
+                    });
+                    resolve({ type: 'success', label: '', content: '' });
                 })
             }
         },
@@ -108,17 +110,17 @@ export const dynamicListFunc = (props: IProps) => {
             run(print: any, input: any) {
                 return new Promise((resolve) => {
                     if (!input) {
-                        resolve({ type: 'error', label: 'Error', content: 'a url is required!' })
-                        return
+                        resolve({ type: 'error', label: 'Error', content: 'a url is required!' });
+                        return;
                     }
                     if (!input.startsWith('http')) {
-                        resolve({ type: 'error', label: 'Error', content: 'Please add `http` prefix!' })
-                        return
+                        resolve({ type: 'error', label: 'Error', content: 'Please add `http` prefix!' });
+                        return;
                     }
-                    print({ type: 'success', label: 'Success', content: 'Opening' })
+                    print({ type: 'success', label: 'Success', content: 'Opening' });
 
-                    window.open(input, '_blank')
-                    resolve({ type: 'success', label: 'Done', content: 'Page Opened!' })
+                    openExternal(input);
+                    resolve({ type: 'success', label: 'Done', content: 'Page Opened!' });
                 });
             }
         },
@@ -126,10 +128,10 @@ export const dynamicListFunc = (props: IProps) => {
             description: 'Open my blog in a new tab.',
             run(print: any) {
                 return new Promise((resolve) => {
-                    print({ type: 'success', label: 'Success', content: 'Opening' })
+                    print({ type: 'success', label: 'Success', content: 'Opening' });
 
-                    window.open('https://tomotoes.com/blog', '_blank')
-                    resolve({ type: 'success', label: 'Done', content: ':)' })
+                    openExternal(site.kurt.blog);
+                    resolve({ type: 'success', label: 'Done', content: ':)' });
                 })
             }
         },
@@ -137,10 +139,10 @@ export const dynamicListFunc = (props: IProps) => {
             description: 'Open my resume in a new tab.',
             run(print: any) {
                 return new Promise((resolve) => {
-                    print({ type: 'success', label: 'Success', content: 'Opening' })
+                    print({ type: 'success', label: 'Success', content: 'Opening' });
 
-                    window.open('https://tomotoes.com/blog/resume', '_blank')
-                    resolve({ type: 'success', label: 'Done', content: ':)' })
+                    openExternal('https://tomotoes.com/blog/resume');
+                    resolve({ type: 'success', label: 'Done', content: ':)' });
                 })
             }
         },

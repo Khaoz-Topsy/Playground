@@ -1,10 +1,12 @@
 export const site = {
     ref: 'KurtLourensPlayground',
+    url: 'patreonbanner.com',
     repo: 'https://github1s.com/Khaoz-Topsy/KurtLourens-CV/blob/master/README.md',
     kurt: {
         fullName: 'Kurt Lourens',
         nickName: 'Khaoz-Topsy',
         website: 'https://kurtlourens.com',
+        blog: 'https://blog.kurtlourens.com',
         twitter: 'https://twitter.com/KhaozTopsy',
         github: 'https://github.com/Khaoz-Topsy',
     },

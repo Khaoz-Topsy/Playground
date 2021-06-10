@@ -8,6 +8,7 @@ import { FileType, IAppletFile, IFile, isApplet } from '../../../contracts/inter
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
+import { openExternal } from '../../../helper/linkHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowStore } from '../../../state/window/store'
 import { openAppFromDesktop } from '../../../state/window/reducer';
@@ -98,7 +99,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
             if (newFile.type === FileType.markdown) appletType = AppletType.notes;
             if (newFile.type === FileType.link) {
                 if (newFile?.meta?.external != null) {
-                    window.open(newFile.meta.external, '_blank', 'noopener,noreferrer');
+                    openExternal(newFile.meta.external);
                 }
                 return;
             }

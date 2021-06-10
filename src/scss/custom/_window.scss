@@ -25,6 +25,11 @@ svg.handle {
         pointer-events: all;
     }
 
+    >div {
+        width: 1px;
+        height: 1px;
+    }
+
     .is-minimised {
         .react-draggable {
             pointer-events: none !important;
@@ -169,6 +174,7 @@ svg.handle {
 }
 
 .terminal {
+    display: inline-block;
 
     .react-terimnal-app {
         overflow: hidden;

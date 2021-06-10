@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { ReactNode } from "react";
 import { Link } from "react-router-dom";
 
-import { site } from "../../constants/site";
+import { appendRef } from "../../helper/linkHelper";
 
 interface IProps {
     id?: string;
@@ -13,13 +13,6 @@ interface IProps {
 }
 
 export const BasicLink = (props: IProps) => {
-    const appendRef = (baseUrl: string) => {
-        if (baseUrl.includes('patreonbanner.com') || baseUrl.includes('@')) return baseUrl;
-        if (baseUrl.includes('?')) {
-            return baseUrl + `&ref=${site.ref}`;
-        }
-        return baseUrl + `?ref=${site.ref}`;
-    };
 
     const localClick = (e: any) => {
         if (props.onClick != null) {
@@ -53,3 +46,4 @@ export const BasicInternalLink = (props: IProps) => {
         </Link>
     );
 }
+

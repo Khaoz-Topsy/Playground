@@ -3,7 +3,6 @@ import { Box, Checkbox, Select, Text } from '@chakra-ui/react';
 
 import { SettingItemSection } from '../settingItemSection';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
-import { Background } from '../../../../constants/appImage';
 import { withServices } from '../../../../integration/dependencyInjection';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
@@ -17,11 +16,11 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const bgOptions = [
         {
             name: 'Background 1 (default)',
-            value: Background.bg1,
+            value: 'bg1',
         },
         {
             name: 'Background 2',
-            value: Background.bg2,
+            value: 'bg2',
         }
     ];
 
@@ -45,6 +44,8 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
         })
     }
 
+    console.log(currentSettings);
+
     return (
         <Box>
             <SettingItemSection
@@ -65,9 +66,13 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </Select>
                 </Box>
                 <Box my={5}>
-                    <Checkbox colorScheme={'primary'} isChecked={currentSettings.enabledClippy} onChange={onEnableClippyChange}>Enable Clippy</Checkbox>
+                    <Checkbox colorScheme={'primary'} iconColor="white" isChecked={currentSettings.enabledClippy} onChange={onEnableClippyChange}>Enable Clippy</Checkbox>
                     <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Get tips from the best virtual assistant to have ever lived! Disable to ensure that Clippy stays hidden.</Text>
                 </Box>
+                {/* <Box my={5}>
+                    <Checkbox colorScheme={'primary'} isChecked={colorMode === 'dark'} onChange={toggleColorMode}>Use Dark Mode</Checkbox>
+                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Use the website in dark mode.</Text>
+                </Box> */}
             </SettingItemSection>
         </Box>
     );

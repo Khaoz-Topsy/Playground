@@ -13,4 +13,8 @@ Things that I will be adding
 - More files and folders
 - Mousetrap for alt + leftArrow for back and forward nav in explorer
   - https://craig.is/killing/mice
+- Harlem shake
+  - https://www.npmjs.com/package/harlem-shake
+- Blueprint
+  - https://www.npmjs.com/package/mermaid
 - More sillies

@@ -6,10 +6,13 @@ import { DesktopIcons } from '../../../constants/desktopIconList'
 import { WindowStore } from '../../../state/window/store'
 import { DesktopIcon } from './desktopIcon'
 import { openAppFromDesktop } from '../../../state/window/reducer'
+import classNames from 'classnames'
+import { SettingStore } from '../../../state/setting/store'
 
 export const Desktop: React.FC = () => {
     const [selectedIconIndexes, setSelectedIconIndexes] = useState<Array<number>>([]);
     const [dragSelect, setDragSelect] = useState<any>(null);
+    const background = SettingStore.useState(store => store.background);
 
     // eslint-disable-next-line
     useEffect(() => {
@@ -70,7 +73,7 @@ export const Desktop: React.FC = () => {
     }
 
     return (
-        <div className="layer">
+        <div className={classNames('fullscreen layer', 'bg', background)}>
             <div id="desktop-grid" className="fullscreen p1">
                 {
                     DesktopIcons.map((desktopIcon, index: number) => {
