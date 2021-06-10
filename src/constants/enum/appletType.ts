@@ -7,6 +7,7 @@ export enum AppletType {
     picture,
     notes,
 
+    kurt,
     vsCode,
     assistantNMS,
     assistantSMS,

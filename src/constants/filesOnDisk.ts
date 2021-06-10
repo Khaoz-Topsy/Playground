@@ -3,7 +3,7 @@ import { IFolder } from "../contracts/interface/IFolder";
 import { Background, FileIcon, External, AppletIcon } from "./appImage";
 import { DataFile } from "./dataFile";
 import { DesktopIcons } from "./desktopIconList";
-import { KnownApplets } from "./knownApplets";
+import { allKnownApps, KnownApplets } from "./knownApplets";
 import { site } from "./site";
 
 export const documentFolder = {
@@ -106,12 +106,7 @@ export const filesOnDisk: IFolder = {
             id: 1,
             name: 'Applications',
             imgUrl: AppletIcon.application,
-            contents: [
-                KnownApplets.nyanCat,
-                KnownApplets.settings,
-                KnownApplets.terminal,
-                KnownApplets.vsCode,
-            ]
+            contents: allKnownApps(),
         },
         {
             id: 2,

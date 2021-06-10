@@ -37,14 +37,6 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         })
     );
 
-    const mapWindow = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
-        const isFocused = app.appletType === currentlyFocused;
-        return {
-            ...app,
-            openOrder: app.openOrder + (isFocused ? 100 : 0),
-        }
-    }
-
     const renderSupportedWindows = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
         const appProps: IApplet = {
             ...app,
@@ -74,8 +66,6 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
             <AnimatePresence>
                 {
                     activeApps
-                        .map(mapWindow(currentFocused))
-                        // .sort(sortByOpenOrder)
                         .map(renderSupportedWindows(currentFocused))
                 }
             </AnimatePresence>

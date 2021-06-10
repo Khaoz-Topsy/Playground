@@ -19,14 +19,17 @@ export class VirtualAssistantService {
     }
 
     public say = (text: string) => {
+        if (!this._agentIsVisible) return;
         this._agent?.speak?.(text);
     }
 
     public play = (animName: string) => {
+        if (!this._agentIsVisible) return;
         this._agent?.play?.(animName);
     }
 
     public animate = () => {
+        if (!this._agentIsVisible) return;
         this._agent?.animate?.();
     }
 

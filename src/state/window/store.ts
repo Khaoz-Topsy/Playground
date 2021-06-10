@@ -10,8 +10,9 @@ export interface IWindowStore {
 export const WindowStore = new Store<IWindowStore>({
     currentFocused: AppletType.explorer,
     activeApps: [{
-        appletType: AppletType.explorer,
+        // id: 0,
         name: 'explorer',
+        appletType: AppletType.explorer,
         openOrder: 100,
         meta: {},
     }],

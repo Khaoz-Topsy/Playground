@@ -4,9 +4,10 @@ import React, { ReactNode } from 'react';
 import { SettingApplet } from '../applet/settings/settingApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { TerminalApplet } from '../applet/terminal/terminalApplet';
-import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
 import { PictureApplet } from '../applet/picture/pictureApplet';
+import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
 import { NotesApplet } from '../applet/notes/notesApplet';
+import { KurtApplet } from '../applet/kurt/kurtApplet';
 import { Explorer } from './explorer/explorer';
 
 import { IApplet } from '../../contracts/interface/IApplet';
@@ -21,6 +22,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.picture: return <PictureApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
         case AppletType.notes: return <NotesApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
 
+        case AppletType.kurt: return <KurtApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
         case AppletType.vsCode: return <VsCodeApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
         case AppletType.nyanCat: return <NyanCatApplet key={`AppletType-${appProps.appletType}`} {...appProps} />
     }

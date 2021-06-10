@@ -12,4 +12,5 @@ Few cool things added:
 Things that I will be adding 
 - More files and folders
 - Mousetrap for alt + leftArrow for back and forward nav in explorer
+  - https://craig.is/killing/mice
 - More sillies

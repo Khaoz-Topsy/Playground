@@ -19,7 +19,9 @@ export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: 
     }
 
     const sortOrderArray = store.activeApps.map(aa => aa.openOrder);
+    // const numExisting: number = store.activeApps.filter(aa => aa.appletType === appletType).length;
     const newActiveApp: LaunchedApp = {
+        // id: ((appletType as number) * 10) + (numExisting + 1),
         name,
         appletType,
         meta: meta ?? anyObject,
@@ -104,7 +106,28 @@ export const setMetaForApp = (store: IWindowStore, appletType: AppletType, newMe
 }
 
 export const setNewFocusForApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
-    store.currentFocused = appletType ?? AppletType.none
+    // console.log('setNewFocusForApp');
+    const currentApps = store.activeApps.map(aa => ({ ...aa }));
+    const currentApp = currentApps.find(aa => aa.appletType === appletType);
+    // console.log([...currentApps]);
+    if (currentApp == null) return store;
+
+    const sortOrderArray = currentApps
+        .filter(aa => aa.appletType !== appletType)
+        .sort((a: LaunchedApp, b: LaunchedApp) => a.openOrder - b.openOrder)
+        .map((aa, index) => ({ appletType: aa.appletType, openOrder: index }));
+    const fullSortOrderArray = [...sortOrderArray, { appletType: currentApp.appletType, openOrder: sortOrderArray.length }];
+    // console.log([...fullSortOrderArray]);
+
+    const newApps = currentApps.map((app: LaunchedApp, index: number) => {
+        return {
+            ...app,
+            openOrder: fullSortOrderArray.find(aa => aa.appletType === app.appletType)?.openOrder ?? index,
+        }
+    });
+    store.activeApps = [...newApps];
+    store.currentFocused = appletType;
+    // console.log([...newApps]);
     return store
 }
 
