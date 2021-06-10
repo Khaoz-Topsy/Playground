@@ -1,4 +1,5 @@
 import React from 'react'
+import { site } from '../../../constants/site';
 
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { Applet } from '../../window/applet/applet'
@@ -8,7 +9,7 @@ interface IProps extends IApplet {
 }
 
 export const VsCodeApplet: React.FC<IProps> = (props: IProps) => {
-    const githubUrl = props?.meta?.url ?? 'https://github1s.com/Khaoz-Topsy/KurtLourens-CV/blob/master/README.md';
+    const githubUrl = props?.meta?.url ?? site.repo;
     return (
         <Applet
             key="nyanWindow"

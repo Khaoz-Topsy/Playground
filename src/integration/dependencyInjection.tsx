@@ -1,15 +1,18 @@
 import React from 'react';
 import { anyObject } from '../helper/typescriptHacks';
 
+import { DataService } from '../services/DataService';
 import { VirtualAssistantService } from '../services/VirtualAssistantService';
 
 export interface IDependencyInjection {
+    dataService: DataService;
     virtualAssistantService: VirtualAssistantService;
 }
 
 type GetServices = () => IDependencyInjection;
 export const defaultDependencyInjectionFunc: GetServices = () => {
     return {
+        dataService: new DataService(),
         virtualAssistantService: new VirtualAssistantService(),
     }
 }

@@ -5,6 +5,7 @@ export enum AppletType {
     terminal,
     explorer,
     picture,
+    notes,
 
     vsCode,
     assistantNMS,
@@ -13,3 +14,9 @@ export enum AppletType {
     // Funny
     nyanCat,
 }
+
+export const appletsThatCanHaveTheirNamesChanged: Array<AppletType> = [
+    AppletType.explorer,
+    AppletType.picture,
+    AppletType.notes,
+]

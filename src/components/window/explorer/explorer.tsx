@@ -95,6 +95,13 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
             const newFile = fileOrFolder as IFile;
             let appletType: AppletType = AppletType.none;
             if (newFile.type === FileType.image) appletType = AppletType.picture;
+            if (newFile.type === FileType.markdown) appletType = AppletType.notes;
+            if (newFile.type === FileType.link) {
+                if (newFile?.meta?.external != null) {
+                    window.open(newFile.meta.external, '_blank', 'noopener,noreferrer');
+                }
+                return;
+            }
             WindowStore.update(openAppFromDesktop(appletType, newFile.name, newFile.meta));
         }
     }

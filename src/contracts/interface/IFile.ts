@@ -7,6 +7,7 @@ export enum FileType {
     // actual files
     image,
     markdown,
+    link,
 }
 
 export interface IFile extends IFileFolderCommon {

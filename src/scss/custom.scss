@@ -11,6 +11,7 @@
 @import './custom/_taskbar.scss';
 @import './custom/_window.scss';
 @import './custom/_explorer.scss';
+@import './custom/_notes.scss';
 
 .react-draggable {
     // display: inline-block;
@@ -32,6 +33,11 @@
     user-select: none;
     /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
+}
+
+
+a {
+    color: #428bca !important;
 }
 
 .m-h-1 {

@@ -17,7 +17,6 @@ interface IProps extends IApplet {
 export const PictureApplet: React.FC<IProps> = (props: IProps) => {
     const [isMaximised, setMaximised] = useState(props?.isMaximised ?? false);
 
-    console.log({ props });
     const images = props?.meta?.images ?? [Background.bg1, Background.bg2];
 
     if (isMaximised) {

@@ -6,6 +6,7 @@ export interface IFileFolderCommon {
 }
 
 export interface IFolder extends IFileFolderCommon {
+    imgUrl?: string;
     contents: Array<IFile | IAppletFile | IFolder>;
 }
 

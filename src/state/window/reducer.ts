@@ -1,4 +1,4 @@
-import { AppletType } from "../../constants/enum/appletType";
+import { appletsThatCanHaveTheirNamesChanged, AppletType } from "../../constants/enum/appletType";
 import { LaunchedApp } from "../../contracts/launchedApp";
 import { anyObject } from "../../helper/typescriptHacks";
 import { IWindowStore } from "./store";
@@ -10,7 +10,7 @@ export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: 
         if (currentAppIsMin) store = setMinimiseForApp(store, appletType, false);
         if (meta) {
             store = setMetaForApp(store, appletType, meta);
-            if (appletType === AppletType.picture || appletType === AppletType.explorer) {
+            if (appletsThatCanHaveTheirNamesChanged.includes(appletType)) {
                 store.activeApps = [...store.activeApps.map(aa => ({ ...aa, name: name }))];
             }
         }

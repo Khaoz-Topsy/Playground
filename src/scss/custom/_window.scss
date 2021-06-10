@@ -139,10 +139,9 @@ svg.handle {
         overflow: hidden auto;
         z-index: 0;
 
-        .full-content,
-        .full-content>*,
         &.full-content,
-        &.full-content>* {
+        &.full-content>div,
+        &.full-content>iframe {
             width: 100%;
             height: 100%;
             padding-bottom: 0;

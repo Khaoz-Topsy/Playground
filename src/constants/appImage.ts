@@ -11,12 +11,16 @@ export class AppletIcon {
     static nyanCat = imgFolder + 'appIcons/nyanCat.png';
     static terminal = imgFolder + 'appIcons/terminal.png';
     static folder = imgFolder + 'appIcons/folder.png';
+    static application = imgFolder + 'appIcons/application.png';
     static vsCode = imgFolder + 'appIcons/vsCode.png';
 }
 
 export class FileIcon {
     static markdown = imgFolder + 'fileIcons/markdown2.png';
     static picture = imgFolder + 'fileIcons/picture.png';
+    static android = imgFolder + 'fileIcons/android.png';
+    static apple = imgFolder + 'fileIcons/apple2.png';
+    static web = imgFolder + 'fileIcons/web.png';
 }
 
 export class Background {

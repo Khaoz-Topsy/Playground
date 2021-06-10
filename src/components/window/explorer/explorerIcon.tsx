@@ -22,6 +22,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
     const renderImage = (iconData: IFile | IFolder) => {
         if (isFolder(iconData)) {
             const folder = iconData as IFolder;
+            if (iconData.imgUrl != null) return <BasicImage imageUrl={iconData.imgUrl} alt={folder.name} />;
             return <BasicImage imageUrl={AppletIcon.folder} alt={folder.name} />;
         }
         return <BasicImage imageUrl={iconData.imgUrl} alt={iconData.name} />;
