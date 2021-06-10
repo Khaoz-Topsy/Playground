@@ -32,6 +32,7 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         }
 
         getContentFromDataService(file);
+        // eslint-disable-next-line
     }, [file]);
 
     const getContentFromDataService = async (file: string) => {
