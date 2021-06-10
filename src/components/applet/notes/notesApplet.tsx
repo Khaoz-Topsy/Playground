@@ -50,7 +50,7 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
             showLoading={state.isLoading}
         >
             {
-                (state.isLoading == false) &&
+                (state.isLoading === false) &&
                 <MarkdownContent content={state.content} />
             }
         </Applet>
