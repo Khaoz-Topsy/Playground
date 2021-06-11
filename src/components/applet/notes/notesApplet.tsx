@@ -9,9 +9,7 @@ import { Applet } from '../../window/applet/applet';
 import { dependencyInjectionToProps, IExpectedServices } from './notesApplet.dependencyInjection';
 
 interface IWithoutExpectedServices { };
-interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices {
-    meta?: any;
-}
+interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
 
 interface IState {
     isLoading: boolean;

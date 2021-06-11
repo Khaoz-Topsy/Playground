@@ -17,4 +17,5 @@ Things that I will be adding
   - https://www.npmjs.com/package/harlem-shake
 - Blueprint
   - https://www.npmjs.com/package/mermaid
+  - https://github.com/learn-anything/react-mindmap
 - More sillies

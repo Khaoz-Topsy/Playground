@@ -1,27 +1,19 @@
 import React from 'react'
 
 import { IApplet } from '../../../contracts/interface/IApplet'
-import { Applet } from '../../window/applet/applet'
+import { IFrameApplet } from '../iframe/iframeApplet';
 
 interface IProps extends IApplet { }
 
 export const NyanCatApplet: React.FC<IProps> = (props: IProps) => {
     return (
-        <Applet
-            key="nyanWindow"
+        <IFrameApplet
             {...props}
-            showLoading={true}
-            isFullscreen={true}
-        >
-            <iframe
-                id="nyanIframe"
-                key="nyanIframe"
-                title="nyanIframe"
-                className="pos-abs-top-left"
-                style={{ pointerEvents: 'none', zIndex: 2 }}
-                src="https://cristurm.github.io/nyan-cat/"
-                frameBorder="0"
-            />
-        </Applet>
+            meta={{
+                style: { pointerEvents: 'none', zIndex: 2 },
+                key: "nyancat-iframe",
+                src: "https://cristurm.github.io/nyan-cat/"
+            }}
+        />
     );
 }

@@ -6,6 +6,7 @@ export enum AppletType {
     explorer,
     picture,
     notes,
+    iframe,
 
     kurt,
     vsCode,

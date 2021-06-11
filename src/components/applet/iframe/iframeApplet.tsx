@@ -1,27 +1,32 @@
 import React from 'react'
-import { site } from '../../../constants/site';
 
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { Applet } from '../../window/applet/applet'
 
 interface IProps extends IApplet { }
 
-export const VsCodeApplet: React.FC<IProps> = (props: IProps) => {
-    const githubUrl = props?.meta?.url ?? site.repo;
+export const IFrameApplet: React.FC<IProps> = (props: IProps) => {
+    const {
+        key = 'unknown',
+        src = 'https://khaoznet.xyz',
+        style = undefined
+    } = props?.meta;
+
     return (
         <Applet
-            key="vsCodeWindow"
             {...props}
+            key={`${key}-window`}
+            name={props.name}
             showLoading={true}
             isFullscreen={true}
         >
             <iframe
-                id="vsCodeIframe"
-                key="vsCodeIframe"
-                title="vsCodeIframe"
+                id={key}
+                key={key}
+                title={key}
                 className="pos-abs-top-left"
-                style={{ zIndex: 2 }}
-                src={githubUrl}
+                style={style}
+                src={src}
                 frameBorder="0"
             />
         </Applet>

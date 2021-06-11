@@ -22,6 +22,10 @@
             justify-content: center;
             min-width: 26px;
         }
+
+        .text {
+            padding-bottom: 3px;
+        }
     }
 }
 
@@ -41,4 +45,14 @@
     @extend .base-social-btn;
     color: #ffffff;
     background: #7289da;
+}
+
+.youtube-btn {
+    @extend .base-social-btn;
+    color: #ffffff;
+    background: #cc0000;
+
+    .icon {
+        width: 24px;
+    }
 }

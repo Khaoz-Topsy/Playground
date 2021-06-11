@@ -1,6 +1,7 @@
 import { FileType, IAppletFile } from '../contracts/interface/IFile';
 import { AppletIcon, FileIcon } from './appImage';
 import { AppletType } from './enum/appletType';
+import { site } from './site';
 
 export class KnownApplets {
     static settings: IAppletFile = {
@@ -51,6 +52,18 @@ export class KnownApplets {
         imgUrl: AppletIcon.vsCode,
         appletType: AppletType.vsCode,
         type: FileType.applet,
+    };
+    static scrapMechanic: IAppletFile = {
+        id: 1.23,
+        name: 'Assistant for Scrap Mechanic',
+        imgUrl: AppletIcon.assistantSMS,
+        appletType: AppletType.iframe,
+        type: FileType.iframeApplet,
+        meta: {
+            key: 'assistantSMS',
+            src: site.assistantApps.sms.webapp,
+            icon: AppletIcon.assistantSMS,
+        }
     };
 
 

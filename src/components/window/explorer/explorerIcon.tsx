@@ -2,9 +2,9 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { BasicImage } from '../../core/image';
-import { IFile } from '../../../contracts/interface/IFile';
+import { FileType, IFile } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
-import { AppletIcon } from '../../../constants/appImage';
+import { AppletIcon, FileIcon } from '../../../constants/appImage';
 
 interface IProps {
     index: number;
@@ -18,6 +18,21 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
     const classes = classNames('explorer-icon noselect', {
         'selected': props.isSelected
     });
+
+    const renderFileMiniImage = (iconData: IFile | IFolder) => {
+        if (isFolder(iconData)) return;
+
+        const file = iconData as IFile;
+        if (file.type === FileType.link) return (
+            <BasicImage
+                imageUrl={FileIcon.miniLink}
+                classNames="mini"
+                alt={`${iconData.name}-mini`}
+            />
+        );
+
+        return;
+    }
 
     const renderImage = (iconData: IFile | IFolder) => {
         if (isFolder(iconData)) {
@@ -43,6 +58,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             onDoubleClick={props?.openFileOrFolder?.(props.iconData)}>
             <div className="img-container">
                 {renderImage(props.iconData)}
+                {renderFileMiniImage(props.iconData)}
             </div>
             <p draggable={false}>{props.iconData.name}</p>
         </div>

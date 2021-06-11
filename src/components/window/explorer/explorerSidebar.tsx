@@ -12,7 +12,7 @@ interface IProps {
 
 export const ExplorerSidebar: React.FC<IProps> = (props: IProps) => {
     return (
-        <div className="explorer-sidebar">
+        <div className="explorer-sidebar noselect">
             <div className="item" onClick={props.openFileOrFolder?.(documentFolder)}>
                 <Icon as={FolderIcon} />&nbsp;&nbsp;Documents
                 </div>

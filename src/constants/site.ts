@@ -23,11 +23,17 @@ export const site = {
         github: 'https://assistantapps.com/github',
         discord: 'https://assistantapps.com/discord',
         patreon: 'https://www.patreon.com/AssistantApps',
+        youtube: 'https://www.youtube.com/channel/UCpKNMVk7ZWvBk-psQQZqz5w',
         nms: {
             website: 'https://nmsassistant.com',
             webapp: 'https://app.nmsassistant.com',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.no_mans_sky_recipes',
             appleStore: 'https://apps.apple.com/us/app/id1480287625',
+        },
+        sms: {
+            webapp: 'https://scrapassistant.com/',
+            googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.scrap_mechanic',
+            appleStore: 'https://apps.apple.com/us/app/id1519215611',
         }
     }
 }

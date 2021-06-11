@@ -3,6 +3,7 @@ import { IFileFolderCommon } from "./IFolder";
 
 export enum FileType {
     applet,
+    iframeApplet,
 
     // actual files
     image,

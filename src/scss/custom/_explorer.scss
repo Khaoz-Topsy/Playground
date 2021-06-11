@@ -119,6 +119,7 @@ $explorer-icon-size: 100px;
                         }
 
                         .img-container {
+                            position: relative;
                             width: $explorer-icon-size;
                             height: $explorer-icon-size;
                             margin: 0 auto;
@@ -129,6 +130,13 @@ $explorer-icon-size: 100px;
                                 height: auto;
                                 max-height: 100%;
                                 border-radius: 5px;
+                            }
+
+                            img.mini {
+                                position: absolute;
+                                bottom: -5px;
+                                right: -5px;
+                                width: 30%;
                             }
                         }
 

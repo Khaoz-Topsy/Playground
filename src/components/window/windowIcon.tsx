@@ -17,5 +17,7 @@ export const windowIconString = (appletType: AppletType): string => {
     return error;
 }
 
+
+export const iframeIcon = (imgUrl: string) => (<BasicImage imageUrl={(imgUrl == null || imgUrl.length < 5) ? error : imgUrl} classNames="noselect" />);
 export const windowIcon = (appletType: AppletType) => (<BasicImage imageUrl={windowIconString(appletType)} classNames="noselect" />);
 export const windowTaskbarIcon = (appletType: AppletType) => (<BasicImage imageUrl={windowIconString(appletType)} />);

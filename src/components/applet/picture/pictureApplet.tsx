@@ -9,10 +9,7 @@ import { LightBox } from '../../../components/common/lightbox';
 
 import { Applet } from '../../window/applet/applet';
 
-interface IProps extends IApplet {
-    meta?: any;
-    isMaximised?: boolean;
-}
+interface IProps extends IApplet { }
 
 export const PictureApplet: React.FC<IProps> = (props: IProps) => {
     const [isMaximised, setMaximised] = useState(props?.isMaximised ?? false);

@@ -103,6 +103,12 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
                 }
                 return;
             }
+            if (newFile.type === FileType.iframeApplet) {
+                if (newFile?.meta?.src != null) {
+                    WindowStore.update(openAppFromDesktop(AppletType.iframe, newFile.meta.name, newFile.meta));
+                }
+                return;
+            }
             WindowStore.update(openAppFromDesktop(appletType, newFile.name, newFile.meta));
         }
     }

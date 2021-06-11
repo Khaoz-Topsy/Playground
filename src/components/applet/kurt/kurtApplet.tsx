@@ -1,27 +1,20 @@
 import React from 'react'
 
 import { IApplet } from '../../../contracts/interface/IApplet'
-import { Applet } from '../../window/applet/applet'
+import { IFrameApplet } from '../iframe/iframeApplet'
 
 interface IProps extends IApplet { }
 
 export const KurtApplet: React.FC<IProps> = (props: IProps) => {
     return (
-        <Applet
-            key="kurtWindow"
+        <IFrameApplet
             {...props}
-            showLoading={true}
-            isFullscreen={true}
-        >
-            <iframe
-                id="kurtIframe"
-                key="kurtIframe"
-                title="kurtIframe"
-                className="pos-abs-top-left"
-                style={{ zIndex: 2 }}
-                src="https://kurtlourens.com"
-                frameBorder="0"
-            />
-        </Applet>
+            meta={{
+                style: { zIndex: 2 },
+                key: "kurt-iframe",
+                name: "Kurt Lourens CV",
+                src: "https://kurtlourens.com",
+            }}
+        />
     );
 }

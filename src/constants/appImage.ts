@@ -21,6 +21,8 @@ export class FileIcon {
     static android = imgFolder + 'fileIcons/android.png';
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
+
+    static miniLink = imgFolder + 'fileIcons/externalIcon.png';
 }
 
 export const Backgrounds = [
