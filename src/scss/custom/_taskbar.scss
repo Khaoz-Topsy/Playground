@@ -1,8 +1,3 @@
-$taskbar-height: 4;
-$taskbar-bottom-highlight-focus: 20;
-$taskbar-bottom-highlight-minimised: 4;
-$taskbar-bottom-highlight-background: 10;
-
 .taskbar {
     position: absolute;
     bottom: 0;
@@ -10,10 +5,9 @@ $taskbar-bottom-highlight-background: 10;
     left: 0;
     overflow: hidden;
     //
-    background: rgba(0, 0, 0, 0.40);
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(5.0px);
-    -webkit-backdrop-filter: blur(5.0px);
+    @extend .glass-background;
+    background: rgba(0, 0, 0, 0.30);
+    // background: rgba(255, 255, 255, 0.2);
     height: #{$taskbar-height}em;
     z-index: _zindex(taskbar);
 

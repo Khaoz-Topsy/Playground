@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay } from '@chakra-ui/react';
+import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, Spinner } from '@chakra-ui/react';
 
 import { KhaozBlogType } from '../../../contracts/interface/IBlogRssFeed';
 import { withServices } from '../../../integration/dependencyInjection';
@@ -12,19 +12,20 @@ interface IWithoutExpectedServices {
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
 export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) => {
+    const [isLoaded, setIsLoaded] = useState(false);
     const [blogfeed, setBlogFeed] = useState<KhaozBlogType>({ title: '', items: [] });
 
     useEffect(() => {
         props.blogRssService.getBlogPosts().then((blog: ResultWithValue<KhaozBlogType>) => {
             if (!blog.isSuccess) return;
             setBlogFeed(blog.value);
+            setIsLoaded(true);
         }).catch((_) => { });
         // eslint-disable-next-line
     }, []);
 
     return (
         <>
-            <DrawerOverlay />
             <DrawerContent className="notification-drawer">
                 <DrawerCloseButton />
                 <DrawerHeader>Notifications</DrawerHeader>
@@ -48,7 +49,9 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                             </ul>
                         </>
                     }
-
+                    {
+                        (isLoaded === false) && <Center><Spinner size="xl" /></Center>
+                    }
                 </DrawerBody>
 
                 <DrawerFooter>

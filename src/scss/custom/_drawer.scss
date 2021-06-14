@@ -1,5 +1,19 @@
+.chakra-portal {
+    z-index: _zindex(chakra-portal);
+
+    // .chakra-modal__overlay,
+    // .chakra-modal__content-container {
+    //     z-index: _zindex(chakra-portal);
+    // }
+}
+
 .notification-drawer {
+    @extend .glass-background;
+    background: rgba(255, 255, 255, 0.15);
     color: white !important;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    margin-bottom: #{$taskbar-height}em;
 
     hr {
         border-color: rgba(255, 255, 255, 0.25);
