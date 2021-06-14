@@ -11,7 +11,11 @@ import { WindowStore } from '../../../state/window/store';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { TaskbarIcon } from './taskbarIcon';
 
-export const Taskbar: React.FC = () => {
+interface IProps {
+    onOpen: () => void;
+}
+
+export const Taskbar: React.FC<IProps> = (props: IProps) => {
     const windStore = WindowStore.useState(store => store);
 
     const openApp = (appletType: AppletType) => (e: any) => {
@@ -38,7 +42,7 @@ export const Taskbar: React.FC = () => {
                     })
                 }
             </AnimatePresence>
-            <div className="taskbar-tray noselect">
+            <div className="taskbar-tray noselect" onClick={props.onOpen}>
                 <Center>
                     <p>{currentShortTime()}<br />{currentShortDate()}</p>
                 </Center>

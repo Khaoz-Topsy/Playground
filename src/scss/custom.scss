@@ -7,8 +7,9 @@
 // @import './custom/_loader.scss';
 @import './custom/_socialButton.scss';
 @import './custom/_image.scss';
-@import './custom/_desktop.scss';
+@import './custom/_drawer.scss';
 @import './custom/_taskbar.scss';
+@import './custom/_desktop.scss';
 @import './custom/_window.scss';
 @import './custom/_explorer.scss';
 @import './custom/_notes.scss';
@@ -89,3 +90,12 @@ a {
 .ril-image-current {
     max-height: 100%;
 }
+
+// .chakra-portal {
+//     z-index: _zindex(chakra-portal);
+
+//     .chakra-modal__overlay,
+//     .chakra-modal__content-container {
+//         z-index: _zindex(chakra-portal);
+//     }
+// }

@@ -3,6 +3,7 @@ import { Center } from '@chakra-ui/react';
 
 import { filesOnDisk } from '../../../constants/filesOnDisk';
 import { AppletType } from '../../../constants/enum/appletType';
+import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { FileType, IAppletFile, IFile, isApplet } from '../../../contracts/interface/IFile';
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
@@ -65,7 +66,10 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         />
     );
 
-    const clickAway = (e: any) => setSelectedId(-1);
+    const clickAway = (e: any) => {
+        if (e?.customEvent === explorerSelect) return;
+        setSelectedId(-1);
+    }
 
     const openFileOrFolder = (fileOrFolder: IFolder | IFile) => (e: any) => {
         const breadcrumbs = getBreadcrumbList(fileOrFolder.id);

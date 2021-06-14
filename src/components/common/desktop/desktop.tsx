@@ -14,7 +14,6 @@ export const Desktop: React.FC = () => {
     const [dragSelect, setDragSelect] = useState<any>(null);
     const background = SettingStore.useState(store => store.background);
 
-    // eslint-disable-next-line
     useEffect(() => {
         if (dragSelect != null) return;
 

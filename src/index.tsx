@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 // import reportWebVitals from './reportWebVitals';
 
-import { App } from './App';
+import { App } from './app';
 import { DependencyInjectionProvider } from './integration/dependencyInjection';
 
 import './scss/custom.scss';

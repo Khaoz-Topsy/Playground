@@ -5,6 +5,7 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
 import { LaunchedApp } from '../../contracts/launchedApp';
+import { windowActionEvent } from '../../constants/enum/customWindowEvent';
 import { WindowStore } from '../../state/window/store';
 import { closeApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 import { windowDisplayer } from './windowDisplayer';
@@ -24,11 +25,14 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         applet: AppletType.none,
     });
 
-    const onMaximise = (appletType: AppletType) => () => { };
+    const onMaximise = (appletType: AppletType) => (e: any) => { };
 
-    const onSetFocus = (appletType: AppletType) => () => WindowStore.update(setNewFocusForApp(appletType));
-    const onMinimise = (appletType: AppletType) => () => WindowStore.update(minimiseApp(appletType));
-    const onClose = (appletType: AppletType) => () => WindowStore.update(closeApp(appletType));
+    const onSetFocus = (appletType: AppletType) => (e: any) => {
+        if (e?.customEvent === windowActionEvent) return;
+        WindowStore.update(setNewFocusForApp(appletType))
+    };
+    const onMinimise = (appletType: AppletType) => (e: any) => WindowStore.update(minimiseApp(appletType));
+    const onClose = (appletType: AppletType) => (e: any) => WindowStore.update(closeApp(appletType));
 
     const onCloseModal = () => WindowStore.update(closeApp(modalData.applet),
         () => setModalData({

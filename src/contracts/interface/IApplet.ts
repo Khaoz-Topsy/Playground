@@ -8,10 +8,10 @@ export interface IApplet {
     isMinimised?: boolean;
     isMaximised?: boolean;
     zIndex?: number;
-    onSetFocus: () => void;
-    onMinimise: () => void;
-    onMaximise: () => void;
-    onClose: () => void;
+    onSetFocus: (e: any) => void;
+    onMinimise: (e: any) => void;
+    onMaximise: (e: any) => void;
+    onClose: (e: any) => void;
 }
 
 export interface IAdditionalAppletProps {

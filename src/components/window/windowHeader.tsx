@@ -5,9 +5,9 @@ import { WindowActions } from './windowActions';
 interface IProps {
     name: string;
     windowIcon?: ReactNode;
-    onMinimise: () => void;
-    onMaximise: () => void;
-    onClose: () => void;
+    onMinimise: (e: any) => void;
+    onMaximise: (e: any) => void;
+    onClose: (e: any) => void;
 }
 
 export const WindowHeader: React.FC<IProps> = (props: IProps) => {

@@ -24,6 +24,9 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
 
     const file = props?.meta?.file;
     useEffect(() => {
+
+        props.blogRssService.getBlogPosts();
+
         if (file == null) {
             setState({ ...state, isLoading: false });
             return;

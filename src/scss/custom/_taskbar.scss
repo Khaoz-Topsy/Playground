@@ -80,6 +80,7 @@ $taskbar-bottom-highlight-background: 10;
         height: #{$taskbar-height}em;
         color: _palette(fg);
         width: #{$taskbar-height * 2}em;
+        cursor: pointer;
 
         p {
             text-align: center;

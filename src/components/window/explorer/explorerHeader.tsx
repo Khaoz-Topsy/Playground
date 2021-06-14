@@ -21,9 +21,9 @@ interface IProps {
     goToNext: () => void;
     openFileOrFolder: (file: IFolder | IFile) => (e: any) => void;
 
-    onMinimise: () => void;
-    onMaximise: () => void;
-    onClose: () => void;
+    onMinimise: (e: any) => void;
+    onMaximise: (e: any) => void;
+    onClose: (e: any) => void;
 }
 
 export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {

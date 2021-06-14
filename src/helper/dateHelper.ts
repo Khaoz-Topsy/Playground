@@ -18,6 +18,11 @@ export const currentShortDate = () => {
     return date;
 }
 
+export const addDays = (date: Date, days: number) => {
+    date.setDate(date.getDate() + days);
+    return date;
+}
+
 const padZeros = (numString: string, expectedLength: number = 2) => {
     let result = [];
     for (const numStr of numString.split('').reverse()) {

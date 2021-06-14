@@ -8,6 +8,7 @@ import { IApplet } from '../../../contracts/interface/IApplet'
 import { LightBox } from '../../../components/common/lightbox';
 
 import { Applet } from '../../window/applet/applet';
+import { anyObject } from '../../../helper/typescriptHacks';
 
 interface IProps extends IApplet { }
 
@@ -17,7 +18,7 @@ export const PictureApplet: React.FC<IProps> = (props: IProps) => {
     const images = props?.meta?.images ?? Backgrounds.map(b => b.url);
 
     if (isMaximised) {
-        return (<LightBox images={images} onClose={props.onClose} />);
+        return (<LightBox images={images} onClose={() => props.onClose(anyObject)} />);
     }
 
     return (

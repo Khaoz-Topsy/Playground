@@ -11,8 +11,8 @@ export interface IWindowProps extends IApplet {
     isFullscreen?: boolean;
     isFocused?: boolean;
     isMinimised?: boolean;
-    onSetFocus: () => void;
-    onMinimise: () => void;
-    onMaximise: () => void;
-    onClose: () => void;
+    onSetFocus: (e: any) => void;
+    onMinimise: (e: any) => void;
+    onMaximise: (e: any) => void;
+    onClose: (e: any) => void;
 }

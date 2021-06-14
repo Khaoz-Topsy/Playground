@@ -5,6 +5,7 @@ import { BasicImage } from '../../core/image';
 import { FileType, IFile } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { AppletIcon, FileIcon } from '../../../constants/appImage';
+import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 
 interface IProps {
     index: number;
@@ -18,6 +19,15 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
     const classes = classNames('explorer-icon noselect', {
         'selected': props.isSelected
     });
+
+    const clickFileOrFolder = (e: any) => {
+        e.customEvent = explorerSelect;
+        props?.setSelected?.(props.iconData.id)
+    }
+
+    const doubleClickFileOrFolder = (iconData: IFile | IFolder) => (e: any) => {
+        props?.openFileOrFolder?.(iconData)?.(e);
+    }
 
     const renderFileMiniImage = (iconData: IFile | IFolder) => {
         if (isFolder(iconData)) return;
@@ -43,11 +53,6 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
         return <BasicImage imageUrl={iconData.imgUrl} alt={iconData.name} />;
     }
 
-    const clickFileOrFolder = (e: any) => {
-        e?.stopPropagation?.();
-        props?.setSelected?.(props.iconData.id)
-    }
-
     return (
         <div
             key={`${props.index}-${props.iconData.name}`}
@@ -55,7 +60,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             className={classes}
             draggable={false}
             onClick={clickFileOrFolder}
-            onDoubleClick={props?.openFileOrFolder?.(props.iconData)}>
+            onDoubleClick={doubleClickFileOrFolder(props.iconData)}>
             <div className="img-container">
                 {renderImage(props.iconData)}
                 {renderFileMiniImage(props.iconData)}

@@ -4,12 +4,14 @@ import { DarkMode, Drawer, useDisclosure } from '@chakra-ui/react';
 import { Desktop } from './components/common/desktop/desktop';
 import { Taskbar } from './components/common/taskbar/taskbar';
 import { WindowManager } from './components/window/windowManager';
-import { NotificationDrawer } from './components/notificationDrawer';
+import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { InitialisationScreen } from './components/common/initialisationScreen';
 import { appPreloadAssets } from './helper/cacheHelper';
 
-export const App: React.FC = () => {
-  const { isOpen, /*onOpen, */ onClose } = useDisclosure();
+interface IProps { }
+
+export const App: React.FC<IProps> = (props: IProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldFade, setShouldFade] = useState(false);
 
@@ -18,7 +20,9 @@ export const App: React.FC = () => {
       .then((_) => {
         setShouldFade(true);
         setTimeout(() => setIsLoaded(true), 1000);
+        setTimeout(onOpen, 2000);
       });
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -26,13 +30,15 @@ export const App: React.FC = () => {
       <div className="fullscreen">
         <Desktop />
         <WindowManager />
-        <Taskbar />
+        <Taskbar onOpen={onOpen} />
         <Drawer
           isOpen={isOpen}
           placement="right"
           onClose={onClose}
         >
-          <NotificationDrawer onClose={onClose} />
+          <NotificationDrawer
+            onClose={onClose}
+          />
         </Drawer>
         {
           (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
