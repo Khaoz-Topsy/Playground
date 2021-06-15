@@ -20,14 +20,26 @@ export class BlogRssService {
             if (storedFeed.isSuccess) return storedFeed;
         }
 
-        const parser: Parser<KhaozBlogType, KhaozBlogItemType> = new Parser();
+        const parser: Parser<KhaozBlogType, KhaozBlogItemType> = new Parser({
+            customFields: {
+                item: ['media:content']
+            }
+        });
         const feed = await parser.parseURL('https://blog.kurtlourens.com/rss/');
 
-        this._storageService.set(blogFeed, feed, addDays(new Date(), 1));
+        const feedObj = {
+            ...feed,
+            items: feed.items.map(fi => ({
+                ...fi,
+                imageUrl: fi['media:content']['$'].url
+            }))
+        }
+
+        this._storageService.set(blogFeed, feedObj, addDays(new Date(), 1));
         return {
             isSuccess: true,
             errorMessage: '',
-            value: feed,
+            value: feedObj,
         };
     }
 }

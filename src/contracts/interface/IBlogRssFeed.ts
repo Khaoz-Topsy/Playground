@@ -9,6 +9,8 @@ export type KhaozBlogItemType = {
     isoDate: Date,
     pubDate: Date,
     link: string,
+    imageUrl: any,
+    'media:content': any,
     title: string,
     content: string,
     contentSnippet: string,

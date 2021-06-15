@@ -27,4 +27,31 @@
     //     padding-left: 2em;
     //     padding-right: 2em;
     // }
+
+    h3 {
+        font-size: 1.2em;
+        margin-bottom: 0.3em;text-align: center;
+    }
+
+    .blog-post {
+        display: flex;
+        background-color: grey;
+        border-radius: 5px;
+        margin-bottom: 0.5em;
+        max-height: 50px;
+        cursor: pointer;
+
+        img {
+            border-radius: 5px;
+            width: auto;
+            max-height: 50px;
+            padding-right: 0.5em;
+        }
+
+        .content {
+            max-height: 50px;
+            flex-grow: 1;
+            overflow: hidden;
+        }
+    }
 }

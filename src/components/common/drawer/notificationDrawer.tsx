@@ -3,8 +3,9 @@ import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, Dra
 
 import { KhaozBlogType } from '../../../contracts/interface/IBlogRssFeed';
 import { withServices } from '../../../integration/dependencyInjection';
-import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
+import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
+import { NotificationDrawerIcon } from './notificationDrawerIcon';
 
 interface IWithoutExpectedServices {
     onClose(): void
@@ -42,7 +43,7 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                                 {
                                     (blogfeed?.items?.slice?.(0, 5) ?? []).map(item => {
                                         return (
-                                            <li key={item.guid}>{item.title}</li>
+                                            <NotificationDrawerIcon key={item.guid} {...item} />
                                         );
                                     })
                                 }
