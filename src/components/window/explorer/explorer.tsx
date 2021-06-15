@@ -29,6 +29,7 @@ interface IFolderMeta extends IFolder {
 }
 
 interface IState {
+    currentChangeIndex: number;
     currentFolder: IFolderMeta;
     previousFolders: Array<IFolderMeta>;
     nextFolders: Array<IFolderMeta>;
@@ -40,6 +41,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
 
     const [selectedId, setSelectedId] = useState<number>(0);
     const [folderState, setFolderState] = useState<IState>({
+        currentChangeIndex: 0,
         currentFolder: {
             ...filesOnDisk,
             breadcrumbs: [{
@@ -56,12 +58,13 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         <ExplorerHeader
             {...app}
             selectedId={selectedId}
+            currentChangeIndex={folderState.currentChangeIndex}
             windowIcon={windowIcon(app.appletType)}
             breadcrumbs={currentFolder.breadcrumbs}
             hasPrev={folderState.previousFolders.length > 0}
             hasNext={folderState.nextFolders.length > 0}
-            goToPrev={goToPrevious}
-            goToNext={goToNext}
+            goToPrev={() => goToPrevious()}
+            goToNext={() => goToNext()}
             openFileOrFolder={openFileOrFolder}
         />
     );
@@ -75,18 +78,16 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         const breadcrumbs = getBreadcrumbList(fileOrFolder.id);
         if (isFolder(fileOrFolder)) {
             const newFolder = fileOrFolder as IFolder;
-            const newBreadcrumbs = [
-                ...breadcrumbs,
-                { id: fileOrFolder.id, isActive: true, name: newFolder.name, }
-            ];
-            setFolderState({
+            const newFolderState = {
+                currentChangeIndex: folderState.currentChangeIndex + 1,
                 currentFolder: {
                     ...newFolder,
-                    breadcrumbs: newBreadcrumbs,
+                    breadcrumbs: breadcrumbs,
                 },
                 previousFolders: [...folderState.previousFolders, folderState.currentFolder],
                 nextFolders: [],
-            });
+            };
+            setFolderState(newFolderState);
             return;
         }
 
@@ -124,12 +125,14 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         if (prev == null) return;
 
         const newPrevs: Array<IFolderMeta> = folderState.previousFolders.slice(0, folderState.previousFolders.length - 1);
-        setFolderState({
+        const newFolderState = {
             ...folderState,
+            currentChangeIndex: folderState.currentChangeIndex + 1,
             currentFolder: prev,
             previousFolders: newPrevs,
             nextFolders: [...folderState.nextFolders, curr],
-        });
+        };
+        setFolderState(newFolderState);
     }
 
     const goToNext = () => {
@@ -141,6 +144,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
         const newNext: Array<IFolderMeta> = folderState.nextFolders.slice(0, folderState.nextFolders.length - 1);
         setFolderState({
             ...folderState,
+            currentChangeIndex: folderState.currentChangeIndex + 1,
             currentFolder: next,
             previousFolders: [...folderState.previousFolders, curr],
             nextFolders: newNext,
@@ -162,8 +166,8 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
             {
                 noItems
                     ? (
-                        <Center>
-                            <span>No items...</span>
+                        <Center >
+                            <p className="mt3">No items...</p>
                         </Center>
                     )
                     : (

@@ -20,22 +20,6 @@ export const searchFilesOnDisk = (node: IFile | IFolder, id: number): IFile | IF
     return null;
 }
 
-export const getParentOfFileOnDisk = (node: IFile | IFolder, id: number): IFile | IFolder | null => {
-    if (id === -1) return null;
-    if (id === 0) return null;
-    if (node.id === 0) return node;
-    if (node.id === id) return node;
-
-    if (isFolder(node)) {
-        const folder = node as IFolder;
-        for (const fold of folder.contents) {
-            const foldSearch = getParentOfFileOnDisk(node, fold.id);
-            if (foldSearch != null) return foldSearch;
-        }
-    }
-    return null;
-}
-
 
 export const fileToBreadCrumb = (node: IFile | IFolder): IBreadcrumb => ({
     id: node.id,
@@ -49,18 +33,17 @@ export const getBreadcrumbList = (id: number): Array<IBreadcrumb> => {
 
     let count = 0;
     let idToLookFor = id;
-    let previousFile: IFile | IFolder | null = { ...filesOnDisk };
     do {
-        previousFile = getParentOfFileOnDisk(previousFile, idToLookFor);
-        if (previousFile != null) {
-            idToLookFor = previousFile.id
-            const crumbsHasRoot = crumbs.findIndex(c => c.id === 0) > 0;
-            if (crumbsHasRoot && previousFile.id === 0) continue;
-            crumbs.push(fileToBreadCrumb(previousFile));
-        }
+        const crumbsHasRoot = crumbs.findIndex(c => c.id === 0) > -1;
+        if (crumbsHasRoot) break;
         count++;
-        if (count > 15) break;
-    } while (previousFile != null);
 
-    return crumbs;
+        const currentFile = searchFilesOnDisk({ ...filesOnDisk }, idToLookFor);
+        if (currentFile != null) {
+            idToLookFor = currentFile.parentId
+            crumbs.push(fileToBreadCrumb(currentFile));
+        }
+    } while (count < 5);
+
+    return crumbs.reverse();
 }

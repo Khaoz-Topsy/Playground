@@ -1,6 +1,9 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useState } from 'react';
 import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Breadcrumb, BreadcrumbItem, Button } from '@chakra-ui/react';
+import Mousetrap from 'mousetrap';
+import classNames from 'classnames';
+import { motion } from 'framer-motion';
 
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder } from '../../../contracts/interface/IFolder';
@@ -9,10 +12,12 @@ import { filesOnDisk } from '../../../constants/filesOnDisk';
 
 import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowActions } from '../windowActions';
-import classNames from 'classnames';
+
+const navButtonAnimDuration = 250;
 
 interface IProps {
     selectedId: number;
+    currentChangeIndex: number;
     windowIcon: ReactNode;
     breadcrumbs: Array<IBreadcrumb>;
     hasPrev: boolean;
@@ -27,6 +32,36 @@ interface IProps {
 }
 
 export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
+    const [prevActivated, setPrevActivated] = useState<boolean>(false);
+    const [nextActivated, setNextActivated] = useState<boolean>(false);
+
+    useEffect(() => {
+        Mousetrap.bind('alt+left', onPrevClick);
+        Mousetrap.bind('alt+right', onNextClick);
+
+        return () => {
+            Mousetrap.unbind('alt+left');
+            Mousetrap.unbind('alt+right');
+        }
+        // eslint-disable-next-line
+    }, [props.currentChangeIndex]);
+
+    const onPrevClick = (e: any) => {
+        e.preventDefault?.();
+        console.log(props.currentChangeIndex);
+        if (!props.hasPrev) return;
+        setPrevActivated(true);
+        props.goToPrev?.();
+        setTimeout(() => setPrevActivated(false), navButtonAnimDuration);
+    }
+
+    const onNextClick = (e: any) => {
+        e.preventDefault?.();
+        if (!props.hasNext) return;
+        setNextActivated(true);
+        props.goToNext?.();
+        setTimeout(() => setNextActivated(false), navButtonAnimDuration);
+    }
 
     const onBreadCrumbClick = (id: number) => (e: any) => {
         if (id === props.selectedId) return;
@@ -54,6 +89,18 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
         );
     }
 
+    const variants = {
+        initial: {
+            scale: 0,
+        },
+        resting: {
+            scale: 1,
+        },
+        activated: {
+            scale: 1.2,
+        },
+    }
+
     return (
         <div className="window-header explorer">
             <div className="window-icon">
@@ -61,8 +108,30 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
             </div>
             <div className="v-divider icon-space"></div>
 
-            <div className={classNames('icon-button', { 'disabled': !props.hasPrev })} onClick={props.hasPrev ? props.goToPrev : () => { }}><ArrowBackIcon /></div>
-            <div className={classNames('icon-button', { 'disabled': !props.hasNext })} onClick={props.hasNext ? props.goToNext : () => { }}><ArrowForwardIcon /></div>
+
+            <motion.div
+                initial={variants.initial}
+                transition={{ duration: 100 / navButtonAnimDuration }}
+                animate={prevActivated ? 'activated' : 'resting'}
+                variants={variants}
+                exit={variants.resting}
+                className={classNames('icon-button', { 'disabled': !props.hasPrev })}
+                onClick={onPrevClick}
+            >
+                <ArrowBackIcon />
+            </motion.div>
+
+            <motion.div
+                initial={variants.initial}
+                transition={{ duration: 100 / navButtonAnimDuration }}
+                animate={nextActivated ? 'activated' : 'resting'}
+                variants={variants}
+                exit={variants.resting}
+                className={classNames('icon-button', { 'disabled': !props.hasNext })}
+                onClick={onNextClick}
+            >
+                <ArrowForwardIcon />
+            </motion.div>
 
             <div className="content noselect" style={{ marginRight: '1.25em' }}>
                 <Breadcrumb style={{ marginTop: '2px' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>

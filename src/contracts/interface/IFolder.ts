@@ -3,6 +3,7 @@ import { IAppletFile, IFile } from "./IFile";
 export interface IFileFolderCommon {
     id: number;
     name: string;
+    parentId: number;
 }
 
 export interface IFolder extends IFileFolderCommon {
