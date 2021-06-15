@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, Spinner } from '@chakra-ui/react';
+import React from 'react';
 
 import { KhaozBlogItemType } from '../../../contracts/interface/IBlogRssFeed';
 import { BasicImage } from '../../../components/core/image';
