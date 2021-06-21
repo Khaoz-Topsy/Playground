@@ -8,14 +8,15 @@ import { motion } from 'framer-motion';
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder } from '../../../contracts/interface/IFolder';
 import { IFile } from '../../../contracts/interface/IFile';
-import { filesOnDisk } from '../../../constants/filesOnDisk';
+import { withServices } from '../../../integration/dependencyInjection';
 
 import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowActions } from '../windowActions';
+import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
 
 const navButtonAnimDuration = 250;
 
-interface IProps {
+interface IWithoutExpectedServices {
     selectedId: number;
     currentChangeIndex: number;
     windowIcon: ReactNode;
@@ -31,7 +32,9 @@ interface IProps {
     onClose: (e: any) => void;
 }
 
-export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
+interface IProps extends IWithoutExpectedServices, IExpectedServices { }
+
+export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
     const [prevActivated, setPrevActivated] = useState<boolean>(false);
     const [nextActivated, setNextActivated] = useState<boolean>(false);
 
@@ -65,7 +68,7 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
 
     const onBreadCrumbClick = (id: number) => (e: any) => {
         if (id === props.selectedId) return;
-        const file = searchFilesOnDisk(filesOnDisk, id);
+        const file = searchFilesOnDisk(props.folderStructure, id);
         if (file == null) return;
         props.openFileOrFolder?.(file)(e);
     }
@@ -150,3 +153,7 @@ export const ExplorerHeader: React.FC<IProps> = (props: IProps) => {
     );
 }
 
+export const ExplorerHeader = withServices<IWithoutExpectedServices, IExpectedServices>(
+    ExplorerHeaderUnconnected,
+    dependencyInjectionToProps
+);

@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
 import { Center } from '@chakra-ui/react';
 
-import { filesOnDisk } from '../../../constants/filesOnDisk';
 import { AppletType } from '../../../constants/enum/appletType';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { IApplet } from '../../../contracts/interface/IApplet';
@@ -11,6 +10,7 @@ import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
 import { openExternal } from '../../../helper/linkHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
+import { withServices } from '../../../integration/dependencyInjection';
 import { WindowStore } from '../../../state/window/store'
 import { openAppFromDesktop } from '../../../state/window/reducer';
 
@@ -19,10 +19,13 @@ import { windowIcon } from '../windowIcon';
 import { ExplorerHeader } from './explorerHeader';
 import { ExplorerSidebar } from './explorerSidebar';
 import { ExplorerIcon } from './explorerIcon';
+import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
 
-interface IProps extends IWindowProps {
+interface IWithoutExpectedServices {
     initialFileId?: number;
 }
+
+interface IProps extends IWithoutExpectedServices, IExpectedServices, IWindowProps { }
 
 interface IFolderMeta extends IFolder {
     breadcrumbs: Array<IBreadcrumb>;
@@ -35,15 +38,15 @@ interface IState {
     nextFolders: Array<IFolderMeta>;
 }
 
-export const Explorer: React.FC<IProps> = (props: IProps) => {
+export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
     const initialFileId = props.initialFileId ?? 0;
-    const file = searchFilesOnDisk(filesOnDisk, initialFileId);
+    const file = searchFilesOnDisk(props.folderStructure, initialFileId);
 
     const [selectedId, setSelectedId] = useState<number>(0);
     const [folderState, setFolderState] = useState<IState>({
         currentChangeIndex: 0,
         currentFolder: {
-            ...filesOnDisk,
+            ...props.folderStructure,
             breadcrumbs: [{
                 id: file?.id ?? 0,
                 isActive: true,
@@ -75,7 +78,7 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
     }
 
     const openFileOrFolder = (fileOrFolder: IFolder | IFile) => (e: any) => {
-        const breadcrumbs = getBreadcrumbList(fileOrFolder.id);
+        const breadcrumbs = getBreadcrumbList(fileOrFolder.id, props.folderStructure);
         if (isFolder(fileOrFolder)) {
             const newFolder = fileOrFolder as IFolder;
             const newFolderState = {
@@ -193,3 +196,8 @@ export const Explorer: React.FC<IProps> = (props: IProps) => {
     );
 }
 
+
+export const Explorer = withServices<IWithoutExpectedServices, IExpectedServices>(
+    ExplorerUnconnected,
+    dependencyInjectionToProps
+);

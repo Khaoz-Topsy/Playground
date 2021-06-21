@@ -4,18 +4,29 @@ import { FolderIcon, MusicNoteIcon, PhotographIcon } from '@heroicons/react/soli
 
 import { IFolder } from '../../../contracts/interface/IFolder';
 import { IFile } from '../../../contracts/interface/IFile';
-import { documentFolder } from '../../../constants/filesOnDisk';
+import { documentFolderId } from '../../../constants/filesOnDisk';
+import { searchFilesOnDisk } from '../../../helper/fileHelper';
+import { withServices } from '../../../integration/dependencyInjection';
 
-interface IProps {
+import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+
+interface IWithoutExpectedServices {
     openFileOrFolder: (file: IFolder | IFile) => (e: any) => void;
 }
 
-export const ExplorerSidebar: React.FC<IProps> = (props: IProps) => {
+interface IProps extends IWithoutExpectedServices, IExpectedServices { }
+
+export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
+    const documentFolder = searchFilesOnDisk(props.folderStructure, documentFolderId);
+
     return (
         <div className="explorer-sidebar noselect">
-            <div className="item" onClick={props.openFileOrFolder?.(documentFolder)}>
-                <Icon as={FolderIcon} />&nbsp;&nbsp;Documents
+            {
+                (documentFolder != null) &&
+                <div className="item" onClick={props.openFileOrFolder?.(documentFolder)}>
+                    <Icon as={FolderIcon} />&nbsp;&nbsp;Documents
                 </div>
+            }
             <div className="item">
                 <Icon as={MusicNoteIcon} />&nbsp;&nbsp;Music
             </div>
@@ -26,4 +37,9 @@ export const ExplorerSidebar: React.FC<IProps> = (props: IProps) => {
         </div>
     );
 }
+
+export const ExplorerSidebar = withServices<IWithoutExpectedServices, IExpectedServices>(
+    ExplorerSidebarUnconnected,
+    dependencyInjectionToProps
+);
 

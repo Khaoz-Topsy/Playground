@@ -1,208 +1,56 @@
-import { FileType, IAppletFile, IFile } from "../contracts/interface/IFile";
 import { IFolder } from "../contracts/interface/IFolder";
+import { Folder } from "../contracts/implementation/Folder";
 import { Backgrounds, FileIcon, External, AppletIcon } from "./appImage";
 import { DataFile } from "./dataFile";
 import { DesktopIcons } from "./desktopIconList";
 import { allKnownApps, KnownApplets } from "./knownApplets";
 import { site } from "./site";
+import { imageFile, linkFile, markDownFile } from "../helper/fileHelper";
 
-export const documentFolder: IFolder = {
-    id: 3,
-    parentId: 3,
-    name: 'Documents',
-    contents: [
-        {
-            id: 3.1,
-            parentId: 3,
-            name: 'Secrets',
-            contents: [
-                {
-                    id: 3.11,
-                    parentId: 3.1,
-                    name: 'More Secrets',
-                    contents: [
-                        {
-                            id: 3.111,
-                            parentId: 3.19,
-                            name: 'Don\'t look inside 🐲.md',
-                            imgUrl: FileIcon.markdown,
-                            type: FileType.markdown,
-                            meta: {
-                                file: DataFile.secrets
-                            }
-                        }
-                    ],
-                }
-            ],
-        },
-        {
-            id: 3.2,
-            parentId: 3,
-            name: 'ReadMe.md',
-            imgUrl: FileIcon.markdown,
-            type: FileType.markdown,
-        },
-        ...Backgrounds.map((b, index) => ({
-            id: 3.1 + ((index + 1) / 100),
-            parentId: 3,
-            name: b.name,
-            imgUrl: FileIcon.picture,
-            type: FileType.image,
-            meta: {
-                images: [b.url]
-            }
-        })),
-    ]
-};
+export const documentFolderId: any = '0.2';
 
-export const projectsFolders: Array<IFile | IAppletFile | IFolder> = [
-    {
-        id: 4,
-        parentId: 4,
-        name: 'AssistantNMS',
-        contents: [
-            {
-                id: 4.01,
-                parentId: 4,
-                name: 'Android App',
-                imgUrl: FileIcon.android,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.nms.googlePlay,
-                    showExternalIcon: true,
-                }
-            },
-            {
-                id: 4.02,
-                parentId: 4,
-                name: 'iOS App',
-                imgUrl: FileIcon.apple,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.nms.appleStore,
-                    showExternalIcon: true,
-                }
-            },
-            {
-                id: 4.03,
-                parentId: 4,
-                name: 'WebApp',
-                imgUrl: FileIcon.web,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.nms.webapp,
-                    showExternalIcon: true,
-                }
-            },
-            {
-                id: 4.04,
-                parentId: 4,
-                name: 'Homepage',
-                imgUrl: FileIcon.web,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.nms.website
-                }
-            },
-            {
-                id: 4.05,
-                parentId: 4,
-                name: 'loader.svg',
-                imgUrl: External.assistantNmsLoader,
-                type: FileType.image,
-                meta: {
-                    images: [External.assistantNmsLoader]
-                }
-            },
-            {
-                id: 4.99,
-                parentId: 4,
-                name: 'README.md',
-                imgUrl: FileIcon.markdown,
-                type: FileType.markdown,
-                meta: {
-                    file: DataFile.assistantNMSGeneral
-                }
-            }
-        ]
-    },
-    {
-        id: 5,
-        parentId: 5,
-        name: 'AssistantSMS',
-        contents: [
-            {
-                id: 5.01,
-                parentId: 5,
-                name: 'Android App',
-                imgUrl: FileIcon.android,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.sms.googlePlay,
-                    showExternalIcon: true,
-                }
-            },
-            {
-                id: 5.02,
-                parentId: 5,
-                name: 'iOS App',
-                imgUrl: FileIcon.apple,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.sms.appleStore,
-                    showExternalIcon: true,
-                }
-            },
-            {
-                id: 5.03,
-                parentId: 5,
-                name: 'WebApp',
-                imgUrl: FileIcon.web,
-                type: FileType.link,
-                meta: {
-                    external: site.assistantApps.sms.webapp,
-                    showExternalIcon: true,
-                }
-            },
-            {
-                ...KnownApplets.scrapMechanic,
-                id: 5.04,
-                parentId: 5,
-            },
-            {
-                id: 5.99,
-                parentId: 5,
-                name: 'README.md',
-                imgUrl: FileIcon.markdown,
-                type: FileType.markdown,
-                meta: {
-                    file: DataFile.assistantSMSGeneral
-                }
-            }
-        ]
+export const getFilesOnDisk = (): IFolder => {
+    const rootFolder = new Folder({ name: 'root' });
+
+    const appFolderIndex = rootFolder.addSubFolder(new Folder({
+        name: 'Applications',
+        imgUrl: AppletIcon.application,
+    }));
+    for (const app of allKnownApps()) {
+        (rootFolder.contents[appFolderIndex] as Folder)?.addFile?.(app);
     }
-];
 
-export const filesOnDisk: IFolder = {
-    id: 0,
-    parentId: 0,
-    name: 'root',
-    contents: [
-        {
-            id: 1,
-            parentId: 0,
-            name: 'Applications',
-            imgUrl: AppletIcon.application,
-            contents: allKnownApps(),
-        },
-        {
-            id: 2,
-            parentId: 0,
-            name: 'Desktop',
-            contents: DesktopIcons
-        },
-        { ...documentFolder, parentId: 0 },
-        ...projectsFolders.map(proj => ({ ...proj, parentId: 0 })),
-    ]
+    const desktopFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Desktop' }));
+    for (const icon of DesktopIcons) {
+        (rootFolder.contents[desktopFolderIndex] as Folder)?.addFile?.(icon);
+    }
+
+    const documentFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Documents' }));
+    const documentFolderSecretsIndex = (rootFolder.contents[documentFolderIndex] as Folder)?.addSubFolder?.(new Folder({ name: 'Secrets' }));
+    const documentFolderMoreSecretsIndex = ((rootFolder.contents[documentFolderIndex] as Folder).contents[documentFolderSecretsIndex] as Folder)?.addSubFolder?.(new Folder({ name: 'More Secrets' }));
+    ((rootFolder.contents[documentFolderIndex] as Folder).contents[documentFolderMoreSecretsIndex] as Folder).addFile(markDownFile('Don\'t look inside 🐲.md', DataFile.secrets));
+    (rootFolder.contents[documentFolderIndex] as Folder)?.addFile?.(markDownFile('ReadMe.md', DataFile.secrets));
+    for (const background of Backgrounds) {
+        (rootFolder.contents[documentFolderIndex] as Folder)?.addFile?.(imageFile(background.name, null, [background.url]));
+    }
+
+    const assistantNMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'AssistantNMS' }));
+    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
+    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('iOS App', FileIcon.apple, site.assistantApps.nms.appleStore));
+    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('WebApp', FileIcon.web, site.assistantApps.nms.webapp));
+    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('Homepage', FileIcon.web, site.assistantApps.nms.website));
+    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(imageFile('loader.svg', External.assistantNmsLoader, [External.assistantNmsLoader]));
+    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(markDownFile('README.md', DataFile.assistantNMSGeneral));
+
+    const assistantSMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'AssistantSMS' }));
+    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.sms.googlePlay));
+    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(linkFile('iOS App', FileIcon.apple, site.assistantApps.sms.appleStore));
+    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(linkFile('WebApp', FileIcon.web, site.assistantApps.sms.webapp));
+    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile({ ...KnownApplets.scrapMechanic });
+    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(markDownFile('README.md', DataFile.assistantSMSGeneral));
+
+    console.warn({ ...rootFolder.toIFolder() });
+    return rootFolder.toIFolder();
 };
+
 

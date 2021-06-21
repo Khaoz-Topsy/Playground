@@ -1,13 +1,17 @@
 import React from 'react';
+
+import { IFolder } from '../contracts/interface/IFolder';
 import { anyObject } from '../helper/typescriptHacks';
 
 import { DataService } from '../services/DataService';
 import { BlogRssService } from '../services/BlogRssService';
 import { VirtualAssistantService } from '../services/VirtualAssistantService';
 import { StorageService } from '../services/StorageService';
+import { getFilesOnDisk } from '../constants/filesOnDisk';
 
 export interface IDependencyInjection {
     // Common
+    folderStructure: IFolder,
     dataService: DataService;
     storageService: StorageService;
 
@@ -21,6 +25,7 @@ export const defaultDependencyInjectionFunc: GetServices = () => {
     const storageService = new StorageService();
     return {
         // Common
+        folderStructure: getFilesOnDisk(),
         dataService: new DataService(),
         storageService,
 

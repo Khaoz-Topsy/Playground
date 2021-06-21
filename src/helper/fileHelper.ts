@@ -1,7 +1,7 @@
-import { filesOnDisk } from "../constants/filesOnDisk";
-import { IBreadcrumb } from "../contracts/interface/IBreadcrumb";
-import { IFile } from "../contracts/interface/IFile";
-import { IFolder, isFolder } from "../contracts/interface/IFolder";
+import { FileIcon } from '../constants/appImage';
+import { IBreadcrumb } from '../contracts/interface/IBreadcrumb';
+import { FileType, IFile } from '../contracts/interface/IFile';
+import { IFolder, isFolder } from '../contracts/interface/IFolder';
 
 export const searchFilesOnDisk = (node: IFile | IFolder, id: number): IFile | IFolder | null => {
     if (id === -1) return null;
@@ -27,7 +27,7 @@ export const fileToBreadCrumb = (node: IFile | IFolder): IBreadcrumb => ({
     name: node.name,
 });
 
-export const getBreadcrumbList = (id: number): Array<IBreadcrumb> => {
+export const getBreadcrumbList = (id: number, filesOnDisk: IFolder): Array<IBreadcrumb> => {
     const crumbs: Array<IBreadcrumb> = [];
     if (id === -1) return crumbs;
 
@@ -47,3 +47,26 @@ export const getBreadcrumbList = (id: number): Array<IBreadcrumb> => {
 
     return crumbs.reverse();
 }
+
+export const markDownFile = (name: string, filePath: string) => ({
+    name,
+    imgUrl: FileIcon.markdown,
+    type: FileType.markdown,
+    meta: {
+        file: filePath
+    }
+});
+
+export const imageFile = (name: string, imgUrl: string | null, images: Array<string>) => ({
+    name,
+    imgUrl: imgUrl ?? FileIcon.picture,
+    type: FileType.image,
+    meta: { images }
+});
+
+export const linkFile = (name: string, imgUrl: string, external: string, showExternalIcon = true) => ({
+    name,
+    imgUrl,
+    type: FileType.link,
+    meta: { external, showExternalIcon, }
+});

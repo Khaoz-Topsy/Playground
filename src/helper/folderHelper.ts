@@ -1,3 +1,4 @@
+import { IAppletFile, IFile } from "../contracts/interface/IFile";
 import { IFolder } from "../contracts/interface/IFolder";
 
 export const createFolder = (name: string): IFolder => {
@@ -8,3 +9,4 @@ export const createFolder = (name: string): IFolder => {
         contents: []
     };
 }
+
