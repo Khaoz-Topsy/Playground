@@ -8,7 +8,9 @@ export const site = {
         website: 'https://kurtlourens.com',
         blog: 'https://blog.kurtlourens.com',
         twitter: 'https://twitter.com/KhaozTopsy',
+        twitch: 'https://twitch.tv/khaoztopsy',
         github: 'https://github.com/Khaoz-Topsy',
+        youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
     },
     stream: {
         twitch: 'https://www.twitch.tv/khaoztopsy',

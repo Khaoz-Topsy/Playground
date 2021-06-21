@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, Spinner } from '@chakra-ui/react';
 
-import { KhaozBlogType } from '../../../contracts/interface/IBlogRssFeed';
+import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
 import { withServices } from '../../../integration/dependencyInjection';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
@@ -14,12 +14,12 @@ interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
 export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) => {
     const [isLoaded, setIsLoaded] = useState(false);
-    const [blogfeed, setBlogFeed] = useState<KhaozBlogType>({ title: '', items: [] });
+    const [blogItems, setBlogItems] = useState<Array<KhaozBlogItem>>([]);
 
     useEffect(() => {
-        props.blogRssService.getBlogPosts().then((blog: ResultWithValue<KhaozBlogType>) => {
+        props.kurtApiService.getBlogPosts().then((blog: ResultWithValue<Array<KhaozBlogItem>>) => {
             if (!blog.isSuccess) return;
-            setBlogFeed(blog.value);
+            setBlogItems(blog.value);
             setIsLoaded(true);
         }).catch((_) => { });
         // eslint-disable-next-line
@@ -36,12 +36,12 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                     <p>Welcome! to Kurt's Playground 🕹🎮</p>
                     <br />
                     {
-                        (blogfeed?.title?.length > 5) &&
+                        (blogItems?.length > 0) &&
                         <>
                             <h3>Latest blog posts</h3>
                             <ul>
                                 {
-                                    (blogfeed?.items?.slice?.(0, 5) ?? []).map(item => {
+                                    (blogItems?.slice?.(0, 5) ?? []).map(item => {
                                         return (
                                             <NotificationDrawerIcon key={item.guid} {...item} />
                                         );

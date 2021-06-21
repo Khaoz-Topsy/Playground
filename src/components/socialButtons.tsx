@@ -42,6 +42,22 @@ export const PersonalTwitter: React.FC = () => {
     );
 }
 
+export const PersonalTwitch: React.FC = () => {
+    return (
+        <BasicBtn href={site.kurt.twitch} buttonClass="twitch-btn" label="KhaozTopsy">
+            <BasicImage imageUrl="/assets/img/social/twitch.svg" />
+        </BasicBtn>
+    );
+}
+
+export const PersonalYoutube: React.FC = () => {
+    return (
+        <BasicBtn href={site.kurt.youtube} buttonClass="youtube-btn" label="KhaozTopsy">
+            <BasicImage imageUrl="/assets/img/social/youtube.svg" />
+        </BasicBtn>
+    );
+}
+
 export const AssistantNmsYoutube: React.FC = () => {
     return (
         <BasicBtn href={site.assistantApps.youtube} buttonClass="youtube-btn" label="AssistantNMS">

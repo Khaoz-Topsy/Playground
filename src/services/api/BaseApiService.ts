@@ -10,10 +10,12 @@ declare global {
 }
 
 export class BaseApiService {
-  private _baseUrl: String = window.config.apiUrl;
+  private _baseUrl: String = '';
 
   constructor(newBaseUrl?: String) {
-    if (newBaseUrl != null) this._baseUrl = newBaseUrl;
+    this._baseUrl = (newBaseUrl != null)
+      ? newBaseUrl
+      : window.config.apiUrl;
 
     try {
       const storageServ = new StorageService();

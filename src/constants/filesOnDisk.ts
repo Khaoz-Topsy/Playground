@@ -26,31 +26,39 @@ export const getFilesOnDisk = (): IFolder => {
     }
 
     const documentFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Documents' }));
-    const documentFolderSecretsIndex = (rootFolder.contents[documentFolderIndex] as Folder)?.addSubFolder?.(new Folder({ name: 'Secrets' }));
-    const documentFolderMoreSecretsIndex = ((rootFolder.contents[documentFolderIndex] as Folder).contents[documentFolderSecretsIndex] as Folder)?.addSubFolder?.(new Folder({ name: 'More Secrets' }));
-    ((rootFolder.contents[documentFolderIndex] as Folder).contents[documentFolderMoreSecretsIndex] as Folder).addFile(markDownFile('Don\'t look inside 🐲.md', DataFile.secrets));
-    (rootFolder.contents[documentFolderIndex] as Folder)?.addFile?.(markDownFile('ReadMe.md', DataFile.secrets));
+    const docFolder = getFolder(rootFolder, documentFolderIndex);
+    const documentFolderSecretsIndex = docFolder?.addSubFolder?.(new Folder({ name: 'Secrets' }));
+    const secretsDocFolder = getFolder(docFolder, documentFolderSecretsIndex);
+    const documentFolderMoreSecretsIndex = secretsDocFolder?.addSubFolder?.(new Folder({ name: 'More Secrets' }));
+    const moreSecretsDocFolder = getFolder(secretsDocFolder, documentFolderMoreSecretsIndex);
+    moreSecretsDocFolder.addFile(markDownFile('Don\'t look inside 🐲.md', DataFile.secrets));
+
+    getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile('ReadMe.md', DataFile.secrets));
     for (const background of Backgrounds) {
-        (rootFolder.contents[documentFolderIndex] as Folder)?.addFile?.(imageFile(background.name, null, [background.url]));
+        docFolder?.addFile?.(imageFile(background.name, null, [background.url]));
     }
 
+    // const kurtFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Kurt' }));
+    // getFolder(rootFolder, kurtFolderIndex)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
+
     const assistantNMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'AssistantNMS' }));
-    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
-    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('iOS App', FileIcon.apple, site.assistantApps.nms.appleStore));
-    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('WebApp', FileIcon.web, site.assistantApps.nms.webapp));
-    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(linkFile('Homepage', FileIcon.web, site.assistantApps.nms.website));
-    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(imageFile('loader.svg', External.assistantNmsLoader, [External.assistantNmsLoader]));
-    (rootFolder.contents[assistantNMSFolderIndex] as Folder)?.addFile(markDownFile('README.md', DataFile.assistantNMSGeneral));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile('iOS App', FileIcon.apple, site.assistantApps.nms.appleStore));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile('WebApp', FileIcon.web, site.assistantApps.nms.webapp));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile('Homepage', FileIcon.web, site.assistantApps.nms.website));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(imageFile('loader.svg', External.assistantNmsLoader, [External.assistantNmsLoader]));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile('README.md', DataFile.assistantNMSGeneral));
 
     const assistantSMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'AssistantSMS' }));
-    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.sms.googlePlay));
-    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(linkFile('iOS App', FileIcon.apple, site.assistantApps.sms.appleStore));
-    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(linkFile('WebApp', FileIcon.web, site.assistantApps.sms.webapp));
-    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile({ ...KnownApplets.scrapMechanic });
-    (rootFolder.contents[assistantSMSFolderIndex] as Folder)?.addFile(markDownFile('README.md', DataFile.assistantSMSGeneral));
+    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.sms.googlePlay));
+    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile('iOS App', FileIcon.apple, site.assistantApps.sms.appleStore));
+    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile('WebApp', FileIcon.web, site.assistantApps.sms.webapp));
+    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.scrapMechanic });
+    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(markDownFile('README.md', DataFile.assistantSMSGeneral));
 
     console.warn({ ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();
 };
 
+const getFolder = (rootFolder: Folder, index: number): Folder => rootFolder.contents[index] as Folder;
 

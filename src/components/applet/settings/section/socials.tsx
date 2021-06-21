@@ -1,7 +1,10 @@
 import React from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
 
-import { PersonalGithub, PersonalTwitter, AssistantAppsDiscord, AssistantAppsTwitter, AssistantNmsYoutube } from '../../../socialButtons';
+import {
+    PersonalGithub, PersonalTwitter, PersonalTwitch, /*PersonalYoutube,*/
+    AssistantAppsDiscord, AssistantAppsTwitter, AssistantNmsYoutube
+} from '../../../socialButtons';
 import { SettingItemSection } from '../settingItemSection';
 
 export const SettingSocials: React.FC = () => {
@@ -11,6 +14,8 @@ export const SettingSocials: React.FC = () => {
                 <SimpleGrid minChildWidth="200px" columnGap="10px" rowGap="10px" className="mt1">
                     <PersonalGithub />
                     <PersonalTwitter />
+                    <PersonalTwitch />
+                    {/* <PersonalYoutube /> */}
                 </SimpleGrid>
             </SettingItemSection>
             <br />
