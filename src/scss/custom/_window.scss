@@ -15,6 +15,7 @@ svg.handle {
     height: 15px;
     stroke: white;
     cursor: se-resize;
+    pointer-events: all;
 }
 
 .window-manager {
@@ -22,7 +23,7 @@ svg.handle {
     pointer-events: none;
 
     // >* {
-    //     pointer-events: all;
+    //     pointer-events: unset;
     // }
 
     >div {
@@ -72,7 +73,6 @@ svg.handle {
     display: inline-block;
     box-sizing: content-box;
     border-radius: $window-border-radius;
-    pointer-events: all;
 
     &.is-focused {
         background-color: _palette(bg-transparent-focused);
@@ -95,6 +95,7 @@ svg.handle {
         border-top-left-radius: $window-border-radius;
         border-top-right-radius: $window-border-radius;
         border: #{$window-border-line} solid _palette(bg-header);
+        pointer-events: all;
 
         .window-icon {
             position: absolute;
@@ -144,6 +145,7 @@ svg.handle {
         max-height: calc(100% - #{$window-header-height + 3}px);
         overflow: hidden auto;
         z-index: 0;
+        pointer-events: all;
 
         &.full-content,
         &.full-content>div,
