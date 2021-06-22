@@ -12,6 +12,10 @@
     padding-left: 10px;
     user-select: none;
 
+    &:hover {
+        box-shadow: unset;
+    }
+
     .inner {
         align-items: center;
         display: flex;
