@@ -21,9 +21,9 @@ svg.handle {
     z-index: _zindex(window-base);
     pointer-events: none;
 
-    >* {
-        pointer-events: all;
-    }
+    // >* {
+    //     pointer-events: all;
+    // }
 
     >div {
         width: 1px;
@@ -72,6 +72,7 @@ svg.handle {
     display: inline-block;
     box-sizing: content-box;
     border-radius: $window-border-radius;
+    pointer-events: all;
 
     &.is-focused {
         background-color: _palette(bg-transparent-focused);

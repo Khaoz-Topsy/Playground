@@ -70,6 +70,7 @@ $explorer-icon-size: 100px;
         .window-with-sidebar {
             display: flex;
             height: 100%;
+            overflow: hidden;
 
             .sidebar {
                 min-width: 200px;
@@ -88,6 +89,7 @@ $explorer-icon-size: 100px;
 
             .offset-content {
                 flex-grow: 1;
+                overflow: auto;
 
                 .folder-contents {
                     display: flex;
@@ -95,6 +97,7 @@ $explorer-icon-size: 100px;
                     align-items: flex-start;
                     align-content: flex-start;
                     height: 100%;
+                    margin-bottom: 3em;
 
                     .explorer-icon {
                         margin: 0.5em 1em;
