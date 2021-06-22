@@ -1,7 +1,7 @@
 import classNames from 'classnames'
 import Draggable from 'react-draggable'
 import React, { ReactNode, useState } from 'react'
-import { ResizableBox } from 'react-resizable'
+import { ResizableBox, ResizeCallbackData } from 'react-resizable'
 import { Box, Center, Container, Spinner } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
@@ -25,17 +25,23 @@ interface IState {
 }
 
 export const Window: React.FC<IProps> = (props: IProps) => {
+    const [keyIndex, setKeyIndex] = useState<number>(0);
     const [state, setState] = useState<IState>({
         height: props.defaultHeight ?? defaultHeight,
         width: props.defaultWidth ?? defaultWidth,
     });
 
-    const onResize = (event: any, data: any) => {
+    const onResize = (_: any, data: ResizeCallbackData) => {
         setState({
             ...state,
             width: data.size.width,
             height: data.size.height
         });
+    };
+
+    const onResizeStop = (_: any, __: ResizeCallbackData) => {
+        if (props.refreshOnResize != true) return;
+        setKeyIndex(keyIndex + 1);
     };
 
     const topLevelStyle = {
@@ -97,6 +103,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                     height={state.height}
                     width={state.width}
                     onResize={onResize}
+                    onResizeStop={onResizeStop}
                     minConstraints={[minWidth, minHeight]}
                     handle={<CustomResizeHandle />}
                 >
@@ -115,7 +122,10 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                             {
                                 props.headerFunc(props)
                             }
-                            <WindowContent classNames={classNames(props.classNames, { 'full-content': props.isFullscreen })}>
+                            <WindowContent
+                                key={`${props.appletType}-${keyIndex}`}
+                                classNames={classNames(props.classNames, { 'full-content': props.isFullscreen })}
+                            >
                                 {
                                     (props.sidebar != null)
                                         ? (

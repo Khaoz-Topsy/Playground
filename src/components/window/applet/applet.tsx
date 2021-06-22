@@ -13,20 +13,13 @@ interface IProps extends IWindowProps {
 }
 
 export const Applet: React.FC<IProps> = (props: IProps) => {
-    const headerFunc = (app: IApplet): ReactNode => (
-        <WindowHeader
-            {...app}
-            name={app.name}
-            windowIcon={app.appletType !== AppletType.iframe
-                ? windowIcon(app.appletType)
-                : iframeIcon(app?.meta?.icon)}
-        />
-    );
-    return (
-        <Window
-            {...props}
-            headerFunc={headerFunc}
-        />
-    );
+    const headerFunc = (app: IApplet): ReactNode => {
+        const iconComponent = app.appletType !== AppletType.iframe
+            ? windowIcon(app.appletType)
+            : iframeIcon(app?.meta?.icon);
+        return (<WindowHeader {...app} windowIcon={iconComponent} />);
+    };
+
+    return (<Window {...props} headerFunc={headerFunc} />);
 }
 

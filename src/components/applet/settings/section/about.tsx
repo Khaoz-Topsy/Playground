@@ -1,7 +1,10 @@
 import React from 'react';
 import { Center } from '@chakra-ui/react';
+
 import { BasicLink } from '../../../core/link';
 import { BasicLazyImage } from '../../../core/image';
+
+import packageJson from '../../../../../package.json';
 
 export const SettingAbout: React.FC = () => {
     return (
@@ -22,6 +25,8 @@ export const SettingAbout: React.FC = () => {
             <p style={{ textAlign: 'center' }}>
                 This website is intended to give you information on projects I have worked on in a more fun and interactive way!
             </p>
+            <br />
+            <p style={{ textAlign: 'center' }}>Version: {packageJson.version}</p>
         </>
     );
 }

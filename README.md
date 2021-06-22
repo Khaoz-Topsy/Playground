@@ -8,11 +8,11 @@ Few cool things added:
 - https://github.com/1egoman/funnies
 - https://github.com/milkandsour/nyanloader/blob/master/nyanloader.js
 - https://www.npmjs.com/package/react-animated-term
+- Use keyboard shortcuts `alt + leftArrow` and `alt + rightArrow` for back and forward navigation in the file explorer
+  - Using https://craig.is/killing/mice
 
 Things that I will be adding 
 - More files and folders
-- Mousetrap for alt + leftArrow for back and forward nav in explorer
-  - https://craig.is/killing/mice
 - Harlem shake
   - https://www.npmjs.com/package/harlem-shake
 - Blueprint

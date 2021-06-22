@@ -9,12 +9,22 @@ export const IFrameApplet: React.FC<IProps> = (props: IProps) => {
     const {
         key = 'unknown',
         src = 'https://khaoznet.xyz',
-        style = undefined
+        style = undefined,
+        refreshOnResize = false,
+        defaultHeight = undefined,
+        defaultWidth = undefined,
     } = props?.meta;
+
+    const propsFromMeta = {
+        refreshOnResize,
+        defaultHeight,
+        defaultWidth,
+    };
 
     return (
         <Applet
             {...props}
+            {...propsFromMeta}
             key={`${key}-window`}
             name={props.name}
             showLoading={true}
@@ -22,8 +32,8 @@ export const IFrameApplet: React.FC<IProps> = (props: IProps) => {
         >
             <iframe
                 id={key}
-                key={key}
-                title={key}
+                key={`${key}-frame`}
+                title={props.name}
                 className="pos-abs-top-left"
                 style={style}
                 src={src}

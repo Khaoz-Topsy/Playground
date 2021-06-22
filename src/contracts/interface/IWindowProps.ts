@@ -8,6 +8,8 @@ export interface IWindowProps extends IApplet {
     classNames?: string;
 
     showLoading?: boolean;
+    refreshOnResize?: boolean;
+
     isFullscreen?: boolean;
     isFocused?: boolean;
     isMinimised?: boolean;

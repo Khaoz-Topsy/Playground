@@ -65,13 +65,8 @@ export class KnownApplets {
         parentId: 1.23,
         name: 'Assistant for Scrap Mechanic',
         imgUrl: AppletIcon.assistantSMS,
-        appletType: AppletType.iframe,
-        type: FileType.iframeApplet,
-        meta: {
-            key: 'assistantSMS',
-            src: site.assistantApps.sms.webapp,
-            icon: AppletIcon.assistantSMS,
-        }
+        appletType: AppletType.assistantSMS,
+        type: FileType.applet,
     };
 
 
