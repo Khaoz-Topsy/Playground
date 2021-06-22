@@ -17,4 +17,5 @@ export interface IApplet {
 export interface IAdditionalAppletProps {
     defaultPageIndex?: number;
     isMinimised?: boolean;
+    notOpen?: boolean;
 }

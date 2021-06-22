@@ -1,8 +1,6 @@
 import { FileType, IAppletFile } from '../contracts/interface/IFile';
 import { AppletIcon, FileIcon } from './appImage';
 import { AppletType } from './enum/appletType';
-import { site } from './site';
-
 export class KnownApplets {
     static settings: IAppletFile = {
         id: 1.01,

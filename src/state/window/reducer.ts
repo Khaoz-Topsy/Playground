@@ -18,6 +18,36 @@ export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: 
         return store;
     }
 
+    const openAppFunc = openApp(appletType, name, meta);
+    return openAppFunc(store);
+}
+
+export const openAppFromTaskbar = (app: LaunchedApp) => (store: IWindowStore): IWindowStore => {
+    const currentApps = store.activeApps.map(aa => ({ ...aa }));
+    const currentApp = currentApps.find(aa => aa.appletType === app.appletType);
+
+    if (currentApp == null) {
+        const openAppFunc = openApp(app.appletType, app.name, app.meta);
+        return openAppFunc(store);
+    }
+
+    const currentAppIsOnTop = currentApp?.appletType === store.currentFocused;
+    const isNotMinimised = !(currentApp?.meta?.isMinimised);
+
+    const setNewFocusForAppFunc = setNewFocusForApp(app.appletType);
+    store = setNewFocusForAppFunc(store);
+    if (currentAppIsOnTop === false && isNotMinimised) return store;
+
+    if (currentAppIsOnTop === false && isNotMinimised === false) {
+        store = setMinimiseForApp(store, app.appletType, false);
+        return store;
+    }
+
+    store = setMinimiseForApp(store, app.appletType);
+    return store;
+}
+
+export const openApp = (appletType: AppletType, name: string, meta?: any) => (store: IWindowStore): IWindowStore => {
     const sortOrderArray = store.activeApps.map(aa => aa.openOrder);
     // const numExisting: number = store.activeApps.filter(aa => aa.appletType === appletType).length;
     const newActiveApp: LaunchedApp = {
@@ -30,25 +60,6 @@ export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: 
 
     store.currentFocused = appletType;
     store.activeApps = [...store.activeApps, newActiveApp];
-    return store;
-}
-
-export const openAppFromTaskbar = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
-    const currentApps = store.activeApps.map(aa => ({ ...aa }));
-    const currentApp = currentApps.find(aa => aa.appletType === appletType);
-
-    const currentAppIsOnTop = currentApp?.appletType === store.currentFocused;
-    const isNotMinimised = !(currentApp?.meta?.isMinimised);
-
-    store = setNewFocusForApp(appletType)(store);
-    if (currentAppIsOnTop === false && isNotMinimised) return store;
-
-    if (currentAppIsOnTop === false && isNotMinimised === false) {
-        store = setMinimiseForApp(store, appletType, false);
-        return store;
-    }
-
-    store = setMinimiseForApp(store, appletType);
     return store;
 }
 

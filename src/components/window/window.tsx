@@ -40,7 +40,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
     };
 
     const onResizeStop = (_: any, __: ResizeCallbackData) => {
-        if (props.refreshOnResize != true) return;
+        if (props.refreshOnResize !== true) return;
         setKeyIndex(keyIndex + 1);
     };
 

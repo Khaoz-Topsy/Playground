@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { motion } from 'framer-motion';
 
-import { LaunchedApp } from '../../../contracts/launchedApp';
+import { isNotLaunched, LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { windowTaskbarIcon } from '../../window/windowIcon';
 
 interface IProps {
     index: number;
     selected?: boolean;
-    applet: LaunchedApp;
-    openApp: (index: number) => (e: any) => void;
+    applet: LaunchedApp | NotLaunchedApp;
+    openApp: (app: LaunchedApp | NotLaunchedApp) => (e: any) => void;
 }
 
 export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
@@ -35,7 +35,8 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
             scale: 1, opacity: 0,
         },
     }
-    const classes = classNames('applet-shortcut open noselect', {
+    const classes = classNames('applet-shortcut taskbar-highlight-on-hover noselect', {
+        'open': !isNotLaunched(props.applet),
         'minimised': (props.applet.meta.isMinimised ?? false),
         'selected': (props.selected ?? false),
         'initial': initial,
@@ -50,7 +51,7 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
             variants={variants}
             exit={variants.closed}
         >
-            <div onClick={props?.openApp?.(props.applet.appletType)}>
+            <div onClick={props?.openApp?.(props.applet)}>
                 {windowTaskbarIcon(props.applet.appletType)}
             </div>
         </motion.div>

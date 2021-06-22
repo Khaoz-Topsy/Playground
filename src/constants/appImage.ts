@@ -4,7 +4,7 @@ export const error = imgFolder + 'appIcons/error.png';
 
 export class AppletIcon {
     static kurt = imgFolder + 'appIcons/kurt.png';
-    static windows = imgFolder + 'appIcons/windows.svg';
+    static windows = imgFolder + 'appIcons/windows.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
     static settings = imgFolder + 'appIcons/setting2.png';

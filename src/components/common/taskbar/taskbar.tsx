@@ -5,13 +5,14 @@ import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
 import { AppletIcon } from '../../../constants/appImage';
-import { LaunchedApp } from '../../../contracts/launchedApp';
-import { AppletType } from '../../../constants/enum/appletType';
+import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
 
 import { WindowStore } from '../../../state/window/store';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { TaskbarIcon } from './taskbarIcon';
+import { TaskbarList } from '../../../constants/taskbarList';
+import { anyObject } from '../../../helper/typescriptHacks';
 
 interface IProps {
     onOpen: () => void;
@@ -20,8 +21,34 @@ interface IProps {
 export const Taskbar: React.FC<IProps> = (props: IProps) => {
     const windStore = WindowStore.useState(store => store);
 
-    const openApp = (appletType: AppletType) => (e: any) => {
-        WindowStore.update(openAppFromTaskbar(appletType));
+    const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
+        WindowStore.update(openAppFromTaskbar({
+            ...app,
+            meta: { ...app.meta, notOpen: undefined },
+        }));
+    }
+
+    const appsToDisplay: Array<LaunchedApp | NotLaunchedApp> = [];
+    for (const taskbar of TaskbarList) {
+        const currentActiveApp = windStore.activeApps.find(aa => aa.appletType === taskbar.appletType);
+        if (currentActiveApp != null) {
+            appsToDisplay.push(currentActiveApp);
+            continue;
+        }
+
+        appsToDisplay.push({
+            ...taskbar,
+            openOrder: 1,
+            meta: {
+                ...(taskbar.meta ?? anyObject),
+            },
+            isActive: false,
+        });
+    }
+
+    const activeAppsNotInTaskbar = windStore.activeApps.filter(aa => appsToDisplay.findIndex(atd => atd.appletType === aa.appletType) < 0);
+    for (const activeApp of activeAppsNotInTaskbar) {
+        appsToDisplay.push(activeApp);
     }
 
     return (
@@ -31,7 +58,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
                     <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
                 </div>
                 {
-                    windStore.activeApps.map((applet: LaunchedApp, index: number) => {
+                    appsToDisplay.map((applet: LaunchedApp | NotLaunchedApp, index: number) => {
                         return (
                             <TaskbarIcon
                                 key={applet.appletType}
