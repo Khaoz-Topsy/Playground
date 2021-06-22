@@ -1,5 +1,7 @@
 import React from 'react';
+import { Icon } from '@chakra-ui/icons';
 import { Image, Center } from '@chakra-ui/react';
+import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
 import { AppletIcon } from '../../../constants/appImage';
@@ -25,7 +27,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
     return (
         <div className="taskbar">
             <AnimatePresence>
-                <div className="applet-shortcut noselect">
+                <div className="start-menu taskbar-highlight-on-hover applet-shortcut noselect">
                     <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
                 </div>
                 {
@@ -42,9 +44,14 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
                     })
                 }
             </AnimatePresence>
-            <div className="taskbar-tray noselect" onClick={props.onOpen}>
+            <div className="taskbar-tray taskbar-highlight-on-hover noselect">
                 <Center>
                     <p>{currentShortTime()}<br />{currentShortDate()}</p>
+                </Center>
+            </div>
+            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={props.onOpen}>
+                <Center>
+                    <Icon as={BellIcon} />
                 </Center>
             </div>
         </div>

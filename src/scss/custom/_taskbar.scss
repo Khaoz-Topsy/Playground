@@ -11,6 +11,14 @@
     height: #{$taskbar-height}em;
     z-index: _zindex(taskbar);
 
+    .taskbar-highlight-on-hover {
+        transition: background-color 250ms ease-in-out;
+
+        &:hover {
+            background-color: $taskbar-hover;
+        }
+    }
+
     .applet-shortcut {
         position: relative;
         width: #{$taskbar-height + 0.5}em;
@@ -67,14 +75,30 @@
         }
     }
 
-    .taskbar-tray {
-        position: absolute;
-        bottom: 0;
-        right: 0;
+    .taskbar-tray,
+    .taskbar-notification {
+        float: right;
         height: #{$taskbar-height}em;
         color: _palette(fg);
-        width: #{$taskbar-height * 2}em;
         cursor: pointer;
+    }
+
+    .taskbar-notification {
+
+        >div {
+            height: #{$taskbar-height}em;
+            padding: 0 1em;
+        }
+
+        svg {
+            height: #{$taskbar-height / 2}em;
+            width: #{$taskbar-height / 3}em;
+        }
+    }
+
+    .taskbar-tray {
+        width: #{$taskbar-height * 2}em;
+        padding: 0 0.5em;
 
         p {
             text-align: center;
