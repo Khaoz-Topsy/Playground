@@ -24,7 +24,8 @@
         .icon {
             display: flex;
             justify-content: center;
-            min-width: 26px;
+            width: 26px;
+            margin-left: 3px;
         }
 
         .text {
@@ -55,18 +56,16 @@
     @extend .base-social-btn;
     color: #ffffff;
     background: #cc0000;
-
-    .icon {
-        width: 24px;
-    }
 }
 
 .twitch-btn {
     @extend .base-social-btn;
     color: #ffffff;
     background: #9146FF;
+}
 
-    .icon {
-        width: 24px;
-    }
+.linkedin-btn {
+    @extend .base-social-btn;
+    color: #ffffff;
+    background: #1a81b9;
 }

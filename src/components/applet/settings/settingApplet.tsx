@@ -8,6 +8,7 @@ import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
 import { SettingGithub } from './section/github';
 import { SettingSocials } from './section/socials';
+import { defaultSettingWidth } from '../../../constants/window';
 
 interface IProps extends IApplet {
     pageIndex?: number;
@@ -46,7 +47,10 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
     ];
 
     return (
-        <Applet {...props} >
+        <Applet
+            {...props}
+            defaultWidth={defaultSettingWidth}
+        >
             <Container maxW={"container.xl"}>
                 <Box mt={4}>
                     <Grid templateColumns="repeat(3, 1fr)" gap={10}>
