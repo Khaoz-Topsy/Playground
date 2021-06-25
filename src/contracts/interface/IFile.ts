@@ -22,6 +22,18 @@ export interface IAppletFile extends IFile {
     meta?: any;
 }
 
+export interface IStartMenuAppletFile extends IAppletFile {
+    backgroundColour?: string;
+    size: StartMenuSize;
+}
+
+export enum StartMenuSize {
+    small,
+    wide,
+    tall,
+    large,
+}
+
 export const isApplet = (fileOrApplet: IFile | IAppletFile): fileOrApplet is IAppletFile => {
     return (fileOrApplet as IAppletFile).appletType !== undefined;
 }
