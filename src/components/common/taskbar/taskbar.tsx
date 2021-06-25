@@ -5,17 +5,18 @@ import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
 import { AppletIcon } from '../../../constants/appImage';
+import { TaskbarList } from '../../../constants/taskbarList';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
+import { anyObject } from '../../../helper/typescriptHacks';
 
 import { WindowStore } from '../../../state/window/store';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
+
 import { TaskbarIcon } from './taskbarIcon';
-import { TaskbarList } from '../../../constants/taskbarList';
-import { anyObject } from '../../../helper/typescriptHacks';
 
 interface IProps {
-    onOpen: () => void;
+    drawerOnOpen: () => void;
 }
 
 export const Taskbar: React.FC<IProps> = (props: IProps) => {
@@ -76,7 +77,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
                     <p>{currentShortTime()}<br />{currentShortDate()}</p>
                 </Center>
             </div>
-            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={props.onOpen}>
+            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={props.drawerOnOpen}>
                 <Center>
                     <Icon as={BellIcon} />
                 </Center>

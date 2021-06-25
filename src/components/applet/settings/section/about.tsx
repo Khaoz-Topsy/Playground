@@ -3,6 +3,7 @@ import { Center } from '@chakra-ui/react';
 
 import { BasicLink } from '../../../core/link';
 import { BasicLazyImage } from '../../../core/image';
+import { site } from '../../../../constants/site';
 
 import packageJson from '../../../../../package.json';
 
@@ -12,7 +13,7 @@ export const SettingAbout: React.FC = () => {
             <Center position="relative">
                 <BasicLazyImage
                     classNames="settings-about"
-                    imageUrl="https://kurtlourens.com/assets/images/KurtAvatar.svg"
+                    imageUrl={site.kurt.profilePic}
                     imageName="Kurt Lourens"
                     alt="Kurt Lourens"
                 />

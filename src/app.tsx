@@ -7,6 +7,7 @@ import { WindowManager } from './components/window/windowManager';
 import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { InitialisationScreen } from './components/common/initialisationScreen';
 import { appPreloadAssets } from './helper/cacheHelper';
+import { StartMenu } from './components/common/startmenu/startMenu';
 
 interface IProps { }
 
@@ -30,7 +31,8 @@ export const App: React.FC<IProps> = (props: IProps) => {
       <div className="fullscreen">
         <Desktop />
         <WindowManager />
-        <Taskbar onOpen={onOpen} />
+        <Taskbar drawerOnOpen={onOpen} />
+        <StartMenu />
         <Drawer
           isOpen={isOpen}
           placement="right"

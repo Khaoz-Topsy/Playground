@@ -5,6 +5,7 @@ export const site = {
     kurt: {
         fullName: 'Kurt Lourens',
         nickName: 'Khaoz-Topsy',
+        profilePic: 'https://kurtlourens.com/assets/images/KurtAvatar.svg',
         website: 'https://kurtlourens.com',
         blog: 'https://blog.kurtlourens.com',
         twitter: 'https://twitter.com/KhaozTopsy',
