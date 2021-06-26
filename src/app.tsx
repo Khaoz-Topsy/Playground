@@ -32,7 +32,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
         <Desktop />
         <WindowManager />
         <Taskbar drawerOnOpen={onOpen} />
-        <StartMenu />
+        {/* <StartMenu /> */}
         <Drawer
           isOpen={isOpen}
           placement="right"
