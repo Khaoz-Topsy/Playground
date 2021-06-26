@@ -2,15 +2,13 @@ import React from 'react'
 import { AppletIcon } from '../../../constants/appImage';
 
 import { site } from '../../../constants/site';
+import { defaultScrapMechanicHeight, defaultScrapMechanicWidth } from '../../../constants/window';
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { IFrameApplet } from '../iframe/iframeApplet';
 
 interface IProps extends IApplet { }
 
 export const AssistantSMSApplet: React.FC<IProps> = (props: IProps) => {
-    const defaultWidth = 400;
-    const defaultHeight = 600;
-
     return (
         <IFrameApplet
             {...props}
@@ -20,8 +18,8 @@ export const AssistantSMSApplet: React.FC<IProps> = (props: IProps) => {
                 src: site.assistantApps.sms.webapp,
                 icon: AppletIcon.assistantSMS,
                 refreshOnResize: true,
-                defaultHeight,
-                defaultWidth,
+                defaultHeight: defaultScrapMechanicHeight,
+                defaultWidth: defaultScrapMechanicWidth,
             }}
         />
     );

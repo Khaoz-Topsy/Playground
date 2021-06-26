@@ -8,5 +8,13 @@ export const defaultHeight = 500;
 // Setting
 export const defaultSettingWidth = 730;
 
+// ScrapMechanic
+export const defaultScrapMechanicWidth = minWidth;
+export const defaultScrapMechanicHeight = 600;
+
+// MusicPlayer
+export const defaultMusicPlayerWidth = 400;
+export const defaultMusicPlayerHeight = 500;
+
 export const defaultPictureViewerWidth = 650;
 export const defaultPictureViewerHeight = 400;

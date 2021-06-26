@@ -8,6 +8,7 @@ import { NotificationDrawer } from './components/common/drawer/notificationDrawe
 import { InitialisationScreen } from './components/common/initialisationScreen';
 import { appPreloadAssets } from './helper/cacheHelper';
 import { StartMenu } from './components/common/startmenu/startMenu';
+import { SettingStore } from './state/setting/store';
 
 interface IProps { }
 
@@ -15,6 +16,10 @@ export const App: React.FC<IProps> = (props: IProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldFade, setShouldFade] = useState(false);
+  const [isStartMenuOpen, setStartMenuOpen] = useState(false);
+
+  const currentSettings = SettingStore.useState(store => store);
+  const brightnessPerc = (currentSettings.brightness / 2) + 50;
 
   useEffect(() => {
     appPreloadAssets()
@@ -26,13 +31,22 @@ export const App: React.FC<IProps> = (props: IProps) => {
     // eslint-disable-next-line
   }, []);
 
+  const toggleStartMenu = () => setStartMenuOpen(!isStartMenuOpen);
+
   return (
     <DarkMode>
-      <div className="fullscreen">
+      <div className="fullscreen" style={{ filter: `brightness(${brightnessPerc}%)` }}>
         <Desktop />
         <WindowManager />
-        <Taskbar drawerOnOpen={onOpen} />
-        {/* <StartMenu /> */}
+        <Taskbar
+          drawerOnOpen={onOpen}
+          toggleStartMenu={toggleStartMenu}
+          setStartMenuOpen={setStartMenuOpen}
+        />
+        <StartMenu
+          isOpen={isStartMenuOpen}
+          toggleStartMenu={toggleStartMenu}
+        />
         <Drawer
           isOpen={isOpen}
           placement="right"

@@ -73,6 +73,7 @@ svg.handle {
     display: inline-block;
     box-sizing: content-box;
     border-radius: $window-border-radius;
+    pointer-events: all;
 
     &.is-focused {
         background-color: _palette(bg-transparent-focused);

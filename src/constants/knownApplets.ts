@@ -66,6 +66,14 @@ export class KnownApplets {
         appletType: AppletType.assistantSMS,
         type: FileType.applet,
     };
+    static musicPlater: IAppletFile = {
+        id: 1.24,
+        parentId: 1.24,
+        name: 'Music Player',
+        imgUrl: AppletIcon.music,
+        appletType: AppletType.musicPlayer,
+        type: FileType.applet,
+    };
 
 
     static nyanCat: IAppletFile = {

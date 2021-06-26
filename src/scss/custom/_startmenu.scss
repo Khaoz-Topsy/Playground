@@ -1,15 +1,33 @@
 $startmenu-padding-left: 15px;
+$startmenu-width: 70;
+
+.startmenu-bg {
+    z-index: _zindex(startmenu);
+}
 
 .startmenu {
     position: absolute;
-    bottom: #{$taskbar-height}em;
-    width: 70vw;
-    min-height: 80vh;
-    padding: 10px $startmenu-padding-left 10px 15px;
-    background-color: _palette(bg);
+    bottom: -100vh;
     display: flex;
+    width: #{$startmenu-width/3}vw;
+    min-height: 70vh;
+
+    @extend .glass-background;
+    background-color: _palette(bg-transparent);
     box-shadow: 0 0 3px #333;
-    z-index: _zindex(startmenu);
+
+    overflow: hidden;
+    transition: all 400ms ease-in-out;
+    z-index: #{_zindex(startmenu) + 1};
+
+    opacity: 0;
+
+    &.isOpen {
+        // bottom: 0;
+        bottom: #{$taskbar-height}em;
+        opacity: 1;
+        width: #{$startmenu-width}vw;
+    }
 
     h3 {
         color: darken($base-fg, 25%);
@@ -18,20 +36,28 @@ $startmenu-padding-left: 15px;
 
     .list {
         flex: 2;
-        border-right: 1px solid _palette(bg-sidebar);
         margin-right: 3em;
         position: relative;
+        padding: 15px $startmenu-padding-left;
+        border-right: 1px solid _palette(bg-sidebar);
+        background-color: _palette(bg-transparent);
 
         .profile {
             display: flex;
             align-items: center;
             color: $base-fg;
+            margin-left: -0.5em;
+            padding: 0.5em 0.5em 0.5em 0.5em;
+            border-radius: 10px;
+
+            &:hover {
+                background-color: darken(_palette(bg), 5%);
+            }
 
             .profile-pic {
-                width: 50px;
-                height: 50px;
+                width: 35px;
+                height: 35px;
                 margin-right: 15px;
-                background-color: _palette(bg);
                 border-radius: 100%;
             }
         }
@@ -41,7 +67,14 @@ $startmenu-padding-left: 15px;
             color: $base-fg;
 
             li {
-                margin: 0.5em 0;
+                padding: 5px;
+                margin: 0 0 0 -5px;
+                border-radius: 5px;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: darken(_palette(bg), 5%);
+                }
 
                 img {
                     max-height: 35px;
@@ -71,7 +104,7 @@ $startmenu-padding-left: 15px;
     }
 
     .tiles-section {
-        flex: 6;
+        flex: 7;
         display: flex;
     }
 
@@ -104,9 +137,24 @@ $startmenu-padding-left: 15px;
 
         .tile {
             flex: 1;
-            padding: 10px 10px;
-            background: _palette(windows-select-border);
             margin: 5px;
+            padding: 10px 10px;
+            border-radius: 2px;
+            background-color: _palette(windows-select-border);
+            cursor: pointer;
+
+            &.full {
+                padding: 0;
+                position: relative;
+
+                img {
+                    padding: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: fill;
+                    border-radius: 2px;
+                }
+            }
 
             img {
                 padding: 0 10px;

@@ -6,6 +6,7 @@ import { withServices } from '../../../integration/dependencyInjection';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
 import { NotificationDrawerIcon } from './notificationDrawerIcon';
+import { NetworkState } from '../../../constants/enum/networkState';
 
 interface IWithoutExpectedServices {
     onClose(): void
@@ -13,15 +14,18 @@ interface IWithoutExpectedServices {
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
 export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) => {
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [networkState, setNetworkState] = useState<NetworkState>(NetworkState.Loading);
     const [blogItems, setBlogItems] = useState<Array<KhaozBlogItem>>([]);
 
     useEffect(() => {
         props.kurtApiService.getBlogPosts().then((blog: ResultWithValue<Array<KhaozBlogItem>>) => {
-            if (!blog.isSuccess) return;
+            if (!blog.isSuccess) {
+                setNetworkState(NetworkState.Error);
+                return;
+            }
             setBlogItems(blog.value);
-            setIsLoaded(true);
-        }).catch((_) => { });
+            setNetworkState(NetworkState.Success);
+        });
         // eslint-disable-next-line
     }, []);
 
@@ -51,7 +55,7 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                         </>
                     }
                     {
-                        (isLoaded === false) && <Center><Spinner size="xl" /></Center>
+                        (networkState === NetworkState.Loading) && <Center><Spinner size="xl" /></Center>
                     }
                 </DrawerBody>
 

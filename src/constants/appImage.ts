@@ -1,4 +1,5 @@
 const imgFolder = '/assets/img/';
+const vidFolder = '/assets/vid/';
 
 export const error = imgFolder + 'appIcons/error.png';
 
@@ -13,6 +14,7 @@ export class AppletIcon {
     static folder = imgFolder + 'appIcons/folder.png';
     static application = imgFolder + 'appIcons/application.png';
     static vsCode = imgFolder + 'appIcons/vsCode.png';
+    static music = imgFolder + 'appIcons/music.png';
 }
 
 export class FileIcon {
@@ -23,6 +25,10 @@ export class FileIcon {
     static web = imgFolder + 'fileIcons/web.png';
 
     static miniLink = imgFolder + 'fileIcons/externalIcon.png';
+}
+
+export class MiscIcon {
+    static streamPreview = vidFolder + 'streamPreview.min.gif';
 }
 
 export const Backgrounds = [

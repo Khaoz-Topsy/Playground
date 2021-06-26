@@ -10,6 +10,7 @@ export const windowIconString = (appletType: AppletType): string => {
         case AppletType.picture: return FileIcon.picture;
         case AppletType.notes: return FileIcon.markdown;
 
+        case AppletType.musicPlayer: return AppletIcon.music;
         case AppletType.assistantSMS: return AppletIcon.assistantSMS;
         case AppletType.kurt: return AppletIcon.kurt;
         case AppletType.vsCode: return AppletIcon.vsCode;

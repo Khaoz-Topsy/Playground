@@ -13,6 +13,7 @@ export const site = {
         github: 'https://github.com/Khaoz-Topsy',
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
         linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
+        spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
     },
     stream: {
         twitch: 'https://www.twitch.tv/khaoztopsy',

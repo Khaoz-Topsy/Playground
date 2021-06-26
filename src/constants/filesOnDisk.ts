@@ -6,6 +6,7 @@ import { DesktopIcons } from "./desktopIconList";
 import { allKnownApps, KnownApplets } from "./knownApplets";
 import { site } from "./site";
 import { imageFile, linkFile, markDownFile } from "../helper/fileHelper";
+import { sortAlphabeticallyByProp } from "../helper/sortHelper";
 
 export const documentFolderId: any = '0.2';
 
@@ -16,7 +17,8 @@ export const getFilesOnDisk = (): IFolder => {
         name: 'Applications',
         imgUrl: AppletIcon.application,
     }));
-    for (const app of allKnownApps()) {
+    const allKnownAppsSorted = sortAlphabeticallyByProp(allKnownApps(), 'name');
+    for (const app of allKnownAppsSorted) {
         (rootFolder.contents[appFolderIndex] as Folder)?.addFile?.(app);
     }
 

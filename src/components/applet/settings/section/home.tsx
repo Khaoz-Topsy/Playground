@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Checkbox, Select, Text } from '@chakra-ui/react';
+import { SunIcon, BellIcon } from '@chakra-ui/icons';
+import { Box, Checkbox, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
 
 import { SettingItemSection } from '../settingItemSection';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
@@ -44,16 +45,27 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
         })
     }
 
-    console.log(currentSettings);
+    const sliderOnChange = (attr: string) => (newValue: number) => {
+        SettingStore.update((store: ISettingStore) => {
+            (store as any)[attr] = newValue;
+        })
+    }
+
+    const {
+        background,
+        brightness,
+        volume,
+        enabledClippy,
+    } = currentSettings;
 
     return (
-        <Box>
+        <Box className="noselect">
             <SettingItemSection
                 heading="Settings"
                 subTexts={['Customise the site to your preferences']}
             >
                 <Box my={5}>
-                    <Select isFullWidth={true} value={currentSettings.background} onChange={backgroundDropDownChange}>
+                    <Select isFullWidth={true} value={background} onChange={backgroundDropDownChange}>
                         {
                             bgOptions.map(dropdownOpt => {
                                 return (
@@ -65,8 +77,30 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                         }
                     </Select>
                 </Box>
+                <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
+                    <Text fontSize="md">Brightness</Text>
+                    <Slider mb="1" value={brightness} onChange={sliderOnChange('brightness')}>
+                        <SliderTrack>
+                            <SliderFilledTrack bg="blue.400" />
+                        </SliderTrack>
+                        <SliderThumb boxSize={6}>
+                            <SunIcon color="blue.400" />
+                        </SliderThumb>
+                    </Slider>
+                </Box>
+                <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
+                    <Text fontSize="md">Volume</Text>
+                    <Slider mb="1" value={volume} onChange={sliderOnChange('volume')}>
+                        <SliderTrack>
+                            <SliderFilledTrack bg="blue.400" />
+                        </SliderTrack>
+                        <SliderThumb boxSize={6}>
+                            <BellIcon color="blue.400" />
+                        </SliderThumb>
+                    </Slider>
+                </Box>
                 <Box my={5}>
-                    <Checkbox colorScheme={'primary'} iconColor="white" isChecked={currentSettings.enabledClippy} onChange={onEnableClippyChange}>Enable Clippy</Checkbox>
+                    <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>Enable Clippy</Checkbox>
                     <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Get tips from the best virtual assistant to have ever lived! Disable to ensure that Clippy stays hidden.</Text>
                 </Box>
                 {/* <Box my={5}>
@@ -74,7 +108,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Use the website in dark mode.</Text>
                 </Box> */}
             </SettingItemSection>
-        </Box>
+        </Box >
     );
 }
 

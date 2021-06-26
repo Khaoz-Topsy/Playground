@@ -12,6 +12,7 @@ export enum AppletType {
     vsCode,
     assistantNMS,
     assistantSMS,
+    musicPlayer,
 
     // Funny
     nyanCat,

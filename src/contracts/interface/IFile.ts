@@ -22,10 +22,13 @@ export interface IAppletFile extends IFile {
     meta?: any;
 }
 
-export interface IStartMenuAppletFile extends IAppletFile {
+export interface IStartMenuItemProps {
     backgroundColour?: string;
+    backgroundImage?: string;
     size: StartMenuSize;
 }
+export interface IStartMenuFile extends IStartMenuItemProps, IFile { }
+export interface IStartMenuAppletFile extends IStartMenuItemProps, IAppletFile { }
 
 export enum StartMenuSize {
     small,

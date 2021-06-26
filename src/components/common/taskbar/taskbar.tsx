@@ -16,6 +16,8 @@ import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { TaskbarIcon } from './taskbarIcon';
 
 interface IProps {
+    toggleStartMenu: () => void;
+    setStartMenuOpen: (newValue: boolean) => void;
     drawerOnOpen: () => void;
 }
 
@@ -23,6 +25,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
     const windStore = WindowStore.useState(store => store);
 
     const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
+        props.setStartMenuOpen(false);
         WindowStore.update(openAppFromTaskbar({
             ...app,
             meta: { ...app.meta, notOpen: undefined },
@@ -55,7 +58,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
     return (
         <div className="taskbar">
             <AnimatePresence>
-                <div className="start-menu taskbar-highlight-on-hover applet-shortcut noselect">
+                <div className="start-menu taskbar-highlight-on-hover applet-shortcut noselect" onClick={props.toggleStartMenu}>
                     <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
                 </div>
                 {
