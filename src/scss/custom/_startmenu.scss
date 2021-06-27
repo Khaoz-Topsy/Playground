@@ -9,8 +9,8 @@ $startmenu-width: 70;
     position: absolute;
     bottom: -100vh;
     display: flex;
-    width: #{$startmenu-width/3}vw;
-    min-height: 70vh;
+    width: 0;
+    height: 0;
 
     @extend .glass-background;
     background-color: _palette(bg-transparent);
@@ -27,6 +27,7 @@ $startmenu-width: 70;
         bottom: #{$taskbar-height}em;
         opacity: 1;
         width: #{$startmenu-width}vw;
+        height: 70vh;
     }
 
     h3 {
