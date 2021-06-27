@@ -64,6 +64,10 @@ $explorer-icon-size: 100px;
 
     .window-content.explorer {
         margin-top: #{$window-header-explorer-height + 3}px;
+    }
+
+    .window-content.explorer,
+    .window-content.setting {
         height: calc(100% - #{$window-header-explorer-height + 3}px);
         padding-bottom: 0;
 
@@ -168,6 +172,17 @@ $explorer-icon-size: 100px;
                 border-radius: 5px;
                 margin-left: 0.5em;
                 margin-right: 0.5em;
+            }
+        }
+    }
+
+
+    .window-content.setting {
+        .window-with-sidebar {
+            .sidebar {
+                padding-top: 1em;
+                padding-left: 1em;
+                border-right: unset;
             }
         }
     }

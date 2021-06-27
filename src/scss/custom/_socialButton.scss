@@ -1,3 +1,5 @@
+$iconWidth: 26;
+
 .base-social-btn {
     display: block;
     height: 50px;
@@ -24,12 +26,20 @@
         .icon {
             display: flex;
             justify-content: center;
-            width: 26px;
+            width: #{$iconWidth}px;
             margin-left: 3px;
+            margin-right: #{$iconWidth / 2}px;
         }
 
         .text {
+            padding-right: 5px;
             padding-bottom: 3px;
+            text-align: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
         }
     }
 }
@@ -68,4 +78,10 @@
     @extend .base-social-btn;
     color: #ffffff;
     background: #1a81b9;
+}
+
+.steam-btn {
+    @extend .base-social-btn;
+    color: #ffffff;
+    background: linear-gradient(-60deg, #00adee, #007aa7);
 }

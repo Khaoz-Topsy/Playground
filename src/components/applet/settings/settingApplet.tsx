@@ -1,14 +1,19 @@
 import React, { useState } from 'react';
-import { Box, Container, Grid, GridItem } from '@chakra-ui/react';
+import { Box, Container } from '@chakra-ui/react';
+import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon } from '@chakra-ui/icons';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { Applet } from '../../window/applet/applet';
+import { defaultSettingWidth } from '../../../constants/window';
+
+import { WindowHeader } from '../../window/windowHeader';
+import { windowIcon } from '../../window/windowIcon';
+import { Window } from '../../window/window';
 import { SettingItem } from './settingItem';
 import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
 import { SettingGithub } from './section/github';
-import { SettingSocials } from './section/socials';
-import { defaultSettingWidth } from '../../../constants/window';
+import { SettingPersonalSocials } from './section/personalSocials';
+import { SettingOtherSocials } from './section/otherSocials';
 
 interface IProps extends IApplet {
     pageIndex?: number;
@@ -23,62 +28,75 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
         pageIndex: props.pageIndex ?? 0,
     });
 
+    const chakraIconMarginRight = "3";
+    const chakraIconMarginBottom = "1";
+
     const pages = [
         {
             title: 'General',
             new: false,
-            comp: <SettingHome />
+            comp: <SettingHome />,
+            icon: <SettingsIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
             title: 'Github',
             new: false,
-            comp: <SettingGithub />
+            comp: <SettingGithub />,
+            icon: <InfoOutlineIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
-            title: 'Socials',
+            title: 'Personal Socials',
             new: false,
-            comp: <SettingSocials />
+            comp: <SettingPersonalSocials />,
+            icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
+        },
+        {
+            title: 'Other Socials',
+            new: false,
+            comp: <SettingOtherSocials />,
+            icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
             title: 'About',
             new: false,
-            comp: <SettingAbout />
+            comp: <SettingAbout />,
+            icon: <QuestionIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
     ];
 
     return (
-        <Applet
+        <Window
             {...props}
+            isFullscreen={true}
+            classNames="setting"
+            headerFunc={() => <WindowHeader {...props} windowIcon={windowIcon(props.appletType)} />}
             defaultWidth={defaultSettingWidth}
+            sidebar={
+                <Box borderColor={'whiteAlpha.400'} borderRadius={'md'} borderWidth={'1px'} >
+                    {
+                        pages.map((page, index: number) => {
+                            return (
+                                <SettingItem
+                                    key={page.title}
+                                    name={page.title}
+                                    icon={page.icon}
+                                    isActive={index === state.pageIndex}
+                                    onClick={() => setState({ ...state, pageIndex: index })}
+                                    isFirst={index === 0}
+                                    isLast={index === (pages.length - 1)}
+                                    new={page.new}
+                                />
+                            );
+                        })
+                    }
+                </Box>
+            }
         >
             <Container maxW={"container.xl"}>
                 <Box mt={4}>
-                    <Grid templateColumns="repeat(3, 1fr)" gap={10}>
-                        <GridItem colSpan={1}>
-                            <Box borderColor={'whiteAlpha.400'} borderRadius={'md'} borderWidth={'1px'} >
-                                {
-                                    pages.map((page, index: number) => {
-                                        return (
-                                            <SettingItem
-                                                key={page.title}
-                                                name={page.title}
-                                                isActive={index === state.pageIndex}
-                                                onClick={() => setState({ ...state, pageIndex: index })}
-                                                isFirst={index === 0}
-                                                isLast={index === (pages.length - 1)}
-                                                new={page.new}
-                                            />
-                                        );
-                                    })
-                                }
-                            </Box>
-                        </GridItem>
-                        <GridItem colSpan={2}>
-                            {pages[state.pageIndex].comp}
-                        </GridItem>
-                    </Grid>
+                    {pages[state.pageIndex].comp}
                 </Box>
             </Container>
-        </Applet>
+        </Window>
     );
 }

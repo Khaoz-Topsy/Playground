@@ -2,12 +2,11 @@ import React from 'react';
 import { SimpleGrid } from '@chakra-ui/react';
 
 import {
-    PersonalGithub, PersonalTwitter, PersonalTwitch, PersonalLinkedIn, /*PersonalYoutube,*/
-    AssistantAppsDiscord, AssistantAppsTwitter, AssistantNmsYoutube,
+    PersonalGithub, PersonalTwitter, PersonalTwitch, PersonalLinkedIn, PersonalSteam, PersonalDiscord,/*PersonalYoutube,*/
 } from '../../../socialButtons';
 import { SettingItemSection } from '../settingItemSection';
 
-export const SettingSocials: React.FC = () => {
+export const SettingPersonalSocials: React.FC = () => {
     return (
         <div style={{ textAlign: 'center' }}>
             <SettingItemSection heading="Personal accounts" showDivider={false}>
@@ -15,16 +14,10 @@ export const SettingSocials: React.FC = () => {
                     <PersonalGithub />
                     <PersonalTwitter />
                     <PersonalTwitch />
-                    {/* <PersonalYoutube /> */}
                     <PersonalLinkedIn />
-                </SimpleGrid>
-            </SettingItemSection>
-            <br />
-            <SettingItemSection heading="AssistantApps accounts" showDivider={false}>
-                <SimpleGrid minChildWidth="200px" columnGap="10px" rowGap="10px" className="mt1">
-                    <AssistantAppsDiscord />
-                    <AssistantAppsTwitter />
-                    <AssistantNmsYoutube />
+                    <PersonalSteam />
+                    <PersonalDiscord />
+                    {/* <PersonalYoutube /> */}
                 </SimpleGrid>
             </SettingItemSection>
         </div>

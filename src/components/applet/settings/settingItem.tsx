@@ -1,11 +1,13 @@
 import * as React from 'react';
 import { Badge, Box } from "@chakra-ui/react";
+import { ReactNode } from 'react-markdown';
 
 interface ISettingItem {
     name: string;
     isLast?: boolean;
     isFirst?: boolean;
     isActive?: boolean;
+    icon?: ReactNode;
     new?: boolean;
     onClick: () => void;
 }
@@ -33,7 +35,10 @@ export const SettingItem: React.FC<ISettingItem> = (props: ISettingItem) => {
             _hover={{ background: 'gray.600' }}
         >
 
-            <Box color="white">{props.name}</Box>
+            <Box color="white">
+                {props.icon && props.icon}
+                {props.name}
+            </Box>
             {
                 props.new && <Box><Badge colorScheme="green">NEW</Badge></Box>
             }

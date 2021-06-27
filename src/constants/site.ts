@@ -14,6 +14,8 @@ export const site = {
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
         linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
+        steam: 'https://steamcommunity.com/id/Khaoz-Topsy',
+        discord: 'KhaozTopsy#1000',
     },
     stream: {
         twitch: 'https://www.twitch.tv/khaoztopsy',
@@ -23,7 +25,6 @@ export const site = {
         name: 'AssistantApps',
         email: 'mailto:support@assistantapps.com',
         website: 'https://assistantapps.com',
-        twitter: 'https://twitter.com/AssistantNMS',
         tools: 'https://tools.assistantapps.com',
         github: 'https://assistantapps.com/github',
         discord: 'https://assistantapps.com/discord',
@@ -34,11 +35,15 @@ export const site = {
             webapp: 'https://app.nmsassistant.com',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.no_mans_sky_recipes',
             appleStore: 'https://apps.apple.com/us/app/id1480287625',
+            twitter: 'https://twitter.com/AssistantNMS',
+            github: 'https://github.com/AssistantNMS',
         },
         sms: {
             webapp: 'https://scrapassistant.com/',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.scrap_mechanic',
             appleStore: 'https://apps.apple.com/us/app/id1519215611',
+            githubOrg: 'https://github.com/AssistantSMS',
+            githubApp: 'https://github.com/AssistantSMS/App',
         }
     }
 }
