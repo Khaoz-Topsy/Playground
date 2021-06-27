@@ -1,6 +1,7 @@
 
 import { KnownApplets } from '../constants/knownApplets';
 import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuSize } from '../contracts/interface/IFile';
+import { LocaleKey } from '../localization/LocaleKey';
 import { MiscIcon } from './appImage';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [
@@ -13,7 +14,7 @@ export const StartMenuMostUsed: Array<IAppletFile> = [
 export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile> = [
     {
         ...KnownApplets.kurtLourens,
-        name: 'Online CV',
+        name: LocaleKey.onlineCV,
         size: StartMenuSize.small,
         backgroundColour: '#abe9cd',
         backgroundImage: 'linear-gradient(315deg, #8ce1ba 0%, #3eadcf 74%)',
@@ -35,7 +36,7 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
     {
         id: 99,
         parentId: 99,
-        name: 'TwitchStream',
+        name: LocaleKey.unknown,
         imgUrl: MiscIcon.streamPreview,
         type: FileType.link,
         size: StartMenuSize.large

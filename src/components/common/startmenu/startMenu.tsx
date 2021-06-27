@@ -7,6 +7,7 @@ import { StartMenuApplications, StartMenuMostUsed } from '../../../constants/sta
 import { isApplet, StartMenuSize } from '../../../contracts/interface/IFile';
 
 import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
+import { translate } from '../../../integration/i18n';
 
 interface IProps {
     isOpen: boolean;
@@ -64,7 +65,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                                             style={{ backgroundColor: sMenu.backgroundColour, backgroundImage: sMenu.backgroundImage }}
                                         >
                                             <BasicImage imageUrl={sMenu.imgUrl} />
-                                            {isApp && <p>{sMenu.name}</p>}
+                                            {isApp && <p>{translate(sMenu.name)}</p>}
                                         </div>
                                     );
                                 })

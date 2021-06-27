@@ -7,6 +7,8 @@ import { ISettingStore, SettingStore } from '../../../../state/setting/store';
 import { withServices } from '../../../../integration/dependencyInjection';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
+import { translate } from '../../../../integration/i18n';
+import { LocaleKey } from '../../../../localization/LocaleKey';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
@@ -61,8 +63,8 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     return (
         <Box className="noselect">
             <SettingItemSection
-                heading="Settings"
-                subTexts={['Customise the site to your preferences']}
+                heading={translate(LocaleKey.settings)}
+                subTexts={[translate(LocaleKey.customiseSettings)]}
             >
                 <Box my={5}>
                     <Select isFullWidth={true} value={background} onChange={backgroundDropDownChange}>
@@ -78,7 +80,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </Select>
                 </Box>
                 <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
-                    <Text fontSize="md">Brightness</Text>
+                    <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
                     <Slider mb="1" value={brightness} onChange={sliderOnChange('brightness')}>
                         <SliderTrack>
                             <SliderFilledTrack bg="blue.400" />
@@ -89,7 +91,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </Slider>
                 </Box>
                 <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
-                    <Text fontSize="md">Volume</Text>
+                    <Text fontSize="md">{translate(LocaleKey.volume)}</Text>
                     <Slider mb="1" value={volume} onChange={sliderOnChange('volume')}>
                         <SliderTrack>
                             <SliderFilledTrack bg="blue.400" />
@@ -100,8 +102,8 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </Slider>
                 </Box>
                 <Box my={5}>
-                    <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>Enable Clippy</Checkbox>
-                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Get tips from the best virtual assistant to have ever lived! Disable to ensure that Clippy stays hidden.</Text>
+                    <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>{translate(LocaleKey.enableClippy)}</Checkbox>
+                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>{translate(LocaleKey.clippyDescription)}</Text>
                 </Box>
                 {/* <Box my={5}>
                     <Checkbox colorScheme={'primary'} isChecked={colorMode === 'dark'} onChange={toggleColorMode}>Use Dark Mode</Checkbox>

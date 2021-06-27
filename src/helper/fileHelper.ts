@@ -2,6 +2,7 @@ import { FileIcon } from '../constants/appImage';
 import { IBreadcrumb } from '../contracts/interface/IBreadcrumb';
 import { FileType, IFile } from '../contracts/interface/IFile';
 import { IFolder, isFolder } from '../contracts/interface/IFolder';
+import { LocaleKey } from '../localization/LocaleKey';
 
 export const searchFilesOnDisk = (node: IFile | IFolder, id: number): IFile | IFolder | null => {
     if (id === -1) return null;
@@ -48,7 +49,7 @@ export const getBreadcrumbList = (id: number, filesOnDisk: IFolder): Array<IBrea
     return crumbs.reverse();
 }
 
-export const markDownFile = (name: string, filePath: string) => ({
+export const markDownFile = (name: LocaleKey, filePath: string) => ({
     name,
     imgUrl: FileIcon.markdown,
     type: FileType.markdown,
@@ -57,14 +58,14 @@ export const markDownFile = (name: string, filePath: string) => ({
     }
 });
 
-export const imageFile = (name: string, imgUrl: string | null, images: Array<string>) => ({
+export const imageFile = (name: LocaleKey, imgUrl: string | null, images: Array<string>) => ({
     name,
     imgUrl: imgUrl ?? FileIcon.picture,
     type: FileType.image,
     meta: { images }
 });
 
-export const linkFile = (name: string, imgUrl: string, external: string, showExternalIcon = true) => ({
+export const linkFile = (name: LocaleKey, imgUrl: string, external: string, showExternalIcon = true) => ({
     name,
     imgUrl,
     type: FileType.link,

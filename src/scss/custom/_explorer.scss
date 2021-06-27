@@ -64,11 +64,11 @@ $explorer-icon-size: 100px;
 
     .window-content.explorer {
         margin-top: #{$window-header-explorer-height + 3}px;
+        height: calc(100% - #{$window-header-explorer-height + 3}px);
     }
 
     .window-content.explorer,
     .window-content.setting {
-        height: calc(100% - #{$window-header-explorer-height + 3}px);
         padding-bottom: 0;
 
         .window-with-sidebar {
@@ -178,11 +178,17 @@ $explorer-icon-size: 100px;
 
 
     .window-content.setting {
+        height: 100%;
+
         .window-with-sidebar {
             .sidebar {
                 padding-top: 1em;
                 padding-left: 1em;
                 border-right: unset;
+            }
+
+            .offset-content {
+                padding-bottom: 1em;
             }
         }
     }

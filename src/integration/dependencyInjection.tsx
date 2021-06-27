@@ -7,6 +7,8 @@ import { DataService } from '../services/DataService';
 import { KurtApiService } from '../services/api/KurtApiService';
 import { VirtualAssistantService } from '../services/VirtualAssistantService';
 import { StorageService } from '../services/StorageService';
+import { AnalyticsService } from '../services/AnalyticsService';
+import { LogService } from '../services/LogService';
 import { getFilesOnDisk } from '../constants/filesOnDisk';
 
 export interface IDependencyInjection {
@@ -14,6 +16,8 @@ export interface IDependencyInjection {
     folderStructure: IFolder,
     dataService: DataService;
     storageService: StorageService;
+    analyticsService: AnalyticsService;
+    logService: LogService;
 
     // Network
     kurtApiService: KurtApiService;
@@ -23,11 +27,15 @@ export interface IDependencyInjection {
 type GetServices = () => IDependencyInjection;
 export const defaultDependencyInjectionFunc: GetServices = () => {
     const storageService = new StorageService();
+    const logService = new LogService();
+    const analyticsService = new AnalyticsService(logService);
     return {
         // Common
         folderStructure: getFilesOnDisk(),
         dataService: new DataService(),
+        logService,
         storageService,
+        analyticsService,
 
         // Network
         kurtApiService: new KurtApiService(storageService),

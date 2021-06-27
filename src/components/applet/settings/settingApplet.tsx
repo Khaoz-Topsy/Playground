@@ -14,6 +14,7 @@ import { SettingAbout } from './section/about';
 import { SettingGithub } from './section/github';
 import { SettingPersonalSocials } from './section/personalSocials';
 import { SettingOtherSocials } from './section/otherSocials';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 interface IProps extends IApplet {
     pageIndex?: number;
@@ -33,31 +34,31 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
 
     const pages = [
         {
-            title: 'General',
+            title: LocaleKey.general,
             new: false,
             comp: <SettingHome />,
             icon: <SettingsIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
-            title: 'Github',
+            title: LocaleKey.github,
             new: false,
             comp: <SettingGithub />,
             icon: <InfoOutlineIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
-            title: 'Personal Socials',
+            title: LocaleKey.personalSocials,
             new: false,
             comp: <SettingPersonalSocials />,
             icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
-            title: 'Other Socials',
+            title: LocaleKey.otherSocials,
             new: false,
             comp: <SettingOtherSocials />,
             icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
         },
         {
-            title: 'About',
+            title: LocaleKey.about,
             new: false,
             comp: <SettingAbout />,
             icon: <QuestionIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,

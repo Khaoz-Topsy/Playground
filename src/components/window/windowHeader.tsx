@@ -1,9 +1,11 @@
 import React, { ReactNode } from 'react';
 
+import { translate } from '../../integration/i18n';
+import { LocaleKey } from '../../localization/LocaleKey';
 import { WindowActions } from './windowActions';
 
 interface IProps {
-    name: string;
+    name: LocaleKey;
     windowIcon?: ReactNode;
     onMinimise: (e: any) => void;
     onMaximise: (e: any) => void;
@@ -20,7 +22,7 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
                 </div>
             }
             <div className="content noselect">
-                {props.name}
+                {translate(props.name)}
             </div>
             <WindowActions {...props} />
         </div>

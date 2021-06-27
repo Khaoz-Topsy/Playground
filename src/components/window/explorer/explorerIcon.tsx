@@ -6,6 +6,7 @@ import { FileType, IFile } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { AppletIcon, FileIcon } from '../../../constants/appImage';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
+import { translate } from '../../../integration/i18n';
 
 interface IProps {
     index: number;
@@ -65,7 +66,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
                 {renderImage(props.iconData)}
                 {renderFileMiniImage(props.iconData)}
             </div>
-            <p draggable={false}>{props.iconData.name}</p>
+            <p draggable={false}>{translate(props.iconData.name)}</p>
         </div>
     );
 }

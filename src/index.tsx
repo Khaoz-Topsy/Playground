@@ -5,20 +5,47 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 import { App } from './app';
 import { DependencyInjectionProvider } from './integration/dependencyInjection';
+import { initLocalization } from './integration/i18n';
+import { getJSON, defaultConfig } from './utils';
 
 import './scss/custom.scss';
 import 'react-image-lightbox/style.css';
 
-ReactDOM.render(
-  <React.Fragment>
-    <DependencyInjectionProvider>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
-    </DependencyInjectionProvider>
-  </React.Fragment>,
-  document.getElementById('kurt-lourens-desktop')
-);
+declare global {
+  interface Window { config: any; registration: any }
+}
+
+// let persistedState: any = loadStateFromLocalStorage();
+// persistedState.settingReducer.menuIsVisible = false;
+
+// const store = createStore(
+//   reducer,
+//   persistedState,
+// );
+
+// store.subscribe(() => saveStateToLocalStorage(store));
+
+window.config = window.config || {};
+getJSON('/assets/config.json', (status: boolean, response: string) => {
+  window.config = (status === true)
+    ? response || {}
+    : defaultConfig;
+
+  if (window.config.consoleLogDebug) console.log('Config', window.config);
+
+  initLocalization('en');
+
+  ReactDOM.render(
+    <React.Fragment>
+      <DependencyInjectionProvider>
+        <ChakraProvider>
+          <App />
+        </ChakraProvider>
+      </DependencyInjectionProvider>
+    </React.Fragment>,
+    document.getElementById('kurt-lourens-desktop')
+  );
+})
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

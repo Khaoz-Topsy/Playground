@@ -1,8 +1,9 @@
+import { LocaleKey } from "../../localization/LocaleKey";
 import { IAppletFile, IFile } from "./IFile";
 
 export interface IFileFolderCommon {
     id: number;
-    name: string;
+    name: LocaleKey;
     parentId: number;
 }
 

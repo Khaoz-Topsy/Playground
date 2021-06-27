@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Badge, Box } from "@chakra-ui/react";
 import { ReactNode } from 'react-markdown';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { translate } from '../../../integration/i18n';
 
 interface ISettingItem {
-    name: string;
+    name: LocaleKey;
     isLast?: boolean;
     isFirst?: boolean;
     isActive?: boolean;
@@ -37,7 +39,7 @@ export const SettingItem: React.FC<ISettingItem> = (props: ISettingItem) => {
 
             <Box color="white">
                 {props.icon && props.icon}
-                {props.name}
+                {translate(props.name)}
             </Box>
             {
                 props.new && <Box><Badge colorScheme="green">NEW</Badge></Box>

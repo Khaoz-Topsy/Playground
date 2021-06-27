@@ -9,6 +9,8 @@ import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { translate } from '../../../integration/i18n';
 
 interface IWithoutExpectedServices {
     openFileOrFolder: (file: IFolder | IFile) => (e: any) => void;
@@ -24,7 +26,7 @@ export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
             {
                 (documentFolder != null) &&
                 <div className="item" onClick={props.openFileOrFolder?.(documentFolder)}>
-                    <Icon as={FolderIcon} />&nbsp;&nbsp;Documents
+                    <Icon as={FolderIcon} />&nbsp;&nbsp;{translate(LocaleKey.documents)}
                 </div>
             }
             <div className="item">

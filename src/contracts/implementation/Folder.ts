@@ -1,8 +1,9 @@
+import { LocaleKey } from "../../localization/LocaleKey";
 import { IFile, IAppletFile, FileType } from "../interface/IFile";
 import { IFolder } from "../interface/IFolder";
 
 export interface INewSubFolderProps {
-    name: string;
+    name: LocaleKey;
     parentId?: number;
     imgUrl?: string;
 }
@@ -12,7 +13,7 @@ export interface INewFolderProps extends INewSubFolderProps {
 }
 
 export interface INewFileProps {
-    name: string;
+    name: LocaleKey;
     imgUrl: string;
     type: FileType;
     meta?: any;
@@ -20,7 +21,7 @@ export interface INewFileProps {
 
 export class Folder {
     id: number;
-    name: string;
+    name: LocaleKey;
     parentId: number;
     imgUrl?: string;
     contents: Array<Folder | IFile | IAppletFile>;

@@ -1,9 +1,10 @@
 import { appletsThatCanHaveTheirNamesChanged, AppletType } from "../../constants/enum/appletType";
 import { LaunchedApp } from "../../contracts/launchedApp";
 import { anyObject } from "../../helper/typescriptHacks";
+import { LocaleKey } from "../../localization/LocaleKey";
 import { IWindowStore } from "./store";
 
-export const openAppFromDesktop = (appletType: AppletType, name: string, meta?: any) => (store: IWindowStore): IWindowStore => {
+export const openAppFromDesktop = (appletType: AppletType, name: LocaleKey, meta?: any) => (store: IWindowStore): IWindowStore => {
     const currentApp = store.activeApps.find(aa => aa.appletType === appletType);
     if (currentApp != null) {
         const currentAppIsMin = currentApp?.meta?.isMinimised ?? false;
@@ -47,7 +48,7 @@ export const openAppFromTaskbar = (app: LaunchedApp) => (store: IWindowStore): I
     return store;
 }
 
-export const openApp = (appletType: AppletType, name: string, meta?: any) => (store: IWindowStore): IWindowStore => {
+export const openApp = (appletType: AppletType, name: LocaleKey, meta?: any) => (store: IWindowStore): IWindowStore => {
     const sortOrderArray = store.activeApps.map(aa => aa.openOrder);
     // const numExisting: number = store.activeApps.filter(aa => aa.appletType === appletType).length;
     const newActiveApp: LaunchedApp = {

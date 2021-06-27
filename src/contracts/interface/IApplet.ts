@@ -1,8 +1,9 @@
 import { AppletType } from "../../constants/enum/appletType";
+import { LocaleKey } from "../../localization/LocaleKey";
 
 export interface IApplet {
     appletType: AppletType;
-    name: string;
+    name: LocaleKey;
     meta: any;
     isFocused?: boolean;
     isMinimised?: boolean;

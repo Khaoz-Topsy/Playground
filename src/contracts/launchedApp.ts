@@ -1,8 +1,9 @@
 import { AppletType } from "../constants/enum/appletType";
+import { LocaleKey } from "../localization/LocaleKey";
 import { IAdditionalAppletProps } from "./interface/IApplet";
 
 export interface LaunchedApp {
-    name: string;
+    name: LocaleKey;
     openOrder: number;
     appletType: AppletType;
     meta: IAdditionalAppletProps;

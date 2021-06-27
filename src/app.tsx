@@ -35,7 +35,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
 
   return (
     <DarkMode>
-      <div className="fullscreen" style={{ filter: `brightness(${brightnessPerc}%)` }}>
+      <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
         <Desktop />
         <WindowManager />
         <Taskbar

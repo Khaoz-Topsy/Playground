@@ -3,6 +3,7 @@ import classNames from 'classnames';
 
 import { BasicImage } from '../../../components/core/image';
 import { IAppletFile } from '../../../contracts/interface/IFile';
+import { translate } from '../../../integration/i18n';
 
 interface IProps {
     index: number;
@@ -28,7 +29,7 @@ export const DesktopIcon: React.FC<IProps> = (props: IProps) => {
                 imageUrl={props.iconData.imgUrl}
                 alt={props.iconData.name}
             />
-            <p draggable={false}>{props.iconData.name}</p>
+            <p draggable={false}>{translate(props.iconData.name)}</p>
         </div>
     );
 }
