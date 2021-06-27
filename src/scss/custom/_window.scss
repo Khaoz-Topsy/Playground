@@ -31,6 +31,12 @@ svg.handle {
         height: 1px;
     }
 
+    .react-resizable,
+    .react-resizable .window {
+        transition: transform 500ms ease-in-out;
+        transition-property: transform, width, height;
+    }
+
     .is-minimised {
         .react-draggable {
             pointer-events: none !important;
@@ -38,6 +44,19 @@ svg.handle {
 
         .handle {
             opacity: 0;
+        }
+    }
+
+    .is-maximised {
+        .react-resizable {
+            transform: translate(0, 0) !important;
+            width: 100vw !important;
+            height: calc(100vh - #{$taskbar-height}em) !important;
+        }
+
+        .window {
+            width: calc(100vw - #{$window-border-line * 2}) !important;
+            height: calc(100vh - #{$taskbar-height}em - #{$window-border-line * 2}) !important;
         }
     }
 

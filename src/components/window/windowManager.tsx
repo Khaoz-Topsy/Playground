@@ -7,7 +7,7 @@ import { AppletType } from '../../constants/enum/appletType';
 import { LaunchedApp } from '../../contracts/launchedApp';
 import { windowActionEvent } from '../../constants/enum/customWindowEvent';
 import { WindowStore } from '../../state/window/store';
-import { closeApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
+import { closeApp, maximiseApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 import { windowDisplayer } from './windowDisplayer';
 
 interface IProps { }
@@ -25,7 +25,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         applet: AppletType.none,
     });
 
-    const onMaximise = (appletType: AppletType) => (e: any) => { };
+    const onMaximise = (appletType: AppletType) => (e: any) => WindowStore.update(maximiseApp(appletType));
 
     const onSetFocus = (appletType: AppletType) => (e: any) => {
         if (e?.customEvent === windowActionEvent) return;

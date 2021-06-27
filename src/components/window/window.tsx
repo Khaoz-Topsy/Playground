@@ -33,7 +33,6 @@ export const Window: React.FC<IProps> = (props: IProps) => {
 
     const onResize = (_: any, data: ResizeCallbackData) => {
         setState({
-            ...state,
             width: data.size.width,
             height: data.size.height
         });
@@ -69,7 +68,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         closed: { scale: 0, opacity: 0, marginTop: 0 },
     }
 
-    const { isFocused, isMinimised } = props;
+    const { isFocused, isFullscreen, isMinimised, isMaximised } = props;
 
     const windowContentNode = (
         <>
@@ -81,7 +80,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                 )
             }
             {
-                props.isFullscreen
+                isFullscreen
                     ? props.children
                     : <Container maxW={"container.xl"}>
                         <Box mt={4}>
@@ -90,10 +89,10 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                     </Container>
             }
         </>
-    )
+    );
 
     return (
-        <div style={topLevelStyle} className={classNames({ 'is-minimised': isMinimised })}>
+        <div style={topLevelStyle} className={classNames({ 'is-minimised': isMinimised, 'is-maximised': isMaximised })}>
             <Draggable
                 handle=".window-header"
                 defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
@@ -105,12 +104,13 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                     onResize={onResize}
                     onResizeStop={onResizeStop}
                     minConstraints={[minWidth, minHeight]}
-                    handle={<CustomResizeHandle />}
+                    handle={isMaximised ? undefined : <CustomResizeHandle />}
                 >
                     <motion.div
+                        key={`motion-${props.appletType}`}
                         initial={variants.initial}
                         transition={{ duration: 0.5 }}
-                        animate={(props.isMinimised ?? false) ? "minimised" : "open"}
+                        animate={(isMinimised ?? false) ? "minimised" : "open"}
                         variants={variants}
                         exit={variants.closed}
                     >

@@ -64,12 +64,6 @@ export const openApp = (appletType: AppletType, name: LocaleKey, meta?: any) => 
     return store;
 }
 
-export const closeApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
-    store = InternalSetNewFocusForApp(store, appletType);
-    store.activeApps = [...store.activeApps.filter(aa => aa.appletType !== appletType)];
-    return store;
-}
-
 export const minimiseApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
     return setMinimiseForApp(store, appletType, true);
 }
@@ -100,6 +94,36 @@ export const setMinimiseForApp = (store: IWindowStore, appletType: AppletType, n
             }
         }))
     ];
+    return store;
+}
+
+export const maximiseApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
+    return setMaximiseForApp(store, appletType);
+}
+
+export const setMaximiseForApp = (store: IWindowStore, appletType: AppletType, newMax?: boolean): IWindowStore => {
+    const getNewMax = (currentApp: LaunchedApp): boolean => {
+        if (currentApp.appletType !== appletType) return currentApp.meta.isMaximised ?? false;
+
+        if (newMax != null) return newMax;
+        return !(currentApp.meta.isMaximised ?? false);
+    }
+
+    store.activeApps = [
+        ...store.activeApps.map(aa => ({
+            ...aa,
+            meta: {
+                ...aa.meta,
+                isMaximised: getNewMax(aa),
+            }
+        }))
+    ];
+    return store;
+}
+
+export const closeApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
+    store = InternalSetNewFocusForApp(store, appletType);
+    store.activeApps = [...store.activeApps.filter(aa => aa.appletType !== appletType)];
     return store;
 }
 
