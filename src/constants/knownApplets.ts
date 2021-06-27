@@ -69,7 +69,7 @@ export class KnownApplets {
         appletType: AppletType.assistantSMS,
         type: FileType.applet,
     };
-    static musicPlater: IAppletFile = {
+    static musicPlayer: IAppletFile = {
         id: 1.24,
         parentId: 1.24,
         name: LocaleKey.musicPlayer,

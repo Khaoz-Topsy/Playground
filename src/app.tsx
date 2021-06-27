@@ -31,7 +31,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
     // eslint-disable-next-line
   }, []);
 
-  const toggleStartMenu = () => setStartMenuOpen(!isStartMenuOpen);
+  const toggleStartMenu = (newValue?: boolean) => setStartMenuOpen(newValue ?? (!isStartMenuOpen));
 
   return (
     <DarkMode>
@@ -41,7 +41,6 @@ export const App: React.FC<IProps> = (props: IProps) => {
         <Taskbar
           drawerOnOpen={onOpen}
           toggleStartMenu={toggleStartMenu}
-          setStartMenuOpen={setStartMenuOpen}
         />
         <StartMenu
           isOpen={isStartMenuOpen}

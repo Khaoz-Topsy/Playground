@@ -35,5 +35,7 @@ export enum LocaleKey {
   clippyDescription = 'clippyDescription',
   personalGithubProfile = 'personalGithubProfile',
   personalAccounts = 'personalAccounts',
+  twitchStream = 'twitchStream',
+  mostUsedItems = 'mostUsedItems',
   unknown = 'unknown'
 }

@@ -1,5 +1,4 @@
 {
-  "unknown": "Unknown",
   "root": "root",
   "settings": "Settings",
   "explorer": "Explorer",
@@ -33,5 +32,8 @@
   "enableClippy": "Enable Clippy",
   "clippyDescription": "Get tips from the best virtual assistant to have ever lived! Disable to ensure that Clippy stays hidden.",
   "personalGithubProfile": "Personal Github Profile",
-  "personalAccounts": "Personal accounts"
+  "personalAccounts": "Personal accounts",
+  "twitchStream": "Twitch stream",
+  "mostUsedItems": "Most Used",
+  "unknown": "Unknown"
 }

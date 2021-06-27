@@ -16,8 +16,7 @@ import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { TaskbarIcon } from './taskbarIcon';
 
 interface IProps {
-    toggleStartMenu: () => void;
-    setStartMenuOpen: (newValue: boolean) => void;
+    toggleStartMenu: (newValue?: boolean) => void;
     drawerOnOpen: () => void;
 }
 
@@ -25,7 +24,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
     const windStore = WindowStore.useState(store => store);
 
     const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
-        props.setStartMenuOpen(false);
+        props.toggleStartMenu(false);
         WindowStore.update(openAppFromTaskbar({
             ...app,
             meta: { ...app.meta, notOpen: undefined },
@@ -58,7 +57,7 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
     return (
         <div className="taskbar">
             <AnimatePresence>
-                <div className="start-menu taskbar-highlight-on-hover applet-shortcut noselect" onClick={props.toggleStartMenu}>
+                <div className="start-menu taskbar-highlight-on-hover applet-shortcut noselect" onClick={() => props.toggleStartMenu()}>
                     <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
                 </div>
                 {
@@ -80,7 +79,10 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
                     <p>{currentShortTime()}<br />{currentShortDate()}</p>
                 </Center>
             </div>
-            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={props.drawerOnOpen}>
+            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={() => {
+                props.drawerOnOpen();
+                props.toggleStartMenu(false);
+            }}>
                 <Center>
                     <Icon as={BellIcon} />
                 </Center>

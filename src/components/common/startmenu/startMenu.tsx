@@ -1,24 +1,35 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { BasicImage, BasicLazyImage } from '../../core/image';
+import { BasicLazyImage } from '../../core/image';
 import { site } from '../../../constants/site';
 import { StartMenuApplications, StartMenuMostUsed } from '../../../constants/startMenuList';
-import { isApplet, StartMenuSize } from '../../../contracts/interface/IFile';
+import { IAppletFile, IFile } from '../../../contracts/interface/IFile';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { openAppletOrFile } from '../../../helper/appletHelper';
 
 import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
-import { translate } from '../../../integration/i18n';
+import { StartMenuTile } from './startMenuTile';
 
 interface IProps {
     isOpen: boolean;
-    toggleStartMenu: () => void;
+    toggleStartMenu: (newValue?: boolean) => void;
 }
 
 export const StartMenu: React.FC<IProps> = (props: IProps) => {
+
+    const openApp = (startMenuItem: IAppletFile | IFile) => (e: any) => {
+        e?.preventDefault();
+        e?.stopPropagation();
+        props.toggleStartMenu(false);
+        openAppletOrFile(startMenuItem);
+    }
+
     return (
         <>
             {
-                props.isOpen && <div className="startmenu-bg fullscreen" onClick={props.toggleStartMenu}></div>
+                props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu()}></div>
             }
             <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })}>
                 <section className="list">
@@ -26,15 +37,20 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                         <BasicLazyImage
                             classNames="profile-pic"
                             imageUrl={site.kurt.profilePic}
-                            imageName="Kurt Lourens"
-                            alt="Kurt Lourens"
+                            imageName={site.kurt.fullName}
+                            alt={site.kurt.fullName}
                         />
                         <p>{site.kurt.fullName}</p>
                     </div>
-                    <h3 className="mt1">Most Used</h3>
+                    <h3 className="mt1">{translate(LocaleKey.mostUsedItems)}</h3>
                     <ul className="most-used-list">
                         {
-                            StartMenuMostUsed.map(sMenu => (<StartMenuMostUsedItem key={sMenu.id} {...sMenu} />))
+                            StartMenuMostUsed.map(sMenu => (
+                                <StartMenuMostUsedItem
+                                    key={sMenu.id} {...sMenu}
+                                    onClick={openApp(sMenu)}
+                                />
+                            ))
                         }
                     </ul>
                     {/* <ul className="bottom-bar">
@@ -52,23 +68,16 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                 <section className="tiles-section">
                     <div className="tiles-section-content">
                         <header>
-                            <h3 className="mt1">Applications</h3>
+                            <h3 className="mt1">{translate(LocaleKey.applications)}</h3>
                         </header>
                         <div className="tiles-wrapper">
                             {
-                                StartMenuApplications.map(sMenu => {
-                                    const isApp = isApplet(sMenu)
-                                    const baseCss = `tile tile-${StartMenuSize[sMenu.size]}`;
-                                    return (
-                                        <div key={sMenu.id}
-                                            className={classNames(baseCss, { 'full': !isApp })}
-                                            style={{ backgroundColor: sMenu.backgroundColour, backgroundImage: sMenu.backgroundImage }}
-                                        >
-                                            <BasicImage imageUrl={sMenu.imgUrl} />
-                                            {isApp && <p>{translate(sMenu.name)}</p>}
-                                        </div>
-                                    );
-                                })
+                                StartMenuApplications.map(sMenu => (
+                                    <StartMenuTile
+                                        key={sMenu.id} {...sMenu}
+                                        onClick={openApp(sMenu)}
+                                    />
+                                ))
                             }
                         </div>
                     </div>

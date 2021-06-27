@@ -3,6 +3,7 @@ import { KnownApplets } from '../constants/knownApplets';
 import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuSize } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
 import { MiscIcon } from './appImage';
+import { site } from './site';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [
     KnownApplets.settings,
@@ -18,11 +19,9 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         size: StartMenuSize.small,
         backgroundColour: '#abe9cd',
         backgroundImage: 'linear-gradient(315deg, #8ce1ba 0%, #3eadcf 74%)',
-
-
     },
     {
-        ...KnownApplets.nyanCat,
+        ...KnownApplets.musicPlayer,
         size: StartMenuSize.small,
     },
     {
@@ -36,9 +35,11 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
     {
         id: 99,
         parentId: 99,
-        name: LocaleKey.unknown,
+        name: LocaleKey.twitchStream,
         imgUrl: MiscIcon.streamPreview,
+        isFull: true,
         type: FileType.link,
+        meta: { external: site.kurt.twitch },
         size: StartMenuSize.large
     },
 ];

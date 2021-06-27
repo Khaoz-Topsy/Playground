@@ -25,6 +25,7 @@ export interface IAppletFile extends IFile {
 export interface IStartMenuItemProps {
     backgroundColour?: string;
     backgroundImage?: string;
+    isFull?: boolean;
     size: StartMenuSize;
 }
 export interface IStartMenuFile extends IStartMenuItemProps, IFile { }
