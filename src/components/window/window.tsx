@@ -92,15 +92,18 @@ export const Window: React.FC<IProps> = (props: IProps) => {
     );
 
     return (
-        <div style={topLevelStyle} className={classNames({ 'is-minimised': isMinimised, 'is-maximised': isMaximised })}>
+        <div
+            style={{ ...topLevelStyle, zIndex: isMinimised ? -1 : topLevelStyle.zIndex }}
+            className={classNames({ 'is-minimised': isMinimised, 'is-maximised': (isMaximised && !isMinimised) })}
+        >
             <Draggable
                 handle=".window-header"
                 defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
                 bounds={{ top: 0, left: 0 }}
             >
                 <ResizableBox
-                    height={state.height}
-                    width={state.width}
+                    height={isMinimised ? 0 : state.height}
+                    width={isMinimised ? 0 : state.width}
                     onResize={onResize}
                     onResizeStop={onResizeStop}
                     minConstraints={[minWidth, minHeight]}
@@ -116,7 +119,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                     >
                         <div
                             className={classNames('window box', AppletType[props.appletType], { 'is-focused': isFocused })}
-                            style={windowStyle}
+                            style={isMinimised ? { width: 0, height: 0 } : windowStyle}
                             onClick={isFocused ? (_) => { } : props?.onSetFocus}
                         >
                             {

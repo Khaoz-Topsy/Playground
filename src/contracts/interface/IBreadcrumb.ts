@@ -1,5 +1,7 @@
+import { LocaleKey } from "../../localization/LocaleKey";
+
 export interface IBreadcrumb {
     id: number;
-    name: string;
+    name: LocaleKey;
     isActive: boolean;
 }

@@ -7,6 +7,7 @@ export const defaultHeight = 500;
 
 // Setting
 export const defaultSettingWidth = 730;
+export const defaultSettingHeight = 550;
 
 // ScrapMechanic
 export const defaultScrapMechanicWidth = minWidth;

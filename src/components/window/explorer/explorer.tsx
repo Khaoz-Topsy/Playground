@@ -10,7 +10,7 @@ import { IWindowProps } from '../../../contracts/interface/IWindowProps';
 import { openAppletOrFile } from '../../../helper/appletHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
 import { withServices } from '../../../integration/dependencyInjection';
-import { WindowStore } from '../../../state/window/store'
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 import { Window } from '../window';
 import { windowIcon } from '../windowIcon';
@@ -48,7 +48,7 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
             breadcrumbs: [{
                 id: file?.id ?? 0,
                 isActive: true,
-                name: file?.name ?? 'unknown',
+                name: file?.name ?? LocaleKey.unknown,
             }]
         },
         previousFolders: [],

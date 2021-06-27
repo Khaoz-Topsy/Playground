@@ -79,6 +79,7 @@ svg.handle {
     }
 
     .react-draggable-dragging {
+        transition: none;
         z-index: _zindex(window-base);
     }
 }

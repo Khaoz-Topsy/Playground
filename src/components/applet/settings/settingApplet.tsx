@@ -3,7 +3,7 @@ import { Box, Container } from '@chakra-ui/react';
 import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon } from '@chakra-ui/icons';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { defaultSettingWidth } from '../../../constants/window';
+import { defaultSettingWidth, defaultSettingHeight } from '../../../constants/window';
 
 import { WindowHeader } from '../../window/windowHeader';
 import { windowIcon } from '../../window/windowIcon';
@@ -72,6 +72,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
             classNames="setting"
             headerFunc={() => <WindowHeader {...props} windowIcon={windowIcon(props.appletType)} />}
             defaultWidth={defaultSettingWidth}
+            defaultHeight={defaultSettingHeight}
             sidebar={
                 <Box borderColor={'whiteAlpha.400'} borderRadius={'md'} borderWidth={'1px'} >
                     {

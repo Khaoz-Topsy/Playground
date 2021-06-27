@@ -98,10 +98,13 @@ export const setMinimiseForApp = (store: IWindowStore, appletType: AppletType, n
 }
 
 export const maximiseApp = (appletType: AppletType) => (store: IWindowStore): IWindowStore => {
-    return setMaximiseForApp(store, appletType);
+    store = setMaximiseForApp(store, appletType);
+    return store;
 }
 
 export const setMaximiseForApp = (store: IWindowStore, appletType: AppletType, newMax?: boolean): IWindowStore => {
+    const sortOrderArray = store.activeApps.map(aa => aa.openOrder);
+
     const getNewMax = (currentApp: LaunchedApp): boolean => {
         if (currentApp.appletType !== appletType) return currentApp.meta.isMaximised ?? false;
 
@@ -109,15 +112,22 @@ export const setMaximiseForApp = (store: IWindowStore, appletType: AppletType, n
         return !(currentApp.meta.isMaximised ?? false);
     }
 
+    const getNewOpenOrder = (currentApp: LaunchedApp): number => {
+        if (currentApp.appletType !== appletType) return currentApp.openOrder;
+        return Math.max(...sortOrderArray, 0) + 5;
+    }
+
     store.activeApps = [
         ...store.activeApps.map(aa => ({
             ...aa,
+            openOrder: getNewOpenOrder(aa),
             meta: {
                 ...aa.meta,
                 isMaximised: getNewMax(aa),
             }
         }))
     ];
+    store.currentFocused = appletType;
     return store;
 }
 

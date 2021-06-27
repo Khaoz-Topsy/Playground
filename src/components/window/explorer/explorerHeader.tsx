@@ -13,6 +13,7 @@ import { withServices } from '../../../integration/dependencyInjection';
 import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowActions } from '../windowActions';
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+import { translate } from '../../../integration/i18n';
 
 const navButtonAnimDuration = 250;
 
@@ -74,13 +75,14 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const displayBreadcrumb = (bread: IBreadcrumb) => {
+        const name = translate(bread.name);
         if (bread.isActive && props.breadcrumbs.length > 1) {
             return (
                 <Button color="blue.400" variant="ghost" padding={2}
                     disabled={true}
                     _hover={{ backgroundColor: 'blackAlpha.200' }}
                     _active={{ backgroundColor: 'blackAlpha.200' }}
-                >{bread.name}</Button>
+                >{name}</Button>
             );
         }
         return (
@@ -88,7 +90,7 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
                 onClick={onBreadCrumbClick(bread.id)}
                 _hover={{ backgroundColor: 'blackAlpha.200' }}
                 _active={{ backgroundColor: 'blackAlpha.200' }}
-            >{bread.name}</Button>
+            >{name}</Button>
         );
     }
 
