@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, Spinner } from '@chakra-ui/react';
+import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Spinner } from '@chakra-ui/react';
 
 import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
 import { withServices } from '../../../integration/dependencyInjection';
@@ -31,6 +31,7 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
 
     return (
         <>
+            <DrawerOverlay />
             <DrawerContent className="notification-drawer">
                 <DrawerCloseButton />
                 <DrawerHeader>Notifications</DrawerHeader>

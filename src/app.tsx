@@ -26,7 +26,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
       .then((_) => {
         setShouldFade(true);
         setTimeout(() => setIsLoaded(true), 1000);
-        setTimeout(onOpen, 2000);
+        // setTimeout(onOpen, 2000);
       });
     // eslint-disable-next-line
   }, []);

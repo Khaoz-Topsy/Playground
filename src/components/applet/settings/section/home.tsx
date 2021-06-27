@@ -81,7 +81,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 </Box>
                 <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
                     <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
-                    <Slider mb="1" value={brightness} onChange={sliderOnChange('brightness')}>
+                    <Slider mb="1.5" value={brightness} onChange={sliderOnChange('brightness')}>
                         <SliderTrack>
                             <SliderFilledTrack bg="blue.400" />
                         </SliderTrack>
@@ -92,7 +92,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 </Box>
                 <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
                     <Text fontSize="md">{translate(LocaleKey.volume)}</Text>
-                    <Slider mb="1" value={volume} onChange={sliderOnChange('volume')}>
+                    <Slider mb="1.5" value={volume} onChange={sliderOnChange('volume')}>
                         <SliderTrack>
                             <SliderFilledTrack bg="blue.400" />
                         </SliderTrack>
