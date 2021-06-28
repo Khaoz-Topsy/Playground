@@ -77,11 +77,14 @@ svg.handle {
         -webkit-box-shadow: $window-shadow;
         -moz-box-shadow: $window-shadow;
     }
+}
 
-    .react-draggable-dragging {
-        transition: none;
-        z-index: _zindex(window-base);
-    }
+.react-draggable-transparent-selection .window-manager .react-resizable,
+.react-draggable-transparent-selection .window-manager .react-resizable .window,
+.window-manager .react-draggable-dragging {
+    transition: none;
+    // z-index: _zindex(window-base);
+    // TODO This might be important 🤷‍♂️
 }
 
 .window {

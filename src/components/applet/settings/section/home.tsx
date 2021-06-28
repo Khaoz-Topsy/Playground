@@ -1,6 +1,6 @@
 import React from 'react';
 import { SunIcon, BellIcon } from '@chakra-ui/icons';
-import { Box, Checkbox, Select, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
+import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
 
 import { SettingItemSection } from '../settingItemSection';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
@@ -79,29 +79,31 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                         }
                     </Select>
                 </Box>
-                <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
-                    <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
-                    <Slider mb="1.5" value={brightness} onChange={sliderOnChange('brightness')}>
-                        <SliderTrack>
-                            <SliderFilledTrack bg="blue.400" />
-                        </SliderTrack>
-                        <SliderThumb boxSize={6}>
-                            <SunIcon color="blue.400" />
-                        </SliderThumb>
-                    </Slider>
-                </Box>
-                <Box my={5} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="10" paddingY="2">
-                    <Text fontSize="md">{translate(LocaleKey.volume)}</Text>
-                    <Slider mb="1.5" value={volume} onChange={sliderOnChange('volume')}>
-                        <SliderTrack>
-                            <SliderFilledTrack bg="blue.400" />
-                        </SliderTrack>
-                        <SliderThumb boxSize={6}>
-                            <BellIcon color="blue.400" />
-                        </SliderThumb>
-                    </Slider>
-                </Box>
-                <Box my={5}>
+                <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
+                    <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
+                        <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
+                        <Slider mb="1" value={brightness} onChange={sliderOnChange('brightness')}>
+                            <SliderTrack>
+                                <SliderFilledTrack bg="blue.400" />
+                            </SliderTrack>
+                            <SliderThumb boxSize={6}>
+                                <SunIcon color="blue.400" />
+                            </SliderThumb>
+                        </Slider>
+                    </Box>
+                    <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
+                        <Text fontSize="md">{translate(LocaleKey.volume)}</Text>
+                        <Slider mb="1" value={volume} onChange={sliderOnChange('volume')}>
+                            <SliderTrack>
+                                <SliderFilledTrack bg="blue.400" />
+                            </SliderTrack>
+                            <SliderThumb boxSize={6}>
+                                <BellIcon color="blue.400" />
+                            </SliderThumb>
+                        </Slider>
+                    </Box>
+                </SimpleGrid>
+                <Box mt={3} mb={5}>
                     <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>{translate(LocaleKey.enableClippy)}</Checkbox>
                     <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>{translate(LocaleKey.clippyDescription)}</Text>
                 </Box>
