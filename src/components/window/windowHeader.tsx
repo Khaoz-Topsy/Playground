@@ -14,7 +14,7 @@ interface IProps {
 
 export const WindowHeader: React.FC<IProps> = (props: IProps) => {
     return (
-        <div className="window-header">
+        <div className="window-header" onDoubleClick={props.onMaximise}>
             {
                 props.windowIcon != null &&
                 <div className="window-icon">

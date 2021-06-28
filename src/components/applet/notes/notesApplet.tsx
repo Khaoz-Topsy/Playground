@@ -34,7 +34,7 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     }, [file]);
 
     const getContentFromDataService = async (file: string) => {
-        const netResult: ResultWithValue<string> = await props.dataService.getJsonFile<string>(file);
+        const netResult: ResultWithValue<string> = await props.dataService.getMarkdownFile<string>(file);
         if (!netResult.isSuccess) return;
 
         setState({ isLoading: false, content: netResult.value });

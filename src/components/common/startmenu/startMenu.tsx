@@ -11,6 +11,7 @@ import { openAppletOrFile } from '../../../helper/appletHelper';
 
 import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
 import { StartMenuTile } from './startMenuTile';
+import { windowIconString } from '../../window/windowIcon';
 
 interface IProps {
     isOpen: boolean;
@@ -75,6 +76,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                                 StartMenuApplications.map(sMenu => (
                                     <StartMenuTile
                                         key={sMenu.id} {...sMenu}
+                                        imgUrl={sMenu.imgUrl ?? windowIconString((sMenu as any)?.appletType)}
                                         onClick={openApp(sMenu)}
                                     />
                                 ))

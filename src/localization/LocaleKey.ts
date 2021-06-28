@@ -37,5 +37,6 @@ export enum LocaleKey {
   personalAccounts = 'personalAccounts',
   twitchStream = 'twitchStream',
   mostUsedItems = 'mostUsedItems',
+  email = 'email',
   unknown = 'unknown'
 }

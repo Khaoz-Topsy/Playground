@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Badge, Box } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import { ReactNode } from 'react-markdown';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { translate } from '../../../integration/i18n';
@@ -10,7 +10,6 @@ interface ISettingItem {
     isFirst?: boolean;
     isActive?: boolean;
     icon?: ReactNode;
-    new?: boolean;
     onClick: () => void;
 }
 
@@ -36,14 +35,10 @@ export const SettingItem: React.FC<ISettingItem> = (props: ISettingItem) => {
             background={isActive ? 'gray.500' : ''}
             _hover={{ background: 'gray.600' }}
         >
-
             <Box color="white">
                 {props.icon && props.icon}
                 {translate(props.name)}
             </Box>
-            {
-                props.new && <Box><Badge colorScheme="green">NEW</Badge></Box>
-            }
         </Box>
     )
 };

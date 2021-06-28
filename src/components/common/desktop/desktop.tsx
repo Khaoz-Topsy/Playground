@@ -78,7 +78,7 @@ export const Desktop: React.FC = () => {
                     DesktopIcons.map((desktopIcon, index: number) => {
                         return (
                             <DesktopIcon
-                                key={desktopIcon.imgUrl}
+                                key={desktopIcon.id}
                                 index={index}
                                 iconData={desktopIcon}
                                 selectedIconIndexes={selectedIconIndexes}

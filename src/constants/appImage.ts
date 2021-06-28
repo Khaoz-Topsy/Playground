@@ -5,16 +5,17 @@ export const error = imgFolder + 'appIcons/error.png';
 
 export class AppletIcon {
     static kurt = imgFolder + 'appIcons/kurt.png';
+    static music = imgFolder + 'appIcons/music.png';
+    static email = imgFolder + 'appIcons/email.png';
+    static folder = imgFolder + 'appIcons/folder.png';
+    static vsCode = imgFolder + 'appIcons/vsCode.png';
+    static nyanCat = imgFolder + 'appIcons/nyanCat.png';
     static windows = imgFolder + 'appIcons/windows.png';
+    static settings = imgFolder + 'appIcons/setting2.png';
+    static terminal = imgFolder + 'appIcons/terminal.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
-    static settings = imgFolder + 'appIcons/setting2.png';
-    static nyanCat = imgFolder + 'appIcons/nyanCat.png';
-    static terminal = imgFolder + 'appIcons/terminal.png';
-    static folder = imgFolder + 'appIcons/folder.png';
     static application = imgFolder + 'appIcons/application.png';
-    static vsCode = imgFolder + 'appIcons/vsCode.png';
-    static music = imgFolder + 'appIcons/music.png';
 }
 
 export class FileIcon {

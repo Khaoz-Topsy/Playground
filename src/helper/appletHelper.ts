@@ -4,17 +4,18 @@ import { openExternal } from './linkHelper';
 import { openAppFromDesktop } from '../state/window/reducer';
 import { WindowStore } from "../state/window/store";
 
-export const openAppletOrFile = (newFile: IFile) => {
-    if (isApplet(newFile)) {
-        openApplet(newFile);
+export const openAppletOrFile = (newAppOrFile: IAppletFile | IFile) => {
+    if (isApplet(newAppOrFile)) {
+        const applet = newAppOrFile as IAppletFile;
+        openApplet(applet);
         return;
     }
 
-    openFile(newFile);
+    const file = newAppOrFile as IFile;
+    openFile(file);
 }
 
-export const openApplet = (newFile: IFile) => {
-    const applet = newFile as IAppletFile;
+export const openApplet = (applet: IAppletFile) => {
     if (applet.appletType !== AppletType.none) {
         WindowStore.update(openAppFromDesktop(applet.appletType, applet.name, applet.meta));
     }

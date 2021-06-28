@@ -12,6 +12,6 @@ export interface IFolder extends IFileFolderCommon {
     contents: Array<IFile | IAppletFile | IFolder>;
 }
 
-export const isFolder = (fileOrFolder: IFile | IFolder): fileOrFolder is IFolder => {
+export const isFolder = (fileOrFolder: IAppletFile | IFile | IFolder): fileOrFolder is IFolder => {
     return (fileOrFolder as IFolder).contents !== undefined;
 }

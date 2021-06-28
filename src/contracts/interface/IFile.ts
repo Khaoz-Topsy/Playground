@@ -12,14 +12,13 @@ export enum FileType {
 }
 
 export interface IFile extends IFileFolderCommon {
-    imgUrl: string;
+    imgUrl?: string;
     type: FileType;
     meta?: any;
 }
 
 export interface IAppletFile extends IFile {
     appletType: AppletType;
-    meta?: any;
 }
 
 export interface IStartMenuItemProps {

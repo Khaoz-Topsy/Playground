@@ -3,7 +3,7 @@ import { Center } from '@chakra-ui/react';
 
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { IFile } from '../../../contracts/interface/IFile';
+import { IAppletFile, IFile } from '../../../contracts/interface/IFile';
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
@@ -75,7 +75,7 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
         setSelectedId(-1);
     }
 
-    const openFileOrFolder = (fileOrFolder: IFolder | IFile) => (e: any) => {
+    const openFileOrFolder = (fileOrFolder: IAppletFile | IFile | IFolder) => (e: any) => {
         const breadcrumbs = getBreadcrumbList(fileOrFolder.id, props.folderStructure);
         if (isFolder(fileOrFolder)) {
             const newFolder = fileOrFolder as IFolder;
@@ -150,7 +150,7 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                     : (
                         <div className="folder-contents" onClick={clickAway}>
                             {
-                                currentFolder.contents.map((content: IFile | IFolder, index: number) => {
+                                currentFolder.contents.map((content: IAppletFile | IFile | IFolder, index: number) => {
                                     return (
                                         <ExplorerIcon
                                             key={`${index}-${content.id}`}

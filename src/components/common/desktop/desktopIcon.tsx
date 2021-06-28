@@ -1,9 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { BasicImage } from '../../../components/core/image';
 import { IAppletFile } from '../../../contracts/interface/IFile';
 import { translate } from '../../../integration/i18n';
+import { windowIcon } from '../../window/windowIcon';
 
 interface IProps {
     index: number;
@@ -19,16 +19,14 @@ export const DesktopIcon: React.FC<IProps> = (props: IProps) => {
     });
     return (
         <div
-            key={props.iconData.imgUrl}
+            key={props.iconData.id}
             data-index={props.index}
             className={classes}
             draggable={false}
             // onClick={props?.setSelected?.(props.index)}
-            onDoubleClick={props?.openApp?.(props.index)}>
-            <BasicImage
-                imageUrl={props.iconData.imgUrl}
-                alt={props.iconData.name}
-            />
+            onDoubleClick={props?.openApp?.(props.index)}
+        >
+            {windowIcon(props.iconData.appletType)}
             <p draggable={false}>{translate(props.iconData.name)}</p>
         </div>
     );

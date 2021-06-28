@@ -1,23 +1,18 @@
 import React, { useState } from 'react';
 import { Box, Container } from '@chakra-ui/react';
-import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon } from '@chakra-ui/icons';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { defaultSettingWidth, defaultSettingHeight } from '../../../constants/window';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 import { WindowHeader } from '../../window/windowHeader';
 import { windowIcon } from '../../window/windowIcon';
 import { Window } from '../../window/window';
 import { SettingItem } from './settingItem';
-import { SettingHome } from './section/home';
-import { SettingAbout } from './section/about';
-import { SettingGithub } from './section/github';
-import { SettingPersonalSocials } from './section/personalSocials';
-import { SettingOtherSocials } from './section/otherSocials';
-import { LocaleKey } from '../../../localization/LocaleKey';
+import { settingPages } from './settingPages';
 
 interface IProps extends IApplet {
-    pageIndex?: number;
+    currentSelectedSubPage?: LocaleKey;
 }
 
 interface IState {
@@ -25,45 +20,12 @@ interface IState {
 }
 
 export const SettingApplet: React.FC<IProps> = (props: IProps) => {
+    const passedInPageIndex = props.currentSelectedSubPage != null
+        ? settingPages.findIndex(p => p.title === props.currentSelectedSubPage)
+        : -1;
     const [state, setState] = useState<IState>({
-        pageIndex: props.pageIndex ?? 0,
+        pageIndex: passedInPageIndex > -1 ? passedInPageIndex : 0,
     });
-
-    const chakraIconMarginRight = "3";
-    const chakraIconMarginBottom = "1";
-
-    const pages = [
-        {
-            title: LocaleKey.general,
-            new: false,
-            comp: <SettingHome />,
-            icon: <SettingsIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
-        },
-        {
-            title: LocaleKey.github,
-            new: false,
-            comp: <SettingGithub />,
-            icon: <InfoOutlineIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
-        },
-        {
-            title: LocaleKey.personalSocials,
-            new: false,
-            comp: <SettingPersonalSocials />,
-            icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
-        },
-        {
-            title: LocaleKey.otherSocials,
-            new: false,
-            comp: <SettingOtherSocials />,
-            icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
-        },
-        {
-            title: LocaleKey.about,
-            new: false,
-            comp: <SettingAbout />,
-            icon: <QuestionIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
-        },
-    ];
 
     return (
         <Window
@@ -76,7 +38,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
             sidebar={
                 <Box borderColor={'whiteAlpha.400'} borderRadius={'md'} borderWidth={'1px'} >
                     {
-                        pages.map((page, index: number) => {
+                        settingPages.map((page, index: number) => {
                             return (
                                 <SettingItem
                                     key={page.title}
@@ -85,8 +47,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
                                     isActive={index === state.pageIndex}
                                     onClick={() => setState({ ...state, pageIndex: index })}
                                     isFirst={index === 0}
-                                    isLast={index === (pages.length - 1)}
-                                    new={page.new}
+                                    isLast={index === (settingPages.length - 1)}
                                 />
                             );
                         })
@@ -96,7 +57,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
         >
             <Container maxW={"container.xl"}>
                 <Box mt={4}>
-                    {pages[state.pageIndex].comp}
+                    {settingPages[state.pageIndex].comp}
                 </Box>
             </Container>
         </Window>

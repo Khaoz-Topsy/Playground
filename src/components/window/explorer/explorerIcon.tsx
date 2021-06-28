@@ -2,18 +2,19 @@ import React from 'react';
 import classNames from 'classnames';
 
 import { BasicImage } from '../../core/image';
-import { FileType, IFile } from '../../../contracts/interface/IFile';
+import { FileType, IAppletFile, IFile } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { AppletIcon, FileIcon } from '../../../constants/appImage';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { translate } from '../../../integration/i18n';
+import { windowIcon } from '../windowIcon';
 
 interface IProps {
     index: number;
     isSelected: boolean;
-    iconData: IFile | IFolder;
+    iconData: IAppletFile | IFile | IFolder;
     setSelected: (id: number) => void;
-    openFileOrFolder: (file: IFile | IFolder) => (e: any) => void;
+    openFileOrFolder: (file: IAppletFile | IFile | IFolder) => (e: any) => void;
 }
 
 export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
@@ -26,11 +27,11 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
         props?.setSelected?.(props.iconData.id)
     }
 
-    const doubleClickFileOrFolder = (iconData: IFile | IFolder) => (e: any) => {
+    const doubleClickFileOrFolder = (iconData: IAppletFile | IFile | IFolder) => (e: any) => {
         props?.openFileOrFolder?.(iconData)?.(e);
     }
 
-    const renderFileMiniImage = (iconData: IFile | IFolder) => {
+    const renderFileMiniImage = (iconData: IAppletFile | IFile | IFolder) => {
         if (isFolder(iconData)) return;
 
         const file = iconData as IFile;
@@ -45,13 +46,14 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
         return;
     }
 
-    const renderImage = (iconData: IFile | IFolder) => {
+    const renderImage = (iconData: IAppletFile | IFile | IFolder) => {
         if (isFolder(iconData)) {
             const folder = iconData as IFolder;
             if (iconData.imgUrl != null) return <BasicImage imageUrl={iconData.imgUrl} alt={folder.name} />;
             return <BasicImage imageUrl={AppletIcon.folder} alt={folder.name} />;
         }
-        return <BasicImage imageUrl={iconData.imgUrl} alt={iconData.name} />;
+        if (iconData.imgUrl != null) return <BasicImage imageUrl={iconData.imgUrl} alt={iconData.name} />;
+        return windowIcon((iconData as any)?.appletType);
     }
 
     return (

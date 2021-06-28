@@ -14,7 +14,7 @@ export interface INewFolderProps extends INewSubFolderProps {
 
 export interface INewFileProps {
     name: LocaleKey;
-    imgUrl: string;
+    imgUrl?: string;
     type: FileType;
     meta?: any;
 }
@@ -44,7 +44,7 @@ export class Folder {
     }
 
     addFile = (newFile: INewFileProps) => {
-        const folderFile: IFile | IAppletFile = {
+        const folderFile: IAppletFile | IFile = {
             ...newFile,
             parentId: this.id,
             id: `${this.id}.${this.contents.length}` as any,
