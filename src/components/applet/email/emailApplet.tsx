@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ReactNode } from 'react';
-import { Badge, Box, Center, Container } from '@chakra-ui/react';
-import HCaptcha from '@hcaptcha/react-hcaptcha';
+import { Badge, Center } from '@chakra-ui/react';
+// import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { SavedEmail } from '../../../contracts/implementation/savedEmail';

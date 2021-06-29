@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { defaultSettingWidth, defaultSettingHeight } from '../../../constants/window';
