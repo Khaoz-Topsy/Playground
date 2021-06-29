@@ -4,14 +4,15 @@ import classNames from 'classnames';
 import { BasicLazyImage } from '../../core/image';
 import { site } from '../../../constants/site';
 import { StartMenuApplications, StartMenuMostUsed } from '../../../constants/startMenuList';
-import { IAppletFile, IFile } from '../../../contracts/interface/IFile';
+import { IAppletFile, IFile, IStartMenuAppletFile, IStartMenuFile } from '../../../contracts/interface/IFile';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { openAppletOrFile } from '../../../helper/appletHelper';
+import { windowIconString } from '../../window/windowIcon';
 
 import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
+import { StartMenuSlidingTile } from './startMenuSlidingTile';
 import { StartMenuTile } from './startMenuTile';
-import { windowIconString } from '../../window/windowIcon';
 
 interface IProps {
     isOpen: boolean;
@@ -25,6 +26,26 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
         e?.stopPropagation();
         props.toggleStartMenu(false);
         openAppletOrFile(startMenuItem);
+    }
+
+    const renderTile = (sMenu: IStartMenuAppletFile | IStartMenuFile) => {
+        if (sMenu.images != null && sMenu.images.length > 0) {
+            return (
+                <StartMenuSlidingTile
+                    key={sMenu.id} {...sMenu}
+                    images={sMenu.images}
+                    onClick={openApp(sMenu)}
+                />
+            );
+        }
+
+        return (
+            <StartMenuTile
+                key={sMenu.id} {...sMenu}
+                imgUrl={sMenu.imgUrl ?? windowIconString((sMenu as any)?.appletType)}
+                onClick={openApp(sMenu)}
+            />
+        );
     }
 
     return (
@@ -72,18 +93,9 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                             <h3 className="mt1">{translate(LocaleKey.applications)}</h3>
                         </header>
                         <div className="tiles-wrapper">
-                            {
-                                StartMenuApplications.map(sMenu => (
-                                    <StartMenuTile
-                                        key={sMenu.id} {...sMenu}
-                                        imgUrl={sMenu.imgUrl ?? windowIconString((sMenu as any)?.appletType)}
-                                        onClick={openApp(sMenu)}
-                                    />
-                                ))
-                            }
+                            {StartMenuApplications.map(renderTile)}
                         </div>
                     </div>
-
                     <div className="tiles-section-content">
                         <header>
                             <h3 className="mt1">Explore</h3>

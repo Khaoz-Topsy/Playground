@@ -49,7 +49,7 @@ svg.handle {
 
     .is-maximised {
         .react-resizable {
-            transform: translate(0, -2px) !important;
+            transform: translate(0, 0) !important;
             width: 100vw !important;
             height: calc(100vh - #{$taskbar-height}em) !important;
         }
@@ -57,6 +57,7 @@ svg.handle {
         .window {
             width: calc(100vw - #{$window-border-line * 2}) !important;
             height: calc(100vh - #{$taskbar-height}em - #{$window-border-line * 2}) !important;
+            border-radius: 0;
         }
 
         .handle {

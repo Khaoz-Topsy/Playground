@@ -1,8 +1,8 @@
 
 import { KnownApplets } from '../constants/knownApplets';
-import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuSize } from '../contracts/interface/IFile';
+import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuAnimation, StartMenuSize } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
-import { MiscIcon } from './appImage';
+import { AppletIcon, MiscIcon } from './appImage';
 import { site } from './site';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [
@@ -24,17 +24,19 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
     {
         ...KnownApplets.musicPlayer,
         size: StartMenuSize.small,
-        backgroundColour: 'yellow',
+        backgroundColour: '#F1E89D',
         textColour: 'black',
     },
     {
         ...KnownApplets.terminal,
         size: StartMenuSize.small,
+        backgroundColour: 'silver',
         textColour: 'black',
     },
     {
         ...KnownApplets.vsCode,
         size: StartMenuSize.small,
+        backgroundColour: '#0C76B3',
     },
     {
         id: 99,
@@ -44,10 +46,17 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         isFull: true,
         type: FileType.link,
         meta: { external: site.kurt.twitch },
-        size: StartMenuSize.large
+        size: StartMenuSize.large,
+        animatedTile: StartMenuAnimation.slideverticalinverse,
+        images: [
+            MiscIcon.streamPreview,
+            AppletIcon.nyanCat,
+        ]
     },
     {
         ...KnownApplets.email,
         size: StartMenuSize.small,
+        backgroundColour: 'beige',
+        textColour: 'black',
     },
 ];

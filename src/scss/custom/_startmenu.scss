@@ -193,4 +193,48 @@ $startmenu-tile-hover-border: 2;
             }
         }
     }
+
+    .tile-slider {
+        position: relative;
+        overflow: hidden;
+        transition: transform 1s ease 0s;
+
+        .frame {
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            //
+            $transitionTime: 500ms;
+            //
+            -webkit-transition: all #{$transitionTime} ease-in-out;
+            -moz-transition: all #{$transitionTime} ease-in-out;
+            -o-transition: all #{$transitionTime} ease-in-out;
+            transition: all #{$transitionTime} ease-in-out;
+
+            &.transitioning {
+                &.anim-opacity {
+                    opacity: 0;
+                }
+
+                &.anim-scale {
+                    transform: scale(0.001);
+                }
+
+                &.anim-slidevertical {
+                    transform: translateY(-100%);
+                }
+
+                &.anim-slideverticalinverse {
+                    transform: translateY(100%);
+                }
+
+                //
+                -webkit-transition: unset;
+                -moz-transition: unset;
+                -o-transition: unset;
+                transition: unset;
+            }
+        }
+    }
 }

@@ -68,7 +68,8 @@ $explorer-icon-size: 100px;
             flex-wrap: wrap;
             align-items: flex-start;
             align-content: flex-start;
-            margin-bottom: 3em;
+            min-height: calc(100% - 3em);
+            padding-bottom: 3em;
 
             .explorer-icon {
                 margin: 0.5em 1em;

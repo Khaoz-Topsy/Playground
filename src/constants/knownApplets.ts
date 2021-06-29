@@ -1,4 +1,4 @@
-import { FileType, IAppletFile } from '../contracts/interface/IFile';
+import { FileType, IAppletFile, IAppletInfo } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
 import { AppletType } from './enum/appletType';
 
@@ -9,6 +9,7 @@ export class KnownApplets {
         name: LocaleKey.settings,
         appletType: AppletType.setting,
         type: FileType.applet,
+        info: { version: '1.0.9', size: 20, installedOn: new Date('2021-06-02') },
     };
     static explorer: IAppletFile = {
         id: 1.02,
@@ -16,6 +17,7 @@ export class KnownApplets {
         name: LocaleKey.explorer,
         appletType: AppletType.explorer,
         type: FileType.applet,
+        info: { version: '12.71', size: 55, installedOn: new Date('2021-06-23') },
     };
     static picture: IAppletFile = {
         id: 1.03,
@@ -23,6 +25,7 @@ export class KnownApplets {
         name: LocaleKey.pictureViewer,
         appletType: AppletType.picture,
         type: FileType.applet,
+        info: { version: '0.1.9', size: 121, installedOn: new Date('2021-06-10') },
     };
     static notes: IAppletFile = {
         id: 1.04,
@@ -30,6 +33,7 @@ export class KnownApplets {
         name: LocaleKey.notes,
         appletType: AppletType.notes,
         type: FileType.applet,
+        info: { version: '0.2.2', size: 700, installedOn: new Date('2021-06-20') },
     };
     static terminal: IAppletFile = {
         id: 1.20,
@@ -37,6 +41,7 @@ export class KnownApplets {
         name: LocaleKey.terminal,
         appletType: AppletType.terminal,
         type: FileType.applet,
+        info: { version: '1.6.8', size: 0, installedOn: new Date('2021-06-14'), author: 'Simon Ma - 中文文档', projectUrl: 'https://www.npmjs.com/package/react-terminal-app' },
     };
     static kurtLourens: IAppletFile = {
         id: 1.21,
@@ -44,6 +49,7 @@ export class KnownApplets {
         name: LocaleKey.kurtLourensCV,
         appletType: AppletType.kurt,
         type: FileType.applet,
+        info: { version: '5.1.36', size: 232, installedOn: new Date('2021-05-22') },
     };
     static vsCode: IAppletFile = {
         id: 1.22,
@@ -51,6 +57,7 @@ export class KnownApplets {
         name: LocaleKey.vsCode,
         appletType: AppletType.vsCode,
         type: FileType.applet,
+        info: { version: '1.55.0-dev', size: 5063, installedOn: new Date('2021-06-06'), author: 'conwnet', projectUrl: 'https://github.com/conwnet/github1s' },
     };
     static scrapMechanic: IAppletFile = {
         id: 1.23,
@@ -58,6 +65,7 @@ export class KnownApplets {
         name: LocaleKey.assistantSMS,
         appletType: AppletType.assistantSMS,
         type: FileType.applet,
+        info: { version: '0.5.1', size: 5907, installedOn: new Date('2021-06-11') },
     };
     static musicPlayer: IAppletFile = {
         id: 1.24,
@@ -65,6 +73,7 @@ export class KnownApplets {
         name: LocaleKey.musicPlayer,
         appletType: AppletType.musicPlayer,
         type: FileType.applet,
+        info: { version: '62.548.1', size: 98, installedOn: new Date('2021-06-27') },
     };
     static email: IAppletFile = {
         id: 1.25,
@@ -72,6 +81,7 @@ export class KnownApplets {
         name: LocaleKey.email,
         appletType: AppletType.email,
         type: FileType.applet,
+        info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
     };
 
 
@@ -81,6 +91,7 @@ export class KnownApplets {
         name: LocaleKey.nyanCat,
         appletType: AppletType.nyanCat,
         type: FileType.applet,
+        info: { version: '', size: 0, installedOn: new Date('2021-06-04'), author: 'Cristina Sturm', projectUrl: 'https://cristurm.github.io/nyan-cat/' },
     };
 }
 

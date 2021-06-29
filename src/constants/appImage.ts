@@ -74,6 +74,5 @@ export const imagesToPrecache = () => {
             images.push(ext);
         }
     }
-
     return images;
 };
