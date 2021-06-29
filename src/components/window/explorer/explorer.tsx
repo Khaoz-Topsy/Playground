@@ -138,7 +138,12 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
             isFullscreen={true}
             classNames="explorer"
             headerFunc={headerFunc}
-            sidebar={<ExplorerSidebar openFileOrFolder={openFileOrFolder} />}
+            sidebar={
+                <ExplorerSidebar
+                    currentFolder={currentFolder}
+                    openFileOrFolder={openFileOrFolder}
+                />
+            }
         >
             {
                 noItems

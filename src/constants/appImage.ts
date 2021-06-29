@@ -19,6 +19,7 @@ export class AppletIcon {
 }
 
 export class FileIcon {
+    static applicationIcon = imgFolder + 'fileIcons/applicationIcon.png';
     static markdown = imgFolder + 'fileIcons/markdown2.png';
     static picture = imgFolder + 'fileIcons/picture.png';
     static android = imgFolder + 'fileIcons/android.png';

@@ -62,67 +62,75 @@ $explorer-icon-size: 100px;
         }
     }
 
-    .window-with-sidebar .offset-content {
-        .folder-contents {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: flex-start;
-            align-content: flex-start;
-            min-height: calc(100% - 3em);
-            padding-bottom: 3em;
+    .window-with-sidebar {
+        .explorer-shortcut-icon {
+            width: 1em;
+            height: 1em;
+            display: inline-block;
+        }
 
-            .explorer-icon {
-                margin: 0.5em 1em;
-                padding: 0.5em 0.5em 0.25em 0.5em;
-                border-radius: 5px;
-                background-color: transparent;
-                border: 2px solid transparent;
-                transition-property: background-color, border-color;
-                transition-duration: 100ms;
-                transition-timing-function: ease-in-out;
+        .offset-content {
+            .folder-contents {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                align-content: flex-start;
+                min-height: calc(100% - 3em);
+                padding-bottom: 3em;
 
-                &.selected {
-                    background-color: _palette(windows-select);
-                    border-color: _palette(windows-select-border);
+                .explorer-icon {
+                    margin: 0.5em 1em;
+                    padding: 0.5em 0.5em 0.25em 0.5em;
+                    border-radius: 5px;
+                    background-color: transparent;
+                    border: 2px solid transparent;
+                    transition-property: background-color, border-color;
+                    transition-duration: 100ms;
+                    transition-timing-function: ease-in-out;
+
+                    &.selected {
+                        background-color: _palette(windows-select);
+                        border-color: _palette(windows-select-border);
+
+                        p {
+                            -webkit-line-clamp: 2;
+                        }
+                    }
+
+                    >* {
+                        pointer-events: none;
+                    }
+
+                    .img-container {
+                        position: relative;
+                        width: $explorer-icon-size;
+                        height: $explorer-icon-size;
+                        margin: 0 auto;
+                        text-align: center;
+
+                        img {
+                            width: 100%;
+                            height: auto;
+                            max-height: 100%;
+                            border-radius: 5px;
+                        }
+
+                        img.mini {
+                            position: absolute;
+                            bottom: -5px;
+                            right: -5px;
+                            width: 30%;
+                        }
+                    }
 
                     p {
-                        -webkit-line-clamp: 2;
-                    }
-                }
-
-                >* {
-                    pointer-events: none;
-                }
-
-                .img-container {
-                    position: relative;
-                    width: $explorer-icon-size;
-                    height: $explorer-icon-size;
-                    margin: 0 auto;
-                    text-align: center;
-
-                    img {
+                        @extend .single-line;
+                        text-align: center;
+                        color: _palette(fg);
+                        text-shadow: 0 0 3px _palette(bg);
                         width: 100%;
-                        height: auto;
-                        max-height: 100%;
-                        border-radius: 5px;
+                        max-width: $explorer-icon-size;
                     }
-
-                    img.mini {
-                        position: absolute;
-                        bottom: -5px;
-                        right: -5px;
-                        width: 30%;
-                    }
-                }
-
-                p {
-                    @extend .single-line;
-                    text-align: center;
-                    color: _palette(fg);
-                    text-shadow: 0 0 3px _palette(bg);
-                    width: 100%;
-                    max-width: $explorer-icon-size;
                 }
             }
         }

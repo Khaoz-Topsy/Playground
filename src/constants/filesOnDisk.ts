@@ -9,6 +9,7 @@ import { imageFile, linkFile, markDownFile } from "../helper/fileHelper";
 import { sortAlphabeticallyByProp } from "../helper/sortHelper";
 import { LocaleKey } from "../localization/LocaleKey";
 
+export const applicationFolderId: any = '0.0';
 export const documentFolderId: any = '0.2';
 
 export const getFilesOnDisk = (): IFolder => {
