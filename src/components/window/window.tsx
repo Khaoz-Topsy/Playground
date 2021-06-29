@@ -54,7 +54,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
 
     const CustomResizeHandle = React.forwardRef((props, ref: any) => {
         return (
-            <div className="handle" ref={ref} {...props}>
+            <div key={`handle-w${state.width}-h${state.height}`} className="handle" ref={ref} {...props}>
                 <WindowDragHandle />
             </div >
         )
@@ -107,7 +107,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                     onResize={onResize}
                     onResizeStop={onResizeStop}
                     minConstraints={[minWidth, minHeight]}
-                    handle={isMaximised ? undefined : <CustomResizeHandle />}
+                    handle={<CustomResizeHandle key={`${props.appletType}-handle`} />}
                 >
                     <motion.div
                         key={`motion-${props.appletType}`}

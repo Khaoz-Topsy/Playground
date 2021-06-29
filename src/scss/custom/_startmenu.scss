@@ -144,6 +144,7 @@ $startmenu-tile-hover-border: 2;
             margin: 5px;
             padding: #{$startmenu-tile-padding}px #{$startmenu-tile-padding}px 27px #{$startmenu-tile-padding}px;
             border-radius: 2px;
+            color: $base-fg;
             background-color: _palette(windows-select-border);
             transition: all 250ms ease-in-out;
             cursor: pointer;
@@ -182,18 +183,13 @@ $startmenu-tile-hover-border: 2;
             }
 
             p {
+                @extend .single-line;
                 position: absolute;
                 left: 0;
                 right: 0;
                 bottom: 0;
-                color: $base-fg;
                 text-align: center;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                display: -webkit-box;
-                -webkit-line-clamp: 1;
-                /* number of lines to show */
-                -webkit-box-orient: vertical;
+                padding-bottom: 2px;
             }
         }
     }

@@ -32,14 +32,10 @@ $iconWidth: 26;
         }
 
         .text {
+            @extend .single-line;
             padding-right: 5px;
             padding-bottom: 3px;
             text-align: left;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
         }
     }
 }

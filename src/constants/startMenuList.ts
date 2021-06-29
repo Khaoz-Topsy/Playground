@@ -19,14 +19,18 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         size: StartMenuSize.small,
         backgroundColour: '#abe9cd',
         backgroundImage: 'linear-gradient(315deg, #8ce1ba 0%, #3eadcf 74%)',
+        textColour: 'black',
     },
     {
         ...KnownApplets.musicPlayer,
         size: StartMenuSize.small,
+        backgroundColour: 'yellow',
+        textColour: 'black',
     },
     {
         ...KnownApplets.terminal,
         size: StartMenuSize.small,
+        textColour: 'black',
     },
     {
         ...KnownApplets.vsCode,
@@ -41,5 +45,9 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         type: FileType.link,
         meta: { external: site.kurt.twitch },
         size: StartMenuSize.large
+    },
+    {
+        ...KnownApplets.email,
+        size: StartMenuSize.small,
     },
 ];

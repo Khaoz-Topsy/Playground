@@ -1,0 +1,52 @@
+.emails {
+    .item {
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+        opacity: 0.8;
+        background-color: _palette(bg-sidebar);
+        border-right: 1px solid _palette(bg-transparent-focused);
+        border-bottom: 1px solid _palette(bg-transparent-focused);
+
+        &.selected {
+            background-color: rgba(60, 145, 255, 0.3);
+        }
+
+        .item-content {
+            position: relative;
+
+            .sender-info {
+                .first-row {
+                    display: flex;
+
+                    .from {
+                        @extend .single-line;
+                        flex-grow: 1;
+                        font-size: 120%;
+                        font-weight: bold;
+                    }
+
+                    .date {
+                        margin-top: 0.25em;
+                    }
+                }
+
+                p {
+                    @extend .single-line;
+                    padding-right: 1em;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .email-list-content {
+        .notes-viewer {
+            padding-bottom: 5em;
+
+            p {
+                margin-bottom: 1em;
+            }
+        }
+    }
+}

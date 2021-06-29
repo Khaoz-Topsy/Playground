@@ -13,17 +13,23 @@ interface IProps {
     isFull?: boolean;
     backgroundColour?: string;
     backgroundImage?: string;
+    textColour?: string;
     size: StartMenuSize;
     onClick: (e: any) => void;
 }
 
 export const StartMenuTile: React.FC<IProps> = (props: IProps) => {
     const baseCss = `tile tile-${StartMenuSize[props.size]}`;
+    const styleObj = {
+        backgroundColor: props.backgroundColour,
+        backgroundImage: props.backgroundImage,
+        color: props.textColour,
+    };
     return (
         <div key={props.id}
             onClick={props.onClick}
             className={classNames(baseCss, { 'full': props.isFull })}
-            style={{ backgroundColor: props.backgroundColour, backgroundImage: props.backgroundImage }}
+            style={styleObj}
         >
             <BasicImage imageUrl={props.imgUrl} />
             <p>{translate(props.name)}</p>

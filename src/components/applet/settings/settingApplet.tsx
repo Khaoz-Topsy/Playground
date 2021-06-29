@@ -55,11 +55,9 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
                 </Box>
             }
         >
-            <Container maxW={"container.xl"}>
-                <Box mt={4}>
-                    {settingPages[state.pageIndex].comp}
-                </Box>
-            </Container>
+            <Box mt={4} mx={4}>
+                {settingPages[state.pageIndex].comp}
+            </Box>
         </Window>
     );
 }

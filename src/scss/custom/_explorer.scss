@@ -62,133 +62,67 @@ $explorer-icon-size: 100px;
         }
     }
 
-    .window-content.explorer {
-        margin-top: #{$window-header-explorer-height + 3}px;
-        height: calc(100% - #{$window-header-explorer-height + 3}px);
-    }
-
-    .window-content.explorer,
-    .window-content.setting {
-        padding-bottom: 0;
-
-        .window-with-sidebar {
+    .window-with-sidebar .offset-content {
+        .folder-contents {
             display: flex;
-            height: 100%;
-            overflow: hidden;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            align-content: flex-start;
+            margin-bottom: 3em;
 
-            .sidebar {
-                min-width: 200px;
-                border-right: 3px solid _palette(bg-sidebar);
-
-                .item {
-                    cursor: pointer;
-                    padding: 0.75em 1em;
-                    transition: color 250ms ease-in-out;
-
-                    &:hover {
-                        color: rgba(0, 200, 255, 0.7);
-                    }
-                }
-            }
-
-            .offset-content {
-                flex-grow: 1;
-                overflow: auto;
-
-                .folder-contents {
-                    display: flex;
-                    flex-wrap: wrap;
-                    align-items: flex-start;
-                    align-content: flex-start;
-                    margin-bottom: 3em;
-
-                    .explorer-icon {
-                        margin: 0.5em 1em;
-                        padding: 0.5em 0.5em 0.25em 0.5em;
-                        border-radius: 5px;
-                        background-color: transparent;
-                        border: 2px solid transparent;
-                        transition-property: background-color, border-color;
-                        transition-duration: 100ms;
-                        transition-timing-function: ease-in-out;
-
-                        &.selected {
-                            background-color: _palette(windows-select);
-                            border-color: _palette(windows-select-border);
-
-                            p {
-                                -webkit-line-clamp: 2;
-                            }
-                        }
-
-                        >* {
-                            pointer-events: none;
-                        }
-
-                        .img-container {
-                            position: relative;
-                            width: $explorer-icon-size;
-                            height: $explorer-icon-size;
-                            margin: 0 auto;
-                            text-align: center;
-
-                            img {
-                                width: 100%;
-                                height: auto;
-                                max-height: 100%;
-                                border-radius: 5px;
-                            }
-
-                            img.mini {
-                                position: absolute;
-                                bottom: -5px;
-                                right: -5px;
-                                width: 30%;
-                            }
-                        }
-
-                        p {
-                            text-align: center;
-                            color: _palette(fg);
-                            text-shadow: 0 0 3px _palette(bg);
-                            width: 100%;
-                            max-width: $explorer-icon-size;
-                            //
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            display: -webkit-box;
-                            -webkit-line-clamp: 1;
-                            /* number of lines to show */
-                            -webkit-box-orient: vertical;
-                        }
-                    }
-                }
-            }
-
-            hr {
-                border-color: _palette(bg-sidebar);
-                background-color: _palette(bg-sidebar);
-                border-width: 2px;
+            .explorer-icon {
+                margin: 0.5em 1em;
+                padding: 0.5em 0.5em 0.25em 0.5em;
                 border-radius: 5px;
-                margin-left: 0.5em;
-                margin-right: 0.5em;
-            }
-        }
-    }
+                background-color: transparent;
+                border: 2px solid transparent;
+                transition-property: background-color, border-color;
+                transition-duration: 100ms;
+                transition-timing-function: ease-in-out;
 
+                &.selected {
+                    background-color: _palette(windows-select);
+                    border-color: _palette(windows-select-border);
 
-    .window-content.setting {
-        height: 100%;
+                    p {
+                        -webkit-line-clamp: 2;
+                    }
+                }
 
-        .window-with-sidebar {
-            .sidebar {
-                padding-top: 1em;
-                padding-left: 1em;
-                border-right: unset;
-            }
+                >* {
+                    pointer-events: none;
+                }
 
-            .offset-content {
-                padding-bottom: 1em;
+                .img-container {
+                    position: relative;
+                    width: $explorer-icon-size;
+                    height: $explorer-icon-size;
+                    margin: 0 auto;
+                    text-align: center;
+
+                    img {
+                        width: 100%;
+                        height: auto;
+                        max-height: 100%;
+                        border-radius: 5px;
+                    }
+
+                    img.mini {
+                        position: absolute;
+                        bottom: -5px;
+                        right: -5px;
+                        width: 30%;
+                    }
+                }
+
+                p {
+                    @extend .single-line;
+                    text-align: center;
+                    color: _palette(fg);
+                    text-shadow: 0 0 3px _palette(bg);
+                    width: 100%;
+                    max-width: $explorer-icon-size;
+                }
             }
         }
     }

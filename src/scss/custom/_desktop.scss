@@ -35,18 +35,11 @@
             border-radius: 5px;
         }
 
-        p {
+        p {@extend .single-line;
             text-align: center;
             color: _palette(fg);
             text-shadow: 0 0 3px _palette(bg);
             margin-top: 1px;
-            //
-            overflow: hidden;
-            text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            /* number of lines to show */
-            -webkit-box-orient: vertical;
         }
     }
 }

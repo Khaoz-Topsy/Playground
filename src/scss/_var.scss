@@ -68,3 +68,12 @@ $taskbar-hover: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(5.0px);
     -webkit-backdrop-filter: blur(5.0px);
 }
+
+.single-line {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    /* number of lines to show */
+    -webkit-box-orient: vertical;
+}

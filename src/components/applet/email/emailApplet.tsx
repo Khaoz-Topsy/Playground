@@ -1,32 +1,40 @@
 import React, { useEffect, useState, ReactNode } from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import { Badge, Box, Center, Container } from '@chakra-ui/react';
+import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { SavedEmail } from '../../../contracts/implementation/savedEmail';
 import { JsonFile } from '../../../constants/jsonFile';
+import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { LoadingImage } from '../../../components/core/loader';
-import { Applet } from '../../window/applet/applet';
+import { Window } from '../../window/window';
 import { withServices } from '../../../integration/dependencyInjection';
 
 import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
-import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
+import { WindowHeader } from '../../window/windowHeader';
+import { windowIcon } from '../../window/windowIcon';
+import { MarkdownContent } from '../../core/markdown';
+import classNames from 'classnames';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
 
 interface IState {
     networkState: NetworkState;
+    selectedEmailIndex: number;
     emails: Array<SavedEmail>;
 }
 
 export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const [state, setState] = useState<IState>({
-        networkState: NetworkState.Loading,
+        networkState: NetworkState.Pending,
+        selectedEmailIndex: -1,
         emails: [],
     });
 
     useEffect(() => {
+        if (state?.emails != null && (state?.emails?.length ?? 0) > 0) return;
         getContentFromDataService();
         // eslint-disable-next-line
     });
@@ -37,36 +45,75 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
             setState({ ...state, networkState: NetworkState.Error });
             return;
         }
-        setState({ networkState: NetworkState.Success, emails: netResult.value });
+
+        setState({
+            networkState: NetworkState.Success,
+            emails: netResult.value,
+            selectedEmailIndex: (netResult.value.length > 0) ? 0 : -1
+        });
     }
 
-    const renderBody = (localState: IState): ReactNode => {
+    const renderSidebar = (localState: IState): ReactNode => {
         if (localState.networkState === NetworkState.Loading) return LoadingImage(true);
 
         return (
-            <ul>
+            <div className="email-box">
                 {
-                    localState.emails.map(e => (
-                        <li key={e.guid}>
-                            {e.name}
-                        </li>
+                    localState.emails.map((email: SavedEmail, index: number) => (
+                        <div
+                            key={email.guid}
+                            className={classNames('item', { 'selected': index === state.selectedEmailIndex })}
+                            onClick={() => setState({ ...state, selectedEmailIndex: index })}
+                        >
+                            <div className="item-content">
+                                <div className="sender-info">
+                                    <div className="first-row">
+                                        <span className="from">{email.name}</span>
+                                        {
+                                            email.isSpam &&
+                                            <span className="spam" style={{ marginTop: '3px', marginRight: '7.5px' }}>
+                                                <Badge colorScheme="red">SPAM</Badge>
+                                            </span>
+                                        }
+                                        <span className="date">{email.date}</span>
+                                    </div>
+                                    <p>{email.shortMessage}</p>
+                                </div>
+                            </div>
+                        </div>
                     ))
                 }
-            </ul>
+            </div>
+        );
+    }
+
+    const renderBody = (localState: IState): ReactNode => {
+        if (localState.networkState === NetworkState.Loading) return (
+            <Center className="mt3">{LoadingImage(true)}</Center>
+        );
+        if (localState.selectedEmailIndex < 0 || localState.emails?.[localState.selectedEmailIndex] == null) return (
+            <Center className="mt1">Error displaying email message</Center>
+        );
+
+        return (<div className="notes-viewer p1">
+            <MarkdownContent content={localState.emails?.[localState.selectedEmailIndex]?.message} />
+        </div>
         );
     }
 
     return (
-        <Applet
+        <Window
             key="email-list"
             {...props}
+            isFullscreen={true}
+            classNames="emails"
+            headerFunc={() => <WindowHeader {...props} windowIcon={windowIcon(props.appletType)} />}
+            sidebar={renderSidebar(state)}
         >
-            <Container maxW={"container.xl"}>
-                <Box mt={4}>
-                    {renderBody(state)}
-                </Box>
-            </Container>
-        </Applet>
+            <div key="email-list-content" className="email-list-content">
+                {renderBody(state)}
+            </div>
+        </Window>
     );
 }
 

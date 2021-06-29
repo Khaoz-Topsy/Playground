@@ -1,0 +1,85 @@
+.window {
+
+    .window-content.emails,
+    .window-content.setting,
+    .window-content.explorer {
+        padding-bottom: 0;
+
+        .window-with-sidebar {
+            display: flex;
+            height: 100%;
+            overflow: hidden;
+
+            .sidebar {
+                min-width: 200px;
+                border-right: 3px solid _palette(bg-sidebar);
+
+                .item {
+                    cursor: pointer;
+                    padding: 0.75em 1em;
+                    transition: color 250ms ease-in-out;
+
+                    &:hover {
+                        color: rgba(0, 200, 255, 0.7);
+                    }
+                }
+            }
+
+            .offset-content {
+                flex-grow: 1;
+                overflow: auto;
+            }
+
+            hr {
+                border-color: _palette(bg-sidebar);
+                background-color: _palette(bg-sidebar);
+                border-width: 2px;
+                border-radius: 5px;
+                margin-left: 0.5em;
+                margin-right: 0.5em;
+            }
+        }
+    }
+
+    .window-content.explorer {
+        margin-top: #{$window-header-explorer-height + 3}px;
+        height: calc(100% - #{$window-header-explorer-height + 3}px);
+    }
+
+    .window-content.setting {
+        height: 100%;
+
+        .window-with-sidebar {
+            .sidebar {
+                padding-top: 1em;
+                padding-left: 1em;
+                border-right: unset;
+            }
+
+            .offset-content {
+                padding-bottom: 1em;
+            }
+
+            hr {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .window-content.emails {
+        .window-with-sidebar {
+            .sidebar {
+                width: 33%;
+                min-width: 300px;
+
+                .item {
+                    padding: 0.75rem 1rem 1rem 1rem;
+                }
+            }
+        }
+    }
+}
+
+.is-maximised .window .window-content.emails .window-with-sidebar .sidebar {
+    width: 25%;
+}

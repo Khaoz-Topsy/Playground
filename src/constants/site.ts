@@ -1,6 +1,7 @@
 export const site = {
     ref: 'KurtLourensPlayground',
     url: 'patreonbanner.com',
+    captchaKey: 'fe066469-a02f-4827-b577-28ebaea300c8',
     repo: 'https://github1s.com/Khaoz-Topsy/KurtLourens-CV/blob/master/README.md',
     kurt: {
         fullName: 'Kurt Lourens',

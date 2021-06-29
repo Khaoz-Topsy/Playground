@@ -51,20 +51,29 @@ export class External {
     static assistantNmsLoader = 'https://raw.githubusercontent.com/AssistantNMS/nms-loader/main/loader.svg';
 }
 
-export const imagesToPrecache = [
-    AppletIcon.kurt,
-    AppletIcon.windows,
-    AppletIcon.assistantNMS,
-    AppletIcon.assistantSMS,
-    AppletIcon.settings,
-    AppletIcon.nyanCat,
-    AppletIcon.folder,
-    //Files
-    FileIcon.markdown,
-    // External
-    External.githubGeneralStats,
-    External.githubLanguageStats,
-    External.assistantNmsLoader,
-    // Status
-    error,
-];
+export const imagesToPrecache = () => {
+    const images = [error];
+    for (const key in AppletIcon) {
+        if (Object.prototype.hasOwnProperty.call(AppletIcon, key)) {
+            const applet = (AppletIcon as any)[key];
+            images.push(applet);
+        }
+    }
+    for (const key in FileIcon) {
+        if (Object.prototype.hasOwnProperty.call(FileIcon, key)) {
+            const file = (FileIcon as any)[key];
+            images.push(file);
+        }
+    }
+    for (const background of Backgrounds) {
+        images.push(background.url);
+    }
+    for (const key in External) {
+        if (Object.prototype.hasOwnProperty.call(External, key)) {
+            const ext = (External as any)[key];
+            images.push(ext);
+        }
+    }
+
+    return images;
+};
