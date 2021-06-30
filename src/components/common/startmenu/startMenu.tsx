@@ -88,7 +88,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                 </ul> */}
                 </section>
                 <section className="tiles-section">
-                    <div className="tiles-section-content">
+                    <div className="tiles-section-content scroll-without-scrollbar">
                         <header>
                             <h3 className="mt1">{translate(LocaleKey.applications)}</h3>
                         </header>
