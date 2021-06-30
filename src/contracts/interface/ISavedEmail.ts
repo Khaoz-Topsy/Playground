@@ -1,4 +1,4 @@
-export interface SavedEmail {
+export interface ISavedEmail {
     guid: string;
     name: string;
     email: string;

@@ -10,6 +10,7 @@ import { windowIcon, iframeIcon } from '../windowIcon'
 
 interface IProps extends IWindowProps {
     children: ReactNode;
+    sidebar?: ReactNode;
 }
 
 export const Applet: React.FC<IProps> = (props: IProps) => {
@@ -20,6 +21,11 @@ export const Applet: React.FC<IProps> = (props: IProps) => {
         return (<WindowHeader {...app} windowIcon={iconComponent} />);
     };
 
-    return (<Window {...props} headerFunc={headerFunc} />);
+    return (
+        <Window {...props}
+            headerFunc={headerFunc}
+            sidebar={props.sidebar}
+        />
+    );
 }
 

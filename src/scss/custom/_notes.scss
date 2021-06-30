@@ -2,8 +2,52 @@ $code-bg: #1a1a1a;
 $code-fg: #c8c8c8;
 
 .notes-viewer {
-    padding-left: 0.75em;
-    padding-right: 0.75em;
+
+    .item {
+        width: 100%;
+        cursor: pointer;
+        position: relative;
+        opacity: 0.8;
+        background-color: _palette(bg-sidebar);
+        border-top: 1px solid _palette(bg-transparent-focused);
+        border-left: 1px solid _palette(bg-transparent-focused);
+        border-right: 1px solid _palette(bg-transparent-focused);
+
+        &.selected {
+            background-color: rgba(60, 145, 255, 0.3);
+        }
+
+        .item-content {
+            position: relative;
+
+            .sender-info {
+                .first-row {
+                    display: flex;
+
+                    .from {
+                        @extend .single-line;
+                        flex-grow: 1;
+                        font-size: 120%;
+                    }
+
+                    .date {
+                        margin-top: 0.25em;
+                    }
+                }
+
+                p {
+                    @extend .single-line;
+                    padding-right: 1em;
+                    font-weight: 400;
+                }
+            }
+        }
+    }
+
+    .content {
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+    }
 
     h1 {
         font-size: 2.75em;

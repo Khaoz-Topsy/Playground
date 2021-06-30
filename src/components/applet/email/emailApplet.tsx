@@ -4,16 +4,14 @@ import classNames from 'classnames';
 // import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
-import { SavedEmail } from '../../../contracts/implementation/savedEmail';
+import { ISavedEmail } from '../../../contracts/interface/ISavedEmail';
 import { JsonFile } from '../../../constants/jsonFile';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { LoadingImage } from '../../../components/core/loader';
 import { MarkdownContent } from '../../core/markdown';
 import { withServices } from '../../../integration/dependencyInjection';
-import { WindowHeader } from '../../window/windowHeader';
-import { windowIcon } from '../../window/windowIcon';
-import { Window } from '../../window/window';
+import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
 import { NewEmailPopup } from './newEmailPopup';
@@ -24,7 +22,7 @@ interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { 
 interface IState {
     networkState: NetworkState;
     selectedEmailIndex: number;
-    emails: Array<SavedEmail>;
+    emails: Array<ISavedEmail>;
 }
 
 export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
@@ -41,7 +39,7 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     });
 
     const getContentFromDataService = async () => {
-        const netResult: ResultWithValue<Array<SavedEmail>> = await props.dataService.getJsonFile<Array<SavedEmail>>(JsonFile.emailsReceived);
+        const netResult: ResultWithValue<Array<ISavedEmail>> = await props.dataService.getJsonFile<Array<ISavedEmail>>(JsonFile.emailsReceived);
         if (!netResult.isSuccess) {
             setState({ ...state, networkState: NetworkState.Error });
             return;
@@ -58,9 +56,9 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         if (localState.networkState === NetworkState.Loading) return LoadingImage(true);
 
         return (
-            <div className="email-box">
+            <div className="email-box noselect">
                 {
-                    localState.emails.map((email: SavedEmail, index: number) => (
+                    localState.emails.map((email: ISavedEmail, index: number) => (
                         <div
                             key={email.guid}
                             className={classNames('item', { 'selected': index === state.selectedEmailIndex })}
@@ -104,18 +102,17 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     return (
-        <Window
+        <Applet
             key="email-list"
             {...props}
             isFullscreen={true}
             classNames="emails"
-            headerFunc={() => <WindowHeader {...props} windowIcon={windowIcon(props.appletType)} />}
             sidebar={renderSidebar(state)}
         >
-            <div key="email-list-content" className="email-list-content">
+            <div key="email-list-content" className="email-list-content noselect">
                 {renderBody(state)}
             </div>
-        </Window>
+        </Applet>
     );
 }
 

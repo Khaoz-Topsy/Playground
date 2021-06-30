@@ -1,4 +1,4 @@
-import { FileType, IAppletFile, IAppletInfo } from '../contracts/interface/IFile';
+import { FileType, IAppletFile } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
 import { AppletType } from './enum/appletType';
 

@@ -2,7 +2,8 @@
 
     .window-content.emails,
     .window-content.setting,
-    .window-content.explorer {
+    .window-content.explorer,
+    .window-content.notes-viewer {
         padding-bottom: 0;
 
         .window-with-sidebar {
@@ -66,7 +67,8 @@
         }
     }
 
-    .window-content.emails {
+    .window-content.emails,
+    .window-content.notes-viewer {
         .window-with-sidebar {
             .sidebar {
                 width: 33%;
@@ -76,6 +78,13 @@
                     padding: 0.75rem 1rem 1rem 1rem;
                 }
             }
+        }
+    }
+
+    .window-content.notes-viewer {
+
+        .content {
+            height: 100%;
         }
     }
 }

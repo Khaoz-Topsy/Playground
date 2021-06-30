@@ -17,7 +17,6 @@ export const AssistantSMSApplet: React.FC<IProps> = (props: IProps) => {
                 key: 'assistantSMS',
                 src: site.assistantApps.sms.webapp,
                 icon: AppletIcon.assistantSMS,
-                refreshOnResize: true,
                 defaultHeight: defaultScrapMechanicHeight,
                 defaultWidth: defaultScrapMechanicWidth,
             }}

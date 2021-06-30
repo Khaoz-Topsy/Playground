@@ -5,8 +5,9 @@
         position: relative;
         opacity: 0.8;
         background-color: _palette(bg-sidebar);
+        border-top: 1px solid _palette(bg-transparent-focused);
+        border-left: 1px solid _palette(bg-transparent-focused);
         border-right: 1px solid _palette(bg-transparent-focused);
-        border-bottom: 1px solid _palette(bg-transparent-focused);
 
         &.selected {
             background-color: rgba(60, 145, 255, 0.3);

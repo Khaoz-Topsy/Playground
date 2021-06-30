@@ -59,4 +59,9 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         backgroundColour: 'beige',
         textColour: 'black',
     },
+    {
+        ...KnownApplets.notes,
+        size: StartMenuSize.small,
+        backgroundColour: '#0C76B3',
+    },
 ];

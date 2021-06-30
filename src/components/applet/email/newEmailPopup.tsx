@@ -67,14 +67,15 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
                 <Modal isOpen={isOpen} onClose={customClose}>
                     <ModalOverlay />
                     <ModalContent>
-                        <ModalHeader>{translate(LocaleKey.newEmail)}</ModalHeader>
+                        <ModalHeader className="noselect">{translate(LocaleKey.newEmail)}</ModalHeader>
                         <ModalCloseButton />
                         <ModalBody>
                             <form noValidate autoComplete="off">
-                                <span style={{ marginRight: '0.5em' }}>To:</span>
+                                <span className="noselect" style={{ marginRight: '0.5em' }}>To:</span>
                                 <Chip
                                     avatar={<Avatar alt={site.kurt.fullName} src={site.kurt.profilePic} />}
                                     label={site.kurt.fullName}
+                                    className="noselect"
                                     color="primary"
                                 />
                                 <TextField
