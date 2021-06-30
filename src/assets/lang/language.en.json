@@ -36,5 +36,12 @@
   "twitchStream": "Twitch stream",
   "mostUsedItems": "Most Used",
   "email": "Email",
+  "newEmail": "New Email",
+  "newEmailMessage": "Message",
+  "newEmailName": "Name",
+  "newEmailFrom": "From address",
+  "newEmailSend": "Send",
+  "newEmailSending": "Sending",
+  "loading": "Loading",
   "unknown": "Unknown"
 }

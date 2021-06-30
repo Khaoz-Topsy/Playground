@@ -1,5 +1,10 @@
 import React, { useState, useRef } from 'react';
-import { Box, Container } from '@chakra-ui/react';
+import { Chip, Fab, TextField } from '@material-ui/core';
+import { AddIcon } from '@chakra-ui/icons';
+import {
+    Avatar, Box, Button, Modal, ModalBody, ModalCloseButton,
+    ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure
+} from '@chakra-ui/react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { site } from '../../../constants/site';
@@ -8,35 +13,123 @@ import { NetworkState } from '../../../constants/enum/networkState';
 import { withServices } from '../../../integration/dependencyInjection';
 
 import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
 
 interface IState {
+    name: string;
+    email: string;
+    message: string;
     networkState: NetworkState;
 }
 
 export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
+    const { isOpen, onOpen, onClose } = useDisclosure();
     const [state, setState] = useState<IState>({
-        networkState: NetworkState.Loading,
+        name: '',
+        email: '',
+        message: '',
+        networkState: NetworkState.Pending,
     });
-
     const captchaRef: any = useRef();
 
+    const editField = (fieldName: string) => (e: any) => {
+        setState({ ...state, [fieldName]: e?.target?.value ?? '' });
+    }
+
+    const sendInContactForm = () => {
+        // setState({ ...state, networkState: NetworkState.Loading });
+        (captchaRef?.current as any)?.execute?.();
+    }
+
+    const customClose = () => {
+        setState({ ...state, networkState: NetworkState.Pending });
+        (captchaRef?.current as any)?.resetCaptcha();
+        onClose();
+    }
+
+    const fabButton = (
+        <Fab color="primary" aria-label="add" onClick={onOpen}>
+            <AddIcon />
+        </Fab>
+    );
+
+    if (!isOpen) return fabButton;
+
+    const { name, email, message, networkState } = state;
     return (
-        <Container maxW={"container.xl"}>
+        <>
+            {fabButton}
             <Box mt={4}>
+                <Modal isOpen={isOpen} onClose={customClose}>
+                    <ModalOverlay />
+                    <ModalContent>
+                        <ModalHeader>{translate(LocaleKey.newEmail)}</ModalHeader>
+                        <ModalCloseButton />
+                        <ModalBody>
+                            <form noValidate autoComplete="off">
+                                <span style={{ marginRight: '0.5em' }}>To:</span>
+                                <Chip
+                                    avatar={<Avatar alt={site.kurt.fullName} src={site.kurt.profilePic} />}
+                                    label={site.kurt.fullName}
+                                    color="primary"
+                                />
+                                <TextField
+                                    id="from"
+                                    label={translate(LocaleKey.newEmailFrom)}
+                                    value={email}
+                                    onChange={editField('email')}
+                                    style={{ width: '100%', marginTop: '0.25em' }}
+                                />
+                                <TextField
+                                    id="message"
+                                    label={translate(LocaleKey.newEmailMessage)}
+                                    value={message}
+                                    onChange={editField('message')}
+                                    style={{ width: '100%', marginTop: '1em' }}
+                                    multiline
+                                />
+                            </form>
+                        </ModalBody>
+
+                        <ModalFooter>
+                            <TextField
+                                id="name"
+                                label={translate(LocaleKey.newEmailName)}
+                                value={name}
+                                onChange={editField('name')}
+                                style={{ paddingRight: '1em', paddingBottom: '0.5em', marginBottom: '0.5em' }}
+                            />
+                            <Button
+                                colorScheme="blue"
+                                variant="solid"
+                                isLoading={networkState === NetworkState.Loading}
+                                loadingText={translate(LocaleKey.newEmailSending)}
+                                onClick={sendInContactForm}>
+                                {translate(LocaleKey.newEmailSend)}
+                            </Button>
+                        </ModalFooter>
+                    </ModalContent>
+                </Modal>
                 <HCaptcha
                     ref={captchaRef}
                     sitekey={site.captchaKey}
                     theme="dark"
                     size="invisible"
                     onVerify={(token: string) => {
-                        (captchaRef?.current as any)?.resetCaptcha();
+                        // Make network call
+                        setState({ ...state, networkState: NetworkState.Loading });
+                        // customClose();
+                    }}
+                    onError={() => {
+                        setState({ ...state, networkState: NetworkState.Pending });
                     }}
                 />
             </Box>
-        </Container>
+        </>
     );
 }
 

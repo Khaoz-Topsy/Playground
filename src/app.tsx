@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { DarkMode, Drawer, useDisclosure } from '@chakra-ui/react';
+import { Drawer, useDisclosure } from '@chakra-ui/react';
 
 import { Desktop } from './components/common/desktop/desktop';
 import { Taskbar } from './components/common/taskbar/taskbar';
@@ -9,6 +9,8 @@ import { InitialisationScreen } from './components/common/initialisationScreen';
 import { appPreloadAssets } from './helper/cacheHelper';
 import { StartMenu } from './components/common/startmenu/startMenu';
 import { SettingStore } from './state/setting/store';
+
+import { CustomThemeProvider } from './themeProvider';
 
 interface IProps { }
 
@@ -34,7 +36,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
   const toggleStartMenu = (newValue?: boolean) => setStartMenuOpen(newValue ?? (!isStartMenuOpen));
 
   return (
-    <DarkMode>
+    <CustomThemeProvider>
       <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
         <Desktop />
         <WindowManager />
@@ -59,7 +61,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
           (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
         }
       </div>
-    </DarkMode>
+    </CustomThemeProvider>
   );
 }
 

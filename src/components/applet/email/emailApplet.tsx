@@ -1,5 +1,6 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import { Badge, Center } from '@chakra-ui/react';
+import classNames from 'classnames';
 // import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
@@ -8,14 +9,14 @@ import { JsonFile } from '../../../constants/jsonFile';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { LoadingImage } from '../../../components/core/loader';
-import { Window } from '../../window/window';
+import { MarkdownContent } from '../../core/markdown';
 import { withServices } from '../../../integration/dependencyInjection';
-
-import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
 import { WindowHeader } from '../../window/windowHeader';
 import { windowIcon } from '../../window/windowIcon';
-import { MarkdownContent } from '../../core/markdown';
-import classNames from 'classnames';
+import { Window } from '../../window/window';
+
+import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
+import { NewEmailPopup } from './newEmailPopup';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -83,6 +84,7 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                         </div>
                     ))
                 }
+                <NewEmailPopup />
             </div>
         );
     }

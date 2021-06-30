@@ -38,5 +38,12 @@ export enum LocaleKey {
   twitchStream = 'twitchStream',
   mostUsedItems = 'mostUsedItems',
   email = 'email',
+  newEmail = 'newEmail',
+  newEmailMessage = 'newEmailMessage',
+  newEmailName = 'newEmailName',
+  newEmailFrom = 'newEmailFrom',
+  newEmailSend = 'newEmailSend',
+  newEmailSending = 'newEmailSending',
+  loading = 'loading',
   unknown = 'unknown'
 }
