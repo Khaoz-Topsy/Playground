@@ -1,6 +1,6 @@
 $iconWidth: 26;
 
-.base-social-btn {
+.social-btn {
     display: block;
     height: 50px;
     width: 100%;
@@ -38,46 +38,40 @@ $iconWidth: 26;
             text-align: left;
         }
     }
-}
 
-.github-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: #484848;
-}
-
-.twitter-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: #5aa4eb;
-}
-
-.discord-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: #7289da;
-}
-
-.youtube-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: #cc0000;
-}
-
-.twitch-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: #9146FF;
-}
-
-.linkedin-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: #1a81b9;
-}
-
-.steam-btn {
-    @extend .base-social-btn;
-    color: #ffffff;
-    background: linear-gradient(-60deg, #00adee, #007aa7);
+    &.github {
+        color: #ffffff;
+        background: #484848;
+    }
+    
+    &.twitter {
+        color: #ffffff;
+        background: #5aa4eb;
+    }
+    
+    &.discord {
+        color: #ffffff;
+        background: #7289da;
+        cursor: unset;
+    }
+    
+    &.youtube {
+        color: #ffffff;
+        background: #cc0000;
+    }
+    
+    &.twitch {
+        color: #ffffff;
+        background: #9146FF;
+    }
+    
+    &.linkedin {
+        color: #ffffff;
+        background: #1a81b9;
+    }
+    
+    &.steam {
+        color: #ffffff;
+        background: linear-gradient(-60deg, #00adee, #007aa7);
+    }
 }

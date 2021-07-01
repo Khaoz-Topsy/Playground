@@ -10,6 +10,9 @@ Few cool things added:
 - https://www.npmjs.com/package/react-animated-term
 - Use keyboard shortcuts `alt + leftArrow` and `alt + rightArrow` for back and forward navigation in the file explorer
   - Using https://craig.is/killing/mice
+- Add version to about page
+  - Meta data on apps
+
 
 Things that I will be adding 
 - More files and folders
@@ -19,4 +22,5 @@ Things that I will be adding
   - https://www.npmjs.com/package/mermaid
   - https://github.com/learn-anything/react-mindmap
 - More sillies
-- Add version to about page
+- Monitor.kurtlourens.com
+- Open iframe url in new tab
