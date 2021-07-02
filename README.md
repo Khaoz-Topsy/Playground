@@ -24,3 +24,5 @@ Things that I will be adding
 - More sillies
 - Monitor.kurtlourens.com
 - Open iframe url in new tab
+- mac spotlight
+- secrets found page

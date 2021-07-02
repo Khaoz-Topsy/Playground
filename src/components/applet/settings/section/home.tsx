@@ -112,7 +112,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Use the website in dark mode.</Text>
                 </Box> */}
             </SettingItemSection>
-        </Box >
+        </Box>
     );
 }
 

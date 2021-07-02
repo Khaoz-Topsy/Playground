@@ -1,9 +1,10 @@
 import React from 'react';
-import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon } from '@chakra-ui/icons';
+import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon, UnlockIcon } from '@chakra-ui/icons';
 
 import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
 import { SettingGithub } from './section/github';
+import { SettingSecrets } from './section/secrets';
 import { SettingPersonalSocials } from './section/personalSocials';
 import { SettingOtherSocials } from './section/otherSocials';
 import { LocaleKey } from '../../../localization/LocaleKey';
@@ -31,6 +32,11 @@ export const settingPages = [
         comp: <SettingOtherSocials />,
         icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
     },
+    // {
+    //     title: LocaleKey.otherSocials,
+    //     comp: <SettingSecrets />,
+    //     icon: <UnlockIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
+    // },
     {
         title: LocaleKey.about,
         comp: <SettingAbout />,
