@@ -12,6 +12,7 @@ Few cool things added:
   - Using https://craig.is/killing/mice
 - Add version to about page
   - Meta data on apps
+- mac spotlight
 
 
 Things that I will be adding 
@@ -25,5 +26,6 @@ Things that I will be adding
 - Monitor.kurtlourens.com
 - Open iframe url in new tab
 - mac spotlight
+  - Add items to appear in search
 - secrets found page
 - Toast on finding a secret
