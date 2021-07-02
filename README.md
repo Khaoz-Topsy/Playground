@@ -26,3 +26,4 @@ Things that I will be adding
 - Open iframe url in new tab
 - mac spotlight
 - secrets found page
+- Toast on finding a secret
