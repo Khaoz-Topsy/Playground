@@ -1,0 +1,62 @@
+body {
+    background-color: #fff9f2;
+}
+
+#spotlight-wrapper {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+
+.spotlight-bg {
+    transition: background-color 500ms ease-in-out;
+
+    &.isOpen {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+}
+
+.spotlight-group {
+    width: 628px !important;
+    margin: auto;
+
+    #spotlight {
+        display: block;
+        width: 628px;
+        height: 56px;
+        margin: auto;
+        border-radius: 5px;
+        //   @include appearance(none);
+        box-shadow: 0 25px 60px 10px rgba(0, 0, 0, 1);
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        outline: none;
+        font-size: 1.6rem;
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        color: black;
+        background-color: #f8f5f4;
+        background-position: left 17px center;
+        background-repeat: no-repeat;
+        background-size: 3.5%;
+        padding: 0 52px;
+
+        &::-webkit-input-placeholder {
+            text-align: center;
+        }
+
+        &:-moz-placeholder {
+            /* Firefox 18- */
+            text-align: center;
+        }
+
+        &::-moz-placeholder {
+            /* Firefox 19+ */
+            text-align: center;
+        }
+
+        &:-ms-input-placeholder {
+            text-align: center;
+        }
+    }
+}

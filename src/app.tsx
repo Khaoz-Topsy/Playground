@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Drawer, useDisclosure } from '@chakra-ui/react';
+import Mousetrap from 'mousetrap';
 
+import { SpotlightSearch } from './components/common/spotlight';
+import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { Desktop } from './components/common/desktop/desktop';
 import { Taskbar } from './components/common/taskbar/taskbar';
 import { WindowManager } from './components/window/windowManager';
-import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
+import { StartMenu } from './components/common/startmenu/startMenu';
 import { InitialisationScreen } from './components/common/initialisationScreen';
 import { appPreloadAssets } from './helper/cacheHelper';
-import { StartMenu } from './components/common/startmenu/startMenu';
 import { SettingStore } from './state/setting/store';
 
 import { CustomThemeProvider } from './themeProvider';
@@ -19,21 +21,31 @@ export const App: React.FC<IProps> = (props: IProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldFade, setShouldFade] = useState(false);
   const [isStartMenuOpen, setStartMenuOpen] = useState(false);
+  const [isSpotlightOpen, setSpotlightOpen] = useState(false);
 
   const currentSettings = SettingStore.useState(store => store);
   const brightnessPerc = (currentSettings.brightness / 2) + 50;
 
   useEffect(() => {
-    appPreloadAssets()
-      .then((_) => {
-        setShouldFade(true);
-        setTimeout(() => setIsLoaded(true), 1000);
-        // setTimeout(onOpen, 2000);
-      });
-    // eslint-disable-next-line
-  }, []);
+    if (!isLoaded) {
+      appPreloadAssets()
+        .then((_) => {
+          setShouldFade(true);
+          setTimeout(() => setIsLoaded(true), 1000);
+        });
+    }
+    Mousetrap.bind('ctrl+space', () => setSpotlightOpen(!isSpotlightOpen));
 
-  const toggleStartMenu = (newValue?: boolean) => setStartMenuOpen(newValue ?? (!isStartMenuOpen));
+    return () => {
+      Mousetrap.unbind('ctrl+space');
+    }
+    // eslint-disable-next-line
+  }, [isSpotlightOpen]);
+
+  const toggleStartMenu = (newValue?: boolean) => {
+    console.log(newValue ?? (!isStartMenuOpen));
+    setStartMenuOpen(newValue ?? (!isStartMenuOpen))
+  };
 
   return (
     <CustomThemeProvider>
@@ -57,6 +69,10 @@ export const App: React.FC<IProps> = (props: IProps) => {
             onClose={onClose}
           />
         </Drawer>
+        <SpotlightSearch
+          isOpen={isSpotlightOpen}
+          onClose={() => setSpotlightOpen(false)}
+        />
         {
           (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
         }
