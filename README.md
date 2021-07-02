@@ -8,8 +8,9 @@ Few cool things added:
 - https://github.com/1egoman/funnies
 - https://github.com/milkandsour/nyanloader/blob/master/nyanloader.js
 - https://www.npmjs.com/package/react-animated-term
-- Use keyboard shortcuts `alt + leftArrow` and `alt + rightArrow` for back and forward navigation in the file explorer
+- Use keyboard shortcuts
   - Using https://craig.is/killing/mice
+  -  `alt + leftArrow` and `alt + rightArrow` for back and forward navigation in the file explorer
 - Add version to about page
   - Meta data on apps
 - mac spotlight
@@ -25,6 +26,8 @@ Things that I will be adding
 - More sillies
 - Monitor.kurtlourens.com
 - Open iframe url in new tab
+- Use keyboard shortcuts
+  - Add page to display current shortcuts
 - mac spotlight
   - Add items to appear in search
 - secrets found page
