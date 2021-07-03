@@ -9,6 +9,7 @@ import { VirtualAssistantService } from '../services/VirtualAssistantService';
 import { StorageService } from '../services/StorageService';
 import { AnalyticsService } from '../services/AnalyticsService';
 import { LogService } from '../services/LogService';
+import { SillyService } from '../services/SillyService';
 import { getFilesOnDisk } from '../constants/filesOnDisk';
 
 export interface IDependencyInjection {
@@ -18,6 +19,7 @@ export interface IDependencyInjection {
     storageService: StorageService;
     analyticsService: AnalyticsService;
     logService: LogService;
+    sillyService: SillyService;
 
     // Network
     kurtApiService: KurtApiService;
@@ -36,6 +38,7 @@ export const defaultDependencyInjectionFunc: GetServices = () => {
         logService,
         storageService,
         analyticsService,
+        sillyService: new SillyService(),
 
         // Network
         kurtApiService: new KurtApiService(storageService),

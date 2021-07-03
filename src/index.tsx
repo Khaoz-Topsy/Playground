@@ -10,6 +10,7 @@ import { getJSON, defaultConfig } from './utils';
 
 import './scss/custom.scss';
 import 'react-image-lightbox/style.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 declare global {
   interface Window { config: any; registration: any }

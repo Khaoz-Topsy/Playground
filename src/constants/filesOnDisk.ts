@@ -39,7 +39,7 @@ export const getFilesOnDisk = (): IFolder => {
 
     getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {
-        docFolder?.addFile?.(imageFile(background.name as LocaleKey, null, [background.url]));
+        docFolder?.addFile?.(imageFile(background.name as any, null, [background.url]));
     }
 
     // const kurtFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Kurt' }));
@@ -50,7 +50,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.nms.appleStore));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.nms.webapp));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.homepage, FileIcon.web, site.assistantApps.nms.website));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(imageFile('loader.svg' as LocaleKey, External.assistantNmsLoader, [External.assistantNmsLoader]));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(imageFile('loader.svg' as any, External.assistantNmsLoader, [External.assistantNmsLoader]));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
 
     const assistantSMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantSMS }));

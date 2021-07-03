@@ -3,7 +3,6 @@ import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { SearchIcon } from '@chakra-ui/icons';
 import { motion } from "framer-motion";
 import classNames from "classnames";
-import { useRef } from "react";
 
 interface IProps {
     isOpen: boolean;
@@ -31,12 +30,10 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
                 variants={variants}
                 exit={variants.closed}
             >
-                <div id="spotlight-wrapper">
-                    <InputGroup className="spotlight-group">
-                        <Input ref={input => input && props.isOpen && input.focus()} type="text" id="spotlight" placeholder="Search" />
-                        <InputLeftElement children={<SearchIcon boxSize={8} mt={3} ml={4} color="blackAlpha.500" />} />
-                    </InputGroup>
-                </div>
+                <InputGroup className="spotlight-group">
+                    <Input ref={input => input && props.isOpen && input.focus()} type="text" id="spotlight" placeholder="Search" />
+                    <InputLeftElement children={<SearchIcon boxSize={8} mt={3} ml={4} color="blackAlpha.500" />} />
+                </InputGroup>
             </motion.div>
         </div>
     );

@@ -9,9 +9,9 @@ import { Taskbar } from './components/common/taskbar/taskbar';
 import { WindowManager } from './components/window/windowManager';
 import { StartMenu } from './components/common/startmenu/startMenu';
 import { InitialisationScreen } from './components/common/initialisationScreen';
+import { ToasterContainer } from './components/core/toast';
 import { appPreloadAssets } from './helper/cacheHelper';
 import { SettingStore } from './state/setting/store';
-
 import { CustomThemeProvider } from './themeProvider';
 
 interface IProps { }
@@ -43,8 +43,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
   }, [isSpotlightOpen]);
 
   const toggleStartMenu = (newValue?: boolean) => {
-    console.log(newValue ?? (!isStartMenuOpen));
-    setStartMenuOpen(newValue ?? (!isStartMenuOpen))
+    setStartMenuOpen(newValue ?? (!isStartMenuOpen));
   };
 
   return (
@@ -77,6 +76,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
           (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
         }
       </div>
+      <ToasterContainer />
     </CustomThemeProvider>
   );
 }

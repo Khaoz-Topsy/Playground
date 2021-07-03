@@ -38,7 +38,7 @@ const loadLocaleMessages = (): any => {
 
 export const translate = (key: LocaleKey) => {
   //debugger;
-  const trans = i18next.t(key.toString());
+  const trans = i18next.t(LocaleKey[key].toString());
   if (trans) return trans;
   return key.toString();
   // return '.' + i18next.t(key.toString());

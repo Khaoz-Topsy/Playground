@@ -33,7 +33,7 @@ export const IFrameApplet: React.FC<IProps> = (props: IProps) => {
             <iframe
                 id={key}
                 key={`${key}-frame`}
-                title={props.name}
+                title={props.name.toString()}
                 className="pos-abs-top-left"
                 style={style}
                 src={src}

@@ -4,24 +4,32 @@ import { Image, Center } from '@chakra-ui/react';
 import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
+import { secretFoundToast } from '../../core/toast';
 import { AppletIcon } from '../../../constants/appImage';
 import { TaskbarList } from '../../../constants/taskbarList';
+import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
+import { TriggerAfterXClicks } from '../../../helper/clickHelper';
 import { anyObject } from '../../../helper/typescriptHacks';
+import { withServices } from '../../../integration/dependencyInjection';
 
 import { WindowStore } from '../../../state/window/store';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
+import { ISecretStore, SecretStore } from '../../../state/secrets/store';
 
 import { TaskbarIcon } from './taskbarIcon';
+import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
 
-interface IProps {
+interface IWithoutExpectedServices {
     toggleStartMenu: (newValue?: boolean) => void;
     drawerOnOpen: () => void;
-}
+};
+interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
-export const Taskbar: React.FC<IProps> = (props: IProps) => {
+export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
     const windStore = WindowStore.useState(store => store);
+    const secretsFound = SecretStore.useState(store => store.secretsFound);
 
     const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
         props.toggleStartMenu(false);
@@ -29,6 +37,21 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
             ...app,
             meta: { ...app.meta, notOpen: undefined },
         }));
+    }
+
+    const notificationBellClick = () => {
+        props.drawerOnOpen();
+        props.toggleStartMenu(false);
+    }
+
+    const doHarlemShake = () => {
+        if (!secretsFound.includes(FoundSecretType.harlemShake)) {
+            secretFoundToast(FoundSecretType.harlemShake);
+            SecretStore.update((store: ISecretStore) => {
+                store.secretsFound = [...store.secretsFound, FoundSecretType.harlemShake];
+            })
+            props.sillyService.doHarlemShake();
+        }
     }
 
     const appsToDisplay: Array<LaunchedApp | NotLaunchedApp> = [];
@@ -57,9 +80,13 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
     return (
         <div className="taskbar">
             <AnimatePresence>
-                <div className="start-menu taskbar-highlight-on-hover applet-shortcut noselect" onClick={() => props.toggleStartMenu()}>
+                <TriggerAfterXClicks classNames="start-menu taskbar-highlight-on-hover applet-shortcut noselect"
+                    onClick={() => props.toggleStartMenu()}
+                    numberOfRequiredClicks={5}
+                    trigger={doHarlemShake}
+                >
                     <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
-                </div>
+                </TriggerAfterXClicks>
                 {
                     appsToDisplay.map((applet: LaunchedApp | NotLaunchedApp, index: number) => {
                         return (
@@ -79,15 +106,21 @@ export const Taskbar: React.FC<IProps> = (props: IProps) => {
                     <p>{currentShortTime()}<br />{currentShortDate()}</p>
                 </Center>
             </div>
-            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={() => {
-                props.drawerOnOpen();
-                props.toggleStartMenu(false);
-            }}>
+            <TriggerAfterXClicks classNames="taskbar-notification taskbar-highlight-on-hover noselect"
+                onClick={notificationBellClick}
+                numberOfRequiredClicks={5}
+                trigger={doHarlemShake}
+            >
                 <Center>
                     <Icon as={BellIcon} />
                 </Center>
-            </div>
+            </TriggerAfterXClicks>
         </div>
     );
 }
+
+export const Taskbar = withServices<IWithoutExpectedServices, IExpectedServices>(
+    TaskbarUnconnected,
+    dependencyInjectionToProps
+);
 

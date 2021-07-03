@@ -2,6 +2,10 @@ body {
     background-color: #fff9f2;
 }
 
+.spotlight.layer {
+    pointer-events: none;
+}
+
 #spotlight-wrapper {
     position: absolute;
     top: 25%;
@@ -15,6 +19,7 @@ body {
 
     &.isOpen {
         background-color: rgba(0, 0, 0, 0.2);
+        pointer-events: all;
     }
 }
 

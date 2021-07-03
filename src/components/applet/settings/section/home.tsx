@@ -1,20 +1,24 @@
 import React from 'react';
-import { SunIcon, BellIcon } from '@chakra-ui/icons';
+import { SunIcon } from '@chakra-ui/icons';
 import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
 
+import { translate } from '../../../../integration/i18n';
+import { LocaleKey } from '../../../../localization/LocaleKey';
 import { SettingItemSection } from '../settingItemSection';
+import { SecretStore, ISecretStore } from '../../../../state/secrets/store';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
 import { withServices } from '../../../../integration/dependencyInjection';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
-import { translate } from '../../../../integration/i18n';
-import { LocaleKey } from '../../../../localization/LocaleKey';
+import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
+import { secretFoundToast } from '../../../core/toast';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
 
 export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSettings = SettingStore.useState(store => store);
+    const secretsFound = SecretStore.useState(store => store.secretsFound);
 
     const bgOptions = [
         {
@@ -37,6 +41,13 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const onEnableClippyChange = (e: any) => {
+        if (!secretsFound.includes(FoundSecretType.clippy)) {
+            secretFoundToast(FoundSecretType.clippy);
+            SecretStore.update((store: ISecretStore) => {
+                store.secretsFound = [...store.secretsFound, FoundSecretType.clippy];
+            })
+        }
+
         if (currentSettings.enabledClippy) {
             props.virtualAssistantService?.hide?.();
         } else {
@@ -56,12 +67,12 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const {
         background,
         brightness,
-        volume,
+        // volume,
         enabledClippy,
     } = currentSettings;
 
     return (
-        <Box className="noselect">
+        <Box ml={2} className="noselect">
             <SettingItemSection
                 heading={translate(LocaleKey.settings)}
                 subTexts={[translate(LocaleKey.customiseSettings)]}
@@ -91,7 +102,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                             </SliderThumb>
                         </Slider>
                     </Box>
-                    <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
+                    {/* <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
                         <Text fontSize="md">{translate(LocaleKey.volume)}</Text>
                         <Slider mb="1" value={volume} onChange={sliderOnChange('volume')}>
                             <SliderTrack>
@@ -101,7 +112,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                                 <BellIcon color="blue.400" />
                             </SliderThumb>
                         </Slider>
-                    </Box>
+                    </Box> */}
                 </SimpleGrid>
                 <Box mt={3} mb={5}>
                     <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>{translate(LocaleKey.enableClippy)}</Checkbox>

@@ -32,11 +32,11 @@ export const settingPages = [
         comp: <SettingOtherSocials />,
         icon: <StarIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
     },
-    // {
-    //     title: LocaleKey.otherSocials,
-    //     comp: <SettingSecrets />,
-    //     icon: <UnlockIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
-    // },
+    {
+        title: LocaleKey.settingSecrets,
+        comp: <SettingSecrets />,
+        icon: <UnlockIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
+    },
     {
         title: LocaleKey.about,
         comp: <SettingAbout />,

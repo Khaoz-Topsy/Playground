@@ -67,7 +67,6 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
     );
 }
 
-
 export const NotificationDrawer = withServices<IWithoutExpectedServices, IExpectedServices>(
     NotificationDrawerUnconnected,
     dependencyInjectionToProps

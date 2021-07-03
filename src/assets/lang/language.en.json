@@ -16,6 +16,8 @@
   "desktop": "Desktop",
   "documents": "Documents",
   "readMe": "README.md",
+  "secrets": "Secrets",
+  "moreSecrets": "MoreSecrets",
   "secretFileName": "Don't look inside 🐲.md",
   "androidApp": "Android App",
   "iOSApp": "iOS App",
@@ -43,5 +45,13 @@
   "newEmailSend": "Send",
   "newEmailSending": "Sending",
   "loading": "Loading",
+  "settingSecrets": "Secrets",
+  "settingSecretsFound": "Secrets Found",
+  "settingSecretsCanYouFindThemAll": "Can you find all the secrets hidden in this site?",
+  "clippy": "Clippy",
+  "clippySecretDescription": "Enabled clippy from the settings page or terminal",
+  "nyanCatSecretDescription": "Used the NyanCat applet",
+  "harlemShake": "Harlem Shake",
+  "harlemShakeSecretDescription": "Click the Start Menu or Taskbar notification bell icon 5 or more times",
   "unknown": "Unknown"
 }

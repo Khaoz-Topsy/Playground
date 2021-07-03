@@ -1,5 +1,5 @@
 import React from 'react';
-import { Center } from '@chakra-ui/react';
+import { Box, Center } from '@chakra-ui/react';
 
 import { BasicLink } from '../../../core/link';
 import { BasicLazyImage } from '../../../core/image';
@@ -9,7 +9,7 @@ import packageJson from '../../../../../package.json';
 
 export const SettingAbout: React.FC = () => {
     return (
-        <>
+        <Box marginX={2}>
             <Center position="relative">
                 <BasicLazyImage
                     classNames="settings-about"
@@ -28,7 +28,7 @@ export const SettingAbout: React.FC = () => {
             </p>
             <br />
             <p style={{ textAlign: 'center' }}>Version: {packageJson.version}</p>
-        </>
+        </Box>
     );
 }
 
