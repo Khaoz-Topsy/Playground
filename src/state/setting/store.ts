@@ -7,9 +7,11 @@ export interface ISettingStore {
     volume: number;
 }
 
-export const SettingStore = new Store<ISettingStore>({
+export const defaultSettingProps = {
     background: 'bg1',
     enabledClippy: false,
     brightness: 100,
     volume: 100,
-});
+};
+
+export const SettingStore = new Store<ISettingStore>(defaultSettingProps);

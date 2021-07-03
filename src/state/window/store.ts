@@ -7,7 +7,9 @@ export interface IWindowStore {
     activeApps: Array<LaunchedApp>;
 }
 
-export const WindowStore = new Store<IWindowStore>({
+export const defaultWindowProps = {
     currentFocused: AppletType.none,
     activeApps: [],
-});
+};
+
+export const WindowStore = new Store<IWindowStore>(defaultWindowProps);

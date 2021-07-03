@@ -1,6 +1,6 @@
 {
   "name": "kurtlourens_playground",
-  "version": "0.1.30",
+  "version": "0.1.32",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.13",
@@ -29,6 +29,7 @@
     "moment": "^2.29.1",
     "mousetrap": "^1.6.5",
     "node-sass": "^6.0.0",
+    "object-hash": "^2.2.0",
     "pullstate": "^1.22.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -70,6 +71,7 @@
     ]
   },
   "devDependencies": {
+    "@types/debounce": "^1.2.0",
     "@types/dragselect": "^1.13.1",
     "@types/mousetrap": "^1.6.8",
     "@types/react-resizable": "^1.7.2",

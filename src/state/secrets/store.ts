@@ -5,6 +5,8 @@ export interface ISecretStore {
     secretsFound: Array<FoundSecretType>;
 }
 
-export const SecretStore = new Store<ISecretStore>({
+export const defaultSecretProps = {
     secretsFound: [],
-});
+};
+
+export const SecretStore = new Store<ISecretStore>(defaultSecretProps);

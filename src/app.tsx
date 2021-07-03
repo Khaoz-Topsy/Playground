@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Drawer, useDisclosure } from '@chakra-ui/react';
+import { PullstateProvider } from "pullstate";
 import Mousetrap from 'mousetrap';
 
 import { SpotlightSearch } from './components/common/spotlight';
@@ -11,7 +12,11 @@ import { StartMenu } from './components/common/startmenu/startMenu';
 import { InitialisationScreen } from './components/common/initialisationScreen';
 import { ToasterContainer } from './components/core/toast';
 import { appPreloadAssets } from './helper/cacheHelper';
+
 import { SettingStore } from './state/setting/store';
+import { PullstateCore } from './state/stateCore';
+import { loadStateFromLocalStorage, subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
+
 import { CustomThemeProvider } from './themeProvider';
 
 interface IProps { }
@@ -22,6 +27,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
   const [shouldFade, setShouldFade] = useState(false);
   const [isStartMenuOpen, setStartMenuOpen] = useState(false);
   const [isSpotlightOpen, setSpotlightOpen] = useState(false);
+  const instance = PullstateCore.instantiate({ ssr: false, hydrateSnapshot: loadStateFromLocalStorage() });
 
   const currentSettings = SettingStore.useState(store => store);
   const brightnessPerc = (currentSettings.brightness / 2) + 50;
@@ -36,8 +42,13 @@ export const App: React.FC<IProps> = (props: IProps) => {
     }
     Mousetrap.bind('ctrl+space', () => setSpotlightOpen(!isSpotlightOpen));
 
+    const unsubscribeFromSettings = subscribeToSettingsChanges(instance.stores);
+    const unsubscribeFromSecrets = subscribeToSecretChanges(instance.stores);
+
     return () => {
       Mousetrap.unbind('ctrl+space');
+      unsubscribeFromSettings();
+      unsubscribeFromSecrets();
     }
     // eslint-disable-next-line
   }, [isSpotlightOpen]);
@@ -48,35 +59,37 @@ export const App: React.FC<IProps> = (props: IProps) => {
 
   return (
     <CustomThemeProvider>
-      <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
-        <Desktop />
-        <WindowManager />
-        <Taskbar
-          drawerOnOpen={onOpen}
-          toggleStartMenu={toggleStartMenu}
-        />
-        <StartMenu
-          isOpen={isStartMenuOpen}
-          toggleStartMenu={toggleStartMenu}
-        />
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
-          onClose={onClose}
-        >
-          <NotificationDrawer
-            onClose={onClose}
+      <PullstateProvider instance={instance}>
+        <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
+          <Desktop />
+          <WindowManager />
+          <Taskbar
+            drawerOnOpen={onOpen}
+            toggleStartMenu={toggleStartMenu}
           />
-        </Drawer>
-        <SpotlightSearch
-          isOpen={isSpotlightOpen}
-          onClose={() => setSpotlightOpen(false)}
-        />
-        {
-          (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
-        }
-      </div>
-      <ToasterContainer />
+          <StartMenu
+            isOpen={isStartMenuOpen}
+            toggleStartMenu={toggleStartMenu}
+          />
+          <Drawer
+            isOpen={isOpen}
+            placement="right"
+            onClose={onClose}
+          >
+            <NotificationDrawer
+              onClose={onClose}
+            />
+          </Drawer>
+          <SpotlightSearch
+            isOpen={isSpotlightOpen}
+            onClose={() => setSpotlightOpen(false)}
+          />
+          {
+            (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
+          }
+        </div>
+        <ToasterContainer />
+      </PullstateProvider>
     </CustomThemeProvider>
   );
 }

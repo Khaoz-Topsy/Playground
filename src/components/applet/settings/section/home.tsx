@@ -1,4 +1,5 @@
 import React from 'react';
+import { debounce } from 'debounce';
 import { SunIcon } from '@chakra-ui/icons';
 import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
 
@@ -93,7 +94,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
                     <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
                         <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
-                        <Slider mb="1" value={brightness} onChange={sliderOnChange('brightness')}>
+                        <Slider mb="1" defaultValue={brightness} onChange={debounce(sliderOnChange('brightness'), 200)}>
                             <SliderTrack>
                                 <SliderFilledTrack bg="blue.400" />
                             </SliderTrack>
