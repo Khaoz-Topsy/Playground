@@ -1,3 +1,7 @@
+export const defaultWindowXPosition = 140;
+export const defaultWindowYPosition = 20;
+export const defaultWindowCoordShift = 40;
+
 export const minWidth = 400;
 export const minHeight = 300;
 

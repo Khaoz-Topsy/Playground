@@ -9,6 +9,10 @@ export interface IApplet {
     isMinimised?: boolean;
     isMaximised?: boolean;
     zIndex?: number;
+
+    defaultX?: number;
+    defaultY?: number;
+
     onSetFocus: (e: any) => void;
     onMinimise: (e: any) => void;
     onMaximise: (e: any) => void;

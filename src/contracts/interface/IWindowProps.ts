@@ -3,8 +3,6 @@ import { IApplet } from "./IApplet";
 export interface IWindowProps extends IApplet {
     defaultHeight?: number;
     defaultWidth?: number;
-    defaultX?: number;
-    defaultY?: number;
     classNames?: string;
 
     showLoading?: boolean;

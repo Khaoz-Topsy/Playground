@@ -22,6 +22,7 @@ interface IProps {
 
 export const StartMenu: React.FC<IProps> = (props: IProps) => {
     const { WindowStore } = PullstateCore.useStores();
+    // const activeApps = WindowStore.useState(store => store.activeApps);
 
     const openApp = (startMenuItem: IAppletFile | IFile) => (e: any) => {
         e?.preventDefault();
@@ -55,6 +56,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
             {
                 props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu()}></div>
             }
+            {/* <div key={`apps-${activeApps.length}`} className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })}> */}
             <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })}>
                 <section className="list">
                     <div className="profile">

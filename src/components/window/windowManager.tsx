@@ -9,6 +9,7 @@ import { windowActionEvent } from '../../constants/enum/customWindowEvent';
 import { PullstateCore } from '../../state/stateCore';
 import { closeApp, maximiseApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 import { windowDisplayer } from './windowDisplayer';
+import { defaultWindowCoordShift, defaultWindowXPosition, defaultWindowYPosition } from '../../constants/window';
 
 interface IProps { }
 
@@ -43,11 +44,14 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
     );
 
     const renderSupportedWindows = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
+        const coordShift = defaultWindowCoordShift * (index % 10);
         const appProps: IApplet = {
             ...app,
             isFocused: app.appletType === currentlyFocused,
             zIndex: app.openOrder,
             ...app.meta,
+            defaultX: defaultWindowXPosition + coordShift,
+            defaultY: defaultWindowYPosition + coordShift,
             onSetFocus: onSetFocus(app.appletType),
             onMinimise: onMinimise(app.appletType),
             onMaximise: onMaximise(app.appletType),

@@ -5,7 +5,7 @@ import { ResizableBox, ResizeCallbackData } from 'react-resizable'
 import { Box, Center, Container, Spinner } from '@chakra-ui/react'
 import { motion } from 'framer-motion'
 
-import { minHeight, minWidth, defaultHeight, defaultWidth } from '../../constants/window'
+import { minHeight, minWidth, defaultHeight, defaultWidth, defaultWindowXPosition, defaultWindowYPosition } from '../../constants/window'
 import { IApplet } from '../../contracts/interface/IApplet'
 import { IWindowProps } from '../../contracts/interface/IWindowProps'
 
@@ -98,7 +98,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         >
             <Draggable
                 handle=".window-header"
-                defaultPosition={{ x: defaultX ?? 200, y: defaultY ?? 50 }}
+                defaultPosition={{ x: defaultX ?? defaultWindowXPosition, y: defaultY ?? defaultWindowYPosition }}
                 bounds={{ top: 0, left: 0 }}
             >
                 <ResizableBox
