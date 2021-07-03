@@ -6,8 +6,8 @@ interface IProps { }
 export const ToasterContainer: React.FC<IProps> = (props: IProps) => {
     return (
         <ToastContainer
-            position="top-right"
-            autoClose={50000}
+            position="bottom-right"
+            autoClose={10000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick={true}
