@@ -2,32 +2,16 @@ import React from 'react';
 import { Box, Text, Checkbox, Stack, Skeleton } from '@chakra-ui/react';
 
 import { SettingItemSection } from '../settingItemSection';
-import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
+import { getSecretsFound } from '../../../../constants/secretsFound';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { translate } from '../../../../integration/i18n';
 import { PullstateCore } from '../../../../state/stateCore';
 
 export const SettingSecrets: React.FC = () => {
     const { SecretStore } = PullstateCore.useStores();
-    const currentSecrets = SecretStore.useState(store => store);
+    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
-    const secretsFound = [
-        {
-            name: LocaleKey.clippy,
-            howTo: LocaleKey.clippySecretDescription,
-            isFound: currentSecrets.secretsFound.includes(FoundSecretType.clippy)
-        },
-        {
-            name: LocaleKey.nyanCat,
-            howTo: LocaleKey.nyanCatSecretDescription,
-            isFound: currentSecrets.secretsFound.includes(FoundSecretType.nyanCat)
-        },
-        {
-            name: LocaleKey.harlemShake,
-            howTo: LocaleKey.harlemShakeSecretDescription,
-            isFound: currentSecrets.secretsFound.includes(FoundSecretType.harlemShake)
-        }
-    ]
+    const secretsFound = getSecretsFound(currentSecretsFound);
 
     return (
         <Box marginX={2} className="noselect">

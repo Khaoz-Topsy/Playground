@@ -22,7 +22,7 @@ interface IProps extends IWithoutExpectedServices, IExpectedServices { }
 export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const { SecretStore } = PullstateCore.useStores();
     const currentSettings = SettingStore.useState(store => store);
-    const secretsFound = SecretStore.useState(store => store.secretsFound);
+    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
     const backgroundDropDownChange = (e: any) => {
         const newValue = e?.target?.value;
@@ -34,8 +34,8 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const onEnableClippyChange = (e: any) => {
-        if (!secretsFound.includes(FoundSecretType.clippy)) {
-            secretFoundToast(FoundSecretType.clippy);
+        if (!currentSecretsFound.includes(FoundSecretType.clippy)) {
+            secretFoundToast(currentSecretsFound, FoundSecretType.clippy);
             SecretStore.update((store: ISecretStore) => {
                 store.secretsFound = [...store.secretsFound, FoundSecretType.clippy];
             })

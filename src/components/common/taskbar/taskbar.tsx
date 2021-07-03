@@ -30,7 +30,7 @@ interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
     const { WindowStore, SecretStore } = PullstateCore.useStores();
     const windStore = WindowStore.useState(store => store);
-    const secretsFound = SecretStore.useState(store => store.secretsFound);
+    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
     const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
         props.toggleStartMenu(false);
@@ -47,8 +47,8 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const doHarlemShake = () => {
-        if (!secretsFound.includes(FoundSecretType.harlemShake)) {
-            secretFoundToast(FoundSecretType.harlemShake);
+        if (!currentSecretsFound.includes(FoundSecretType.harlemShake)) {
+            secretFoundToast(currentSecretsFound, FoundSecretType.harlemShake);
             SecretStore.update((store: ISecretStore) => {
                 store.secretsFound = [...store.secretsFound, FoundSecretType.harlemShake];
             })

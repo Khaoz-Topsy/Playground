@@ -15,10 +15,10 @@ interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { 
 
 export const NyanCatAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const { SecretStore } = PullstateCore.useStores();
-    const secretsFound = SecretStore.useState(store => store.secretsFound);
+    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
-    if (!secretsFound.includes(FoundSecretType.nyanCat)) {
-        secretFoundToast(FoundSecretType.nyanCat);
+    if (!currentSecretsFound.includes(FoundSecretType.nyanCat)) {
+        secretFoundToast(currentSecretsFound, FoundSecretType.nyanCat);
         SecretStore.update((store: ISecretStore) => {
             store.secretsFound = [...store.secretsFound, FoundSecretType.nyanCat];
         });

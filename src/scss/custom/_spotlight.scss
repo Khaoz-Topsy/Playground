@@ -4,6 +4,7 @@ body {
 
 .spotlight.layer {
     pointer-events: none;
+    z-index: _zindex(spotlight);
 }
 
 #spotlight-wrapper {
