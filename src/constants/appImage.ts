@@ -1,5 +1,6 @@
 const imgFolder = '/assets/img/';
 const vidFolder = '/assets/vid/';
+const backgroundsFolder = '/assets/img/backgrounds';
 
 export const error = imgFolder + 'appIcons/error.png';
 
@@ -36,13 +37,28 @@ export class MiscIcon {
 export const Backgrounds = [
     {
         value: 'bg1',
-        name: 'background1.png',
-        url: imgFolder + 'spaceBluePurple.jpg',
+        name: 'Background 1 (default)',
+        url: backgroundsFolder + 'spaceBluePurple.jpg',
     },
     {
         value: 'bg2',
-        name: 'background2.png',
-        url: imgFolder + 'deepSpace.jpg',
+        name: 'Background 2',
+        url: backgroundsFolder + 'deepSpace.jpg',
+    },
+    {
+        value: 'bg3',
+        name: 'Background 3',
+        url: backgroundsFolder + 'illustration.jpg',
+    },
+    {
+        value: 'bg4',
+        name: 'Background 4',
+        url: backgroundsFolder + 'interstellar.jpg',
+    },
+    {
+        value: 'bg5',
+        name: 'Background 5',
+        url: backgroundsFolder + 'outerSpace.jpg',
     }
 ];
 

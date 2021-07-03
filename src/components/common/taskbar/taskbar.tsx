@@ -34,9 +34,10 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
 
     const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
         props.toggleStartMenu(false);
+        delete app.meta.notOpen;
         WindowStore.update(openAppFromTaskbar({
             ...app,
-            meta: { ...app.meta, notOpen: undefined },
+            meta: { ...app.meta },
         }));
     }
 

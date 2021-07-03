@@ -14,6 +14,7 @@ import { withServices } from '../../../../integration/dependencyInjection';
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { secretFoundToast } from '../../../core/toast';
+import { Backgrounds } from '../../../../constants/appImage';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
@@ -22,17 +23,6 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const { SecretStore } = PullstateCore.useStores();
     const currentSettings = SettingStore.useState(store => store);
     const secretsFound = SecretStore.useState(store => store.secretsFound);
-
-    const bgOptions = [
-        {
-            name: 'Background 1 (default)',
-            value: 'bg1',
-        },
-        {
-            name: 'Background 2',
-            value: 'bg2',
-        }
-    ];
 
     const backgroundDropDownChange = (e: any) => {
         const newValue = e?.target?.value;
@@ -83,7 +73,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 <Box my={5}>
                     <Select isFullWidth={true} value={background} onChange={backgroundDropDownChange}>
                         {
-                            bgOptions.map(dropdownOpt => {
+                            Backgrounds.map(dropdownOpt => {
                                 return (
                                     <option key={dropdownOpt.value} value={dropdownOpt.value}>
                                         {dropdownOpt.name}

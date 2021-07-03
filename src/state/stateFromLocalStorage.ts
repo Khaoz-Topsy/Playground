@@ -33,12 +33,19 @@ export const saveSubStateToLocalStorage = (cacheKey: string) => (store: any) => 
     }
 }
 
-export const subscribeToSettingsChanges = (stores: IStore) =>
+type subscribeToState = (stores: IStore) => () => void;
+
+export const subscribeToWindowsChanges: subscribeToState = (stores: IStore) =>
+    stores.WindowStore.subscribe(
+        store => store, (store: any) => console.log({ ...store })
+    );
+
+export const subscribeToSettingsChanges: subscribeToState = (stores: IStore) =>
     stores.SettingStore.subscribe(
         store => store, saveSubStateToLocalStorage(CacheKey.SettingKey)
     );
 
-export const subscribeToSecretChanges = (stores: IStore) =>
+export const subscribeToSecretChanges: subscribeToState = (stores: IStore) =>
     stores.SecretStore.subscribe(
         store => store, saveSubStateToLocalStorage(CacheKey.SecretKey)
     );

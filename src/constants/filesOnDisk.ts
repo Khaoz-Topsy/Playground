@@ -60,7 +60,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.scrapMechanic });
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantSMSGeneral));
 
-    console.warn({ ...rootFolder.toIFolder() });
+    // console.warn({ ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();
 };
 

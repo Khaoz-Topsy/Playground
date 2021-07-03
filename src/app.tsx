@@ -14,7 +14,7 @@ import { ToasterContainer } from './components/core/toast';
 import { appPreloadAssets } from './helper/cacheHelper';
 
 import { PullstateCore } from './state/stateCore';
-import { loadStateFromLocalStorage, subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
+import { loadStateFromLocalStorage, subscribeToSecretChanges, subscribeToSettingsChanges, subscribeToWindowsChanges } from './state/stateFromLocalStorage';
 
 import { CustomThemeProvider } from './themeProvider';
 
@@ -41,11 +41,13 @@ export const App: React.FC<IProps> = (props: IProps) => {
     }
     Mousetrap.bind('ctrl+space', () => setSpotlightOpen(!isSpotlightOpen));
 
+    const unsubscribeFromWindow = subscribeToWindowsChanges(instance.stores);
     const unsubscribeFromSettings = subscribeToSettingsChanges(instance.stores);
     const unsubscribeFromSecrets = subscribeToSecretChanges(instance.stores);
 
     return () => {
       Mousetrap.unbind('ctrl+space');
+      unsubscribeFromWindow();
       unsubscribeFromSettings();
       unsubscribeFromSecrets();
     }
