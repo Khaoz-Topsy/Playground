@@ -14,9 +14,9 @@ import { TriggerAfterXClicks } from '../../../helper/clickHelper';
 import { anyObject } from '../../../helper/typescriptHacks';
 import { withServices } from '../../../integration/dependencyInjection';
 
-import { WindowStore } from '../../../state/window/store';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
-import { ISecretStore, SecretStore } from '../../../state/secrets/store';
+import { ISecretStore } from '../../../state/secrets/store';
+import { PullstateCore } from '../../../state/stateCore';
 
 import { TaskbarIcon } from './taskbarIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
@@ -28,6 +28,7 @@ interface IWithoutExpectedServices {
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
 export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
+    const { WindowStore, SecretStore } = PullstateCore.useStores();
     const windStore = WindowStore.useState(store => store);
     const secretsFound = SecretStore.useState(store => store.secretsFound);
 

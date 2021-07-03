@@ -7,7 +7,7 @@ export const ToasterContainer: React.FC<IProps> = (props: IProps) => {
     return (
         <ToastContainer
             position="bottom-right"
-            autoClose={10000}
+            autoClose={100000}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick={true}
@@ -20,5 +20,5 @@ export const ToasterContainer: React.FC<IProps> = (props: IProps) => {
 }
 
 export const secretFoundToast = (secret: FoundSecretType) => {
-    toast(<p>Secret Found!<br /><small>{secret.toString()} secret found</small></p>);
+    toast(<p>Secret Found!<br /><small>{FoundSecretType[secret].toString()} secret found</small></p>);
 }

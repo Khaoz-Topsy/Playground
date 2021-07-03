@@ -13,7 +13,6 @@ import { InitialisationScreen } from './components/common/initialisationScreen';
 import { ToasterContainer } from './components/core/toast';
 import { appPreloadAssets } from './helper/cacheHelper';
 
-import { SettingStore } from './state/setting/store';
 import { PullstateCore } from './state/stateCore';
 import { loadStateFromLocalStorage, subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
 
@@ -29,7 +28,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
   const [isSpotlightOpen, setSpotlightOpen] = useState(false);
   const instance = PullstateCore.instantiate({ ssr: false, hydrateSnapshot: loadStateFromLocalStorage() });
 
-  const currentSettings = SettingStore.useState(store => store);
+  const currentSettings = instance.stores.SettingStore.useState(store => store);
   const brightnessPerc = (currentSettings.brightness / 2) + 50;
 
   useEffect(() => {

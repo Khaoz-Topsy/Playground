@@ -49,8 +49,10 @@ export const openAppFromTaskbar = (app: LaunchedApp) => (store: IWindowStore): I
 }
 
 export const openApp = (appletType: AppletType, name: LocaleKey, meta?: any) => (store: IWindowStore): IWindowStore => {
-    const sortOrderArray = store.activeApps.map(aa => aa.openOrder);
-    // const numExisting: number = store.activeApps.filter(aa => aa.appletType === appletType).length;
+    const currentApps = store.activeApps.map(aa => ({ ...aa }));
+    const sortOrderArray = currentApps.map(aa => aa.openOrder);
+    console.log('before', currentApps);
+
     const newActiveApp: LaunchedApp = {
         // id: ((appletType as number) * 10) + (numExisting + 1),
         name,
@@ -58,9 +60,9 @@ export const openApp = (appletType: AppletType, name: LocaleKey, meta?: any) => 
         meta: meta ?? anyObject,
         openOrder: Math.max(...sortOrderArray, 0) + 5,
     };
-
     store.currentFocused = appletType;
-    store.activeApps = [...store.activeApps, newActiveApp];
+    store.activeApps = [...currentApps, newActiveApp];
+    console.log('after', store.activeApps);
     return store;
 }
 

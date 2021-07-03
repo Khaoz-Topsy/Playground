@@ -6,7 +6,8 @@ import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThu
 import { translate } from '../../../../integration/i18n';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { SettingItemSection } from '../settingItemSection';
-import { SecretStore, ISecretStore } from '../../../../state/secrets/store';
+import { PullstateCore } from '../../../../state/stateCore';
+import { ISecretStore } from '../../../../state/secrets/store';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
 import { withServices } from '../../../../integration/dependencyInjection';
 
@@ -18,6 +19,7 @@ interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
 
 export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
+    const { SecretStore } = PullstateCore.useStores();
     const currentSettings = SettingStore.useState(store => store);
     const secretsFound = SecretStore.useState(store => store.secretsFound);
 
