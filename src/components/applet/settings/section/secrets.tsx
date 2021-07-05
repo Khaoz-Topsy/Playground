@@ -6,10 +6,9 @@ import { secretsFound } from '../../../../constants/secretsFound';
 import { HiddenSecretsFoundCheckbox } from '../../../common/secret';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { translate } from '../../../../integration/i18n';
-import { PullstateCore } from '../../../../state/stateCore';
+import { SecretStore } from '../../../../state/secrets/store';
 
 export const SettingSecrets: React.FC = () => {
-    const { SecretStore } = PullstateCore.useStores();
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
     return (

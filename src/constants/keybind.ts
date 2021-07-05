@@ -5,6 +5,7 @@ export const knownKeybinds = {
     spotlight: 'ctrl+space',
     goPrev: 'alt+left',
     goNext: 'alt+right',
+    esc: 'escape',
     konami: 'up up down down left right left right b a enter',
 };
 

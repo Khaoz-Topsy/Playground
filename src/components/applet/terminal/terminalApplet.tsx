@@ -7,16 +7,14 @@ import { Applet } from '../../window/applet/applet';
 import { staticList } from './commands/static';
 import { dynamicListFunc } from './commands/dynamic';
 import { withServices } from '../../../integration/dependencyInjection';
+import { ISettingStore, SettingStore } from '../../../state/setting/store';
 
 import { IExpectedServices, dependencyInjectionToProps } from './terminalApplet.dependencyInjection';
-import { PullstateCore } from '../../../state/stateCore';
-import { ISettingStore } from '../../../state/setting/store';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IApplet, IWithoutExpectedServices, IExpectedServices { }
 
 export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
-    const { SettingStore } = PullstateCore.useStores();
     const currentSettings = SettingStore.useState(store => store);
 
     const enableClippy = (enabled: boolean) => {

@@ -4,12 +4,13 @@ import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, 
 
 import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
+import { defaultWindowCoordShift, defaultWindowXPosition, defaultWindowYPosition } from '../../constants/window';
 import { LaunchedApp } from '../../contracts/launchedApp';
 import { windowActionEvent } from '../../constants/enum/customWindowEvent';
-import { PullstateCore } from '../../state/stateCore';
 import { closeApp, maximiseApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
+import { WindowStore } from '../../state/window/store';
+
 import { windowDisplayer } from './windowDisplayer';
-import { defaultWindowCoordShift, defaultWindowXPosition, defaultWindowYPosition } from '../../constants/window';
 
 interface IProps { }
 
@@ -19,7 +20,6 @@ interface IModalProps {
 }
 
 export const WindowManager: React.FC<IProps> = (props: IProps) => {
-    const { WindowStore } = PullstateCore.useStores();
     const activeApps: Array<LaunchedApp> = WindowStore.useState(store => store.activeApps);
     const currentFocused: AppletType = WindowStore.useState(store => store.currentFocused);
     const [modalData, setModalData] = useState<IModalProps>({
@@ -74,7 +74,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
         <div className="window-manager layer fullscreen">
             <AnimatePresence>
                 {
-                    activeApps
+                    (activeApps ?? [])
                         .map(renderSupportedWindows(currentFocused))
                 }
             </AnimatePresence>

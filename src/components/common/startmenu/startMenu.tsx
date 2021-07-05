@@ -8,8 +8,8 @@ import { IAppletFile, IFile, IStartMenuAppletFile, IStartMenuFile } from '../../
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { openAppletOrFile } from '../../../helper/appletHelper';
-import { PullstateCore } from '../../../state/stateCore';
 import { windowIconString } from '../../window/windowIcon';
+import { WindowStore } from '../../../state/window/store';
 
 import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
 import { StartMenuSlidingTile } from './startMenuSlidingTile';
@@ -21,8 +21,6 @@ interface IProps {
 }
 
 export const StartMenu: React.FC<IProps> = (props: IProps) => {
-    const { WindowStore } = PullstateCore.useStores();
-
     const openApp = (startMenuItem: IAppletFile | IFile) => (e: any) => {
         e?.preventDefault();
         e?.stopPropagation();

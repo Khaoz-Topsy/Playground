@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@chakra-ui/icons';
-import { Image, Center } from '@chakra-ui/react';
+import { Image, Center, useToast } from '@chakra-ui/react';
 import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
@@ -14,7 +14,8 @@ import { anyObject } from '../../../helper/typescriptHacks';
 import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
-import { PullstateCore } from '../../../state/stateCore';
+import { WindowStore } from '../../../state/window/store';
+import { SecretStore } from '../../../state/secrets/store';
 
 import { TaskbarIcon } from './taskbarIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
@@ -26,9 +27,9 @@ interface IWithoutExpectedServices {
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
 export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
-    const { WindowStore, SecretStore } = PullstateCore.useStores();
     const windStore = WindowStore.useState(store => store);
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
+    const toastFunc = useToast();
 
     const openApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
         props.toggleStartMenu(false);
@@ -47,6 +48,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
     const doHarlemShake = () => addSecretIfNotFound({
         secretStore: SecretStore,
         currentSecretsFound,
+        toastFunc,
         secretToAdd: FoundSecretType.harlemShake,
         callbackFinally: () => props.sillyService.doHarlemShake?.(),
     });

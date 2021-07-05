@@ -1,8 +1,7 @@
 import * as CacheKey from './cacheKey';
 import { defaultSecretProps } from './secrets/store';
 import { defaultSettingProps } from './setting/store';
-import { defaultWindowProps } from './window/store';
-import { IStore } from './stateCore';
+import { IPersistedStore, IStore } from './stateCore';
 
 const hash = require('object-hash');
 
@@ -13,13 +12,10 @@ export const getStateObj = (cacheKey: string, defaultProps: any) => {
     return JSON.parse(cacheData);
 }
 
-export const loadStateFromLocalStorage = (): any => {
-    let persistedState: any = {
-        allState: {
-            SettingStore: getStateObj(CacheKey.SettingKey, defaultSettingProps),
-            SecretStore: getStateObj(CacheKey.SecretKey, defaultSecretProps),
-            WindowStore: defaultWindowProps
-        }
+export const loadStateFromLocalStorage = (): IPersistedStore => {
+    let persistedState: IPersistedStore = {
+        SettingStore: getStateObj(CacheKey.SettingKey, defaultSettingProps),
+        SecretStore: getStateObj(CacheKey.SecretKey, defaultSecretProps),
     }
     return persistedState;
 }

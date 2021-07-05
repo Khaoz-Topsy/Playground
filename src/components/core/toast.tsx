@@ -26,5 +26,5 @@ export const secretFoundToast = (secret: FoundSecretType) => {
     const foundSecret = secretsFound.find(s => s.type === secret);
     if (foundSecret == null) return;
 
-    toast(<p>Secret Found!<br /><small>{translate(foundSecret.howTo?.[0] ?? LocaleKey.unknown)}</small></p>);
+    toast.dark(<p>Secret Found!<br /><small>{translate(foundSecret.howTo?.[0] ?? LocaleKey.unknown)}</small></p>);
 }

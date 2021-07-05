@@ -3,9 +3,8 @@ import ReactDOM from 'react-dom';
 import { ChakraProvider } from '@chakra-ui/react';
 // import reportWebVitals from './reportWebVitals';
 
-import { App } from './app';
+import { AppShell } from './appShell';
 import { DependencyInjectionProvider } from './integration/dependencyInjection';
-import { initLocalization } from './integration/i18n';
 import { getJSON, defaultConfig } from './utils';
 import { CustomThemeProvider } from './themeProvider';
 
@@ -35,14 +34,12 @@ getJSON('/assets/config.json', (status: boolean, response: string) => {
 
   if (window.config.consoleLogDebug) console.log('Config', window.config);
 
-  initLocalization('en');
-
   ReactDOM.render(
     <React.Fragment>
       <DependencyInjectionProvider>
         <ChakraProvider>
           <CustomThemeProvider>
-            <App />
+            <AppShell />
           </CustomThemeProvider>
         </ChakraProvider>
       </DependencyInjectionProvider>

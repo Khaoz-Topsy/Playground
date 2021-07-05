@@ -1,6 +1,5 @@
-body {
-    background-color: #fff9f2;
-}
+$textColor: rgba(255, 255, 255, 0.36);
+$searchBarWidth: 628px;
 
 .spotlight.layer {
     pointer-events: none;
@@ -19,18 +18,18 @@ body {
     transition: background-color 500ms ease-in-out;
 
     &.isOpen {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: rgba(0, 0, 0, 0.3);
         pointer-events: all;
     }
 }
 
 .spotlight-group {
-    width: 628px !important;
+    width: $searchBarWidth !important;
     margin: auto;
 
     #spotlight {
         display: block;
-        width: 628px;
+        width: $searchBarWidth;
         height: 56px;
         margin: auto;
         border-radius: 5px;
@@ -40,29 +39,53 @@ body {
         outline: none;
         font-size: 1.6rem;
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-        color: black;
-        background-color: #f8f5f4;
+        color: $textColor;
+        background-color: _palette(bg);
         background-position: left 17px center;
         background-repeat: no-repeat;
         background-size: 3.5%;
-        padding: 0 52px;
+        padding: 0 2.5em;
+        text-align: center;
 
         &::-webkit-input-placeholder {
             text-align: center;
+            color: $textColor;
         }
 
         &:-moz-placeholder {
             /* Firefox 18- */
             text-align: center;
+            color: $textColor;
         }
 
         &::-moz-placeholder {
             /* Firefox 19+ */
             text-align: center;
+            color: $textColor;
         }
 
         &:-ms-input-placeholder {
             text-align: center;
+            color: $textColor;
         }
+    }
+}
+
+.spotlight-results-bg {
+    background-color: _palette(bg);
+    padding: 0 2em;
+    margin-top: -5px !important;
+
+    img {
+        height: 50px;
+        display: inline-block;
+    }
+
+    span {
+        color: white;
+        display: inline-block;
+        margin-bottom: -1em;
+        margin-left: 0.5em;
+        font-size: 1.5em;
     }
 }

@@ -11,7 +11,7 @@ import { openAppletOrFile } from '../../../helper/appletHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../localization/LocaleKey';
-import { PullstateCore } from '../../../state/stateCore';
+import { WindowStore } from '../../../state/window/store';
 
 import { Window } from '../window';
 import { windowIcon } from '../windowIcon';
@@ -40,7 +40,6 @@ interface IState {
 export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
     const initialFileId = props.initialFileId ?? 0;
     const file = searchFilesOnDisk(props.folderStructure, initialFileId);
-    const { WindowStore } = PullstateCore.useStores();
 
     const [selectedId, setSelectedId] = useState<number>(0);
     const [folderState, setFolderState] = useState<IState>({

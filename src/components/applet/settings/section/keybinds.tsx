@@ -1,18 +1,17 @@
 import React from 'react';
 import { Box, Text, Kbd, Code } from '@chakra-ui/react';
 
+import { HiddenSecretsFoundKeybind } from '../../../common/secret';
 import { keybindsPerSection } from '../../../../constants/keybind';
+import { IKeyBindShortcut } from '../../../../contracts/interface/IKeybind';
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { translate } from '../../../../integration/i18n';
-import { PullstateCore } from '../../../../state/stateCore';
+import { SecretStore } from '../../../../state/secrets/store';
 
 import { SettingItemSection } from '../settingItemSection';
-import { IKeyBindShortcut } from '../../../../contracts/interface/IKeybind';
-import { HiddenSecretsFoundKeybind } from '../../../common/secret';
 
 export const SettingKeybind: React.FC = () => {
-    const { SecretStore } = PullstateCore.useStores();
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
     return (

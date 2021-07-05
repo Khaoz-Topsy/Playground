@@ -1,7 +1,6 @@
 import React from 'react';
-import { debounce } from 'debounce';
 import { SunIcon } from '@chakra-ui/icons';
-import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
+import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text, useToast } from '@chakra-ui/react';
 
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { Backgrounds } from '../../../../constants/appImage';
@@ -10,8 +9,8 @@ import { translate } from '../../../../integration/i18n';
 import { withServices } from '../../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { SettingItemSection } from '../settingItemSection';
-import { PullstateCore } from '../../../../state/stateCore';
-import { ISettingStore } from '../../../../state/setting/store';
+import { SecretStore } from '../../../../state/secrets/store';
+import { ISettingStore, SettingStore } from '../../../../state/setting/store';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
 
@@ -19,9 +18,9 @@ interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
 
 export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
-    const { SecretStore, SettingStore } = PullstateCore.useStores();
     const currentSettings = SettingStore.useState(store => store);
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
+    const toastFunc = useToast();
 
     const backgroundDropDownChange = (e: any) => {
         const newValue = e?.target?.value;
@@ -36,6 +35,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
         addSecretIfNotFound({
             secretStore: SecretStore,
             currentSecretsFound,
+            toastFunc,
             secretToAdd: FoundSecretType.clippy,
         });
 
@@ -84,7 +84,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
                     <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
                         <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
-                        <Slider mb="1" defaultValue={brightness} onChange={debounce(sliderOnChange('brightness'), 200)}>
+                        <Slider mb="1" defaultValue={brightness} onChange={sliderOnChange('brightness')}>
                             <SliderTrack>
                                 <SliderFilledTrack bg="blue.400" />
                             </SliderTrack>

@@ -10,6 +10,11 @@ export interface IStore {
     SecretStore: Store<ISecretStore>;
 }
 
+export interface IPersistedStore {
+    SettingStore: ISettingStore;
+    SecretStore: ISecretStore;
+}
+
 export const PullstateCore = createPullstateCore({
     SettingStore,
     WindowStore,

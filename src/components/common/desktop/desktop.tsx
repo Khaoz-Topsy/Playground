@@ -1,18 +1,18 @@
-import DragSelect from 'dragselect'
-import React, { useEffect, useState } from 'react'
-import classNames from 'classnames'
+import DragSelect from 'dragselect';
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
-import { AppletType } from '../../../constants/enum/appletType'
-import { DesktopIcons } from '../../../constants/desktopIconList'
-import { WindowStore } from '../../../state/window/store'
-import { DesktopIcon } from './desktopIcon'
-import { openAppFromDesktop } from '../../../state/window/reducer'
-import { PullstateCore } from '../../../state/stateCore'
+import { AppletType } from '../../../constants/enum/appletType';
+import { DesktopIcons } from '../../../constants/desktopIconList';
+import { WindowStore } from '../../../state/window/store';
+import { SettingStore } from '../../../state/setting/store';
+import { openAppFromDesktop } from '../../../state/window/reducer';
+
+import { DesktopIcon } from './desktopIcon';
 
 export const Desktop: React.FC = () => {
     const [selectedIconIndexes, setSelectedIconIndexes] = useState<Array<number>>([]);
     const [dragSelect, setDragSelect] = useState<any>(null);
-    const { SettingStore } = PullstateCore.useStores();
     const background = SettingStore.useState(store => store.background);
 
     useEffect(() => {

@@ -107,6 +107,16 @@ a {
     max-height: 100%;
 }
 
-.Toastify .Toastify__toast-container--bottom-right {
-    bottom: 4em;
+.Toastify {
+    .Toastify__toast-container--bottom-right {
+        bottom: 4em;
+    }
+
+    .Toastify__progress-bar--dark {
+        background-color: _palette(accent);
+    }
+
+    .Toastify__toast--dark {
+        background-color: #2c2c2c;
+    }
 }

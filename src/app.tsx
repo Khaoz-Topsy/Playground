@@ -1,26 +1,23 @@
-import React, { useEffect, useState } from 'react';
-import { Drawer, useDisclosure } from '@chakra-ui/react';
-import { PullstateProvider } from "pullstate";
+import React, { useEffect, useState, useRef } from 'react';
+import { Drawer, useDisclosure, useToast } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
 
-import { knownKeybinds } from './constants/keybind';
 import { SpotlightSearch } from './components/common/spotlight';
 import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { Desktop } from './components/common/desktop/desktop';
 import { Taskbar } from './components/common/taskbar/taskbar';
 import { WindowManager } from './components/window/windowManager';
 import { StartMenu } from './components/common/startmenu/startMenu';
-import { InitialisationScreen } from './components/common/initialisationScreen';
-import { ToasterContainer } from './components/core/toast';
-import { appPreloadAssets } from './helper/cacheHelper';
-
-import { PullstateCore } from './state/stateCore';
-import { loadStateFromLocalStorage, subscribeToSecretChanges, subscribeToSettingsChanges, subscribeToWindowsChanges } from './state/stateFromLocalStorage';
 import { FoundSecretType } from './constants/enum/foundSecretType';
+import { knownKeybinds } from './constants/keybind';
 import { addSecretIfNotFound } from './helper/secretFoundHelper';
-
 import { IDependencyInjection, withServices } from './integration/dependencyInjection';
+import { initLocalization } from './integration/i18n';
 import { SillyService } from './services/SillyService';
+import { defaultSettingProps } from './state/setting/store';
+import { defaultSecretProps } from './state/secrets/store';
+import { loadStateFromLocalStorage } from './state/stateFromLocalStorage';
+import { PullstateCore } from './state/stateCore';
 
 interface IExpectedServices {
   sillyService: SillyService
@@ -31,36 +28,33 @@ interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoaded, setIsLoaded] = useState(false);
-  const [shouldFade, setShouldFade] = useState(false);
   const [isStartMenuOpen, setStartMenuOpen] = useState(false);
   const [isSpotlightOpen, setSpotlightOpen] = useState(false);
-  const instance = PullstateCore.instantiate({ ssr: false, hydrateSnapshot: loadStateFromLocalStorage() });
+  const toastFunc = useToast();
+  const appRef = useRef(null);
 
-  const currentSettings = instance.stores.SettingStore.useState(store => store);
-  const currentSecretsFound = instance.stores.SecretStore.useState(store => store.secretsFound);
+  const { SettingStore, SecretStore } = PullstateCore.useStores();
+  const currentSettings = SettingStore.useState(store => store);
+  const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
   const brightnessPerc = (currentSettings.brightness / 2) + 50;
 
   useEffect(() => {
     if (!isLoaded) {
-      appPreloadAssets()
-        .then((_) => {
-          setShouldFade(true);
-          setTimeout(() => setIsLoaded(true), 1000);
-        });
-    }
-    Mousetrap.bind(knownKeybinds.spotlight, () => setSpotlightOpen(!isSpotlightOpen));
-    Mousetrap.bind(knownKeybinds.konami, () => konamiCodeFunc());
+      setIsLoaded(true);
+      const stateFromLocalStorage = loadStateFromLocalStorage();
+      const settingStore = { ...defaultSettingProps, ...stateFromLocalStorage.SettingStore };
+      const secretStore = { ...defaultSecretProps, ...stateFromLocalStorage.SecretStore };
 
-    const unsubscribeFromWindow = subscribeToWindowsChanges(instance.stores);
-    const unsubscribeFromSettings = subscribeToSettingsChanges(instance.stores);
-    const unsubscribeFromSecrets = subscribeToSecretChanges(instance.stores);
+      SettingStore.update(store => ({ ...store, ...settingStore }));
+      SecretStore.update(store => ({ ...store, ...secretStore }));
+      initLocalization(settingStore.language);
+    }
+    Mousetrap.bind(knownKeybinds.spotlight, () => toggleSpotlight());
+    Mousetrap.bind(knownKeybinds.konami, () => konamiCodeFunc());
 
     return () => {
       Mousetrap.unbind(knownKeybinds.spotlight);
       Mousetrap.unbind(knownKeybinds.konami);
-      unsubscribeFromWindow();
-      unsubscribeFromSettings();
-      unsubscribeFromSecrets();
     }
     // eslint-disable-next-line
   }, [isSpotlightOpen]);
@@ -69,45 +63,52 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
     setStartMenuOpen(newValue ?? (!isStartMenuOpen));
   };
 
+  const toggleSpotlight = (newValue?: boolean) => {
+    const newIsSpotlightOpen = newValue ?? (!isSpotlightOpen);
+    setSpotlightOpen(newIsSpotlightOpen);
+    // if (newIsSpotlightOpen == false) {
+    //   (appRef as any)?.component?.focus?.();
+    // }
+  };
+
   const konamiCodeFunc = () => addSecretIfNotFound({
-    secretStore: instance.stores.SecretStore,
+    secretStore: SecretStore,
     currentSecretsFound,
+    toastFunc,
     secretToAdd: FoundSecretType.harlemShake,
     callbackFinally: () => props.sillyService.doHarlemShake?.(),
   });
 
   return (
-    <PullstateProvider instance={instance}>
-      <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
-        <Desktop />
-        <WindowManager />
-        <Taskbar
-          drawerOnOpen={onOpen}
-          toggleStartMenu={toggleStartMenu}
-        />
-        <StartMenu
-          isOpen={isStartMenuOpen}
-          toggleStartMenu={toggleStartMenu}
-        />
-        <Drawer
-          isOpen={isOpen}
-          placement="right"
+    <div
+      ref={appRef}
+      className="fullscreen layer"
+      style={{ filter: `brightness(${brightnessPerc}%)` }}
+    >
+      <Desktop />
+      <WindowManager />
+      <Taskbar
+        drawerOnOpen={onOpen}
+        toggleStartMenu={toggleStartMenu}
+      />
+      <StartMenu
+        isOpen={isStartMenuOpen}
+        toggleStartMenu={toggleStartMenu}
+      />
+      <Drawer
+        isOpen={isOpen}
+        placement="right"
+        onClose={onClose}
+      >
+        <NotificationDrawer
           onClose={onClose}
-        >
-          <NotificationDrawer
-            onClose={onClose}
-          />
-        </Drawer>
-        <SpotlightSearch
-          isOpen={isSpotlightOpen}
-          onClose={() => setSpotlightOpen(false)}
         />
-        {
-          (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
-        }
-      </div>
-      <ToasterContainer />
-    </PullstateProvider>
+      </Drawer>
+      <SpotlightSearch
+        isOpen={isSpotlightOpen}
+        onClose={() => toggleSpotlight(false)}
+      />
+    </div>
   );
 }
 
