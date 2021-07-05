@@ -1,8 +1,9 @@
 import React from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import { FoundSecretType } from '../../constants/enum/foundSecretType';
-import { getSecretsFound } from "../../constants/secretsFound";
+import { secretsFound } from "../../constants/secretsFound";
 import { translate } from "../../integration/i18n";
+import { LocaleKey } from "../../localization/LocaleKey";
 
 interface IProps { }
 export const ToasterContainer: React.FC<IProps> = (props: IProps) => {
@@ -21,10 +22,9 @@ export const ToasterContainer: React.FC<IProps> = (props: IProps) => {
     );
 }
 
-export const secretFoundToast = (currentSecretsFound: Array<FoundSecretType>, secret: FoundSecretType) => {
-    const secretsFound = getSecretsFound(currentSecretsFound);
+export const secretFoundToast = (secret: FoundSecretType) => {
     const foundSecret = secretsFound.find(s => s.type === secret);
     if (foundSecret == null) return;
 
-    toast(<p>Secret Found!<br /><small>{translate(foundSecret.howTo)}</small></p>);
+    toast(<p>Secret Found!<br /><small>{translate(foundSecret.howTo?.[0] ?? LocaleKey.unknown)}</small></p>);
 }

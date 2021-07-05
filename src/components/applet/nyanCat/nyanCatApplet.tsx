@@ -1,12 +1,11 @@
 import React from 'react'
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 
-import { secretFoundToast } from '../../core/toast';
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { IFrameApplet } from '../iframe/iframeApplet';
 import { withServices } from '../../../integration/dependencyInjection';
 import { PullstateCore } from '../../../state/stateCore';
-import { ISecretStore } from '../../../state/secrets/store';
+import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 
 import { dependencyInjectionToProps, IExpectedServices } from './nyanCat.dependencyInjection';
 
@@ -17,12 +16,11 @@ export const NyanCatAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const { SecretStore } = PullstateCore.useStores();
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
-    if (!currentSecretsFound.includes(FoundSecretType.nyanCat)) {
-        secretFoundToast(currentSecretsFound, FoundSecretType.nyanCat);
-        SecretStore.update((store: ISecretStore) => {
-            store.secretsFound = [...store.secretsFound, FoundSecretType.nyanCat];
-        });
-    }
+    addSecretIfNotFound({
+        secretStore: SecretStore,
+        currentSecretsFound,
+        secretToAdd: FoundSecretType.nyanCat,
+    });
 
     return (
         <IFrameApplet

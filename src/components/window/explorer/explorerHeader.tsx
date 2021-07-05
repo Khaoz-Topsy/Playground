@@ -14,6 +14,7 @@ import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { WindowActions } from '../windowActions';
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
 import { translate } from '../../../integration/i18n';
+import { knownKeybinds } from '../../../constants/keybind';
 
 const navButtonAnimDuration = 250;
 
@@ -40,12 +41,12 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
     const [nextActivated, setNextActivated] = useState<boolean>(false);
 
     useEffect(() => {
-        Mousetrap.bind('alt+left', onPrevClick);
-        Mousetrap.bind('alt+right', onNextClick);
+        Mousetrap.bind(knownKeybinds.goPrev, onPrevClick);
+        Mousetrap.bind(knownKeybinds.goNext, onNextClick);
 
         return () => {
-            Mousetrap.unbind('alt+left');
-            Mousetrap.unbind('alt+right');
+            Mousetrap.unbind(knownKeybinds.goPrev);
+            Mousetrap.unbind(knownKeybinds.goNext);
         }
         // eslint-disable-next-line
     }, [props.currentChangeIndex]);

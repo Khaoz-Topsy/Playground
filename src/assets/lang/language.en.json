@@ -33,7 +33,6 @@
   "volume": "Volume",
   "enableClippy": "Enable Clippy",
   "clippyDescription": "Get tips from the best virtual assistant to have ever lived! Disable to ensure that Clippy stays hidden.",
-  "personalGithubProfile": "Personal Github Profile",
   "personalAccounts": "Personal accounts",
   "twitchStream": "Twitch stream",
   "mostUsedItems": "Most Used",
@@ -52,6 +51,10 @@
   "clippySecretDescription": "Enabled clippy from the settings page or terminal",
   "nyanCatSecretDescription": "Used the NyanCat applet",
   "harlemShake": "Harlem Shake",
-  "harlemShakeSecretDescription": "Click the Start Menu or Taskbar notification bell icon 5 or more times",
+  "harlemShakeSecretStartMenuDescription": "Click the Start Menu 5 or more times",
+  "harlemShakeSecretTaskbarDescription": "Click the Taskbar notification bell icon 5 or more times",
+  "harlemShakeSecretKonamiCodeDescription": "Enter the Konami code",
+  "keyboardShortcuts": "Keyboard shortcuts",
+  "secretTooltipDescription": "This info is hidden, discover the secret in order for this to be revealed",
   "unknown": "Unknown"
 }

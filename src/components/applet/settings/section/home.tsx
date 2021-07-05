@@ -3,18 +3,17 @@ import { debounce } from 'debounce';
 import { SunIcon } from '@chakra-ui/icons';
 import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text } from '@chakra-ui/react';
 
+import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
+import { Backgrounds } from '../../../../constants/appImage';
+import { addSecretIfNotFound } from '../../../../helper/secretFoundHelper';
 import { translate } from '../../../../integration/i18n';
+import { withServices } from '../../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { SettingItemSection } from '../settingItemSection';
 import { PullstateCore } from '../../../../state/stateCore';
-import { ISecretStore } from '../../../../state/secrets/store';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
-import { withServices } from '../../../../integration/dependencyInjection';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
-import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
-import { secretFoundToast } from '../../../core/toast';
-import { Backgrounds } from '../../../../constants/appImage';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
@@ -34,12 +33,11 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const onEnableClippyChange = (e: any) => {
-        if (!currentSecretsFound.includes(FoundSecretType.clippy)) {
-            secretFoundToast(currentSecretsFound, FoundSecretType.clippy);
-            SecretStore.update((store: ISecretStore) => {
-                store.secretsFound = [...store.secretsFound, FoundSecretType.clippy];
-            })
-        }
+        addSecretIfNotFound({
+            secretStore: SecretStore,
+            currentSecretsFound,
+            secretToAdd: FoundSecretType.clippy,
+        });
 
         if (currentSettings.enabledClippy) {
             props.virtualAssistantService?.hide?.();

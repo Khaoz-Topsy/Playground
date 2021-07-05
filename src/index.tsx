@@ -7,6 +7,7 @@ import { App } from './app';
 import { DependencyInjectionProvider } from './integration/dependencyInjection';
 import { initLocalization } from './integration/i18n';
 import { getJSON, defaultConfig } from './utils';
+import { CustomThemeProvider } from './themeProvider';
 
 import './scss/custom.scss';
 import 'react-image-lightbox/style.css';
@@ -40,7 +41,9 @@ getJSON('/assets/config.json', (status: boolean, response: string) => {
     <React.Fragment>
       <DependencyInjectionProvider>
         <ChakraProvider>
-          <App />
+          <CustomThemeProvider>
+            <App />
+          </CustomThemeProvider>
         </ChakraProvider>
       </DependencyInjectionProvider>
     </React.Fragment>,

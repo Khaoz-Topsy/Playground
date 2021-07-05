@@ -33,7 +33,6 @@ export enum LocaleKey {
   volume,
   enableClippy,
   clippyDescription,
-  personalGithubProfile,
   personalAccounts,
   twitchStream,
   mostUsedItems,
@@ -51,7 +50,11 @@ export enum LocaleKey {
   clippySecretDescription,
   nyanCatSecretDescription,
   harlemShake,
-  harlemShakeSecretDescription,
+  harlemShakeSecretStartMenuDescription,
+  harlemShakeSecretTaskbarDescription,
+  harlemShakeSecretKonamiCodeDescription,
+  keyboardShortcuts,
+  secretTooltipDescription,
   loading,
   unknown
 }

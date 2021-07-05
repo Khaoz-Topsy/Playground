@@ -3,6 +3,7 @@ import { Drawer, useDisclosure } from '@chakra-ui/react';
 import { PullstateProvider } from "pullstate";
 import Mousetrap from 'mousetrap';
 
+import { knownKeybinds } from './constants/keybind';
 import { SpotlightSearch } from './components/common/spotlight';
 import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { Desktop } from './components/common/desktop/desktop';
@@ -15,12 +16,19 @@ import { appPreloadAssets } from './helper/cacheHelper';
 
 import { PullstateCore } from './state/stateCore';
 import { loadStateFromLocalStorage, subscribeToSecretChanges, subscribeToSettingsChanges, subscribeToWindowsChanges } from './state/stateFromLocalStorage';
+import { FoundSecretType } from './constants/enum/foundSecretType';
+import { addSecretIfNotFound } from './helper/secretFoundHelper';
 
-import { CustomThemeProvider } from './themeProvider';
+import { IDependencyInjection, withServices } from './integration/dependencyInjection';
+import { SillyService } from './services/SillyService';
 
-interface IProps { }
+interface IExpectedServices {
+  sillyService: SillyService
+}
+interface IWithoutExpectedServices { };
+interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
-export const App: React.FC<IProps> = (props: IProps) => {
+export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldFade, setShouldFade] = useState(false);
@@ -29,6 +37,7 @@ export const App: React.FC<IProps> = (props: IProps) => {
   const instance = PullstateCore.instantiate({ ssr: false, hydrateSnapshot: loadStateFromLocalStorage() });
 
   const currentSettings = instance.stores.SettingStore.useState(store => store);
+  const currentSecretsFound = instance.stores.SecretStore.useState(store => store.secretsFound);
   const brightnessPerc = (currentSettings.brightness / 2) + 50;
 
   useEffect(() => {
@@ -39,14 +48,16 @@ export const App: React.FC<IProps> = (props: IProps) => {
           setTimeout(() => setIsLoaded(true), 1000);
         });
     }
-    Mousetrap.bind('ctrl+space', () => setSpotlightOpen(!isSpotlightOpen));
+    Mousetrap.bind(knownKeybinds.spotlight, () => setSpotlightOpen(!isSpotlightOpen));
+    Mousetrap.bind(knownKeybinds.konami, () => konamiCodeFunc());
 
     const unsubscribeFromWindow = subscribeToWindowsChanges(instance.stores);
     const unsubscribeFromSettings = subscribeToSettingsChanges(instance.stores);
     const unsubscribeFromSecrets = subscribeToSecretChanges(instance.stores);
 
     return () => {
-      Mousetrap.unbind('ctrl+space');
+      Mousetrap.unbind(knownKeybinds.spotlight);
+      Mousetrap.unbind(knownKeybinds.konami);
       unsubscribeFromWindow();
       unsubscribeFromSettings();
       unsubscribeFromSecrets();
@@ -58,40 +69,49 @@ export const App: React.FC<IProps> = (props: IProps) => {
     setStartMenuOpen(newValue ?? (!isStartMenuOpen));
   };
 
+  const konamiCodeFunc = () => addSecretIfNotFound({
+    secretStore: instance.stores.SecretStore,
+    currentSecretsFound,
+    secretToAdd: FoundSecretType.harlemShake,
+    callbackFinally: () => props.sillyService.doHarlemShake?.(),
+  });
+
   return (
-    <CustomThemeProvider>
-      <PullstateProvider instance={instance}>
-        <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
-          <Desktop />
-          <WindowManager />
-          <Taskbar
-            drawerOnOpen={onOpen}
-            toggleStartMenu={toggleStartMenu}
-          />
-          <StartMenu
-            isOpen={isStartMenuOpen}
-            toggleStartMenu={toggleStartMenu}
-          />
-          <Drawer
-            isOpen={isOpen}
-            placement="right"
+    <PullstateProvider instance={instance}>
+      <div className="fullscreen layer" style={{ filter: `brightness(${brightnessPerc}%)` }}>
+        <Desktop />
+        <WindowManager />
+        <Taskbar
+          drawerOnOpen={onOpen}
+          toggleStartMenu={toggleStartMenu}
+        />
+        <StartMenu
+          isOpen={isStartMenuOpen}
+          toggleStartMenu={toggleStartMenu}
+        />
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+        >
+          <NotificationDrawer
             onClose={onClose}
-          >
-            <NotificationDrawer
-              onClose={onClose}
-            />
-          </Drawer>
-          <SpotlightSearch
-            isOpen={isSpotlightOpen}
-            onClose={() => setSpotlightOpen(false)}
           />
-          {
-            (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
-          }
-        </div>
-        <ToasterContainer />
-      </PullstateProvider>
-    </CustomThemeProvider>
+        </Drawer>
+        <SpotlightSearch
+          isOpen={isSpotlightOpen}
+          onClose={() => setSpotlightOpen(false)}
+        />
+        {
+          (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
+        }
+      </div>
+      <ToasterContainer />
+    </PullstateProvider>
   );
 }
 
+export const App = withServices<IWithoutExpectedServices, IExpectedServices>(
+  AppUnconnected,
+  (services: IDependencyInjection): IExpectedServices => ({ sillyService: services.sillyService }),
+);

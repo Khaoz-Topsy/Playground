@@ -3,8 +3,8 @@ import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon, UnlockIcon } fro
 
 import { SettingHome } from './section/home';
 import { SettingAbout } from './section/about';
-import { SettingGithub } from './section/github';
 import { SettingSecrets } from './section/secrets';
+import { SettingKeybind } from './section/keybinds';
 import { SettingPersonalSocials } from './section/personalSocials';
 import { SettingOtherSocials } from './section/otherSocials';
 import { LocaleKey } from '../../../localization/LocaleKey';
@@ -18,8 +18,8 @@ export const settingPages = [
         icon: <SettingsIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
     },
     {
-        title: LocaleKey.github,
-        comp: <SettingGithub />,
+        title: LocaleKey.keyboardShortcuts,
+        comp: <SettingKeybind />,
         icon: <InfoOutlineIcon mr={chakraIconMarginRight} mb={chakraIconMarginBottom} />,
     },
     {

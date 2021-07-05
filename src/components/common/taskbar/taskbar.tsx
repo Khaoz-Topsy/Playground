@@ -4,7 +4,6 @@ import { Image, Center } from '@chakra-ui/react';
 import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
-import { secretFoundToast } from '../../core/toast';
 import { AppletIcon } from '../../../constants/appImage';
 import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
@@ -12,10 +11,9 @@ import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
 import { TriggerAfterXClicks } from '../../../helper/clickHelper';
 import { anyObject } from '../../../helper/typescriptHacks';
+import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { withServices } from '../../../integration/dependencyInjection';
-
 import { openAppFromTaskbar } from '../../../state/window/reducer';
-import { ISecretStore } from '../../../state/secrets/store';
 import { PullstateCore } from '../../../state/stateCore';
 
 import { TaskbarIcon } from './taskbarIcon';
@@ -46,15 +44,12 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
         props.toggleStartMenu(false);
     }
 
-    const doHarlemShake = () => {
-        if (!currentSecretsFound.includes(FoundSecretType.harlemShake)) {
-            secretFoundToast(currentSecretsFound, FoundSecretType.harlemShake);
-            SecretStore.update((store: ISecretStore) => {
-                store.secretsFound = [...store.secretsFound, FoundSecretType.harlemShake];
-            })
-            props.sillyService.doHarlemShake();
-        }
-    }
+    const doHarlemShake = () => addSecretIfNotFound({
+        secretStore: SecretStore,
+        currentSecretsFound,
+        secretToAdd: FoundSecretType.harlemShake,
+        callbackFinally: () => props.sillyService.doHarlemShake?.(),
+    });
 
     const appsToDisplay: Array<LaunchedApp | NotLaunchedApp> = [];
     for (const taskbar of TaskbarList) {

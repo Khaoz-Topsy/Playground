@@ -8,7 +8,11 @@ export class SillyService {
     }
 
     doHarlemShake = () => {
-        if (this._isShaking) return;
+        if (this._isShaking) {
+            console.log('Harlem shake already in progress');
+            return;
+        }
+        this._isShaking = true;
         const harlemOptions = {
             singleDancer: ".desktop-icon-slot",
             allDancer: ["p", "img", "a", "label"],
