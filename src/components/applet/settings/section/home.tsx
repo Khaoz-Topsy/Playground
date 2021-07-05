@@ -11,7 +11,7 @@ import { withServices } from '../../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { SettingItemSection } from '../settingItemSection';
 import { PullstateCore } from '../../../../state/stateCore';
-import { ISettingStore, SettingStore } from '../../../../state/setting/store';
+import { ISettingStore } from '../../../../state/setting/store';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
 
@@ -19,7 +19,7 @@ interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
 
 export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
-    const { SecretStore } = PullstateCore.useStores();
+    const { SecretStore, SettingStore } = PullstateCore.useStores();
     const currentSettings = SettingStore.useState(store => store);
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 

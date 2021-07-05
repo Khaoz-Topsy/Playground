@@ -22,7 +22,6 @@ interface IProps {
 
 export const StartMenu: React.FC<IProps> = (props: IProps) => {
     const { WindowStore } = PullstateCore.useStores();
-    // const activeApps = WindowStore.useState(store => store.activeApps);
 
     const openApp = (startMenuItem: IAppletFile | IFile) => (e: any) => {
         e?.preventDefault();
@@ -32,12 +31,13 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
     }
 
     const renderTile = (sMenu: IStartMenuAppletFile | IStartMenuFile) => {
+        const onClick = openApp(sMenu);
         if (sMenu.images != null && sMenu.images.length > 0) {
             return (
                 <StartMenuSlidingTile
                     key={sMenu.id} {...sMenu}
                     images={sMenu.images}
-                    onClick={openApp(sMenu)}
+                    onClick={onClick}
                 />
             );
         }
@@ -46,7 +46,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
             <StartMenuTile
                 key={sMenu.id} {...sMenu}
                 imgUrl={sMenu.imgUrl ?? windowIconString((sMenu as any)?.appletType)}
-                onClick={openApp(sMenu)}
+                onClick={onClick}
             />
         );
     }
@@ -56,7 +56,6 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
             {
                 props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu()}></div>
             }
-            {/* <div key={`apps-${activeApps.length}`} className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })}> */}
             <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })}>
                 <section className="list">
                     <div className="profile">
