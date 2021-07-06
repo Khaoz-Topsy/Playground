@@ -4,6 +4,7 @@ export interface ISavedEmail {
     email: string;
     date: string;
     isSpam: boolean;
+    isPending?: boolean;
     shortMessage: string;
     message: string;
 }

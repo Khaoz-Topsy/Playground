@@ -57,6 +57,8 @@ export enum LocaleKey {
   keyboardShortcuts,
   secretTooltipDescription,
   personalAccountNamingInconsistency,
+  spamEmail,
+  pendingEmail,
   loading,
   unknown
 }

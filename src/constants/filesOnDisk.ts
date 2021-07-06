@@ -6,8 +6,9 @@ import { DesktopIcons } from "./desktopIconList";
 import { allKnownApps, KnownApplets } from "./knownApplets";
 import { site } from "./site";
 import { imageFile, linkFile, markDownFile } from "../helper/fileHelper";
-import { sortAlphabeticallyByProp } from "../helper/sortHelper";
+import { sortByPropDesc } from "../helper/sortHelper";
 import { LocaleKey } from "../localization/LocaleKey";
+import { translate } from "../integration/i18n";
 
 export const applicationFolderId: any = '0.0';
 export const documentFolderId: any = '0.2';
@@ -19,7 +20,7 @@ export const getFilesOnDisk = (): IFolder => {
         name: LocaleKey.applications,
         imgUrl: AppletIcon.application,
     }));
-    const allKnownAppsSorted = sortAlphabeticallyByProp(allKnownApps(), 'name');
+    const allKnownAppsSorted = sortByPropDesc(allKnownApps().map(ka => ({ ...ka, translated: translate(ka.name) })), 'translated');
     for (const app of allKnownAppsSorted) {
         (rootFolder.contents[appFolderIndex] as Folder)?.addFile?.(app);
     }

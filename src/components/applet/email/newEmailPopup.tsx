@@ -10,11 +10,14 @@ import HCaptcha from '@hcaptcha/react-hcaptcha';
 import { site } from '../../../constants/site';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { NetworkState } from '../../../constants/enum/networkState';
+import { currentShortDate } from '../../../helper/dateHelper';
+import { wait } from '../../../helper/timeoutHelper';
 import { withServices } from '../../../integration/dependencyInjection';
-
-import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { EmailStore } from '../../../state/email/store';
+
+import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -120,10 +123,24 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
                     sitekey={site.captchaKey}
                     theme="dark"
                     size="invisible"
-                    onVerify={(token: string) => {
-                        // Make network call
+                    onVerify={async (token: string) => {
                         setState({ ...state, networkState: NetworkState.Loading });
-                        // customClose();
+                        // Make network call
+                        await wait(2500);
+                        EmailStore.update(store => {
+                            store.savedEmails.push({
+                                guid: '',
+                                name: state.name,
+                                email: state.email,
+                                message: state.message,
+                                date: currentShortDate(),
+                                shortMessage: state.message,
+                                isPending: true,
+                                isSpam: false,
+                            });
+                            return store;
+                        })
+                        customClose();
                     }}
                     onError={() => {
                         setState({ ...state, networkState: NetworkState.Pending });

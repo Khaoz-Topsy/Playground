@@ -1,7 +1,6 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import { Badge, Center } from '@chakra-ui/react';
 import classNames from 'classnames';
-// import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { ISavedEmail } from '../../../contracts/interface/ISavedEmail';
@@ -10,11 +9,15 @@ import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { LoadingImage } from '../../../components/core/loader';
 import { MarkdownContent } from '../../core/markdown';
+import { sortByPropAsc } from '../../../helper/sortHelper';
 import { withServices } from '../../../integration/dependencyInjection';
+import { EmailStore } from '../../../state/email/store';
 import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
 import { NewEmailPopup } from './newEmailPopup';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { translate } from '../../../integration/i18n';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -26,6 +29,7 @@ interface IState {
 }
 
 export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
+    const savedEmails: Array<ISavedEmail> = EmailStore.useState(store => store.savedEmails);
     const [state, setState] = useState<IState>({
         networkState: NetworkState.Pending,
         selectedEmailIndex: -1,
@@ -52,13 +56,13 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         });
     }
 
-    const renderSidebar = (localState: IState): ReactNode => {
+    const renderSidebar = (localState: IState, localAllEmails: Array<ISavedEmail>): ReactNode => {
         if (localState.networkState === NetworkState.Loading) return LoadingImage(true);
 
         return (
             <div className="email-box noselect">
                 {
-                    localState.emails.map((email: ISavedEmail, index: number) => (
+                    localAllEmails.map((email: ISavedEmail, index: number) => (
                         <div
                             key={email.guid}
                             className={classNames('item', { 'selected': index === state.selectedEmailIndex })}
@@ -71,7 +75,13 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                                         {
                                             email.isSpam &&
                                             <span className="spam" style={{ marginTop: '3px', marginRight: '7.5px' }}>
-                                                <Badge colorScheme="red">SPAM</Badge>
+                                                <Badge colorScheme="red">{translate(LocaleKey.spamEmail)}</Badge>
+                                            </span>
+                                        }
+                                        {
+                                            email.isPending &&
+                                            <span className="pending" style={{ marginTop: '3px', marginRight: '7.5px' }}>
+                                                <Badge colorScheme="blue">{translate(LocaleKey.pendingEmail)}</Badge>
                                             </span>
                                         }
                                         <span className="date">{email.date}</span>
@@ -87,30 +97,31 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         );
     }
 
-    const renderBody = (localState: IState): ReactNode => {
+    const renderBody = (localState: IState, localAllEmails: Array<ISavedEmail>): ReactNode => {
         if (localState.networkState === NetworkState.Loading) return (
             <Center className="mt3">{LoadingImage(true)}</Center>
         );
-        if (localState.selectedEmailIndex < 0 || localState.emails?.[localState.selectedEmailIndex] == null) return (
+        if (localState.selectedEmailIndex < 0 || localAllEmails?.[localState.selectedEmailIndex] == null) return (
             <Center className="mt1">Error displaying email message</Center>
         );
 
         return (<div className="notes-viewer p1">
-            <MarkdownContent content={localState.emails?.[localState.selectedEmailIndex]?.message} />
+            <MarkdownContent content={localAllEmails?.[localState.selectedEmailIndex]?.message} />
         </div>
         );
     }
 
+    const allEmails: Array<ISavedEmail> = sortByPropAsc([...savedEmails, ...state.emails], 'date');
     return (
         <Applet
             key="email-list"
             {...props}
             isFullscreen={true}
             classNames="emails"
-            sidebar={renderSidebar(state)}
+            sidebar={renderSidebar(state, allEmails)}
         >
             <div key="email-list-content" className="email-list-content noselect">
-                {renderBody(state)}
+                {renderBody(state, allEmails)}
             </div>
         </Applet>
     );

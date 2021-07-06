@@ -38,7 +38,7 @@
   "mostUsedItems": "Most Used",
   "email": "Email",
   "newEmail": "New Email",
-  "newEmailMessage": "Message",
+  "newEmailMessage": "Message (Markdown support)",
   "newEmailName": "Name",
   "newEmailFrom": "From address",
   "newEmailSend": "Send",
@@ -58,5 +58,7 @@
   "keyboardShortcuts": "Keyboard shortcuts",
   "secretTooltipDescription": "This info is hidden, discover the secret in order for this to be revealed",
   "personalAccountNamingInconsistency": "I realise that my username is quite inconsistent accross the different platforms 🤦‍♂️",
+  "spamEmail": "SPAM",
+  "pendingEmail": "PENDING",
   "unknown": "Unknown"
 }
