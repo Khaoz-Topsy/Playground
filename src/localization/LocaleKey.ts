@@ -56,6 +56,7 @@ export enum LocaleKey {
   harlemShakeSecretKonamiCodeDescription,
   keyboardShortcuts,
   secretTooltipDescription,
+  personalAccountNamingInconsistency,
   loading,
   unknown
 }

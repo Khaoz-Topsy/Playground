@@ -49,6 +49,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     }
 
     const onCloseSpotlight = () => {
+        (inputRef as any)?.blur?.();
         setTimeout(() => {
             setText('');
             setSelectedSearchResult(0);

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Drawer, useDisclosure, useToast } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
 
@@ -31,7 +31,6 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
   const [isStartMenuOpen, setStartMenuOpen] = useState(false);
   const [isSpotlightOpen, setSpotlightOpen] = useState(false);
   const toastFunc = useToast();
-  const appRef = useRef(null);
 
   const { SettingStore, SecretStore } = PullstateCore.useStores();
   const currentSettings = SettingStore.useState(store => store);
@@ -66,9 +65,6 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
   const toggleSpotlight = (newValue?: boolean) => {
     const newIsSpotlightOpen = newValue ?? (!isSpotlightOpen);
     setSpotlightOpen(newIsSpotlightOpen);
-    // if (newIsSpotlightOpen == false) {
-    //   (appRef as any)?.component?.focus?.();
-    // }
   };
 
   const konamiCodeFunc = () => addSecretIfNotFound({
@@ -81,7 +77,6 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
 
   return (
     <div
-      ref={appRef}
       className="fullscreen layer"
       style={{ filter: `brightness(${brightnessPerc}%)` }}
     >

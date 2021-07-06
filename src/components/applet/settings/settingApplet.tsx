@@ -43,7 +43,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
                                 <SettingItem
                                     key={page.title}
                                     name={page.title}
-                                    icon={page.icon}
+                                    icon={page.icon()}
                                     isActive={index === state.pageIndex}
                                     onClick={() => setState({ ...state, pageIndex: index })}
                                     isFirst={index === 0}
@@ -56,7 +56,7 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
             }
         >
             <Box mt={4} mx={4}>
-                {settingPages[state.pageIndex].comp}
+                {settingPages[state.pageIndex].comp()}
             </Box>
         </Window>
     );

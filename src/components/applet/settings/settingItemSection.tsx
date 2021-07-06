@@ -1,16 +1,28 @@
 import * as React from 'react';
-import { Box, Divider, Text } from "@chakra-ui/react";
+import { Box, Divider, Text, Tooltip } from "@chakra-ui/react";
+import { InfoOutlineIcon } from '@chakra-ui/icons';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 interface ISettingItemSection {
     heading: string;
     subTexts?: string[];
     showDivider?: boolean;
+    headingTooltip?: LocaleKey;
 }
 
 export const SettingItemSection: React.FunctionComponent<ISettingItemSection> = props => {
     return (
         <Box mb={6}>
-            <Text fontSize="2xl" className="noselect">{props.heading}</Text>
+            <Text fontSize="2xl" className="noselect">
+                {props.heading}
+                {
+                    (props.headingTooltip != null) &&
+                    <Tooltip label={translate(props.headingTooltip)} fontSize="md">
+                        <InfoOutlineIcon ml={2} fontSize={20} />
+                    </Tooltip>
+                }
+            </Text>
             {
                 (props.showDivider ?? true) &&
                 <Divider mt={2} mb={2} />

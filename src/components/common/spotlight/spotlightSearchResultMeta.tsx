@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Box, Center } from "@chakra-ui/react";
+import { Box, Center, Divider } from "@chakra-ui/react";
 
 import { IAppletFile } from "../../../contracts/interface/IFile";
 import { windowIcon } from "../../window/windowIcon";
@@ -18,7 +18,7 @@ export const SpotlightSearchResultMeta: React.FC<IProps> = (props: IProps) => {
         return (<li><Center>{title}:&nbsp;<span>{valueToDisplay}</span></Center></li>);
     }
 
-    const divider = () => <li className="divider">-----</li>
+    const divider = () => <Divider mx="auto" my={2} width="80%" opacity={0.25} />
 
     const { author, projectUrl, version, size, installedOn } = props.searchResult.info;
 

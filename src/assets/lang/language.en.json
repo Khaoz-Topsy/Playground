@@ -57,5 +57,6 @@
   "harlemShakeSecretKonamiCodeDescription": "Enter the Konami code",
   "keyboardShortcuts": "Keyboard shortcuts",
   "secretTooltipDescription": "This info is hidden, discover the secret in order for this to be revealed",
+  "personalAccountNamingInconsistency": "I realise that my username is quite inconsistent accross the different platforms 🤦‍♂️",
   "unknown": "Unknown"
 }

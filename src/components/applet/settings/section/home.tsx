@@ -105,10 +105,12 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                         </Slider>
                     </Box> */}
                 </SimpleGrid>
-                <Box mt={3} mb={5}>
-                    <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>{translate(LocaleKey.enableClippy)}</Checkbox>
-                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>{translate(LocaleKey.clippyDescription)}</Text>
-                </Box>
+                <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
+                    <Box mt={3} mb={5}>
+                        <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>{translate(LocaleKey.enableClippy)}</Checkbox>
+                        <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>{translate(LocaleKey.clippyDescription)}</Text>
+                    </Box>
+                </SimpleGrid>
                 {/* <Box my={5}>
                     <Checkbox colorScheme={'primary'} isChecked={colorMode === 'dark'} onChange={toggleColorMode}>Use Dark Mode</Checkbox>
                     <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Use the website in dark mode.</Text>

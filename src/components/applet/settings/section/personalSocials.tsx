@@ -6,11 +6,15 @@ import {
 } from '../../../socialButtons';
 import { BasicLazyImage } from '../../../core/image';
 import { SettingItemSection } from '../settingItemSection';
+import { LocaleKey } from '../../../../localization/LocaleKey';
+import { translate } from '../../../../integration/i18n';
 
 export const SettingPersonalSocials: React.FC = () => {
     return (
         <div style={{ textAlign: 'center' }}>
-            <SettingItemSection heading="Personal accounts" showDivider={false}>
+            <SettingItemSection heading={translate(LocaleKey.personalAccounts)}
+                headingTooltip={LocaleKey.personalAccountNamingInconsistency}
+                showDivider={false}>
                 <SimpleGrid minChildWidth="200px" columnGap="10px" rowGap="10px" className="mt1">
                     <PersonalGithub />
                     <PersonalTwitter />
