@@ -6,6 +6,8 @@ export const knownKeybinds = {
     goPrev: 'alt+left',
     goNext: 'alt+right',
     esc: 'escape',
+    up: 'up',
+    down: 'down',
     konami: 'up up down down left right left right b a enter',
 };
 

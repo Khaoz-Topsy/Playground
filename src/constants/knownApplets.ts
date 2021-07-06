@@ -41,7 +41,7 @@ export class KnownApplets {
         name: LocaleKey.terminal,
         appletType: AppletType.terminal,
         type: FileType.applet,
-        info: { version: '1.6.8', size: 0, installedOn: new Date('2021-06-14'), author: 'Simon Ma - 中文文档', projectUrl: 'https://www.npmjs.com/package/react-terminal-app' },
+        info: { version: '1.6.8', size: 5341, installedOn: new Date('2021-06-14'), author: 'Simon Ma - 中文文档', projectUrl: 'https://www.npmjs.com/package/react-terminal-app' },
     };
     static kurtLourens: IAppletFile = {
         id: 1.21,
@@ -91,7 +91,7 @@ export class KnownApplets {
         name: LocaleKey.nyanCat,
         appletType: AppletType.nyanCat,
         type: FileType.applet,
-        info: { version: '', size: 0, installedOn: new Date('2021-06-04'), author: 'Cristina Sturm', projectUrl: 'https://cristurm.github.io/nyan-cat/' },
+        info: { version: '0.3.4', size: 20, installedOn: new Date('2021-06-04'), author: 'Cristina Sturm', projectUrl: 'https://cristurm.github.io/nyan-cat/' },
     };
 }
 

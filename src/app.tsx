@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { Drawer, useDisclosure, useToast } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
 
-import { SpotlightSearch } from './components/common/spotlight';
+import { SpotlightSearch } from './components/common/spotlight/spotlight';
 import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { Desktop } from './components/common/desktop/desktop';
 import { Taskbar } from './components/common/taskbar/taskbar';
