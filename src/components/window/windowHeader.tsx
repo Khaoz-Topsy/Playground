@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { ChevronDownIcon, ExternalLinkIcon } from '@chakra-ui/icons';
-import { Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger } from '@chakra-ui/react';
+import { Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger, Tooltip } from '@chakra-ui/react';
 
 import { SpotlightSearchResultMeta } from '../common/spotlight/spotlightSearchResultMeta';
 import { allKnownApps } from '../../constants/knownApplets';
@@ -58,9 +58,11 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
 
                     {
                         iframeUrl &&
-                        <div className="window-info" onClick={() => openExternal(iframeUrl)}>
-                            <ExternalLinkIcon />
-                        </div>
+                        <Tooltip label="Open in new tab" fontSize="md">
+                            <div className="window-info" onClick={() => openExternal(iframeUrl)}>
+                                <ExternalLinkIcon />
+                            </div>
+                        </Tooltip>
                     }
                 </>
             }
