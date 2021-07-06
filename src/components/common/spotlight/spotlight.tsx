@@ -35,18 +35,24 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
         var pattern = str.split("").map((x) => {
             return `(?=.*${x})`
         }).join("");
-        var regex = new RegExp(`${pattern}`, "g")
-        return value.match(regex);
+        try {
+            var regex = new RegExp(`${pattern}`, "g")
+            return value.match(regex);
+        }
+        catch (e) { }
+        return false;
     }
 
-    const searchResults: Array<IAppletFile> = [];
-    const searchText = text.toLocaleLowerCase();
-    if (searchText != null && searchText.length > 0) {
-        for (const appletProp of allKnownApps()) {
-            if (lenientMatch(translate(appletProp.name).toLocaleLowerCase(), searchText)) {
-                searchResults.push(appletProp)
+    const getSearchResults = (searchText: string): Array<IAppletFile> => {
+        const searchResults: Array<IAppletFile> = [];
+        if (searchText != null && searchText.length > 0) {
+            for (const appletProp of allKnownApps()) {
+                if (searchText.includes('*') || lenientMatch(translate(appletProp.name).toLocaleLowerCase(), searchText)) {
+                    searchResults.push(appletProp)
+                }
             }
         }
+        return searchResults;
     }
 
     const onCloseSpotlight = () => {
@@ -63,7 +69,8 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
             setSelectedSearchResult(0);
             return;
         }
-        if (newValue >= searchResults.length) {
+
+        if (newValue !== 0 && newValue >= searchResults.length) {
             setSelectedSearchResult(searchResults.length - 1);
             return;
         }
@@ -75,13 +82,22 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
         if (e?.keyCode === knownKeyCodes.enter) {
             const openAppFunc = openApp(searchResults[selectedSearchResult]);
             openAppFunc({});
+            return;
         }
 
         if (e?.keyCode === knownKeyCodes.up || e?.keyCode === knownKeyCodes.down) {
             e?.preventDefault?.();
         }
-        if (e?.keyCode === knownKeyCodes.up) setSelectedSearchResultSafely(selectedSearchResult - 1); // up
-        if (e?.keyCode === knownKeyCodes.down) setSelectedSearchResultSafely(selectedSearchResult + 1); // down
+        if (e?.keyCode === knownKeyCodes.up) {
+            setSelectedSearchResultSafely(selectedSearchResult - 1); // up
+            return;
+        }
+        if (e?.keyCode === knownKeyCodes.down) {
+            setSelectedSearchResultSafely(selectedSearchResult + 1); // down
+            return;
+        }
+
+        setSelectedSearchResultSafely(0); // set to first item
     }
 
     const openApp = (app: IAppletFile) => (e: any) => {
@@ -101,6 +117,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     }
 
     const onClick = (props.isOpen) ? onCloseSpotlight : () => { };
+    const searchResults: Array<IAppletFile> = getSearchResults(text.toLocaleLowerCase());
 
     return (
         <div className="spotlight layer">

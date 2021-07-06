@@ -53,7 +53,6 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
 
     const onPrevClick = (e: any) => {
         e.preventDefault?.();
-        console.log(props.currentChangeIndex);
         if (!props.hasPrev) return;
         setPrevActivated(true);
         props.goToPrev?.();
