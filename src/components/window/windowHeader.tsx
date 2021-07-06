@@ -1,7 +1,13 @@
 import React, { ReactNode } from 'react';
+import { ChevronDownIcon, ExternalLinkIcon } from '@chakra-ui/icons';
+import { Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger } from '@chakra-ui/react';
 
-import { translate } from '../../integration/i18n';
+import { SpotlightSearchResultMeta } from '../common/spotlight/spotlightSearchResultMeta';
+import { allKnownApps } from '../../constants/knownApplets';
 import { LocaleKey } from '../../localization/LocaleKey';
+import { openExternal } from '../../helper/linkHelper';
+import { getIframeUrl } from '../../helper/iframeHelper';
+import { translate } from '../../integration/i18n';
 import { WindowActions } from './windowActions';
 
 interface IProps {
@@ -13,6 +19,16 @@ interface IProps {
 }
 
 export const WindowHeader: React.FC<IProps> = (props: IProps) => {
+    let foundApplet;
+    for (const appletProp of allKnownApps()) {
+        if (appletProp.name === props.name) {
+            foundApplet = { ...appletProp };
+            break;
+        }
+    }
+
+    const iframeUrl = getIframeUrl(foundApplet);
+
     return (
         <div className="window-header" onDoubleClick={props.onMaximise}>
             {
@@ -20,6 +36,33 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
                 <div className="window-icon">
                     {props.windowIcon}
                 </div>
+            }
+            {
+                (foundApplet != null) &&
+                <>
+                    <Popover placement="top-start">
+                        <PopoverTrigger>
+                            <div className="window-info">
+                                <ChevronDownIcon />
+                            </div>
+                        </PopoverTrigger>
+                        <PopoverContent border="none" className="popover-custom">
+                            <PopoverArrow />
+                            <PopoverCloseButton />
+                            {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
+                            <PopoverBody>
+                                <SpotlightSearchResultMeta searchResult={foundApplet} hideImage={true} />
+                            </PopoverBody>
+                        </PopoverContent>
+                    </Popover>
+
+                    {
+                        iframeUrl &&
+                        <div className="window-info" onClick={() => openExternal(iframeUrl)}>
+                            <ExternalLinkIcon />
+                        </div>
+                    }
+                </>
             }
             <div className="content noselect">
                 {translate(props.name)}

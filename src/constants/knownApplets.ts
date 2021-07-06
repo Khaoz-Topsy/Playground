@@ -95,7 +95,7 @@ export class KnownApplets {
     };
 }
 
-export const allKnownApps = () => {
+export const allKnownApps = (): Array<IAppletFile> => {
     const apps: Array<IAppletFile> = [];
     for (const appletProp in KnownApplets) {
         if (Object.prototype.hasOwnProperty.call(KnownApplets, appletProp)) {

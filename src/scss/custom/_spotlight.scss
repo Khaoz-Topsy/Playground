@@ -136,34 +136,35 @@ $searchBarHeight: 56px;
             line-height: 1.75em;
         }
     }
+}
 
-    .search-meta {
-        padding-bottom: 2em;
-        transition: all 250ms ease-in-out;
+.spotlight-results-bg .search-meta,
+.search-meta {
+    padding-bottom: 2em;
+    transition: all 250ms ease-in-out;
 
-        img {
-            max-width: 40%;
-            margin-top: 1em;
-            margin-bottom: 1em;
+    img {
+        max-width: 100px;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    ul {
+        list-style-type: none;
+    }
+
+    li {
+        color: rgba(255, 255, 255, 0.7);
+
+        span {
+            @extend .single-line;
+            color: white;
+            max-width: 50%;
         }
 
-        ul {
-            list-style-type: none;
-        }
-
-        li {
-            color: rgba(255, 255, 255, 0.7);
-
-            span {
-                @extend .single-line;
-                color: white;
-                max-width: 50%;
-            }
-
-            &.divider {
-                color: rgba(255, 255, 255, 0.25);
-                text-align: center;
-            }
+        &.divider {
+            color: rgba(255, 255, 255, 0.25);
+            text-align: center;
         }
     }
 }

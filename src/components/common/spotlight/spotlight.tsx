@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import classNames from 'classnames';
 import { useState } from 'react';
 
-import { KnownApplets } from '../../../constants/knownApplets';
+import { allKnownApps } from '../../../constants/knownApplets';
 import { IAppletFile } from '../../../contracts/interface/IFile';
 import { translate } from '../../../integration/i18n';
 import { SpotlightSearchResult } from './spotlightSearch';
@@ -38,12 +38,9 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     const searchResults: Array<IAppletFile> = [];
     const searchText = text.toLocaleLowerCase();
     if (searchText != null && searchText.length > 0) {
-        for (const appletProp in KnownApplets) {
-            if (Object.prototype.hasOwnProperty.call(KnownApplets, appletProp)) {
-                const knownApp: IAppletFile = (KnownApplets as any)[appletProp];
-                if (lenientMatch(translate(knownApp.name).toLocaleLowerCase(), searchText)) {
-                    searchResults.push(knownApp)
-                }
+        for (const appletProp of allKnownApps()) {
+            if (lenientMatch(translate(appletProp.name).toLocaleLowerCase(), searchText)) {
+                searchResults.push(appletProp)
             }
         }
     }

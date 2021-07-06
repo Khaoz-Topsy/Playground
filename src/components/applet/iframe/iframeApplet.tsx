@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { site } from '../../../constants/site';
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { Applet } from '../../window/applet/applet'
 
@@ -8,7 +9,7 @@ interface IProps extends IApplet { }
 export const IFrameApplet: React.FC<IProps> = (props: IProps) => {
     const {
         key = 'unknown',
-        src = 'https://khaoznet.xyz',
+        src = site.repo,
         style = undefined,
         refreshOnResize = false,
         defaultHeight = undefined,

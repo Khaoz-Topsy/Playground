@@ -127,10 +127,10 @@ svg.handle {
         pointer-events: all;
 
         .window-icon {
-            position: absolute;
-            top: 0;
-            left: 1px;
+            display: inline-block;
             height: 100%;
+            margin-left: 1px;
+            margin-right: 0.2em;
 
             img {
                 height: 100%;
@@ -138,11 +138,38 @@ svg.handle {
             }
         }
 
+        .window-info {
+            display: inline-block;
+            height: 100%;
+            padding-top: 2px;
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+            border-radius: 5px;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken(_palette(bg), 2%);
+            }
+
+            svg {
+                display: block;
+                height: 100%;
+            }
+        }
+
+        .popover-custom {
+            background-color: lighten(_palette(bg), 5%) !important;
+        }
+
         .content {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
+            margin-top: 2px;
             text-align: center;
             color: _palette(fg);
-            margin-top: 2px;
+            pointer-events: none;
         }
 
         .window-actions {

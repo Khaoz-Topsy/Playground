@@ -14,7 +14,7 @@ export const SettingSecrets: React.FC = () => {
 
     return (
         <Box marginX={2} className="noselect" position="relative">
-            <Fireworks hidden={currentSecretsFound.length != secretsFound.length}>
+            <Fireworks hidden={currentSecretsFound.length !== secretsFound.length}>
                 <SettingItemSection
                     heading={translate(LocaleKey.settingSecretsFound)}
                     subTexts={[translate(LocaleKey.settingSecretsCanYouFindThemAll)]}

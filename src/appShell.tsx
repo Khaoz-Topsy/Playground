@@ -39,11 +39,9 @@ export const AppShell: React.FC<IProps> = (props: IProps) => {
 
   return (
     <PullstateProvider instance={instance}>
-      <App />
+      {(shouldFade) && <App />}
       <ToasterContainer />
-      {
-        (isLoaded === false) && <InitialisationScreen shouldFade={shouldFade} />
-      }
+      {(!isLoaded) && <InitialisationScreen shouldFade={shouldFade} />}
     </PullstateProvider>
   );
 }

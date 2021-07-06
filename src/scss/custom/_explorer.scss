@@ -18,7 +18,7 @@ $explorer-icon-size: 100px;
                 height: #{$window-header-explorer-height - $window-header-divider-space}px;
 
                 &.icon-space {
-                    margin-left: #{$window-header-explorer-height + $window-header-divider-space}px;
+                    margin-left: #{$window-header-divider-space / 2}px;
                     margin-right: #{$window-header-divider-space}px;
                 }
             }
@@ -57,7 +57,9 @@ $explorer-icon-size: 100px;
             }
 
             .window-actions {
-                position: relative;
+                position: absolute;
+                top: 4px;
+                right: 10px;
             }
         }
     }

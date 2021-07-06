@@ -6,6 +6,7 @@ import { windowIcon } from "../../window/windowIcon";
 import { BasicLink } from "../../core/link";
 
 interface IProps {
+    hideImage?: boolean;
     searchResult?: IAppletFile;
 }
 
@@ -24,7 +25,11 @@ export const SpotlightSearchResultMeta: React.FC<IProps> = (props: IProps) => {
 
     return (
         <Box flex="1" className="search-meta noselect">
-            <Center>{windowIcon(props.searchResult.appletType)}</Center>
+            {
+                (props.hideImage !== true)
+                    ? <Center>{windowIcon(props.searchResult.appletType)}</Center>
+                    : <br />
+            }
             <ul>
                 {
                     (author != null) && renderInfoRow('Author', author)
