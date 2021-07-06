@@ -5,7 +5,10 @@ export const secretsFound = [
     {
         name: LocaleKey.clippy,
         type: FoundSecretType.clippy,
-        howTo: [LocaleKey.clippySecretDescription],
+        howTo: [
+            LocaleKey.clippySecretSettingsDescription,
+            LocaleKey.clippySecretTerminalDescription,
+        ],
         isFound: (secretsFound: Array<FoundSecretType>) => secretsFound.includes(FoundSecretType.clippy),
     },
     {
