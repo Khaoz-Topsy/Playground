@@ -11,6 +11,13 @@ export const knownKeybinds = {
     konami: 'up up down down left right left right b a enter',
 };
 
+export const knownKeyCodes = {
+    enter: 13,
+    esc: 27,
+    up: 38,
+    down: 40,
+};
+
 export const keybindsPerSection: Array<IKeyBindSection> = [
     {
         name: 'General',
@@ -24,6 +31,23 @@ export const keybindsPerSection: Array<IKeyBindSection> = [
                 keys: [],
                 descrip: 'konami code',
                 requiredSecret: FoundSecretType.harlemShake,
+            }
+        ]
+    },
+    {
+        name: 'Search bar',
+        shortcuts: [
+            {
+                name: 'Navigate up in search results list',
+                keys: ['⬆']
+            },
+            {
+                name: 'Navigate down in search results list',
+                keys: ['⬇']
+            },
+            {
+                name: 'Open selected app in search results list',
+                keys: ['enter']
             }
         ]
     },

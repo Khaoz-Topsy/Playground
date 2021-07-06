@@ -2,9 +2,11 @@ import React from 'react';
 import { Box, Flex, VStack } from '@chakra-ui/react';
 import classNames from 'classnames';
 
+import { spotlightSelect } from '../../../constants/enum/customWindowEvent';
 import { IAppletFile } from '../../../contracts/interface/IFile';
 import { translate } from '../../../integration/i18n';
 import { windowIcon } from '../../window/windowIcon';
+
 import { SpotlightSearchResultMeta } from './spotlightSearchResultMeta';
 
 interface IProps {
@@ -12,9 +14,16 @@ interface IProps {
     selectedSearchResult: number;
     searchResults: Array<IAppletFile>;
     setSelectedSearchResult: (newIndex: number) => void;
+    openApp: (app: IAppletFile) => (e: any) => void;
 }
 
 export const SpotlightSearchResult: React.FC<IProps> = (props: IProps) => {
+
+    const onSelectResult = (index: number) => (e: any) => {
+        e.customEvent = spotlightSelect;
+        e?.persist?.();
+        props.setSelectedSearchResult(index)
+    }
 
     return (
         <div
@@ -26,21 +35,22 @@ export const SpotlightSearchResult: React.FC<IProps> = (props: IProps) => {
                     flex="1"
                     spacing={1}
                     align="stretch"
-                    className="results-list"
+                    className="results-list noselect"
                     overflowY="scroll"
                     pointerEvents="all"
                     zIndex={3}
                 >
                     {
-                        props.searchResults.map((sr: IAppletFile, index: number) => (
+                        props.searchResults.map((appOrFile: IAppletFile, index: number) => (
                             <Box
-                                key={sr.id}
+                                key={appOrFile.id}
                                 className={classNames('result', { 'selected': index === props.selectedSearchResult })}
-                                onClick={() => props.setSelectedSearchResult(index)}
+                                onClick={onSelectResult(index)}
+                                onDoubleClick={props.openApp(appOrFile)}
                             >
-                                {windowIcon(sr.appletType)}
+                                {windowIcon(appOrFile.appletType)}
                                 <p>{
-                                    translate(sr.name).split('').map((char: string, index: number) => {
+                                    translate(appOrFile.name).split('').map((char: string, index: number) => {
                                         const itemClassObj = { 'highlight': props.searchText.includes(char.toLocaleLowerCase()) };
                                         return (
                                             <span key={`${char}-${index}`} className={classNames(itemClassObj)}>{char}</span>

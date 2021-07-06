@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Input, InputGroup, InputLeftElement, VStack } from '@chakra-ui/react';
 import { SearchIcon } from '@chakra-ui/icons';
 import { motion } from 'framer-motion';
@@ -6,10 +6,14 @@ import classNames from 'classnames';
 import { useState } from 'react';
 
 import { allKnownApps } from '../../../constants/knownApplets';
+import { spotlightSelect } from '../../../constants/enum/customWindowEvent';
 import { IAppletFile } from '../../../contracts/interface/IFile';
+import { openAppletOrFile } from '../../../helper/appletHelper';
 import { translate } from '../../../integration/i18n';
+import { WindowStore } from '../../../state/window/store';
+
 import { SpotlightSearchResult } from './spotlightSearch';
-import { useRef } from 'react';
+import { knownKeyCodes } from '../../../constants/keybind';
 
 interface IProps {
     isOpen: boolean;
@@ -54,12 +58,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
         props.onClose?.();
     }
 
-    const onClick = () => {
-        if (props.isOpen) onCloseSpotlight();
-    }
-
     const setSelectedSearchResultSafely = (newValue: number) => {
-        console.log({ newValue });
         if (newValue < 0) {
             setSelectedSearchResult(0);
             return;
@@ -72,19 +71,36 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     }
 
     const onSpotlightType = (e: any) => {
-        if (e?.keyCode === 27) onCloseSpotlight();
+        if (e?.keyCode === knownKeyCodes.esc) onCloseSpotlight();
+        if (e?.keyCode === knownKeyCodes.enter) {
+            const openAppFunc = openApp(searchResults[selectedSearchResult]);
+            openAppFunc({});
+        }
 
-        if (e?.keyCode === 38 || e?.keyCode === 40) {
+        if (e?.keyCode === knownKeyCodes.up || e?.keyCode === knownKeyCodes.down) {
             e?.preventDefault?.();
         }
-        if (e?.keyCode === 38) setSelectedSearchResultSafely(selectedSearchResult - 1); // up
-        if (e?.keyCode === 40) setSelectedSearchResultSafely(selectedSearchResult + 1); // down
-        console.log(e?.keyCode)
+        if (e?.keyCode === knownKeyCodes.up) setSelectedSearchResultSafely(selectedSearchResult - 1); // up
+        if (e?.keyCode === knownKeyCodes.down) setSelectedSearchResultSafely(selectedSearchResult + 1); // down
+    }
+
+    const openApp = (app: IAppletFile) => (e: any) => {
+        e?.preventDefault?.();
+        e?.stopPropagation?.();
+        onCloseSpotlight();
+        openAppletOrFile(WindowStore, app);
     }
 
     const onSpotlightTextChange = (e: any) => {
         setText((e?.target?.value ?? text) ?? '');
     }
+
+    const onSpotlightGroupClick = (e: any) => {
+        if (e?.customEvent === spotlightSelect) return;
+        (inputRef as any)?.focus?.();
+    }
+
+    const onClick = (props.isOpen) ? onCloseSpotlight : () => { };
 
     return (
         <div className="spotlight layer">
@@ -98,7 +114,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
                 variants={variants}
                 exit={variants.closed}
             >
-                <VStack align="stretch" className="spotlight-group" onClick={() => (inputRef as any)?.focus?.()}>
+                <VStack align="stretch" className="spotlight-group" onClick={onSpotlightGroupClick}>
                     <InputGroup>
                         <InputLeftElement children={<SearchIcon boxSize={8} mt={3} ml={4} color="whiteAlpha.500" />} />
                         <Input
@@ -119,6 +135,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
                         searchResults={searchResults}
                         selectedSearchResult={selectedSearchResult}
                         setSelectedSearchResult={setSelectedSearchResultSafely}
+                        openApp={openApp}
                     />
                 </VStack>
             </motion.div>

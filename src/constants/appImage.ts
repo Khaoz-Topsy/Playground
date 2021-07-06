@@ -1,6 +1,6 @@
 const imgFolder = '/assets/img/';
 const vidFolder = '/assets/vid/';
-const backgroundsFolder = '/assets/img/backgrounds';
+const backgroundsFolder = '/assets/img/backgrounds/';
 
 export const error = imgFolder + 'appIcons/error.png';
 
