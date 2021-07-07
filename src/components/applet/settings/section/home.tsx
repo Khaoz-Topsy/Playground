@@ -5,7 +5,7 @@ import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThu
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { Backgrounds } from '../../../../constants/appImage';
 import { addSecretIfNotFound } from '../../../../helper/secretFoundHelper';
-import { translate } from '../../../../integration/i18n';
+import { changeLocalization, supportedLangs, translate } from '../../../../integration/i18n';
 import { withServices } from '../../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { SettingItemSection } from '../settingItemSection';
@@ -22,13 +22,23 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
     const toastFunc = useToast();
 
-    const backgroundDropDownChange = (e: any) => {
+    const stateChange = (prop: string) => (e: any) => {
         const newValue = e?.target?.value;
         if (newValue == null) return;
 
         SettingStore.update((store: ISettingStore) => {
-            store.background = newValue;
+            (store as any)[prop] = newValue;
         })
+    }
+
+    const languageDropDownChange = (e: any) => {
+        const newValue = e?.target?.value;
+        if (newValue == null) return;
+
+        SettingStore.update((store: ISettingStore) => {
+            store.language = newValue;
+        });
+        changeLocalization(newValue);
     }
 
     const onEnableClippyChange = (e: any) => {
@@ -59,6 +69,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
         background,
         brightness,
         // volume,
+        language,
         enabledClippy,
     } = currentSettings;
 
@@ -68,8 +79,19 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 heading={translate(LocaleKey.settings)}
                 subTexts={[translate(LocaleKey.customiseSettings)]}
             >
-                <Box my={5}>
-                    <Select isFullWidth={true} value={background} onChange={backgroundDropDownChange}>
+                <SimpleGrid mt={2} mb={4} minChildWidth="250px" columnGap="10px" rowGap="10px">
+                    <Select mt={1} isFullWidth={true} value={language} onChange={languageDropDownChange}>
+                        {
+                            supportedLangs.map(dropdownOpt => {
+                                return (
+                                    <option key={dropdownOpt.value} value={dropdownOpt.value}>
+                                        {dropdownOpt.name}
+                                    </option>
+                                );
+                            })
+                        }
+                    </Select>
+                    <Select mt={1} isFullWidth={true} value={background} onChange={stateChange('background')}>
                         {
                             Backgrounds.map(dropdownOpt => {
                                 return (
@@ -80,7 +102,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                             })
                         }
                     </Select>
-                </Box>
+                </SimpleGrid>
                 <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
                     <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
                         <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>

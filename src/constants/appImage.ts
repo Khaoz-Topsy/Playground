@@ -10,6 +10,7 @@ export class AppletIcon {
     static email = imgFolder + 'appIcons/email.png';
     static folder = imgFolder + 'appIcons/folder.png';
     static vsCode = imgFolder + 'appIcons/vsCode.png';
+    static monitor = imgFolder + 'appIcons/monitor.png';
     static nyanCat = imgFolder + 'appIcons/nyanCat.png';
     static windows = imgFolder + 'appIcons/windows.png';
     static settings = imgFolder + 'appIcons/setting2.png';

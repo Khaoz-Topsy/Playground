@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 // import reportWebVitals from './reportWebVitals';
 
 import { AppShell } from './appShell';
+import { log, startupMessage } from './integration/logging';
 import { DependencyInjectionProvider } from './integration/dependencyInjection';
 import { getJSON, defaultConfig } from './utils';
 import { CustomThemeProvider } from './themeProvider';
@@ -32,7 +33,8 @@ getJSON('/assets/config.json', (status: boolean, response: string) => {
     ? response || {}
     : defaultConfig;
 
-  if (window.config.consoleLogDebug) console.log('Config', window.config);
+  startupMessage();
+  log(window.config);
 
   ReactDOM.render(
     <React.Fragment>

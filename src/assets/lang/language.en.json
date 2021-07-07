@@ -60,5 +60,6 @@
   "personalAccountNamingInconsistency": "I realise that my username is quite inconsistent accross the different platforms 🤦‍♂️",
   "spamEmail": "SPAM",
   "pendingEmail": "PENDING",
+  "monitor": "Project Monitor",
   "unknown": "Unknown"
 }

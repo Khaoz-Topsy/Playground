@@ -5,7 +5,6 @@ export const defaultWindowCoordShift = 40;
 export const minWidth = 400;
 export const minHeight = 300;
 
-// export const defaultWidth = 850;
 export const defaultWidth = 700;
 export const defaultHeight = 500;
 
@@ -20,6 +19,10 @@ export const defaultScrapMechanicHeight = 600;
 // MusicPlayer
 export const defaultMusicPlayerWidth = 400;
 export const defaultMusicPlayerHeight = 500;
+
+// Monitor
+export const defaultMonitorWidth = 500;
+export const defaultMonitorHeight = 600;
 
 export const defaultPictureViewerWidth = 650;
 export const defaultPictureViewerHeight = 400;

@@ -59,6 +59,7 @@ export enum LocaleKey {
   personalAccountNamingInconsistency,
   spamEmail,
   pendingEmail,
+  monitor,
   loading,
   unknown
 }

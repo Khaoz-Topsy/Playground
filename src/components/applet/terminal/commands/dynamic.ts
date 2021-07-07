@@ -81,7 +81,6 @@ export const dynamicListFunc = (props: IProps) => {
         cow: {
             description: 'Outputs a message with an ASCII cow',
             run(print: any, input: any) {
-                console.log(input)
                 return new Promise((resolve) => {
                     const cowArray: Array<string> = cowMessageAsArray(input);
                     for (let cowIndex = 0; cowIndex < cowArray.length; cowIndex++) {

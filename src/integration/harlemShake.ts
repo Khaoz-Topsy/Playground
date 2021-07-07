@@ -13,10 +13,7 @@ export class HarlemShake {
         this.volumeLevel = volumeLevel;
         this.allDancer = allDancer;
 
-        // Check if the soundUrl is correct.
-        if (!soundUrl || soundUrl.length === 0) {
-            console.error('[HarlemShake:constructor] Please use a valide string for soundUrl !');
-        } else {
+        if (soundUrl && soundUrl.length > 0) {
             this.soundUrl = soundUrl;
         }
 

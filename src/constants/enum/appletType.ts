@@ -14,6 +14,7 @@ export enum AppletType {
     assistantNMS,
     assistantSMS,
     musicPlayer,
+    monitor,
 
     // Funny
     nyanCat,

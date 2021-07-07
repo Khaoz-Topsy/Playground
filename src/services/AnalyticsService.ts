@@ -1,19 +1,18 @@
 import ReactGA from 'react-ga';
-import { LogService } from './LogService';
+
+import { log } from '../integration/logging';
 
 export class AnalyticsService {
     private _analyticsEnabled: boolean;
-    private _logService: LogService;
 
-    constructor(logService: LogService) {
+    constructor() {
         this._analyticsEnabled = window.config.googleAnalyticsEnabled;
         if (this._analyticsEnabled) {
             ReactGA.initialize('G-ETFQJ92RG1');
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
 
-        this._logService = logService;
-        this._logService.log('Initialized Analytics');
+        log('Initialized Analytics');
     }
 
     trackEvent = (analyticsEvent: string) => {
@@ -24,7 +23,7 @@ export class AnalyticsService {
             action: analyticsEvent,
         };
         ReactGA.event(event);
-        this._logService.log('trackEvent', event);
+        log('trackEvent', event);
     }
 
     trackPageView = (url: string) => {
@@ -32,6 +31,6 @@ export class AnalyticsService {
 
         ReactGA.pageview(url);
 
-        this._logService.log('trackPageView', url);
+        log('trackPageView', url);
     }
 }

@@ -1,4 +1,6 @@
-import clippy from 'clippyjs'
+import clippy from 'clippyjs';
+
+import { log } from '../integration/logging';
 
 export class VirtualAssistantService {
     private _agent: any;
@@ -7,7 +9,7 @@ export class VirtualAssistantService {
     constructor() {
         clippy.load('Clippy', (agent: any) => {
             this._agent = agent;
-            console.log(agent.animations());
+            log(agent.animations());
             // this._agent.show();
         });
     }

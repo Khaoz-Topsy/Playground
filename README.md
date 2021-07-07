@@ -8,23 +8,13 @@ Few cool things added:
 - https://github.com/1egoman/funnies
 - https://github.com/milkandsour/nyanloader/blob/master/nyanloader.js
 - https://www.npmjs.com/package/react-animated-term
+- Harlem shake
+  - https://www.npmjs.com/package/harlem-shake
 - Use keyboard shortcuts
   - Using https://craig.is/killing/mice
   -  `alt + leftArrow` and `alt + rightArrow` for back and forward navigation in the file explorer
 - Add version to about page
   - Meta data on apps
-- mac spotlight
-
-
-Things that I will be adding 
-- More files and folders
-- Harlem shake
-  - https://www.npmjs.com/package/harlem-shake
-- Blueprint
-  - https://www.npmjs.com/package/mermaid
-  - https://github.com/learn-anything/react-mindmap
-- More sillies
-- Monitor.kurtlourens.com
 - Open iframe url in new tab
 - Use keyboard shortcuts
   - Add page to display current shortcuts
@@ -32,3 +22,19 @@ Things that I will be adding
   - Add items to appear in search
 - secrets found page
 - Toast on finding a secret
+
+
+Things that I will be adding 
+- More files and folders
+- Blueprint
+  - https://www.npmjs.com/package/mermaid
+  - https://github.com/learn-anything/react-mindmap
+- More sillies
+- Monitor.kurtlourens.com
+- add cow as secret
+- add harlem shake to terminal?
+- Found the secret md file
+- Add hints to secrets
+- console.log 
+  - secrets
+  - add drawing

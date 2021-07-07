@@ -5,7 +5,7 @@ import { InitialisationScreen } from './components/common/initialisationScreen';
 import { ToasterContainer } from './components/core/toast';
 import { appPreloadAssets } from './helper/cacheHelper';
 import { PullstateCore } from './state/stateCore';
-import { subscribeToSecretChanges, subscribeToSettingsChanges, subscribeToWindowsChanges } from './state/stateFromLocalStorage';
+import { subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
 
 import { App } from './app';
 
@@ -25,12 +25,10 @@ export const AppShell: React.FC<IProps> = (props: IProps) => {
         });
     }
 
-    const unsubscribeFromWindow = subscribeToWindowsChanges(instance.stores);
     const unsubscribeFromSettings = subscribeToSettingsChanges(instance.stores);
     const unsubscribeFromSecrets = subscribeToSecretChanges(instance.stores);
 
     return () => {
-      unsubscribeFromWindow();
       unsubscribeFromSettings();
       unsubscribeFromSecrets();
     }

@@ -1,4 +1,5 @@
 import { HarlemShake } from '../integration/harlemShake';
+import { log } from '../integration/logging';
 
 export class SillyService {
     private _isShaking: boolean;
@@ -9,7 +10,7 @@ export class SillyService {
 
     doHarlemShake = () => {
         if (this._isShaking) {
-            console.log('Harlem shake already in progress');
+            log('Harlem shake already in progress');
             return;
         }
         this._isShaking = true;

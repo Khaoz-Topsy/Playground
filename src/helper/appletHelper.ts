@@ -32,11 +32,11 @@ export const openFile = (windowStore: Store<IWindowStore>, newFile: IFile) => {
         }
         return;
     }
-    if (newFile.type === FileType.iframeApplet) {
-        if (newFile?.meta?.src != null) {
-            windowStore.update(openAppFromDesktop(AppletType.iframe, newFile.meta.name, newFile.meta));
-        }
-        return;
-    }
+    // if (newFile.type === FileType.iframeApplet) {
+    //     if (newFile?.meta?.src != null) {
+    //         windowStore.update(openAppFromDesktop(AppletType.iframe, newFile.meta.name, newFile.meta));
+    //     }
+    //     return;
+    // }
     windowStore.update(openAppFromDesktop(appletType, newFile.name, newFile.meta));
 }

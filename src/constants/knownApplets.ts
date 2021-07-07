@@ -1,4 +1,5 @@
 import { FileType, IAppletFile } from '../contracts/interface/IFile';
+import { getIframeUrl } from '../helper/iframeHelper';
 import { LocaleKey } from '../localization/LocaleKey';
 import { AppletType } from './enum/appletType';
 
@@ -81,6 +82,15 @@ export class KnownApplets {
         name: LocaleKey.email,
         appletType: AppletType.email,
         type: FileType.applet,
+        info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
+    };
+    static monitor: IAppletFile = {
+        id: 1.26,
+        parentId: 1.26,
+        name: LocaleKey.monitor,
+        appletType: AppletType.monitor,
+        type: FileType.applet,
+        meta: { key: "monitor-iframe", src: getIframeUrl({ appletType: AppletType.monitor } as any) },
         info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
     };
 

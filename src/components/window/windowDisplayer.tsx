@@ -7,6 +7,7 @@ import { EmailApplet } from '../applet/email/emailApplet';
 import { NotesApplet } from '../applet/notes/notesApplet';
 import { IFrameApplet } from '../applet/iframe/iframeApplet';
 import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
+import { MonitorApplet } from '../applet/kurt/monitorApplet';
 import { PictureApplet } from '../applet/picture/pictureApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
@@ -27,6 +28,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.notes: return <NotesApplet key={appKey} {...appProps} />
         case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.vsCode: return <VsCodeApplet key={appKey} {...appProps} />
+        case AppletType.monitor: return <MonitorApplet key={appKey} {...appProps} />
         case AppletType.nyanCat: return <NyanCatApplet key={appKey} {...appProps} />
         case AppletType.picture: return <PictureApplet key={appKey} {...appProps} />
         case AppletType.setting: return <SettingApplet key={appKey} {...appProps} />
