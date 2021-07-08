@@ -156,7 +156,7 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
                         })
                         customClose();
                         toastFunc({
-                            title: 'Successfully sent \'Email\'!', // TODO translate
+                            title: 'Successfully sent "email"!', // TODO translate
                             status: 'success',
                             isClosable: true,
                         });
