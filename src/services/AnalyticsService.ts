@@ -8,7 +8,7 @@ export class AnalyticsService {
     constructor() {
         this._analyticsEnabled = window.config.googleAnalyticsEnabled;
         if (this._analyticsEnabled) {
-            ReactGA.initialize('G-ETFQJ92RG1');
+            ReactGA.initialize('UA-97325462-7');
             ReactGA.pageview(window.location.pathname + window.location.search);
         }
 

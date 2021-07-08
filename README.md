@@ -31,10 +31,12 @@ Things that I will be adding
   - https://www.npmjs.com/package/mermaid
   - https://github.com/learn-anything/react-mindmap
 - More sillies
-- add cow as secret
+- More tracked secrets
+  - Cow command
+  - Opened the secret md file
 - add harlem shake to terminal?
-- Found the secret md file
 - Add hints to secrets
 - console.log 
   - secrets
   - add drawing
+- 
