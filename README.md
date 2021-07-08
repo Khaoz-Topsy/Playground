@@ -22,6 +22,7 @@ Few cool things added:
   - Add items to appear in search
 - secrets found page
 - Toast on finding a secret
+- Monitor.kurtlourens.com
 
 
 Things that I will be adding 
@@ -30,7 +31,6 @@ Things that I will be adding
   - https://www.npmjs.com/package/mermaid
   - https://github.com/learn-anything/react-mindmap
 - More sillies
-- Monitor.kurtlourens.com
 - add cow as secret
 - add harlem shake to terminal?
 - Found the secret md file

@@ -2,6 +2,7 @@ import DragSelect from 'dragselect';
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
+import { TutorialSticky } from '../../sticky/tutorialSticky';
 import { AppletType } from '../../../constants/enum/appletType';
 import { DesktopIcons } from '../../../constants/desktopIconList';
 import { WindowStore } from '../../../state/window/store';
@@ -89,6 +90,7 @@ export const Desktop: React.FC = () => {
                         );
                     })
                 }
+                {/* <TutorialSticky /> */}
             </div>
         </div>
     );
