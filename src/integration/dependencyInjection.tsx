@@ -4,7 +4,7 @@ import { IFolder } from '../contracts/interface/IFolder';
 import { anyObject } from '../helper/typescriptHacks';
 
 import { DataService } from '../services/DataService';
-import { KurtApiService } from '../services/api/KurtApiService';
+import { AssistantAppsService } from '../services/api/AssistantAppsService';
 import { VirtualAssistantService } from '../services/VirtualAssistantService';
 import { StorageService } from '../services/StorageService';
 import { AnalyticsService } from '../services/AnalyticsService';
@@ -20,7 +20,7 @@ export interface IDependencyInjection {
     sillyService: SillyService;
 
     // Network
-    kurtApiService: KurtApiService;
+    assistantAppsService: AssistantAppsService;
     virtualAssistantService: VirtualAssistantService;
 }
 
@@ -37,7 +37,7 @@ export const defaultDependencyInjectionFunc: GetServices = () => {
         sillyService: new SillyService(),
 
         // Network
-        kurtApiService: new KurtApiService(storageService),
+        assistantAppsService: new AssistantAppsService(storageService),
         virtualAssistantService: new VirtualAssistantService(),
     }
 }

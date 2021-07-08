@@ -18,7 +18,7 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
     const [blogItems, setBlogItems] = useState<Array<KhaozBlogItem>>([]);
 
     useEffect(() => {
-        props.kurtApiService.getBlogPosts().then((blog: ResultWithValue<Array<KhaozBlogItem>>) => {
+        props.assistantAppsService.getBlogPosts().then((blog: ResultWithValue<Array<KhaozBlogItem>>) => {
             if (!blog.isSuccess) {
                 setNetworkState(NetworkState.Error);
                 return;

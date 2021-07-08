@@ -3,15 +3,16 @@ import { Chip, Fab, TextField } from '@material-ui/core';
 import { AddIcon } from '@chakra-ui/icons';
 import {
     Avatar, Box, Button, Modal, ModalBody, ModalCloseButton,
-    ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure
+    ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure, useToast
 } from '@chakra-ui/react';
 import HCaptcha from '@hcaptcha/react-hcaptcha';
 
 import { site } from '../../../constants/site';
 import { IApplet } from '../../../contracts/interface/IApplet';
+import { ContactFormViewModel } from '../../../contracts/generated/ViewModel/contactFormViewModel';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { currentShortDate } from '../../../helper/dateHelper';
-import { wait } from '../../../helper/timeoutHelper';
+import { newGuid } from '../../../helper/guidHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
@@ -22,6 +23,13 @@ import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dep
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
 
+const initialState = {
+    name: '',
+    email: '',
+    message: '',
+    networkState: NetworkState.Pending,
+};
+
 interface IState {
     name: string;
     email: string;
@@ -30,13 +38,9 @@ interface IState {
 }
 
 export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
+    const toastFunc = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const [state, setState] = useState<IState>({
-        name: '',
-        email: '',
-        message: '',
-        networkState: NetworkState.Pending,
-    });
+    const [state, setState] = useState<IState>(initialState);
     const captchaRef: any = useRef();
 
     const editField = (fieldName: string) => (e: any) => {
@@ -49,7 +53,7 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const customClose = () => {
-        setState({ ...state, networkState: NetworkState.Pending });
+        setState(initialState);
         (captchaRef?.current as any)?.resetCaptcha();
         onClose();
     }
@@ -123,24 +127,39 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
                     sitekey={site.captchaKey}
                     theme="dark"
                     size="invisible"
-                    onVerify={async (token: string) => {
+                    onVerify={async (captcha: string) => {
                         setState({ ...state, networkState: NetworkState.Loading });
-                        // Make network call
-                        await wait(2500);
+                        const { name, email, message } = state;
+                        const contactForm: ContactFormViewModel = { name, email, message, captcha };
+                        const contactFormSubmitResult = await props.assistantAppsService.submitContactForm(contactForm);
+                        if (!contactFormSubmitResult.isSuccess) {
+                            toastFunc({
+                                title: 'Could not send email, please try again later 😅', // TODO translate
+                                status: 'error',
+                                isClosable: true,
+                            });
+                            return;
+                        }
+
                         EmailStore.update(store => {
                             store.savedEmails.push({
-                                guid: '',
-                                name: state.name,
-                                email: state.email,
-                                message: state.message,
+                                guid: newGuid(),
+                                name,
+                                email,
+                                message,
                                 date: currentShortDate(),
-                                shortMessage: state.message,
+                                shortMessage: message,
                                 isPending: true,
                                 isSpam: false,
                             });
                             return store;
                         })
                         customClose();
+                        toastFunc({
+                            title: 'Successfully sent \'Email\'!', // TODO translate
+                            status: 'success',
+                            isClosable: true,
+                        });
                     }}
                     onError={() => {
                         setState({ ...state, networkState: NetworkState.Pending });

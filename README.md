@@ -34,7 +34,7 @@ Things that I will be adding
 - More tracked secrets
   - Cow command
   - Opened the secret md file
-- add harlem shake to terminal?
+- Add harlem shake to terminal?
 - Add hints to secrets
 - console.log 
   - secrets

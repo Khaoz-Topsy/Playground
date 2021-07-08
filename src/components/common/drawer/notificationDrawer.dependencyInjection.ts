@@ -1,13 +1,13 @@
 
 import { IDependencyInjection } from '../../../integration/dependencyInjection';
-import { KurtApiService } from '../../../services/api/KurtApiService';
+import { AssistantAppsService } from '../../../services/api/AssistantAppsService';
 
 export interface IExpectedServices {
-    kurtApiService: KurtApiService
+    assistantAppsService: AssistantAppsService
 }
 
 export const dependencyInjectionToProps = (services: IDependencyInjection): IExpectedServices => {
     return {
-        kurtApiService: services.kurtApiService,
+        assistantAppsService: services.assistantAppsService,
     }
 };
