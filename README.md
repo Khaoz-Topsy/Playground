@@ -23,6 +23,10 @@ Few cool things added:
 - secrets found page
 - Toast on finding a secret
 - Monitor.kurtlourens.com
+- Live tv
+  - https://codepen.io/joshbader/pen/gNbNvw
+  - https://masivaturk.com/resimler/genel-kultur/uzay/televizyonlardaki-karincalanmanin-sebebi-buyuk-patlama/tv-karincalanma.gif
+  - https://codepen.io/davidkpiano/pen/xwyVXO
 
 
 Things that I will be adding 
@@ -34,16 +38,17 @@ Things that I will be adding
 - More tracked secrets
   - Cow command
   - Opened the secret md file
-- Add harlem shake to terminal?
-- Add hints to secrets
+- Add hints for the secrets
 - console.log 
   - secrets
   - add drawing
+  - Function they must execute
+- Mention that I am looking to emigrate?
 - Confetti
   - https://codepen.io/bertdida/pen/pQWPaZ
-- Live tv
-  - https://codepen.io/joshbader/pen/gNbNvw
-  - https://masivaturk.com/resimler/genel-kultur/uzay/televizyonlardaki-karincalanmanin-sebebi-buyuk-patlama/tv-karincalanma.gif
-  - https://codepen.io/davidkpiano/pen/xwyVXO
-  - Recorded TV
-    - https://codepen.io/HIC/pen/mdbrxXR
+- Recorded TV
+  - https://codepen.io/HIC/pen/mdbrxXR
+- Display clock on taskbar on time click
+  - https://projects.wojtekmaj.pl/react-clock/
+- Display calendar on taskbar time click
+  - https://projects.wojtekmaj.pl/react-calendar/
