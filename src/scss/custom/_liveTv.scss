@@ -1,0 +1,64 @@
+$sidebar-width: 20em;
+
+.live-tv {
+    position: relative;
+
+    .tv-sidebar {
+        position: absolute;
+        top: 0;
+        left: -#{$sidebar-width};
+        width: $sidebar-width;
+        height: 100%;
+        background-color: _palette(bg);
+        transition: left 500ms ease-in-out;
+        z-index: 1;
+
+        .tv-open-close-icon {
+            position: absolute;
+            top: 0;
+            right: -2em;
+            background-color: _palette(bg);
+            font-size: 1.5em;
+            line-height: 0.75em;
+            padding: 0.5em;
+            margin: 0;
+            border-radius: 0 0 50% 0;
+            cursor: pointer;
+            transition: right 400ms ease-in-out;
+        }
+    }
+
+    &.is-open {
+        .tv-sidebar {
+            left: 0;
+
+            .tv-open-close-icon {
+                font-size: 1em;
+                padding: 1em;
+                right: 0;
+            }
+        }
+    }
+
+    .offset-content {
+        height: 100%;
+
+        h1 {
+            font-size: 2em;
+        }
+
+        .cover-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            min-width: 100%;
+            opacity: 0.25;
+
+            &.bg {
+                opacity: 1;
+                background-color: black;
+            }
+        }
+    }
+}

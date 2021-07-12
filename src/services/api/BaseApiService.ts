@@ -11,11 +11,14 @@ declare global {
 
 export class BaseApiService {
   private _baseUrl: String = '';
+  private _client;
 
   constructor(newBaseUrl?: String) {
     this._baseUrl = (newBaseUrl != null)
       ? newBaseUrl
       : window.config.apiUrl;
+    this._client = axios.create();
+    this._client.defaults.timeout = 2000;
 
     try {
       const storageServ = new StorageService();
@@ -25,12 +28,12 @@ export class BaseApiService {
   }
 
   setInterceptors = (token: string) => {
-    axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
+    this._client.defaults.headers.common['Authorization'] = 'Bearer ' + token;
   };
 
   protected async get<T>(url: string): Promise<ResultWithValue<T>> {
     try {
-      const result = await axios.get<T>(`${this._baseUrl}/${url}`);
+      const result = await this._client.get<T>(`${this._baseUrl}/${url}`);
       return {
         isSuccess: true,
         value: result.data,
@@ -47,7 +50,7 @@ export class BaseApiService {
 
   protected async post<T>(url: string, data: any, manipulateHeaders?: (headers: any) => void): Promise<ResultWithValue<T>> {
     try {
-      const result = await axios.post<T>(`${this._baseUrl}/${url}`, data);
+      const result = await this._client.post<T>(`${this._baseUrl}/${url}`, data);
       if (manipulateHeaders != null) manipulateHeaders(result.headers);
       return {
         isSuccess: true,
@@ -67,7 +70,7 @@ export class BaseApiService {
 
   protected async delete(url: string, manipulateHeaders?: (headers: any) => void): Promise<Result> {
     try {
-      const result = await axios.delete(`${this._baseUrl}/${url}`);
+      const result = await this._client.delete(`${this._baseUrl}/${url}`);
       if (manipulateHeaders != null) manipulateHeaders(result.headers);
       return {
         isSuccess: true,
