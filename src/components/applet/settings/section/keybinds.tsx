@@ -1,18 +1,14 @@
 import React from 'react';
 import { Box, Text, Kbd, Code } from '@chakra-ui/react';
 
-import { HiddenSecretsFoundKeybind } from '../../../common/secret';
 import { keybindsPerSection } from '../../../../constants/keybind';
 import { IKeyBindShortcut } from '../../../../contracts/interface/IKeybind';
-import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { LocaleKey } from '../../../../localization/LocaleKey';
 import { translate } from '../../../../integration/i18n';
-import { SecretStore } from '../../../../state/secrets/store';
 
 import { SettingItemSection } from '../settingItemSection';
 
 export const SettingKeybind: React.FC = () => {
-    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
 
     return (
         <Box marginLeft={2} marginRight={4} className="noselect">
@@ -23,13 +19,12 @@ export const SettingKeybind: React.FC = () => {
                 {
                     keybindsPerSection.map(kSect => (
                         <Box key={kSect.name} mt={5} mb={5}>
-                            <Text fontSize="xl" color="whiteAlpha.900">{kSect.name}</Text>
+                            <Text fontSize="xl" color="whiteAlpha.900">{translate(kSect.name)}</Text>
                             {
                                 kSect.shortcuts.map(kSectKeyBind => (
                                     <KeybindShortcut
                                         key={kSectKeyBind.name}
                                         keyBind={kSectKeyBind}
-                                        currentSecretsFound={currentSecretsFound}
                                     />
                                 ))
                             }
@@ -43,24 +38,17 @@ export const SettingKeybind: React.FC = () => {
 
 
 interface IKeybindShortcut {
-    currentSecretsFound: Array<FoundSecretType>,
     keyBind: IKeyBindShortcut,
 }
 export const KeybindShortcut: React.FC<IKeybindShortcut> = (props: IKeybindShortcut) => {
     const displayKeyBindName = (keyBind: IKeyBindShortcut) => {
-        if (keyBind.requiredSecret != null && !props.currentSecretsFound.includes(keyBind.requiredSecret)) {
-            return (<span></span>);
-        }
         return (
-            <Text display="inline" fontSize="md" wordBreak="break-all" color="whiteAlpha.800" mr={3}>{keyBind.name}&nbsp;:</Text>
+            <Text display="inline" fontSize="md" wordBreak="break-all" color="whiteAlpha.800" mr={3}>{translate(keyBind.name)}&nbsp;:</Text>
         )
     }
 
     const displayKeyBindDetails = (keyBind: IKeyBindShortcut) => {
-        if (keyBind.requiredSecret != null && !props.currentSecretsFound.includes(keyBind.requiredSecret)) {
-            return (<HiddenSecretsFoundKeybind />);
-        }
-        if (keyBind.descrip) return (<Code>{keyBind.descrip}</Code>);
+        if (keyBind.descrip) return (<Code>{translate(keyBind.descrip)}</Code>);
 
         return (keyBind.keys.map((kKey: string, index: number) => (
             <div key={kKey} style={{ display: 'inline-block' }}>

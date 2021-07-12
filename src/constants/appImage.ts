@@ -14,7 +14,7 @@ export class AppletIcon {
     static monitor = imgFolder + 'appIcons/monitor.png';
     static nyanCat = imgFolder + 'appIcons/nyanCat.png';
     static windows = imgFolder + 'appIcons/windows.png';
-    static settings = imgFolder + 'appIcons/setting2.png';
+    static settings = imgFolder + 'appIcons/setting3.png';
     static terminal = imgFolder + 'appIcons/terminal.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
@@ -26,6 +26,7 @@ export class FileIcon {
     static markdown = imgFolder + 'fileIcons/markdown2.png';
     static picture = imgFolder + 'fileIcons/picture.png';
     static android = imgFolder + 'fileIcons/android.png';
+    static github = imgFolder + 'fileIcons/github.png';
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
 

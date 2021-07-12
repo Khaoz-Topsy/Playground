@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Center, Spinner } from '@chakra-ui/react';
+import { Box, Center, Spinner } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import classNames from 'classnames';
 
@@ -12,6 +12,8 @@ import { translate } from '../../../integration/i18n';
 import { IDependencyInjection, withServices } from '../../../integration/dependencyInjection';
 import { AssistantAppsService } from '../../../services/api/AssistantAppsService';
 import { Applet } from '../../window/applet/applet';
+import { addDays, get24HourLocalTimeFromUtcHour } from '../../../helper/dateHelper';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 export interface IExpectedServices {
     assistantAppsService: AssistantAppsService;
@@ -34,11 +36,14 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         const liveResult = await props.assistantAppsService.getIsLive();
         if (liveResult.isSuccess) {
             setKurtLive(true);
+        } else {
+            setSidebarOpen(true);
         }
 
         setNetworkState(NetworkState.Success);
     }
 
+    const baseDate = new Date('2021/07/11');
     const weekDayIndex = (new Date()).getDay();
 
     const renderBackground = () => {
@@ -67,8 +72,9 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                 <Box className="pos-abs-top-left" style={{ height: '100%', minWidth: '100%' }}>
                     <Center style={{ height: '100%' }}>
                         <Box>
-                            <h1 style={{ textAlign: 'center' }}>Nothing live right now <br />😢</h1>
-                            <Button colorScheme="twitter" mt="5">View available videos</Button>
+                            <h1 style={{ textAlign: 'center' }}>{translate(LocaleKey.noStream)}</h1>
+                            <h3 style={{ textAlign: 'center' }}>{translate(LocaleKey.noStreamSubtitle)}</h3>
+                            {/* <Button colorScheme="twitter" mt="5">View available videos</Button> */}
                         </Box>
                     </Center>
                 </Box>
@@ -92,7 +98,7 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
             isFullscreen={true}
             classNames={classNames('live-tv', 'noselect', { 'is-open': isSidebarOpen })}
             sidebar={
-                <Box p={4} className="tv-sidebar">
+                <Box className="tv-sidebar">
                     <div className="tv-open-close-icon" onClick={() => setSidebarOpen(!isSidebarOpen)}>
                         {
                             isSidebarOpen
@@ -100,26 +106,37 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                                 : <HamburgerIcon />
                         }
                     </div>
-                    <strong>Schedule</strong>
-                    {
-                        WeeklySchedule.map((scheduledItems: Array<ScheduleItem>, dayIndex: number) => {
-                            if (scheduledItems.length < 1) return (
-                                <p key={dayIndex} className={classNames({ 'today': dayIndex === weekDayIndex })}>...</p>
-                            );
+                    <strong>{translate(LocaleKey.schedule)}</strong>
+                    <div className="tv-schedule">
+                        {
+                            WeeklySchedule.map((scheduledItems: Array<ScheduleItem>, dayIndex: number) => {
+                                const today = dayIndex === weekDayIndex;
+                                const itemClass = classNames('item', { today });
+                                const dayOfTheWeek = (new Intl.DateTimeFormat('en', { weekday: 'long' }).format(addDays(new Date(baseDate), dayIndex)));
+                                if (scheduledItems.length < 1) return (
+                                    <div key={dayIndex} className={itemClass}>
+                                        <div className="wrapper">
+                                            <span className="day-of-the-week">{dayOfTheWeek}</span>
+                                            {today && <span className="title">{translate(LocaleKey.noStreamToday)}</span>}
+                                        </div>
+                                    </div>
+                                );
 
-                            return (
-                                <p key={dayIndex}>
-                                    {
-                                        scheduledItems.map((item: ScheduleItem, itemIndex: number) => {
-                                            return <span key={`${dayIndex}-${itemIndex}`}>
-                                                {translate(item.title)}
-                                            </span>
-                                        })
-                                    }
-                                </p>
-                            )
-                        })
-                    }
+                                return (
+                                    <div key={dayIndex} className={itemClass}>
+                                        {
+                                            scheduledItems.map((item: ScheduleItem, itemIndex: number) => {
+                                                return <div key={`${dayIndex}-${itemIndex}`} className="wrapper">
+                                                    <span className="day-of-the-week">{dayOfTheWeek}</span>
+                                                    <span className="title">{get24HourLocalTimeFromUtcHour(item.utcHour)} - {translate(item.title)}</span>
+                                                </div>
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
                 </Box>
             }
         >

@@ -1,5 +1,5 @@
 import { IKeyBindSection } from '../contracts/interface/IKeybind';
-import { FoundSecretType } from './enum/foundSecretType';
+import { LocaleKey } from '../localization/LocaleKey';
 
 export const knownKeybinds = {
     spotlight: 'ctrl+space',
@@ -20,46 +20,45 @@ export const knownKeyCodes = {
 
 export const keybindsPerSection: Array<IKeyBindSection> = [
     {
-        name: 'General',
+        name: LocaleKey.general,
         shortcuts: [
             {
-                name: 'Open Search Bar',
-                keys: ['ctrl', 'space']
+                name: LocaleKey.openSearchBar,
+                keys: ['ctrl', 'space'],
             },
             {
-                name: 'Harlem Shake',
+                name: LocaleKey.harlemShake,
                 keys: [],
-                descrip: 'konami code',
-                requiredSecret: FoundSecretType.harlemShake,
+                descrip: LocaleKey.konami,
             }
         ]
     },
     {
-        name: 'Search bar',
+        name: LocaleKey.searchBar,
         shortcuts: [
             {
-                name: 'Navigate up in search results list',
+                name: LocaleKey.navigateUpInSearch,
                 keys: ['⬆']
             },
             {
-                name: 'Navigate down in search results list',
+                name: LocaleKey.navigateDownInSearch,
                 keys: ['⬇']
             },
             {
-                name: 'Open selected app in search results list',
+                name: LocaleKey.openInSearch,
                 keys: ['enter']
             }
         ]
     },
     {
-        name: 'File Explorer',
+        name: LocaleKey.explorer,
         shortcuts: [
             {
-                name: 'Go back to previous folder',
+                name: LocaleKey.goBackInExplorer,
                 keys: ['alt', '⬅']
             },
             {
-                name: 'Go forward in folder history',
+                name: LocaleKey.goForwardInExplorer,
                 keys: ['alt', '➡']
             }
         ]

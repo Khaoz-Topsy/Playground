@@ -1,13 +1,12 @@
-import { FoundSecretType } from '../../constants/enum/foundSecretType';
+import { LocaleKey } from "../../localization/LocaleKey";
 
 export interface IKeyBindShortcut {
-    name: string;
+    name: LocaleKey;
     keys: Array<string>;
-    descrip?: string;
-    requiredSecret?: FoundSecretType;
+    descrip?: LocaleKey;
 }
 
 export interface IKeyBindSection {
-    name: string,
+    name: LocaleKey,
     shortcuts: Array<IKeyBindShortcut>
 }
