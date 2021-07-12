@@ -1,9 +1,10 @@
-import { AppletType } from "../constants/enum/appletType";
-import { FileType, IAppletFile, IFile, isApplet } from "../contracts/interface/IFile";
+import { Store } from 'pullstate';
+
+import { AppletType } from '../constants/enum/appletType';
+import { FileType, IAppletFile, IFile, isApplet } from '../contracts/interface/IFile';
 import { openExternal } from './linkHelper';
 import { openAppFromDesktop } from '../state/window/reducer';
-import { IWindowStore } from "../state/window/store";
-import { Store } from "pullstate";
+import { IWindowStore } from '../state/window/store';
 
 export const openAppletOrFile = (windowStore: Store<IWindowStore>, newAppOrFile: IAppletFile | IFile) => {
     if (isApplet(newAppOrFile)) {
