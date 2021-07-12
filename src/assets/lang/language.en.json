@@ -61,5 +61,6 @@
   "spamEmail": "SPAM",
   "pendingEmail": "PENDING",
   "monitor": "Project Monitor",
+  "liveTv": "Live TV",
   "unknown": "Unknown"
 }

@@ -18,6 +18,7 @@
 @import './custom/_explorer.scss';
 @import './custom/_email.scss';
 @import './custom/_notes.scss';
+@import './custom/_liveTv.scss';
 @import './custom/_fireworks.scss';
 
 .react-draggable {
@@ -77,6 +78,12 @@ a {
 
 .p1 {
     padding: 1em;
+}
+
+.pos-abs-top-left {
+    position: absolute;
+    top: 0;
+    left: 0
 }
 
 .layer {

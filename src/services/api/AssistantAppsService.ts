@@ -31,4 +31,5 @@ export class AssistantAppsService extends BaseApiService {
     }
 
     submitContactForm = (form: ContactFormViewModel): Promise<Result> => this.post(ApiUrl.contactForm, form);
+    getIsLive = (): Promise<Result> => this.get(ApiUrl.kurt.isLive);
 }

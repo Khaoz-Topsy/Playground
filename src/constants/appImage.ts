@@ -8,6 +8,7 @@ export class AppletIcon {
     static kurt = imgFolder + 'appIcons/kurt.png';
     static music = imgFolder + 'appIcons/music.png';
     static email = imgFolder + 'appIcons/email.png';
+    static liveTv = imgFolder + 'appIcons/live.png';
     static folder = imgFolder + 'appIcons/folder.png';
     static vsCode = imgFolder + 'appIcons/vsCode.png';
     static monitor = imgFolder + 'appIcons/monitor.png';
@@ -33,6 +34,7 @@ export class FileIcon {
 
 export class MiscIcon {
     static streamPreview = vidFolder + 'streamPreview.min.gif';
+    static static = vidFolder + 'static.gif';
 }
 
 export const Backgrounds = [

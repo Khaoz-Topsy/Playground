@@ -39,4 +39,11 @@ Things that I will be adding
 - console.log 
   - secrets
   - add drawing
-- 
+- Confetti
+  - https://codepen.io/bertdida/pen/pQWPaZ
+- Live tv
+  - https://codepen.io/joshbader/pen/gNbNvw
+  - https://masivaturk.com/resimler/genel-kultur/uzay/televizyonlardaki-karincalanmanin-sebebi-buyuk-patlama/tv-karincalanma.gif
+  - https://codepen.io/davidkpiano/pen/xwyVXO
+  - Recorded TV
+    - https://codepen.io/HIC/pen/mdbrxXR

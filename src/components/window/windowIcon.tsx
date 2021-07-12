@@ -9,6 +9,7 @@ export const windowIconString = (appletType: AppletType): string => {
         case AppletType.notes: return FileIcon.markdown;
         case AppletType.picture: return FileIcon.picture;
         case AppletType.vsCode: return AppletIcon.vsCode;
+        case AppletType.liveTv: return AppletIcon.liveTv;
         case AppletType.monitor: return AppletIcon.monitor;
         case AppletType.nyanCat: return AppletIcon.nyanCat;
         case AppletType.explorer: return AppletIcon.folder;

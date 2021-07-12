@@ -93,6 +93,14 @@ export class KnownApplets {
         meta: { key: "monitor-iframe", src: getIframeUrl({ appletType: AppletType.monitor } as any) },
         info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
     };
+    // static liveTv: IAppletFile = {
+    //     id: 1.27,
+    //     parentId: 1.27,
+    //     name: LocaleKey.liveTv,
+    //     appletType: AppletType.liveTv,
+    //     type: FileType.applet,
+    //     info: { version: '0.44.4', size: 3751, installedOn: new Date('2021-07-12') },
+    // };
 
 
     static nyanCat: IAppletFile = {

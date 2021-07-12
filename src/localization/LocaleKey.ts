@@ -60,6 +60,7 @@ export enum LocaleKey {
   spamEmail,
   pendingEmail,
   monitor,
+  liveTv,
   loading,
   unknown
 }

@@ -54,6 +54,7 @@ $explorer-icon-size: 100px;
             .content {
                 overflow: hidden;
                 max-height: #{$window-header-explorer-height}px;
+                pointer-events: all;
             }
 
             .window-actions {
