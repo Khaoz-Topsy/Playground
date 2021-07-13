@@ -19,6 +19,7 @@ export class AppletIcon {
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
     static application = imgFolder + 'appIcons/application.png';
+    static twitch = imgFolder + 'twitch.png';
 }
 
 export class FileIcon {

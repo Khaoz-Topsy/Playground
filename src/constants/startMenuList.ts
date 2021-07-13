@@ -48,9 +48,10 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         meta: { external: site.kurt.twitch },
         size: StartMenuSize.large,
         animatedTile: StartMenuAnimation.slideverticalinverse,
+        secondsPerImage: 10,
         images: [
+            AppletIcon.twitch,
             MiscIcon.streamPreview,
-            AppletIcon.nyanCat,
         ]
     },
     {

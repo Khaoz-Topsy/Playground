@@ -8,7 +8,6 @@ import { AppletIcon } from '../../../constants/appImage';
 import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
-import { currentShortTime, currentShortDate } from '../../../helper/dateHelper';
 import { TriggerAfterXClicks } from '../../../helper/clickHelper';
 import { anyObject } from '../../../helper/typescriptHacks';
 import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
@@ -19,6 +18,7 @@ import { SecretStore } from '../../../state/secrets/store';
 
 import { TaskbarIcon } from './taskbarIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
+import { TaskbarTime } from '../time/taskbarTime';
 
 interface IWithoutExpectedServices {
     toggleStartMenu: (newValue?: boolean) => void;
@@ -100,11 +100,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                     })
                 }
             </AnimatePresence>
-            <div className="taskbar-tray taskbar-highlight-on-hover noselect">
-                <Center>
-                    <p>{currentShortTime()}<br />{currentShortDate()}</p>
-                </Center>
-            </div>
+            <TaskbarTime toggleStartMenu={props.toggleStartMenu} />
             <TriggerAfterXClicks classNames="taskbar-notification taskbar-highlight-on-hover noselect"
                 onClick={notificationBellClick}
                 numberOfRequiredClicks={5}

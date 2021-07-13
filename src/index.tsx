@@ -11,6 +11,7 @@ import { CustomThemeProvider } from './themeProvider';
 
 import './scss/custom.scss';
 import 'react-image-lightbox/style.css';
+import 'react-calendar/dist/Calendar.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 declare global {

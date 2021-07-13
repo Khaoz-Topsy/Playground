@@ -4,6 +4,7 @@ import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import classNames from 'classnames';
 
 import { BasicImage } from '../../core/image';
+import { site } from '../../../constants/site';
 import { MiscIcon } from '../../../constants/appImage';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { NetworkState } from '../../../constants/enum/networkState';
@@ -12,7 +13,7 @@ import { translate } from '../../../integration/i18n';
 import { IDependencyInjection, withServices } from '../../../integration/dependencyInjection';
 import { AssistantAppsService } from '../../../services/api/AssistantAppsService';
 import { Applet } from '../../window/applet/applet';
-import { addDays, get24HourLocalTimeFromUtcHour } from '../../../helper/dateHelper';
+import { addDays, get24HourLocalTimeFromUtcHour, getIntlWeekdayText } from '../../../helper/dateHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
 
 export interface IExpectedServices {
@@ -86,7 +87,7 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                 title={props.name.toString()}
                 className="pos-abs-top-left"
                 style={{ height: '100%', minWidth: '100%' }}
-                src="https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true"
+                src={site.kurt.twitchLivePlayer}
                 frameBorder="0"
             />
         );
@@ -112,7 +113,7 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                             WeeklySchedule.map((scheduledItems: Array<ScheduleItem>, dayIndex: number) => {
                                 const today = dayIndex === weekDayIndex;
                                 const itemClass = classNames('item', { today });
-                                const dayOfTheWeek = (new Intl.DateTimeFormat('en', { weekday: 'long' }).format(addDays(new Date(baseDate), dayIndex)));
+                                const dayOfTheWeek = getIntlWeekdayText(addDays(new Date(baseDate), dayIndex));
                                 if (scheduledItems.length < 1) return (
                                     <div key={dayIndex} className={itemClass}>
                                         <div className="wrapper">

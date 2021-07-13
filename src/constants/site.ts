@@ -15,6 +15,7 @@ export const site = {
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
         linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
+        twitchLivePlayer: 'https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true',
         monitor: 'https://monitor.kurtlourens.com/KhaozNet-AssistantNMS-AssistantApps-RedRubyIT',
         steam: 'https://steamcommunity.com/id/Khaoz-Topsy',
         discord: 'KhaozTopsy#1000',

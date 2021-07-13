@@ -34,6 +34,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
             return (
                 <StartMenuSlidingTile
                     key={sMenu.id} {...sMenu}
+                    secondsPerImage={sMenu.secondsPerImage}
                     images={sMenu.images}
                     onClick={onClick}
                 />

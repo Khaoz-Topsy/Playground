@@ -50,6 +50,7 @@ export interface IStartMenuItemProps {
     isFull?: boolean;
     size: StartMenuSize;
     images?: Array<string>;
+    secondsPerImage?: number;
     animatedTile?: StartMenuAnimation;
 }
 

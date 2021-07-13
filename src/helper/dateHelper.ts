@@ -3,18 +3,25 @@ export const currentShortTime = (now: Date = new Date()) => {
     return date;
 }
 
-export const currentMediumTime = () => {
-    const date = new Date()
-    const hours = date.getHours()
-    const minutes = date.getMinutes()
-    const seconds = date.getSeconds()
-    return `${hours}${minutes < 10 ? ':0' : ':'}${minutes}${seconds < 10 ? ':0' : ':'}${seconds}`
+export const currentMediumTime = (now: Date = new Date()) => {
+    const hours = now.getHours()
+    const minutes = now.getMinutes()
+    const seconds = now.getSeconds()
+    return `${padZeros(hours.toString())}:${padZeros(minutes.toString())}:${padZeros(seconds.toString())}`
 }
 
-export const currentShortDate = () => {
-    const today = new Date();
-    const date = today.getFullYear() + '-' + padZeros((today.getMonth() + 1).toString()) + '-' + padZeros(today.getDate().toString());
+export const currentShortDate = (now: Date = new Date()) => {
+    const date = now.getFullYear() + '-' + padZeros((now.getMonth() + 1).toString()) + '-' + padZeros(now.getDate().toString());
     return date;
+}
+
+export const currentMediumDate = (now: Date = new Date(), lang: string = 'en') => {
+    const monthText = (new Intl.DateTimeFormat(lang, { month: 'long' }).format(now));
+    return `${padZeros(now.getDate().toString())} ${monthText}, ${now.getFullYear()}`;
+}
+
+export const getIntlWeekdayText = (now: Date = new Date(), lang: string = 'en') => {
+    return (new Intl.DateTimeFormat(lang, { weekday: 'long' }).format(now));
 }
 
 export const addDays = (date: Date, days: number) => {
