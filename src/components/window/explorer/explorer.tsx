@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Button, Center, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react';
+import { Center, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/react';
 
 import { VirusScan } from '../../../components/common/virusScan';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
