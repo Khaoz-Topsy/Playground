@@ -8,4 +8,11 @@ export const appendRef = (baseUrl: string) => {
     return baseUrl + `?ref=${site.ref}`;
 };
 
-export const openExternal = (url: string) => window.open(appendRef(url), '_blank', 'noopener,noreferrer');
+export const openExternalInNewTab = (url: string) => {
+    if (url == null) return;
+    window.open(appendRef(url), '_blank', 'noopener,noreferrer');
+}
+export const openExternalInNewWindow = (url: string) => {
+    if (url == null) return;
+    window.open(appendRef(url), url, 'noopener,noreferrer,width=800,height=600');
+}

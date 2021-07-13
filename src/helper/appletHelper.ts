@@ -2,7 +2,7 @@ import { Store } from 'pullstate';
 
 import { AppletType } from '../constants/enum/appletType';
 import { FileType, IAppletFile, IFile, isApplet } from '../contracts/interface/IFile';
-import { openExternal } from './linkHelper';
+import { openExternalInNewTab } from './linkHelper';
 import { openAppFromDesktop } from '../state/window/reducer';
 import { IWindowStore } from '../state/window/store';
 
@@ -29,7 +29,7 @@ export const openFile = (windowStore: Store<IWindowStore>, newFile: IFile) => {
     if (newFile.type === FileType.markdown) appletType = AppletType.notes;
     if (newFile.type === FileType.link) {
         if (newFile?.meta?.external != null) {
-            openExternal(newFile.meta.external);
+            openExternalInNewTab(newFile.meta.external);
         }
         return;
     }

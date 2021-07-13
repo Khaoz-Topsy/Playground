@@ -7,6 +7,7 @@ interface IBasicImageProps {
     imageUrl: string;
     imageName?: string;
     classNames?: string;
+    onClick?: any;
     style?: any;
 }
 export const BasicImage: React.FC<IBasicImageProps> = (props: IBasicImageProps) => {
@@ -15,6 +16,7 @@ export const BasicImage: React.FC<IBasicImageProps> = (props: IBasicImageProps) 
             src={props.imageUrl}
             className={props.classNames}
             style={props.style}
+            onClick={props.onClick}
             alt={(props.alt ?? props.imageName) ?? 'unknown image'}
             draggable={false}
         />

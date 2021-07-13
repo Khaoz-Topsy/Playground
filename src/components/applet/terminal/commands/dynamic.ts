@@ -4,7 +4,7 @@ import { getFunnyMessages } from '../../../../helper/funnyLoadingMessagesHelper'
 import { cowMessageAsArray } from '../../../../helper/cowHelper';
 import { VirtualAssistantService } from '../../../../services/VirtualAssistantService';
 import { site } from '../../../../constants/site';
-import { openExternal } from '../../../../helper/linkHelper';
+import { openExternalInNewTab } from '../../../../helper/linkHelper';
 
 interface IProps {
     virtualAssistantService: VirtualAssistantService;
@@ -118,7 +118,7 @@ export const dynamicListFunc = (props: IProps) => {
                     }
                     print({ type: 'success', label: 'Success', content: 'Opening' });
 
-                    openExternal(input);
+                    openExternalInNewTab(input);
                     resolve({ type: 'success', label: 'Done', content: 'Page Opened!' });
                 });
             }
@@ -129,7 +129,7 @@ export const dynamicListFunc = (props: IProps) => {
                 return new Promise((resolve) => {
                     print({ type: 'success', label: 'Success', content: 'Opening' });
 
-                    openExternal(site.kurt.blog);
+                    openExternalInNewTab(site.kurt.blog);
                     resolve({ type: 'success', label: 'Done', content: ':)' });
                 })
             }
@@ -140,7 +140,7 @@ export const dynamicListFunc = (props: IProps) => {
                 return new Promise((resolve) => {
                     print({ type: 'success', label: 'Success', content: 'Opening' });
 
-                    openExternal('https://tomotoes.com/blog/resume');
+                    openExternalInNewTab('https://tomotoes.com/blog/resume');
                     resolve({ type: 'success', label: 'Done', content: ':)' });
                 })
             }

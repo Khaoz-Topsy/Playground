@@ -27,6 +27,8 @@ Few cool things added:
   - https://codepen.io/joshbader/pen/gNbNvw
   - https://masivaturk.com/resimler/genel-kultur/uzay/televizyonlardaki-karincalanmanin-sebebi-buyuk-patlama/tv-karincalanma.gif
   - https://codepen.io/davidkpiano/pen/xwyVXO
+- Display calendar on taskbar time click
+  - https://projects.wojtekmaj.pl/react-calendar/
 
 
 Things that I will be adding 
@@ -48,7 +50,3 @@ Things that I will be adding
   - https://codepen.io/bertdida/pen/pQWPaZ
 - Recorded TV
   - https://codepen.io/HIC/pen/mdbrxXR
-- Display clock on taskbar on time click
-  - https://projects.wojtekmaj.pl/react-clock/
-- Display calendar on taskbar time click
-  - https://projects.wojtekmaj.pl/react-calendar/

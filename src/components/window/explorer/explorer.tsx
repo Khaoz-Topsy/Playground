@@ -1,6 +1,7 @@
 import React, { ReactNode, useState } from 'react';
-import { Center } from '@chakra-ui/react';
+import { Button, Center, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react';
 
+import { VirusScan } from '../../../components/common/virusScan';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { IAppletFile, IFile } from '../../../contracts/interface/IFile';
@@ -8,6 +9,7 @@ import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
 import { openAppletOrFile } from '../../../helper/appletHelper';
+import { disabledContext } from '../../../helper/eventHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../localization/LocaleKey';
@@ -19,6 +21,7 @@ import { ExplorerHeader } from './explorerHeader';
 import { ExplorerSidebar } from './explorerSidebar';
 import { ExplorerIcon } from './explorerIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+import { translate } from '../../../integration/i18n';
 
 interface IWithoutExpectedServices {
     initialFileId?: number;
@@ -37,10 +40,16 @@ interface IState {
     nextFolders: Array<IFolderMeta>;
 }
 
+interface IScanItem {
+    name: LocaleKey;
+    imgUrl?: string;
+}
+
 export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
     const initialFileId = props.initialFileId ?? 0;
     const file = searchFilesOnDisk(props.folderStructure, initialFileId);
 
+    const [fileToScan, setFileToScan] = useState<IScanItem | null>(null);
     const [selectedId, setSelectedId] = useState<number>(0);
     const [folderState, setFolderState] = useState<IState>({
         currentChangeIndex: 0,
@@ -129,6 +138,10 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
         });
     }
 
+    const openVirusModal = (name: LocaleKey, imgUrl?: string) => setFileToScan({ name, imgUrl });
+    const closeVirusModal = () => {
+        setFileToScan(null)
+    }
 
     const { currentFolder } = folderState;
     const noItems = (currentFolder.contents == null || currentFolder.contents.length < 1);
@@ -154,7 +167,7 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                         </Center>
                     )
                     : (
-                        <div className="folder-contents" onClick={clickAway}>
+                        <div className="folder-contents" onClick={clickAway} onContextMenu={disabledContext}>
                             {
                                 currentFolder.contents.map((content: IAppletFile | IFile | IFolder, index: number) => {
                                     return (
@@ -164,6 +177,7 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                                             iconData={content}
                                             isSelected={content.id === selectedId}
                                             openFileOrFolder={openFileOrFolder}
+                                            openVirusModal={openVirusModal}
                                             setSelected={setSelectedId}
                                         />
                                     );
@@ -172,6 +186,17 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                         </div>
                     )
             }
+            <Modal isOpen={fileToScan != null} onClose={closeVirusModal}>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>Virus scan</ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                        <VirusScan />
+                        {fileToScan?.name && <p><b>{translate(fileToScan.name)}</b> scanning...</p>}
+                    </ModalBody>
+                </ModalContent>
+            </Modal>
         </Window>
     );
 }

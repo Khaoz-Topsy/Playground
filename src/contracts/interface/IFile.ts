@@ -61,3 +61,6 @@ export interface IStartMenuAppletFile extends IStartMenuItemProps, IAppletFile {
 export const isApplet = (fileOrApplet: IFile | IAppletFile): fileOrApplet is IAppletFile => {
     return (fileOrApplet as IAppletFile).appletType !== undefined;
 }
+export const isLink = (fileOrApplet: IFile | IAppletFile): fileOrApplet is IFile => {
+    return (fileOrApplet as IFile)?.meta?.external !== undefined;
+}

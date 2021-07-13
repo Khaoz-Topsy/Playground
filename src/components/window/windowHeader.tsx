@@ -5,7 +5,7 @@ import { Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent,
 import { SpotlightSearchResultMeta } from '../common/spotlight/spotlightSearchResultMeta';
 import { allKnownApps } from '../../constants/knownApplets';
 import { LocaleKey } from '../../localization/LocaleKey';
-import { openExternal } from '../../helper/linkHelper';
+import { openExternalInNewTab } from '../../helper/linkHelper';
 import { getIframeUrl } from '../../helper/iframeHelper';
 import { translate } from '../../integration/i18n';
 import { WindowActions } from './windowActions';
@@ -59,7 +59,7 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
                     {
                         iframeUrl &&
                         <Tooltip label="Open in new tab" fontSize="md">
-                            <div className="window-info" onClick={() => openExternal(iframeUrl)}>
+                            <div className="window-info" onClick={() => openExternalInNewTab(iframeUrl)}>
                                 <ExternalLinkIcon />
                             </div>
                         </Tooltip>
