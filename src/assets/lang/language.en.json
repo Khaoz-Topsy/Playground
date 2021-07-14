@@ -83,6 +83,6 @@
   "version": "Version",
   "size": "Size",
   "installedOn": "Installed On",
-  "updatedOn": "Updated On",
+  "updatedOn": "Last updated On",
   "unknown": "Unknown"
 }

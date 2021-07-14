@@ -21,7 +21,6 @@ import { ExplorerHeader } from './explorerHeader';
 import { ExplorerSidebar } from './explorerSidebar';
 import { ExplorerIcon } from './explorerIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
-import { translate } from '../../../integration/i18n';
 
 interface IWithoutExpectedServices {
     initialFileId?: number;

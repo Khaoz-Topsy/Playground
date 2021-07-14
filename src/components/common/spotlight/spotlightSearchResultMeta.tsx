@@ -6,6 +6,7 @@ import { windowIcon } from "../../window/windowIcon";
 import { BasicLink } from "../../core/link";
 import { LocaleKey } from "../../../localization/LocaleKey";
 import { translate } from "../../../integration/i18n";
+import { currentMediumDate } from "../../../helper/dateHelper";
 
 interface IProps {
     hideImage?: boolean;
@@ -42,8 +43,8 @@ export const SpotlightSearchResultMeta: React.FC<IProps> = (props: IProps) => {
                 {(version != null) && renderInfoRow(LocaleKey.version, version)}
                 {(size !== 0) && renderInfoRow(LocaleKey.size, size.toString() + ' kb')}
                 {divider()}
-                {(installedOn != null) && renderInfoRow(LocaleKey.installedOn, installedOn.toDateString())}
-                {(updatedOn != null) && renderInfoRow(LocaleKey.updatedOn, updatedOn.toDateString())}
+                {(installedOn != null) && renderInfoRow(LocaleKey.installedOn, currentMediumDate(installedOn))}
+                {(updatedOn != null) && renderInfoRow(LocaleKey.updatedOn, currentMediumDate(updatedOn))}
             </ul>
         </Box>
     );
