@@ -14,7 +14,7 @@ export const openAppFromDesktop = (appletType: AppletType, name: LocaleKey, meta
     const anotherInstanceAllowed = numCurrentInstances < (numMultipeInstancesAllowed - 1);
 
     const currentApp = currentApps.find(aa => aa.appletType === appletType);
-    if (anotherInstanceAllowed == false && currentApp != null) {
+    if (anotherInstanceAllowed === false && currentApp != null) {
         const currentAppIsMin = currentApp?.meta?.isMinimised ?? false;
         if (currentAppIsMin) store = setMinimiseForApp(store, currentApp.guid, false);
         if (meta) {
@@ -179,8 +179,8 @@ export const setNewFocusForApp = (guid: string) => (store: IWindowStore): IWindo
 }
 
 const InternalSetNewFocusForApp = (store: IWindowStore, guid: string): IWindowStore => {
-    const currentApps = store.activeApps.map(aa => ({ ...aa }));
-    const sortOrderArray = currentApps.filter(aa => aa.guid !== guid).map(aa => aa.openOrder);
+    // const currentApps = store.activeApps.map(aa => ({ ...aa }));
+    // const sortOrderArray = currentApps.filter(aa => aa.guid !== guid).map(aa => aa.openOrder);
     // const nextAppToFocus = currentApps.find(aa => aa.openOrder === Math.max(...sortOrderArray));
 
     store.currentFocused = guid;

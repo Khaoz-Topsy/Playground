@@ -1,7 +1,7 @@
 import { FileType, IAppletFile } from '../contracts/interface/IFile';
 import { getIframeUrl } from '../helper/iframeHelper';
 import { LocaleKey } from '../localization/LocaleKey';
-import { appletsHiddenFromApplicationFolder, appletsThatCanHaveTheirNamesChanged, AppletType } from './enum/appletType';
+import { appletsHiddenFromApplicationFolder, AppletType } from './enum/appletType';
 
 export class KnownApplets {
     static settings: IAppletFile = {
