@@ -1,5 +1,6 @@
 $startmenu-padding-left: 15px;
 $startmenu-width: 70;
+$startmenu-height: 35em;
 $startmenu-tile-padding: 10;
 $startmenu-tile-hover-border: 2;
 
@@ -28,8 +29,9 @@ $startmenu-tile-hover-border: 2;
         // bottom: 0;
         bottom: #{$taskbar-height}em;
         opacity: 1;
-        width: #{$startmenu-width}vw;
-        height: 70vh;
+        width: #{$startmenu-width}em;
+        height: $startmenu-height;
+        max-height: 100vh;
     }
 
     h3 {
