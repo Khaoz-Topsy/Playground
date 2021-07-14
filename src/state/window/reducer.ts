@@ -60,7 +60,6 @@ export const openApp = (appletType: AppletType, name: LocaleKey, meta?: any) => 
     const currentApps = store.activeApps.map(aa => ({ ...aa }));
     const sortOrderArray = currentApps.map(aa => aa.openOrder);
 
-    // TODO - check if multiple instances allowed
     const guid = newGuid();
     const newActiveApp: LaunchedApp = {
         guid,

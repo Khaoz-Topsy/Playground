@@ -36,6 +36,7 @@ export interface IAppletInfo {
     version: string;
     size: number;
     installedOn: Date;
+    updatedOn?: Date;
 }
 
 export interface IAppletFile extends IFile {

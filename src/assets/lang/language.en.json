@@ -60,6 +60,8 @@
   "personalAccountNamingInconsistency": "I realise that my username is quite inconsistent accross the different platforms 🤦‍♂️",
   "spamEmail": "SPAM",
   "pendingEmail": "PENDING",
+  "failedToSendEmail": "Could not send email, please try again later 😅",
+  "successfulSendEmail": "Successfully sent!",
   "monitor": "Project Monitor",
   "openSearchBar": "Open Search Bar",
   "konami": "Konami Code",
@@ -76,5 +78,11 @@
   "gamingStream": "Gaming Stream",
   "noStream": "Nothing live right now 😢",
   "noStreamSubtitle": "Please check the schedule",
+  "author": "Author",
+  "projectUrl": "Project Url",
+  "version": "Version",
+  "size": "Size",
+  "installedOn": "Installed On",
+  "updatedOn": "Updated On",
   "unknown": "Unknown"
 }

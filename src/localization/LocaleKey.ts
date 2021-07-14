@@ -59,6 +59,8 @@ export enum LocaleKey {
   personalAccountNamingInconsistency,
   spamEmail,
   pendingEmail,
+  failedToSendEmail,
+  successfulSendEmail,
   monitor,
   openSearchBar,
   konami,
@@ -75,6 +77,12 @@ export enum LocaleKey {
   gamingStream,
   noStream,
   noStreamSubtitle,
+  author,
+  projectUrl,
+  version,
+  size,
+  installedOn,
+  updatedOn,
   loading,
   unknown
 }

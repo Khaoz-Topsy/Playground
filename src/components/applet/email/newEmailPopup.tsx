@@ -134,7 +134,7 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
                         const contactFormSubmitResult = await props.assistantAppsService.submitContactForm(contactForm);
                         if (!contactFormSubmitResult.isSuccess) {
                             toastFunc({
-                                title: 'Could not send email, please try again later 😅', // TODO translate
+                                title: translate(LocaleKey.failedToSendEmail),
                                 status: 'error',
                                 isClosable: true,
                             });
@@ -156,7 +156,7 @@ export const NewEmailPopupUnconnected: React.FC<IProps> = (props: IProps) => {
                         })
                         customClose();
                         toastFunc({
-                            title: 'Successfully sent "email"!', // TODO translate
+                            title: translate(LocaleKey.successfulSendEmail),
                             status: 'success',
                             isClosable: true,
                         });
