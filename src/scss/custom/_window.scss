@@ -45,6 +45,10 @@ svg.handle {
         .handle {
             opacity: 0;
         }
+
+        * {
+            pointer-events: none !important;
+        }
     }
 
     .is-maximised {

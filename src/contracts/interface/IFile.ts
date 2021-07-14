@@ -41,6 +41,7 @@ export interface IAppletInfo {
 export interface IAppletFile extends IFile {
     appletType: AppletType;
     info: IAppletInfo;
+    numAllowedInstances?: number;
 }
 
 export interface IStartMenuItemProps {

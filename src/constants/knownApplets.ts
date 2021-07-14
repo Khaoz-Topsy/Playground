@@ -1,7 +1,7 @@
 import { FileType, IAppletFile } from '../contracts/interface/IFile';
 import { getIframeUrl } from '../helper/iframeHelper';
 import { LocaleKey } from '../localization/LocaleKey';
-import { AppletType } from './enum/appletType';
+import { appletsHiddenFromApplicationFolder, appletsThatCanHaveTheirNamesChanged, AppletType } from './enum/appletType';
 
 export class KnownApplets {
     static settings: IAppletFile = {
@@ -27,6 +27,7 @@ export class KnownApplets {
         appletType: AppletType.picture,
         type: FileType.applet,
         info: { version: '0.1.9', size: 121, installedOn: new Date('2021-06-10') },
+        numAllowedInstances: 5,
     };
     static notes: IAppletFile = {
         id: 1.04,
@@ -118,9 +119,16 @@ export const allKnownApps = (): Array<IAppletFile> => {
     for (const appletProp in KnownApplets) {
         if (Object.prototype.hasOwnProperty.call(KnownApplets, appletProp)) {
             const applet: IAppletFile = (KnownApplets as any)[appletProp];
-            if (applet.appletType === AppletType.explorer) continue;
+            if (appletsHiddenFromApplicationFolder.includes(applet.appletType)) continue;
             apps.push(applet);
         }
     }
     return apps;
+}
+
+export const numAllowedInstances = (appletType: AppletType): number => {
+    for (const applet of allKnownApps()) {
+        if (applet.appletType === appletType) return applet.numAllowedInstances ?? 1;
+    }
+    return 1;
 }

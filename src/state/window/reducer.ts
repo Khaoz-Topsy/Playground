@@ -1,4 +1,5 @@
 import { appletsThatCanHaveTheirNamesChanged, AppletType } from '../../constants/enum/appletType';
+import { numAllowedInstances } from '../../constants/knownApplets';
 import { LaunchedApp } from '../../contracts/launchedApp';
 import { newGuid } from '../../helper/guidHelper';
 import { anyObject } from '../../helper/typescriptHacks';
@@ -6,21 +7,23 @@ import { LocaleKey } from '../../localization/LocaleKey';
 import { IWindowStore } from './store';
 
 export const openAppFromDesktop = (appletType: AppletType, name: LocaleKey, meta?: any) => (store: IWindowStore): IWindowStore => {
-    // TODO - check if multiple instances allowed
+    const currentApps = store.activeApps.map(aa => ({ ...aa }));
 
-    const multipeInstancesAllowed = false;
-    const currentApp = store.activeApps.find(aa => aa.appletType === appletType);
-    if (multipeInstancesAllowed == false && currentApp != null) {
-        const guid = newGuid();
+    const numMultipeInstancesAllowed = numAllowedInstances(appletType);
+    const numCurrentInstances = currentApps.filter(aa => aa.appletType === appletType)?.length ?? 0;
+    const anotherInstanceAllowed = numCurrentInstances < (numMultipeInstancesAllowed - 1);
+
+    const currentApp = currentApps.find(aa => aa.appletType === appletType);
+    if (anotherInstanceAllowed == false && currentApp != null) {
         const currentAppIsMin = currentApp?.meta?.isMinimised ?? false;
-        if (currentAppIsMin) store = setMinimiseForApp(store, guid, false);
+        if (currentAppIsMin) store = setMinimiseForApp(store, currentApp.guid, false);
         if (meta) {
-            store = setMetaForApp(store, guid, meta);
+            store = setMetaForApp(store, currentApp.guid, meta);
             if (appletsThatCanHaveTheirNamesChanged.includes(appletType)) {
-                store.activeApps = [...store.activeApps.map(aa => ({ ...aa, name: name }))];
+                store.activeApps = [...currentApps.map(aa => ({ ...aa, name: name }))];
             }
         }
-        store = setNewFocusForApp(guid)(store);
+        store = setNewFocusForApp(currentApp.guid)(store);
         return store;
     }
 

@@ -25,4 +25,8 @@ export const appletsThatCanHaveTheirNamesChanged: Array<AppletType> = [
     AppletType.explorer,
     AppletType.picture,
     AppletType.notes,
-]
+];
+
+export const appletsHiddenFromApplicationFolder: Array<AppletType> = [
+    AppletType.explorer,
+];
