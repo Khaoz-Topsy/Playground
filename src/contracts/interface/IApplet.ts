@@ -2,6 +2,7 @@ import { AppletType } from "../../constants/enum/appletType";
 import { LocaleKey } from "../../localization/LocaleKey";
 
 export interface IApplet {
+    guid: string;
     appletType: AppletType;
     name: LocaleKey;
     meta: any;

@@ -15,47 +15,48 @@ import { windowDisplayer } from './windowDisplayer';
 interface IProps { }
 
 interface IModalProps {
+    guid: string;
     isOpen: boolean;
     applet: AppletType;
 }
 
+const initialModalState: IModalProps = {
+    guid: '',
+    isOpen: false,
+    applet: AppletType.none,
+}
+
 export const WindowManager: React.FC<IProps> = (props: IProps) => {
     const activeApps: Array<LaunchedApp> = WindowStore.useState(store => store.activeApps);
-    const currentFocused: AppletType = WindowStore.useState(store => store.currentFocused);
-    const [modalData, setModalData] = useState<IModalProps>({
-        isOpen: false,
-        applet: AppletType.none,
-    });
+    const currentFocused: string = WindowStore.useState(store => store.currentFocused);
+    const [modalData, setModalData] = useState<IModalProps>(initialModalState);
 
-    const onMaximise = (appletType: AppletType) => (e: any) => WindowStore.update(maximiseApp(appletType));
+    const onMaximise = (guid: string) => (e: any) => WindowStore.update(maximiseApp(guid));
 
-    const onSetFocus = (appletType: AppletType) => (e: any) => {
+    const onSetFocus = (guid: string) => (e: any) => {
         if (e?.customEvent === windowActionEvent) return;
-        WindowStore.update(setNewFocusForApp(appletType))
+        WindowStore.update(setNewFocusForApp(guid))
     };
-    const onMinimise = (appletType: AppletType) => (e: any) => WindowStore.update(minimiseApp(appletType));
-    const onClose = (appletType: AppletType) => (e: any) => WindowStore.update(closeApp(appletType));
+    const onMinimise = (guid: string) => (e: any) => WindowStore.update(minimiseApp(guid));
+    const onClose = (guid: string) => (e: any) => WindowStore.update(closeApp(guid));
 
-    const onCloseModal = () => WindowStore.update(closeApp(modalData.applet),
-        () => setModalData({
-            isOpen: false,
-            applet: AppletType.none,
-        })
+    const onCloseModal = () => WindowStore.update(closeApp(modalData.guid),
+        () => setModalData(initialModalState)
     );
 
-    const renderSupportedWindows = (currentlyFocused: AppletType) => (app: LaunchedApp, index: number) => {
+    const renderSupportedWindows = (currentlyFocused: string) => (app: LaunchedApp, index: number) => {
         const coordShift = defaultWindowCoordShift * (index % 10);
         const appProps: IApplet = {
             ...app,
-            isFocused: app.appletType === currentlyFocused,
+            isFocused: app.guid === currentlyFocused,
             zIndex: app.openOrder,
             ...app.meta,
             defaultX: defaultWindowXPosition + coordShift,
             defaultY: defaultWindowYPosition + coordShift,
-            onSetFocus: onSetFocus(app.appletType),
-            onMinimise: onMinimise(app.appletType),
-            onMaximise: onMaximise(app.appletType),
-            onClose: onClose(app.appletType),
+            onSetFocus: onSetFocus(app.guid),
+            onMinimise: onMinimise(app.guid),
+            onMaximise: onMaximise(app.guid),
+            onClose: onClose(app.guid),
         };
 
         const applet = windowDisplayer(appProps);
@@ -63,6 +64,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
 
         if (!modalData.isOpen) {
             setModalData({
+                guid: appProps.guid,
                 isOpen: true,
                 applet: app.appletType,
             });

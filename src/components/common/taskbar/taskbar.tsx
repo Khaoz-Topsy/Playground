@@ -19,6 +19,7 @@ import { SecretStore } from '../../../state/secrets/store';
 import { TaskbarIcon } from './taskbarIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
 import { TaskbarTime } from '../time/taskbarTime';
+import { newGuid } from '../../../helper/guidHelper';
 
 interface IWithoutExpectedServices {
     toggleStartMenu: (newValue?: boolean) => void;
@@ -63,6 +64,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
 
         appsToDisplay.push({
             ...taskbar,
+            guid: newGuid(),
             openOrder: 1,
             meta: {
                 ...(taskbar.meta ?? anyObject),
@@ -93,7 +95,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                                 key={applet.appletType}
                                 index={index}
                                 applet={applet}
-                                selected={applet.appletType === windStore.currentFocused}
+                                selected={applet.guid === windStore.currentFocused}
                                 openApp={openApp}
                             />
                         );
