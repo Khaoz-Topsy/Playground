@@ -12,6 +12,7 @@ export const SettingKeybind: React.FC = () => {
 
     return (
         <Box marginLeft={2} marginRight={4} className="noselect">
+            {/* TODO - Keyboard shortcuts */}
             <SettingItemSection
                 heading={translate(LocaleKey.settingSecretsFound)}
                 subTexts={[translate(LocaleKey.settingSecretsCanYouFindThemAll)]}
