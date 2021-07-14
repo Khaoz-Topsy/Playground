@@ -1,5 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-import { Center, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/react';
+import { Center, Modal, ModalOverlay } from '@chakra-ui/react';
 
 import { VirusScan } from '../../../components/common/virusScan';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
@@ -186,16 +186,13 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                         </div>
                     )
             }
-            <Modal isOpen={fileToScan != null} onClose={closeVirusModal}>
+            <Modal isOpen={fileToScan != null} onClose={() => { }}>
                 <ModalOverlay />
-                <ModalContent>
-                    <ModalHeader>Virus scan</ModalHeader>
-                    <ModalCloseButton />
-                    <ModalBody>
-                        <VirusScan imgUrl={fileToScan?.imgUrl} />
-                        {fileToScan?.name && <p><b>{translate(fileToScan.name)}</b> scanning...</p>}
-                    </ModalBody>
-                </ModalContent>
+                <VirusScan
+                    name={fileToScan?.name}
+                    imgUrl={fileToScan?.imgUrl}
+                    onClose={closeVirusModal}
+                />
             </Modal>
         </Window>
     );

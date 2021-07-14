@@ -3,8 +3,11 @@
     width: 100%;
     font-size: 1.5rem;
     margin-top: 1rem;
-    margin-bottom: 2rem;
     line-height: 1em;
+
+    &.scanning {
+        margin-bottom: 2rem;
+    }
 }
 
 .virus-scan {
@@ -13,6 +16,30 @@
     position: relative;
     margin: 0 auto;
     backface-visibility: hidden;
+    transition: height 250ms ease-in-out;
+    overflow: hidden;
+
+    &.complete {
+        height: 0;
+    }
+
+    &.no-border {
+
+        &:before,
+        &:after {
+            content: none;
+        }
+    }
+
+    .virus-scan-success {
+        width: 150px;
+        height: 150px;
+        transition: height 250ms ease-in-out;
+
+        &.hidden {
+            height: 0;
+        }
+    }
 
     span {
         position: absolute;

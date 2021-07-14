@@ -1,16 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { BasicImage } from '../../core/image';
+import { BasicImage, BasicLazyImage } from '../../core/image';
 import { ContextMenuWrapper, OptionState } from '../../core/contextMenu';
 import { FileType, IAppletFile, IFile, isApplet, isLink } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { AppletIcon, FileIcon } from '../../../constants/appImage';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { translate } from '../../../integration/i18n';
-import { windowIcon, windowIconString } from '../windowIcon';
 import { openExternalInNewWindow } from '../../../helper/linkHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { windowIcon, windowIconString } from '../windowIcon';
 
 interface IProps {
     index: number;
@@ -56,7 +56,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             if (iconData.imgUrl != null) return <BasicImage imageUrl={iconData.imgUrl} alt={folder.name.toString()} />;
             return <BasicImage imageUrl={AppletIcon.folder} alt={folder.name.toString()} />;
         }
-        if (iconData.imgUrl != null) return <BasicImage imageUrl={iconData.imgUrl} alt={iconData.name.toString()} />;
+        if (iconData.imgUrl != null) return <BasicLazyImage imageUrl={iconData.imgUrl} alt={iconData.name.toString()} />;
         return windowIcon((iconData as any)?.appletType);
     }
 

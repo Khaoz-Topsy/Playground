@@ -41,6 +41,7 @@ export const AppShell: React.FC<IProps> = (props: IProps) => {
     <PullstateProvider instance={instance}>
       {(shouldFade) && <App />}
       <ToasterContainer />
+      {/* TODO - Translate */}
       {
         (!mobileConfirmed) && (
           <Center className="fullscreen layer initial show-in-mobile">

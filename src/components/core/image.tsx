@@ -38,7 +38,7 @@ export const BasicLazyImage: React.FC<IBasicImageProps> = (props: IBasicImagePro
     });
 
     return (
-        <div className={props.classNames}>
+        <>
             <img
                 src={props.imageUrl}
                 className={classes}
@@ -50,7 +50,7 @@ export const BasicLazyImage: React.FC<IBasicImageProps> = (props: IBasicImagePro
             {(isLoaded === false) && <Center>
                 <Spinner size="xl" thickness="2px" />
             </Center>}
-        </div>
+        </>
     );
 }
 
