@@ -8,12 +8,14 @@ import { PullstateCore } from './state/stateCore';
 import { subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
 
 import { App } from './app';
+import { Button, Center } from '@chakra-ui/react';
 
 interface IProps { }
 
 export const AppShell: React.FC<IProps> = (props: IProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [shouldFade, setShouldFade] = useState(false);
+  const [mobileConfirmed, setMobileConfirmed] = useState(false);
   const instance = PullstateCore.instantiate({ ssr: false });
 
   useEffect(() => {
@@ -39,6 +41,15 @@ export const AppShell: React.FC<IProps> = (props: IProps) => {
     <PullstateProvider instance={instance}>
       {(shouldFade) && <App />}
       <ToasterContainer />
+      {
+        (!mobileConfirmed) && (
+          <Center className="fullscreen layer initial show-in-mobile">
+            <h1>Please note:</h1>
+            <h3>This website was designed to be a desktop experience. the mobile experience is no where near ready</h3>
+            <Button mt={3} colorScheme="twitter" onClick={() => setMobileConfirmed(true)}>I accept</Button>
+          </Center>
+        )
+      }
       {(!isLoaded) && <InitialisationScreen shouldFade={shouldFade} />}
     </PullstateProvider>
   );

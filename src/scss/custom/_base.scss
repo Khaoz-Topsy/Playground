@@ -1,3 +1,92 @@
 html {
     background-color: _palette(bg);
 }
+
+.noselect {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+}
+
+a {
+    color: #428bca !important;
+}
+
+.chakra-portal {
+    color: lightgray;
+}
+
+.m-h-1 {
+    margin: 0 1em;
+}
+
+.m-h-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mt0-5 {
+    margin-top: 0.5em;
+}
+
+.mt1 {
+    margin-top: 1em;
+}
+
+.mt3 {
+    margin-top: 3em;
+}
+
+.mb1 {
+    margin-bottom: 1em;
+}
+
+.p1 {
+    padding: 1em;
+}
+
+.pos-abs-top-left {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.fullscreen.layer.initial.show-in-mobile {
+    flex-direction: column;
+    color: white;
+    text-align: center;
+    transition: opacity 250ms ease-in-out;
+    pointer-events: none;
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    >* {
+        max-width: 600px;
+    }
+
+    button {
+        pointer-events: all;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .fullscreen.layer.initial.show-in-mobile {
+        display: none !important;
+    }
+}
