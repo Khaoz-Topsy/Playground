@@ -1,6 +1,9 @@
 import React from "react";
+import { BasicImage } from "../core/image";
 
-interface IVirusScanProps { }
+interface IVirusScanProps {
+    imgUrl?: string;
+}
 
 export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => {
     return (
@@ -11,6 +14,9 @@ export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => 
                 <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
                 <i></i><i></i><i></i>
             </div>
+            {
+                props.imgUrl != null && <BasicImage imageUrl={props.imgUrl} alt="virus scan" />
+            }
             <span></span>
         </div>
     );

@@ -192,7 +192,7 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                     <ModalHeader>Virus scan</ModalHeader>
                     <ModalCloseButton />
                     <ModalBody>
-                        <VirusScan />
+                        <VirusScan imgUrl={fileToScan?.imgUrl} />
                         {fileToScan?.name && <p><b>{translate(fileToScan.name)}</b> scanning...</p>}
                     </ModalBody>
                 </ModalContent>

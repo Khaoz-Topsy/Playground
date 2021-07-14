@@ -8,7 +8,7 @@ import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { AppletIcon, FileIcon } from '../../../constants/appImage';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { translate } from '../../../integration/i18n';
-import { windowIcon } from '../windowIcon';
+import { windowIcon, windowIconString } from '../windowIcon';
 import { openExternalInNewWindow } from '../../../helper/linkHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
 
@@ -75,12 +75,13 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
     //     );
     // }
 
+    // TODO - translate all these \/
     const getContextWrapperItems = (iconData: IAppletFile | IFile | IFolder) => {
         if (isFolder(iconData)) {
             return [
                 {
                     name: 'Open directory',
-                    onClick: doubleClickFileOrFolder(props.iconData),
+                    onClick: doubleClickFileOrFolder(iconData),
                 },
                 {
                     name: 'Open in Terminal',
@@ -93,11 +94,11 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             return [
                 {
                     name: 'Open link in new tab',
-                    onClick: doubleClickFileOrFolder(props.iconData),
+                    onClick: doubleClickFileOrFolder(iconData),
                 },
                 {
                     name: 'Open link in new window',
-                    onClick: () => openExternalInNewWindow((props.iconData as IAppletFile)?.meta?.external),
+                    onClick: () => openExternalInNewWindow((iconData as IAppletFile)?.meta?.external),
                 },
                 {
                     name: 'Open in browser',
@@ -107,10 +108,11 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
         }
 
         if (isApplet(iconData)) {
+            const applet = iconData as IAppletFile;
             return [
                 {
                     name: 'Run application',
-                    onClick: doubleClickFileOrFolder(props.iconData),
+                    onClick: doubleClickFileOrFolder(applet),
                 },
                 {
                     name: 'Run as administrator',
@@ -119,7 +121,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
                 {
                     name: 'Scan for viruses',
                     optionState: OptionState.Important,
-                    onClick: () => props.openVirusModal(props.iconData.name, props.iconData.imgUrl),
+                    onClick: () => props.openVirusModal(applet.name, windowIconString(applet.appletType)),
                 }
             ];
         }
@@ -127,7 +129,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
         return [
             {
                 name: 'Open File',
-                onClick: doubleClickFileOrFolder(props.iconData),
+                onClick: doubleClickFileOrFolder(iconData),
             },
             {
                 name: 'Copy',

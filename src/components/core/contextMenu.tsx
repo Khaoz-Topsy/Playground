@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Menu, MenuItem } from '@material-ui/core';
+import classNames from 'classnames';
 
 export enum OptionState {
     None,
@@ -67,6 +68,7 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
             <MenuItem
                 key={menuItemKey}
                 disabled={menuItem?.optionState === OptionState.Disabled}
+                className={classNames({ 'important': menuItem.optionState === OptionState.Important })}
                 onClick={handleItemClick(menuItem.onClick)}
             >
                 {menuItem.name}
