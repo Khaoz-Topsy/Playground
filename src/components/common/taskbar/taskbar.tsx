@@ -8,12 +8,12 @@ import { AppletIcon } from '../../../constants/appImage';
 import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
-import { TriggerAfterXClicks } from '../../../helper/clickHelper';
+import { disabledContext, TriggerAfterXClicks } from '../../../helper/clickHelper';
 import { newGuid } from '../../../helper/guidHelper';
 import { anyObject } from '../../../helper/typescriptHacks';
 import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { withServices } from '../../../integration/dependencyInjection';
-import { openAppFromTaskbar } from '../../../state/window/reducer';
+import { closeApp, openAppFromTaskbar } from '../../../state/window/reducer';
 import { WindowStore } from '../../../state/window/store';
 import { SecretStore } from '../../../state/secrets/store';
 import { TaskbarTime } from '../time/taskbarTime';
@@ -40,6 +40,12 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
             ...app,
             meta: { ...app.meta },
         }));
+    }
+
+    const closeRunningApp = (app: LaunchedApp | NotLaunchedApp) => (e: any) => {
+        props.toggleStartMenu(false);
+        delete app.meta.notOpen;
+        WindowStore.update(closeApp(app.guid));
     }
 
     const notificationBellClick = () => {
@@ -80,7 +86,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     return (
-        <div className="taskbar">
+        <div className="taskbar" onContextMenu={disabledContext}>
             <AnimatePresence>
                 <TriggerAfterXClicks classNames="start-menu taskbar-highlight-on-hover applet-shortcut noselect"
                     onClick={() => props.toggleStartMenu()}
@@ -98,6 +104,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                                 applet={applet}
                                 selected={applet.guid === windStore.currentFocused}
                                 openApp={openApp}
+                                closeApp={closeRunningApp}
                             />
                         );
                     })

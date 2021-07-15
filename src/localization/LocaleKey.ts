@@ -101,6 +101,10 @@ export enum LocaleKey {
   mobileNotice,
   mobileNoticeDescrip,
   mobileNoticeAccept,
+  close,
+  minimise,
+  maximise,
+  killApp,
   loading,
   unknown
 }

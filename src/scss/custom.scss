@@ -72,6 +72,17 @@
     }
 }
 
-.MuiMenuItem-root.MuiListItem-button.important {
-    color: rgb(206, 0, 0);
+ul.MuiList-root.MuiMenu-list {
+    .MuiMenuItem-root.MuiListItem-button.important {
+        color: rgb(206, 0, 0);
+    }
+
+    .MuiMenuItem-root.MuiListItem-button.disabled {
+        text-decoration: line-through;
+        text-decoration-color: rgba(255, 255, 255, 0.5);
+    }
+
+    hr {
+        border-color: rgba(150, 150, 150, 0.5);
+    }
 }

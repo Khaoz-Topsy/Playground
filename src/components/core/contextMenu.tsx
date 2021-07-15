@@ -12,7 +12,7 @@ export enum OptionState {
     Important
 }
 
-interface IContextMenuItemProps {
+export interface IContextMenuItemProps {
     name: LocaleKey;
     optionState?: OptionState;
     onClick?: (e: any) => void;
@@ -21,6 +21,7 @@ interface IContextMenuItemProps {
 interface IContextMenuProps {
     children: ReactNode;
     items: Array<IContextMenuItemProps>;
+    onClick?: (e: any) => void;
     onContextOpen?: () => void;
     onContextClose?: () => void;
 }
@@ -67,11 +68,17 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
 
     const renderMenuItem = (menuItem: IContextMenuItemProps, index: number) => {
         const menuItemKey = `${menuItem.name}-${index}`;
+        if (menuItem?.optionState === OptionState.Divider) return (<hr />);
+
+        const classesObj = {
+            'important': menuItem.optionState === OptionState.Important,
+            'disabled': menuItem.optionState === OptionState.Disabled,
+        };
         return (
             <MenuItem
                 key={menuItemKey}
                 disabled={menuItem?.optionState === OptionState.Disabled}
-                className={classNames({ 'important': menuItem.optionState === OptionState.Important })}
+                className={classNames(classesObj)}
                 onClick={handleItemClick(menuItem.onClick)}
             >
                 {translate(menuItem.name)}

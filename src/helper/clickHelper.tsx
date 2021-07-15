@@ -33,3 +33,7 @@ export const TriggerAfterXClicks: React.FC<ITriggerAfterXClicksProps> = (props: 
         </div>
     );
 }
+
+export const disabledContext = (e: any) => {
+    e?.preventDefault?.();
+}

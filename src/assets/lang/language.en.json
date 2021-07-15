@@ -102,5 +102,9 @@
   "mobileNotice": "Please note:",
   "mobileNoticeDescrip": "This website was designed to be a desktop experience. the mobile experience is no where near ready",
   "mobileNoticeAccept": "I accept",
+  "close": "Close",
+  "minimise": "Minimise",
+  "maximise": "Maximise",
+  "killApp": "Kill applet",
   "unknown": "Unknown"
 }

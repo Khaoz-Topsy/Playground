@@ -9,7 +9,7 @@ import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { IWindowProps } from '../../../contracts/interface/IWindowProps';
 import { openAppletOrFile } from '../../../helper/appletHelper';
-import { disabledContext } from '../../../helper/eventHelper';
+import { disabledContext } from '../../../helper/clickHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { LocaleKey } from '../../../localization/LocaleKey';
