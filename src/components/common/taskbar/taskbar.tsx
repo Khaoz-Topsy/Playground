@@ -9,17 +9,18 @@ import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { TriggerAfterXClicks } from '../../../helper/clickHelper';
+import { newGuid } from '../../../helper/guidHelper';
 import { anyObject } from '../../../helper/typescriptHacks';
 import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { openAppFromTaskbar } from '../../../state/window/reducer';
 import { WindowStore } from '../../../state/window/store';
 import { SecretStore } from '../../../state/secrets/store';
-
-import { TaskbarIcon } from './taskbarIcon';
-import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
 import { TaskbarTime } from '../time/taskbarTime';
-import { newGuid } from '../../../helper/guidHelper';
+
+import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
+import { TaskbarBatteryIcon } from './taskbarBatteryIcon';
+import { TaskbarIcon } from './taskbarIcon';
 
 interface IWithoutExpectedServices {
     toggleStartMenu: (newValue?: boolean) => void;
@@ -112,6 +113,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                     <Icon as={BellIcon} />
                 </Center>
             </TriggerAfterXClicks>
+            <TaskbarBatteryIcon sillyService={props.sillyService} />
         </div>
     );
 }

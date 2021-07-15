@@ -43,8 +43,8 @@ export class MiscIcon {
 export const Backgrounds = [
     {
         value: 'bg1',
-        name: 'SpaceBluePurple',
-        url: backgroundsFolder + 'spaceBluePurple.jpg',
+        name: 'OuterSpace',
+        url: backgroundsFolder + 'outerSpace.jpg',
     },
     {
         value: 'bg2',
@@ -63,8 +63,8 @@ export const Backgrounds = [
     },
     {
         value: 'bg5',
-        name: 'OuterSpace',
-        url: backgroundsFolder + 'outerSpace.jpg',
+        name: 'SpaceBluePurple',
+        url: backgroundsFolder + 'spaceBluePurple.jpg',
     }
 ];
 

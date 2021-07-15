@@ -48,11 +48,13 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
       SecretStore.update(store => ({ ...store, ...secretStore }));
       initLocalization(settingStore.language);
     }
-    Mousetrap.bind(knownKeybinds.spotlight, () => toggleSpotlight());
+    Mousetrap.bind(knownKeybinds.spotlight, (e) => toggleSpotlight(e));
+    Mousetrap.bind(knownKeybinds.spotlightAlt, (e) => toggleSpotlight(e));
     Mousetrap.bind(knownKeybinds.konami, () => konamiCodeFunc());
 
     return () => {
       Mousetrap.unbind(knownKeybinds.spotlight);
+      Mousetrap.unbind(knownKeybinds.spotlightAlt);
       Mousetrap.unbind(knownKeybinds.konami);
     }
     // eslint-disable-next-line
@@ -62,7 +64,8 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
     setStartMenuOpen(newValue ?? (!isStartMenuOpen));
   };
 
-  const toggleSpotlight = (newValue?: boolean) => {
+  const toggleSpotlight = (e?: any, newValue?: boolean) => {
+    e?.preventDefault?.();
     const newIsSpotlightOpen = newValue ?? (!isSpotlightOpen);
     setSpotlightOpen(newIsSpotlightOpen);
   };
@@ -101,7 +104,7 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
       </Drawer>
       <SpotlightSearch
         isOpen={isSpotlightOpen}
-        onClose={() => toggleSpotlight(false)}
+        onClose={() => toggleSpotlight(null, false)}
       />
     </div>
   );

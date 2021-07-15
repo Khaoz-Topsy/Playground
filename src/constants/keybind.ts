@@ -3,6 +3,7 @@ import { LocaleKey } from '../localization/LocaleKey';
 
 export const knownKeybinds = {
     spotlight: 'ctrl+space',
+    spotlightAlt: 'ctrl+k',
     goPrev: 'alt+left',
     goNext: 'alt+right',
     esc: 'escape',
@@ -25,6 +26,10 @@ export const keybindsPerSection: Array<IKeyBindSection> = [
             {
                 name: LocaleKey.openSearchBar,
                 keys: ['ctrl', 'space'],
+            },
+            {
+                name: LocaleKey.openSearchBar,
+                keys: ['ctrl', 'k'],
             },
             {
                 name: LocaleKey.harlemShake,
