@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Icon } from '@chakra-ui/icons';
-import { Center, Flex } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 import {
     MdBattery20, MdBattery30, MdBattery50, MdBattery60, MdBattery80, MdBattery90,
     MdBatteryCharging20, MdBatteryCharging30, MdBatteryCharging50, MdBatteryCharging60, MdBatteryCharging80, MdBatteryCharging90,
     MdBatteryFull, MdBatteryChargingFull, MdBatteryAlert, MdBatteryUnknown
 } from 'react-icons/md';
+import classNames from 'classnames';
 
 import { BatteryStatus, IBatteryData } from '../../../contracts/battery';
 import { SillyService } from '../../../services/SillyService';
-import classNames from 'classnames';
 
 interface IProps {
     sillyService: SillyService;

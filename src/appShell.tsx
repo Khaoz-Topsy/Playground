@@ -9,6 +9,8 @@ import { subscribeToSecretChanges, subscribeToSettingsChanges } from './state/st
 
 import { App } from './app';
 import { Button, Center } from '@chakra-ui/react';
+import { translate } from './integration/i18n';
+import { LocaleKey } from './localization/LocaleKey';
 
 interface IProps { }
 
@@ -41,13 +43,14 @@ export const AppShell: React.FC<IProps> = (props: IProps) => {
     <PullstateProvider instance={instance}>
       {(shouldFade) && <App />}
       <ToasterContainer />
-      {/* TODO - Translate */}
       {
         (!mobileConfirmed) && (
           <Center className="fullscreen layer initial show-in-mobile">
-            <h1>Please note:</h1>
-            <h3>This website was designed to be a desktop experience. the mobile experience is no where near ready</h3>
-            <Button mt={3} colorScheme="twitter" onClick={() => setMobileConfirmed(true)}>I accept</Button>
+            <h1>{translate(LocaleKey.mobileNotice)}</h1>
+            <h3>{translate(LocaleKey.mobileNoticeDescrip)}</h3>
+            <Button mt={3} colorScheme="twitter" onClick={() => setMobileConfirmed(true)}>
+              {translate(LocaleKey.mobileNoticeAccept)}
+            </Button>
           </Center>
         )
       }

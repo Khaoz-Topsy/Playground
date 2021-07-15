@@ -75,16 +75,15 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
     //     );
     // }
 
-    // TODO - translate all these \/
     const getContextWrapperItems = (iconData: IAppletFile | IFile | IFolder) => {
         if (isFolder(iconData)) {
             return [
                 {
-                    name: 'Open directory',
+                    name: LocaleKey.openDirectory,
                     onClick: doubleClickFileOrFolder(iconData),
                 },
                 {
-                    name: 'Open in Terminal',
+                    name: LocaleKey.openInTerminal,
                     optionState: OptionState.Disabled,
                 }
             ];
@@ -93,15 +92,15 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
         if (isLink(iconData)) {
             return [
                 {
-                    name: 'Open link in new tab',
+                    name: LocaleKey.openLinkInTab,
                     onClick: doubleClickFileOrFolder(iconData),
                 },
                 {
-                    name: 'Open link in new window',
+                    name: LocaleKey.openLinkInWindow,
                     onClick: () => openExternalInNewWindow((iconData as IAppletFile)?.meta?.external),
                 },
                 {
-                    name: 'Open in browser',
+                    name: LocaleKey.openInBrowser,
                     optionState: OptionState.Disabled,
                 }
             ];
@@ -111,15 +110,15 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             const applet = iconData as IAppletFile;
             return [
                 {
-                    name: 'Run application',
+                    name: LocaleKey.runApplication,
                     onClick: doubleClickFileOrFolder(applet),
                 },
                 {
-                    name: 'Run as administrator',
+                    name: LocaleKey.runAsAdministrator,
                     optionState: OptionState.Disabled,
                 },
                 {
-                    name: 'Scan for viruses',
+                    name: LocaleKey.scanForViruses,
                     optionState: OptionState.Important,
                     onClick: () => props.openVirusModal(applet.name, windowIconString(applet.appletType)),
                 }
@@ -128,19 +127,19 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
 
         return [
             {
-                name: 'Open File',
+                name: LocaleKey.openFile,
                 onClick: doubleClickFileOrFolder(iconData),
             },
             {
-                name: 'Copy',
+                name: LocaleKey.copy,
                 optionState: OptionState.Disabled,
             },
             {
-                name: 'Paste',
+                name: LocaleKey.paste,
                 optionState: OptionState.Disabled,
             },
             {
-                name: 'Delete',
+                name: LocaleKey.delete,
                 optionState: OptionState.Disabled,
             }
         ];

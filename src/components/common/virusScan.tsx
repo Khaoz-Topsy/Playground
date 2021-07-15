@@ -25,16 +25,27 @@ export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => 
         // eslint-disable-next-line
     });
 
-    const renderStatusMsg = (name: LocaleKey) => {
-        return isScanning
-            ? (<p key="scanningMsg" className="scanning"><b>{translate(name)}</b> scanning....</p>)
-            : (<p key="scanningCompleteMsg"><b>{translate(name)}</b> is free of viruses!</p>);
+    const renderStatusTemplate = (key: string, template: LocaleKey, name: LocaleKey, classNames: string = '') => {
+        return (
+            <p key={key} className={classNames}>
+                {
+                    translate(template).split(' ').map((word: string, index: number) => (
+                        (word === '{0}')
+                            ? <b key={`${word}-${index}`}>{translate(name)}</b>
+                            : <span key={`${word}-${index}`}>{word}</span>
+                    ))
+                }
+            </p>
+        );
     }
+
+    const renderStatusMsg = (name: LocaleKey) => isScanning
+        ? renderStatusTemplate('scanningMsg', LocaleKey.virusScanInProgress, name, 'scanning')
+        : renderStatusTemplate('scanningCompleteMsg', LocaleKey.virusScanIsClean, name);
 
     return (
         <ModalContent>
-            {/* TODO - Translate */}
-            <ModalHeader>Virus scan</ModalHeader>
+            <ModalHeader>{translate(LocaleKey.virusScan)}</ModalHeader>
             {
                 (isScanning === false) &&
                 <ModalCloseButton onClick={props.onClose} />

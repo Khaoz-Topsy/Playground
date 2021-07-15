@@ -2,6 +2,9 @@ import React, { ReactNode } from 'react';
 import { Menu, MenuItem } from '@material-ui/core';
 import classNames from 'classnames';
 
+import { translate } from '../../integration/i18n';
+import { LocaleKey } from '../../localization/LocaleKey';
+
 export enum OptionState {
     None,
     Divider,
@@ -10,7 +13,7 @@ export enum OptionState {
 }
 
 interface IContextMenuItemProps {
-    name: string;
+    name: LocaleKey;
     optionState?: OptionState;
     onClick?: (e: any) => void;
 }
@@ -71,7 +74,7 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
                 className={classNames({ 'important': menuItem.optionState === OptionState.Important })}
                 onClick={handleItemClick(menuItem.onClick)}
             >
-                {menuItem.name}
+                {translate(menuItem.name)}
             </MenuItem>
         );
     }
