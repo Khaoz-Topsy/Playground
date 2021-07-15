@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Icon } from '@chakra-ui/icons';
-import { Center } from '@chakra-ui/react';
+import { Center, Flex } from '@chakra-ui/react';
 import {
     MdBattery20, MdBattery30, MdBattery50, MdBattery60, MdBattery80, MdBattery90,
     MdBatteryCharging20, MdBatteryCharging30, MdBatteryCharging50, MdBatteryCharging60, MdBatteryCharging80, MdBatteryCharging90,
@@ -9,9 +9,11 @@ import {
 
 import { BatteryStatus, IBatteryData } from '../../../contracts/battery';
 import { SillyService } from '../../../services/SillyService';
+import classNames from 'classnames';
 
 interface IProps {
     sillyService: SillyService;
+    toggleStartMenu: (newValue?: boolean) => void;
 };
 
 const defaultBatteryData: IBatteryData = {
@@ -21,6 +23,7 @@ const defaultBatteryData: IBatteryData = {
 
 export const TaskbarBatteryIcon: React.FC<IProps> = (props: IProps) => {
     const [batteryData, setBatteryData] = useState<IBatteryData>(defaultBatteryData);
+    const [isBatteryOpen, setBatteryOpen] = useState(false);
 
     useEffect(() => {
         if (batteryData.status !== BatteryStatus.Unknown) return;
@@ -28,6 +31,11 @@ export const TaskbarBatteryIcon: React.FC<IProps> = (props: IProps) => {
         props.sillyService.batteryLevel().then(batt => setBatteryData(batt))
         // eslint-disable-next-line
     });
+
+    const closeTaskbarBattery = () => {
+        setBatteryOpen(false);
+        props.toggleStartMenu(false);
+    }
 
     const getIconFromList = (icons: Array<any>, value: number) => {
         if (value > 99) return icons[0];
@@ -56,11 +64,25 @@ export const TaskbarBatteryIcon: React.FC<IProps> = (props: IProps) => {
     if (batteryData.status === BatteryStatus.PluggedInFullCharge) iconToDisplay = MdBatteryFull;
 
     return (
-        <div className="taskbar-notification taskbar-highlight-on-hover noselect">
-            <Center>
-                <Icon as={iconToDisplay} />
-            </Center>
-        </div>
+        <>
+            {
+                isBatteryOpen && <div className="taskbar-time-bg fullscreen" onClick={closeTaskbarBattery}></div>
+            }
+            <div className="taskbar-notification taskbar-highlight-on-hover noselect" onClick={() => setBatteryOpen(!isBatteryOpen)}>
+                <Center>
+                    <Icon as={iconToDisplay} />
+                </Center>
+            </div>
+
+            <div className={classNames('taskbar-battery', { 'isOpen': isBatteryOpen })}>
+                <Center>
+                    <Icon as={iconToDisplay} />
+                </Center>
+                <Center>
+                    <h1>{batteryData.percent.toFixed(0)}%</h1>
+                </Center>
+            </div>
+        </>
     );
 }
 

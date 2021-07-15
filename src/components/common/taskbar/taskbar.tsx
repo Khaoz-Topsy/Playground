@@ -113,7 +113,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                     <Icon as={BellIcon} />
                 </Center>
             </TriggerAfterXClicks>
-            <TaskbarBatteryIcon sillyService={props.sillyService} />
+            <TaskbarBatteryIcon toggleStartMenu={props.toggleStartMenu} sillyService={props.sillyService} />
         </div>
     );
 }

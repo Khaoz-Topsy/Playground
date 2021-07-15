@@ -184,3 +184,35 @@
     right: 0;
     z-index: -1;
 }
+
+.taskbar-battery {
+    position: absolute;
+    bottom: #{$taskbar-height}em;
+    right: #{$taskbar-height}em;
+    display: flex;
+    height: 0;
+    color: _palette(fg);
+    padding-right: 1em;
+    background-color: _palette(bg-transparent);
+    border-radius: 20px;
+    transition: height 250ms ease-in-out;
+    transition-property: height, padding, opacity;
+    overflow-y: hidden;
+    z-index: -1;
+    opacity: 0;
+
+    &.isOpen {
+        height: 5em;
+        opacity: 1;
+    }
+
+    h1,
+    svg {
+        font-size: 3em;
+        margin-left: 0.125em;
+    }
+
+    h1 {
+        font-size: 2.75em;
+    }
+}
