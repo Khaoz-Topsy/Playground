@@ -33,7 +33,7 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
   const [isSpotlightOpen, setSpotlightOpen] = useState(false);
   const toastFunc = useToast();
 
-  const { SettingStore, SecretStore } = PullstateCore.useStores();
+  const { SettingStore, SecretStore, WindowStore } = PullstateCore.useStores();
   const currentSettings = SettingStore.useState(store => store);
   const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
   const brightnessPerc = (currentSettings.brightness / 2) + 50;
@@ -52,11 +52,15 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
     Mousetrap.bind(knownKeybinds.spotlight, (e) => toggleSpotlight(e));
     Mousetrap.bind(knownKeybinds.spotlightAlt, (e) => toggleSpotlight(e));
     Mousetrap.bind(knownKeybinds.konami, () => konamiCodeFunc());
+    Mousetrap.bind(knownKeybinds.minimiseAll, (e) => minimiseAllWindows(e));
+    Mousetrap.bind(knownKeybinds.minimiseAllAlt, (e) => minimiseAllWindows(e));
 
     return () => {
       Mousetrap.unbind(knownKeybinds.spotlight);
       Mousetrap.unbind(knownKeybinds.spotlightAlt);
       Mousetrap.unbind(knownKeybinds.konami);
+      Mousetrap.unbind(knownKeybinds.minimiseAll);
+      Mousetrap.unbind(knownKeybinds.minimiseAllAlt);
     }
     // eslint-disable-next-line
   }, [isSpotlightOpen]);
@@ -78,6 +82,13 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
     secretToAdd: FoundSecretType.harlemShake,
     callbackFinally: () => props.sillyService.doHarlemShake?.(),
   });
+
+  const minimiseAllWindows = (e: any) => {
+    e?.preventDefault?.();
+    WindowStore.update(store => ({
+      activeApps: store.activeApps.map(a => ({ ...a, meta: { ...a.meta, isMinimised: true } })),
+    }))
+  };
 
   return (
     <div

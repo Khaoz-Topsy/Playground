@@ -1,8 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { BasicLazyImage } from '../../core/image';
-import { site } from '../../../constants/site';
 import { StartMenuApplications, StartMenuMostUsed } from '../../../constants/startMenuList';
 import { IAppletFile, IFile, IStartMenuAppletFile, IStartMenuFile } from '../../../contracts/interface/IFile';
 import { translate } from '../../../integration/i18n';

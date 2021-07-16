@@ -16,6 +16,7 @@ interface IAddSecretIfNotFound {
 }
 export const addSecretIfNotFound = (props: IAddSecretIfNotFound) => {
     if (!props.currentSecretsFound.includes(props.secretToAdd)) {
+        debugger;
         secretFoundToast(props.secretToAdd);
 
         // const foundSecret = secretsFound.find(s => s.type === props.secretToAdd);

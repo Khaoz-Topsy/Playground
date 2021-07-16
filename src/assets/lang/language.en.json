@@ -64,7 +64,7 @@
   "successfulSendEmail": "Successfully sent!",
   "monitor": "Project Monitor",
   "openSearchBar": "Open Search Bar",
-  "konami": "Konami Code",
+  "konamiCode": "The Konami Code is: up up down down left right left right b a enter",
   "searchBar": "Search bar",
   "navigateUpInSearch": "Navigate up in search results list",
   "navigateDownInSearch": "Navigate down in search results list",
@@ -108,5 +108,6 @@
   "killApp": "Kill applet",
   "uninstall": "Uninstall",
   "properties": "Properties",
+  "minimiseAllWindows": "Minimise all windows",
   "unknown": "Unknown"
 }

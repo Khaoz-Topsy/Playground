@@ -215,6 +215,14 @@ svg.handle {
             padding-bottom: 0;
         }
     }
+
+    .border-transition {
+        transition: border-color 100ms ease-in-out;
+
+        &:hover {
+            border-color: var(--chakra-colors-whiteAlpha-400);
+        }
+    }
 }
 
 .settings-about {

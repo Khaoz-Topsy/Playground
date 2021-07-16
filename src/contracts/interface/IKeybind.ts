@@ -3,6 +3,7 @@ import { LocaleKey } from "../../localization/LocaleKey";
 export interface IKeyBindShortcut {
     name: LocaleKey;
     keys: Array<string>;
+    altKeys?: Array<string>;
     descrip?: LocaleKey;
 }
 

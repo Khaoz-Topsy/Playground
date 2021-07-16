@@ -13,3 +13,5 @@ export const sortByPropAsc = <T>(arr: Array<T>, attr: string): Array<T> => {
         return 0;
     })
 }
+
+export const distinctFilter = <T>(value: T, index: number, arr: Array<T>) => arr.indexOf(value) === index;

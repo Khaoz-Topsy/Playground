@@ -4,8 +4,10 @@ import { LocaleKey } from '../localization/LocaleKey';
 export const knownKeybinds = {
     spotlight: 'ctrl+space',
     spotlightAlt: 'ctrl+k',
+    minimiseAll: 'ctrl+down',
     goPrev: 'alt+left',
     goNext: 'alt+right',
+    minimiseAllAlt: 'alt+down',
     esc: 'escape',
     up: 'up',
     down: 'down',
@@ -26,15 +28,17 @@ export const keybindsPerSection: Array<IKeyBindSection> = [
             {
                 name: LocaleKey.openSearchBar,
                 keys: ['ctrl', 'space'],
+                altKeys: ['ctrl', 'k'],
             },
             {
-                name: LocaleKey.openSearchBar,
-                keys: ['ctrl', 'k'],
+                name: LocaleKey.minimiseAllWindows,
+                keys: ['alt', '⬇'],
+                altKeys: ['ctrl', '⬇'],
             },
             {
                 name: LocaleKey.harlemShake,
-                keys: [],
-                descrip: LocaleKey.konami,
+                keys: ['Konami Code'],
+                descrip: LocaleKey.konamiCode,
             }
         ]
     },

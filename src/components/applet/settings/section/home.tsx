@@ -104,7 +104,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </Select>
                 </SimpleGrid>
                 <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
-                    <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
+                    <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2" className="border-transition">
                         <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
                         <Slider mb="1" defaultValue={brightness} onChange={sliderOnChange('brightness')}>
                             <SliderTrack>

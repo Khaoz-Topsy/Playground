@@ -63,7 +63,7 @@ export enum LocaleKey {
   successfulSendEmail,
   monitor,
   openSearchBar,
-  konami,
+  konamiCode,
   searchBar,
   navigateUpInSearch,
   navigateDownInSearch,
@@ -107,6 +107,7 @@ export enum LocaleKey {
   killApp,
   uninstall,
   properties,
+  minimiseAllWindows,
   loading,
   unknown
 }

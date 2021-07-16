@@ -1,7 +1,6 @@
 import React, { ReactNode, useState } from 'react';
-import { Center, Modal, ModalOverlay } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 
-import { VirusScan } from '../../../components/common/virusScan';
 import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { IAppletFile, IFile } from '../../../contracts/interface/IFile';

@@ -21,8 +21,6 @@ export const MiscLayer: React.FC<IProps> = (props: IProps) => {
         }));
     }
 
-    //miscStr.appletViewProperties?.imgUrl ?? windowIconString(miscStr.appletViewProperties?.appletType ?? AppletType.none)
-
     return (
         <>
             <VirusScan
@@ -37,7 +35,7 @@ export const MiscLayer: React.FC<IProps> = (props: IProps) => {
                 key={miscStr?.appletViewProperties?.id}
                 isOpen={miscStr?.appletViewProperties != null}
                 applet={miscStr?.appletViewProperties}
-                onClose={closeVirusModal}
+                onClose={closePropertiesModal}
             />
         </>
     );
