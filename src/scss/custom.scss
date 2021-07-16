@@ -75,6 +75,8 @@
 
 
 ul.MuiList-root.MuiMenu-list {
+    min-width: 150px;
+
     .MuiMenuItem-root.MuiListItem-button.important {
         color: rgb(206, 0, 0);
     }

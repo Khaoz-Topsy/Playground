@@ -87,7 +87,7 @@
 
         >div {
             height: #{$taskbar-height}em;
-            padding: 0 0.25em;
+            padding: 0 0.5em;
         }
 
         svg {
@@ -117,8 +117,6 @@
     right: 0;
     display: inline-block;
     height: 0;
-    max-height: 90vh;
-    min-height: 50vh;
     color: _palette(fg);
     background-color: _palette(bg-transparent);
     border-top-left-radius: 20px;
@@ -130,6 +128,8 @@
 
     &.isOpen {
         height: 37em;
+        max-height: 90vh;
+        min-height: 50vh;
         opacity: 1;
     }
 

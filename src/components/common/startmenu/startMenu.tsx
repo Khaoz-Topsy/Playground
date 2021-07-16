@@ -55,7 +55,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
     return (
         <>
             {
-                props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu()}></div>
+                props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu(false)}></div>
             }
             <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })} onContextMenu={disabledContext}>
                 <section className="list">

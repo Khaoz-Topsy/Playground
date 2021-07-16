@@ -147,6 +147,10 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
                 onClick: doubleClickFileOrFolder(iconData),
             },
             {
+                name: 'open file divider' as any,
+                optionState: OptionState.Divider,
+            },
+            {
                 name: LocaleKey.copy,
                 optionState: OptionState.Disabled,
             },

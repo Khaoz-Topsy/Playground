@@ -35,7 +35,7 @@ export const TaskbarTime: React.FC<IProps> = (props: IProps) => {
                 isTimeOpen && <div className="taskbar-time-bg fullscreen" onClick={closeTaskbarTime}></div>
             }
             <div className={classNames('taskbar-time', { 'isOpen': isTimeOpen })}>
-                <div className="taskbar-time-current">
+                <div className="taskbar-time-current noselect">
                     <p className="time">{currentMediumTime(clockValue)}</p>
                     <p className="date">{currentMediumDate(clockValue)}</p>
                 </div>

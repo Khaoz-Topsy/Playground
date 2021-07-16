@@ -102,7 +102,6 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
             exit={variants.closed}
         >
             <ContextMenuWrapper
-                onClick={props?.openApp?.(props.applet)}
                 items={getContextWrapperItems(props.applet)}
             >
                 <div onClick={props?.openApp?.(props.applet)}>
