@@ -32,7 +32,7 @@ export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => 
                     translate(template).split(' ').map((word: string, index: number) => (
                         (word === '{0}')
                             ? <b key={`${word}-${index}`}>{translate(name)}</b>
-                            : <span key={`${word}-${index}`}>{word}</span>
+                            : <span key={`${word}-${index}`}>&nbsp;{word}</span>
                     ))
                 }
             </p>
@@ -84,7 +84,7 @@ export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => 
                         colorScheme="blue"
                         variant="solid"
                         onClick={props.onClose}>
-                        close
+                        {translate(LocaleKey.close)}
                     </Button>
                 </ModalFooter>
             }

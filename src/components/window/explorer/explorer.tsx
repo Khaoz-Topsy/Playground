@@ -39,16 +39,10 @@ interface IState {
     nextFolders: Array<IFolderMeta>;
 }
 
-interface IScanItem {
-    name: LocaleKey;
-    imgUrl?: string;
-}
-
 export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
     const initialFileId = props.initialFileId ?? 0;
     const file = searchFilesOnDisk(props.folderStructure, initialFileId);
 
-    const [fileToScan, setFileToScan] = useState<IScanItem | null>(null);
     const [selectedId, setSelectedId] = useState<number>(0);
     const [folderState, setFolderState] = useState<IState>({
         currentChangeIndex: 0,
@@ -137,11 +131,6 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
         });
     }
 
-    const openVirusModal = (name: LocaleKey, imgUrl?: string) => setFileToScan({ name, imgUrl });
-    const closeVirusModal = () => {
-        setFileToScan(null)
-    }
-
     const { currentFolder } = folderState;
     const noItems = (currentFolder.contents == null || currentFolder.contents.length < 1);
 
@@ -176,7 +165,6 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                                             iconData={content}
                                             isSelected={content.id === selectedId}
                                             openFileOrFolder={openFileOrFolder}
-                                            openVirusModal={openVirusModal}
                                             setSelected={setSelectedId}
                                         />
                                     );
@@ -185,14 +173,6 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
                         </div>
                     )
             }
-            <Modal isOpen={fileToScan != null} onClose={() => { }}>
-                <ModalOverlay />
-                <VirusScan
-                    name={fileToScan?.name}
-                    imgUrl={fileToScan?.imgUrl}
-                    onClose={closeVirusModal}
-                />
-            </Modal>
         </Window>
     );
 }

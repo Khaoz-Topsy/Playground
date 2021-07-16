@@ -19,8 +19,6 @@ interface IState {
     index: number;
     oldIndex: number;
     indexIsNew: boolean;
-    images: Array<string>;
-    animationIsPaused: boolean;
 }
 
 export class StartMenuSlidingTile extends React.Component<IProps, IState> {
@@ -32,8 +30,6 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
             index: 0,
             oldIndex: 0,
             indexIsNew: false,
-            animationIsPaused: false,
-            images: props.images ?? [],
         };
     }
 
@@ -50,10 +46,9 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
     }
 
     transitionImages = async () => {
-        if (this.state.animationIsPaused) return;
-        this.setState(({ index, images }) => {
+        this.setState(({ index }) => {
             return ({
-                index: ((index + 1) >= images.length) ? 0 : index + 1,
+                index: ((index + 1) >= (this.props.images ?? []).length) ? 0 : index + 1,
                 indexIsNew: true,
             });
         });
@@ -70,7 +65,7 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
     }
 
     render() {
-        const currentImage = this.state.images[this.state.index];
+        const currentImage = (this.props.images ?? [])?.[this.state.index];
         const baseCss = `tile tile-${StartMenuSize[this.props.size]} tile-slider full`;
         const animationCss = 'anim-' + StartMenuAnimation[this.props?.animatedTile ?? StartMenuAnimation.slidevertical];
         const transitionCss = (this.state.indexIsNew ? 'transitioning ' : '') + animationCss;
@@ -80,18 +75,16 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
             color: this.props.textColour,
         };
         return (
-            <div key={this.props.id}
+            <ContextMenuWrapper
+                key={this.props.id}
                 className={baseCss}
                 style={styleObj}
+                items={getContextWrapperItems({ sMenu: this.props, showUninstall: true, openApp: this.props?.onClick })}
             >
-                <ContextMenuWrapper
-                    items={getContextWrapperItems(this.props, this.props?.onClick)}
-                >
-                    <StartMenuSlidingTileImage imageUrl={this.state.images[this.state.oldIndex]} className={animationCss} />
-                    <StartMenuSlidingTileImage imageUrl={currentImage} className={transitionCss} />
-                    <p>{translate(this.props.name)}</p>
-                </ContextMenuWrapper>
-            </div>
+                <StartMenuSlidingTileImage imageUrl={(this.props.images ?? [])?.[this.state.oldIndex]} className={animationCss} onClick={this.props?.onClick} />
+                <StartMenuSlidingTileImage imageUrl={currentImage} className={transitionCss} onClick={this.props?.onClick} />
+                <p onClick={this.props?.onClick}>{translate(this.props.name)}</p>
+            </ContextMenuWrapper>
         );
     }
 };

@@ -8,12 +8,15 @@ import { IAppletFile, IFile, IStartMenuAppletFile, IStartMenuFile } from '../../
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { openAppletOrFile } from '../../../helper/appletHelper';
+import { disabledContext } from '../../../helper/clickHelper';
 import { windowIconString } from '../../window/windowIcon';
 import { WindowStore } from '../../../state/window/store';
 
 import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
 import { StartMenuSlidingTile } from './startMenuSlidingTile';
+import { StartMenuProfile } from './startMenuProfile';
 import { StartMenuTile } from './startMenuTile';
+import { KnownApplets } from '../../../constants/knownApplets';
 
 interface IProps {
     isOpen: boolean;
@@ -54,17 +57,9 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
             {
                 props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu()}></div>
             }
-            <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })}>
+            <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })} onContextMenu={disabledContext}>
                 <section className="list">
-                    <div className="profile">
-                        <BasicLazyImage
-                            classNames="profile-pic"
-                            imageUrl={site.kurt.profilePic}
-                            imageName={site.kurt.fullName}
-                            alt={site.kurt.fullName}
-                        />
-                        <p>{site.kurt.fullName}</p>
-                    </div>
+                    <StartMenuProfile onClick={openApp(KnownApplets.kurtLourens)} />
                     <h3 className="mt1">{translate(LocaleKey.mostUsedItems)}</h3>
                     <ul className="most-used-list">
                         {

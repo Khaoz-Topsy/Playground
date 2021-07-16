@@ -24,17 +24,15 @@ export const StartMenuTile: React.FC<IProps> = (props: IProps) => {
         color: props.textColour,
     };
     return (
-        <div key={props.id}
+        <ContextMenuWrapper
+            key={props.id}
             className={classNames(baseCss, { 'full': props.isFull })}
             style={styleObj}
+            items={getContextWrapperItems({ sMenu: props, showUninstall: true, openApp: props?.onClick })}
         >
-            <ContextMenuWrapper
-                items={getContextWrapperItems(props, props?.onClick)}
-            >
-                <BasicImage imageUrl={props.imgUrl} />
-                <p>{translate(props.name)}</p>
-            </ContextMenuWrapper>
-        </div>
+            <BasicImage imageUrl={props.imgUrl} onClick={props?.onClick} />
+            <p onClick={props?.onClick}>{translate(props.name)}</p>
+        </ContextMenuWrapper>
     );
 }
 

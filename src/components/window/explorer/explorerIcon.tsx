@@ -1,8 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import { WarningTwoIcon } from '@chakra-ui/icons';
 
 import { BasicImage, BasicLazyImage } from '../../core/image';
-import { ContextMenuWrapper, OptionState } from '../../core/contextMenu';
+import { ContextMenuWrapper, IContextMenuItemProps, OptionState } from '../../core/contextMenu';
 import { FileType, IAppletFile, IFile, isApplet, isLink } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { AppletIcon, FileIcon } from '../../../constants/appImage';
@@ -10,6 +11,7 @@ import { explorerSelect } from '../../../constants/enum/customWindowEvent';
 import { translate } from '../../../integration/i18n';
 import { openExternalInNewWindow } from '../../../helper/linkHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { MiscStore } from '../../../state/misc/store';
 import { windowIcon, windowIconString } from '../windowIcon';
 
 interface IProps {
@@ -17,7 +19,6 @@ interface IProps {
     isSelected: boolean;
     iconData: IAppletFile | IFile | IFolder;
     setSelected: (id: number) => void;
-    openVirusModal: (fileName: LocaleKey, imgUrl?: string) => void;
     openFileOrFolder: (file: IAppletFile | IFile | IFolder) => (e: any) => void;
 }
 
@@ -75,7 +76,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
     //     );
     // }
 
-    const getContextWrapperItems = (iconData: IAppletFile | IFile | IFolder) => {
+    const getContextWrapperItems = (iconData: IAppletFile | IFile | IFolder): Array<IContextMenuItemProps> => {
         if (isFolder(iconData)) {
             return [
                 {
@@ -120,7 +121,16 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
                 {
                     name: LocaleKey.scanForViruses,
                     optionState: OptionState.Important,
-                    onClick: () => props.openVirusModal(applet.name, windowIconString(applet.appletType)),
+                    icon: WarningTwoIcon,
+                    onClick: () => {
+                        MiscStore.update(store => {
+                            store.fileToScan = {
+                                name: applet.name,
+                                imgUrl: windowIconString(applet.appletType),
+                            }
+                            return store;
+                        });
+                    }
                 }
             ];
         }

@@ -72,6 +72,7 @@
     }
 }
 
+
 ul.MuiList-root.MuiMenu-list {
     .MuiMenuItem-root.MuiListItem-button.important {
         color: rgb(206, 0, 0);
@@ -84,5 +85,6 @@ ul.MuiList-root.MuiMenu-list {
 
     hr {
         border-color: rgba(150, 150, 150, 0.5);
+        margin: 0.25em 0;
     }
 }

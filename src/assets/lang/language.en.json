@@ -106,5 +106,6 @@
   "minimise": "Minimise",
   "maximise": "Maximise",
   "killApp": "Kill applet",
+  "uninstall": "Uninstall",
   "unknown": "Unknown"
 }

@@ -5,9 +5,10 @@ import Mousetrap from 'mousetrap';
 import { SpotlightSearch } from './components/common/spotlight/spotlight';
 import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
 import { Desktop } from './components/common/desktop/desktop';
+import { MiscLayer } from './components/common/misc/miscLayer';
+import { StartMenu } from './components/common/startmenu/startMenu';
 import { Taskbar } from './components/common/taskbar/taskbar';
 import { WindowManager } from './components/window/windowManager';
-import { StartMenu } from './components/common/startmenu/startMenu';
 import { FoundSecretType } from './constants/enum/foundSecretType';
 import { knownKeybinds } from './constants/keybind';
 import { addSecretIfNotFound } from './helper/secretFoundHelper';
@@ -102,6 +103,7 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
           onClose={onClose}
         />
       </Drawer>
+      <MiscLayer />
       <SpotlightSearch
         isOpen={isSpotlightOpen}
         onClose={() => toggleSpotlight(null, false)}

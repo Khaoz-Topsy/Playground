@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { Menu, MenuItem } from '@material-ui/core';
+import { Icon } from '@chakra-ui/react';
 import classNames from 'classnames';
 
 import { translate } from '../../integration/i18n';
@@ -9,16 +10,20 @@ export enum OptionState {
     None,
     Divider,
     Disabled,
-    Important
+    Important,
+    NoAccess,
 }
 
 export interface IContextMenuItemProps {
     name: LocaleKey;
     optionState?: OptionState;
     onClick?: (e: any) => void;
+    icon?: any;
 }
 
 interface IContextMenuProps {
+    style?: React.CSSProperties;
+    className?: string;
     children: ReactNode;
     items: Array<IContextMenuItemProps>;
     onClick?: (e: any) => void;
@@ -70,9 +75,10 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
         const menuItemKey = `${menuItem.name}-${index}`;
         if (menuItem?.optionState === OptionState.Divider) return (<hr />);
 
+        const noAccess = menuItem.optionState === OptionState.NoAccess;
         const classesObj = {
-            'important': menuItem.optionState === OptionState.Important,
-            'disabled': menuItem.optionState === OptionState.Disabled,
+            'important': noAccess || menuItem.optionState === OptionState.Important,
+            'disabled': noAccess || menuItem.optionState === OptionState.Disabled,
         };
         return (
             <MenuItem
@@ -81,6 +87,7 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
                 className={classNames(classesObj)}
                 onClick={handleItemClick(menuItem.onClick)}
             >
+                {(menuItem.icon != null) && <Icon as={menuItem.icon} mr={2} />}
                 {translate(menuItem.name)}
             </MenuItem>
         );
@@ -88,7 +95,9 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
 
     return (
         <div
-            style={{ cursor: 'context-menu', pointerEvents: 'all' }}
+            className={props.className}
+            style={{ ...props.style, cursor: 'context-menu', pointerEvents: 'all' }}
+            onClick={props.onClick}
             onContextMenu={handleClick}
         >
             {props.children}

@@ -7,9 +7,10 @@ import { site } from './site';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [
     KnownApplets.settings,
-    KnownApplets.nyanCat,
+    KnownApplets.email,
     KnownApplets.terminal,
-    KnownApplets.vsCode,
+    KnownApplets.monitor,
+    KnownApplets.liveTv,
 ];
 
 export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile> = [
