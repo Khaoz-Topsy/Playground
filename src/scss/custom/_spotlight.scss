@@ -138,6 +138,14 @@ $searchBarHeight: 56px;
     }
 }
 
+.search-meta {
+    padding-top: 1.5em;
+}
+
+.spotlight-results-bg .search-meta {
+    padding-top: 0;
+}
+
 .spotlight-results-bg .search-meta,
 .search-meta {
     padding-bottom: 2em;
