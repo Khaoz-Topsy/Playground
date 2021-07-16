@@ -31,7 +31,7 @@ export const SpotlightSearchResultMeta: React.FC<IProps> = (props: IProps) => {
             {
                 (props.hideImage !== true)
                     ? <Center>{windowIcon(props.searchResult.appletType)}</Center>
-                    : <br />
+                    : <span></span>
             }
             <ul>
                 {(author != null) && renderInfoRow(LocaleKey.author, author)}

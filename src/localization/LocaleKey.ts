@@ -106,6 +106,7 @@ export enum LocaleKey {
   maximise,
   killApp,
   uninstall,
+  properties,
   loading,
   unknown
 }

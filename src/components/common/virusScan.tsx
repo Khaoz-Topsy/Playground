@@ -1,4 +1,4 @@
-import { Button, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader } from "@chakra-ui/react";
+import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from "@chakra-ui/react";
 import classNames from "classnames";
 import React, { useEffect } from "react";
 import { useState } from "react";
@@ -10,6 +10,7 @@ import { BasicImage } from "../core/image";
 interface IVirusScanProps {
     name?: LocaleKey;
     imgUrl?: string;
+    isOpen: boolean;
     onClose: () => void;
 }
 
@@ -44,50 +45,53 @@ export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => 
         : renderStatusTemplate('scanningCompleteMsg', LocaleKey.virusScanIsClean, name);
 
     return (
-        <ModalContent>
-            <ModalHeader>{translate(LocaleKey.virusScan)}</ModalHeader>
-            {
-                (isScanning === false) &&
-                <ModalCloseButton onClick={props.onClose} />
-            }
-            <ModalBody>
-                <div className={classNames('virus-scan', 'no-border', { 'complete': isScanning })}>
-                    <BasicImage
-                        imageUrl={FileIcon.success}
-                        classNames="virus-scan-success"
-                        alt="virus scan complete"
-                    />
-                </div>
-                <div className={classNames('virus-scan', { 'complete': !isScanning })}>
-                    <em></em>
-                    <div>
-                        <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-                        <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-                        <i></i><i></i><i></i>
-                    </div>
-                    <span></span>
-                    {
-                        props.imgUrl != null && <BasicImage imageUrl={props.imgUrl} alt="virus scan" />
-                    }
-                </div>
-
+        <Modal isOpen={props.isOpen} onClose={(isScanning) ? () => { } : props.onClose}>
+            <ModalOverlay />
+            <ModalContent>
+                <ModalHeader>{translate(LocaleKey.virusScan)}</ModalHeader>
                 {
-                    (props?.name != null)
-                        ? renderStatusMsg(props.name)
-                        : <span></span>
+                    (isScanning === false) &&
+                    <ModalCloseButton onClick={props.onClose} />
                 }
-            </ModalBody>
-            {
-                (isScanning === false) &&
-                <ModalFooter>
-                    <Button
-                        colorScheme="blue"
-                        variant="solid"
-                        onClick={props.onClose}>
-                        {translate(LocaleKey.close)}
-                    </Button>
-                </ModalFooter>
-            }
-        </ModalContent>
+                <ModalBody>
+                    <div className={classNames('virus-scan', 'no-border', { 'complete': isScanning })}>
+                        <BasicImage
+                            imageUrl={FileIcon.success}
+                            classNames="virus-scan-success"
+                            alt="virus scan complete"
+                        />
+                    </div>
+                    <div className={classNames('virus-scan', { 'complete': !isScanning })}>
+                        <em></em>
+                        <div>
+                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                            <i></i><i></i><i></i>
+                        </div>
+                        <span></span>
+                        {
+                            props.imgUrl != null && <BasicImage imageUrl={props.imgUrl} alt="virus scan" />
+                        }
+                    </div>
+
+                    {
+                        (props?.name != null)
+                            ? renderStatusMsg(props.name)
+                            : <span></span>
+                    }
+                </ModalBody>
+                {
+                    (isScanning === false) &&
+                    <ModalFooter>
+                        <Button
+                            colorScheme="blue"
+                            variant="solid"
+                            onClick={props.onClose}>
+                            {translate(LocaleKey.close)}
+                        </Button>
+                    </ModalFooter>
+                }
+            </ModalContent>
+        </Modal>
     );
 }

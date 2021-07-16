@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import { WarningTwoIcon } from '@chakra-ui/icons';
+import { InfoOutlineIcon, WarningTwoIcon } from '@chakra-ui/icons';
 
 import { BasicImage, BasicLazyImage } from '../../core/image';
 import { ContextMenuWrapper, IContextMenuItemProps, OptionState } from '../../core/contextMenu';
@@ -122,15 +122,21 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
                     name: LocaleKey.scanForViruses,
                     optionState: OptionState.Important,
                     icon: WarningTwoIcon,
-                    onClick: () => {
-                        MiscStore.update(store => {
-                            store.fileToScan = {
-                                name: applet.name,
-                                imgUrl: windowIconString(applet.appletType),
-                            }
-                            return store;
-                        });
-                    }
+                    onClick: () => MiscStore.update(() => ({
+                        fileToScan: {
+                            name: applet.name,
+                            imgUrl: windowIconString(applet.appletType),
+                        }
+                    })),
+                },
+                {
+                    name: 'properties divider' as any,
+                    optionState: OptionState.Divider,
+                },
+                {
+                    name: LocaleKey.properties,
+                    icon: InfoOutlineIcon,
+                    onClick: () => MiscStore.update(() => ({ appletViewProperties: applet })),
                 }
             ];
         }
