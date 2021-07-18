@@ -96,7 +96,7 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
     return (
         <div
             className={props.className}
-            style={{ ...props.style, cursor: 'context-menu', pointerEvents: 'all' }}
+            style={{ ...props.style, pointerEvents: 'all' }}
             onClick={props.onClick}
             onContextMenu={handleClick}
         >

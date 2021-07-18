@@ -178,6 +178,10 @@
     .react-calendar__tile:enabled:focus {
         background-color: _palette(bg-transparent);
     }
+
+    .react-calendar__tile.react-calendar__tile--now.react-calendar__tile--active {
+        border-radius: 5px;
+    }
 }
 
 .taskbar-time-bg {

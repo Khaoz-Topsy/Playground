@@ -12,12 +12,12 @@ interface IProps extends IAppletFile {
 
 export const StartMenuMostUsedItem: React.FC<IProps> = (props: IProps) => {
     return (
-        <li key={props.id}>
+        <li key={props.id} onClick={props?.onClick}>
             <ContextMenuWrapper
                 items={getContextWrapperItems({ sMenu: props as any, openApp: props?.onClick })}
             >
-                {windowIcon(props.appletType, props?.onClick)}
-                <span className="noselect" onClick={props?.onClick}>{translate(props.name)}</span>
+                {windowIcon(props.appletType)}
+                <span className="noselect">{translate(props.name)}</span>
             </ContextMenuWrapper>
         </li>
     );

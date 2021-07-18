@@ -50,3 +50,8 @@ Things that I will be adding
   - https://codepen.io/bertdida/pen/pQWPaZ
 - Recorded TV
   - https://codepen.io/HIC/pen/mdbrxXR
+- Tweets
+  - https://www.npmjs.com/package/react-twitter-widgets
+- Twitch
+  - https://www.npmjs.com/package/twitch-fetcher
+- Add Size on cloud
