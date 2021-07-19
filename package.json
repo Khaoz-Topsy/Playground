@@ -1,6 +1,6 @@
 {
   "name": "kurtlourens_playground",
-  "version": "0.1.61",
+  "version": "0.1.62",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.13",

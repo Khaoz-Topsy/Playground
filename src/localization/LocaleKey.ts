@@ -118,6 +118,7 @@ export enum LocaleKey {
   openDeeplyNestedSecretFileHowTo,
   enterFullscreen,
   exitFullscreen,
+  exit,
   loading,
   unknown
 }

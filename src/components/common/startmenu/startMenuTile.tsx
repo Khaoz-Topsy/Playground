@@ -26,6 +26,7 @@ export const StartMenuTile: React.FC<IProps> = (props: IProps) => {
     return (
         <ContextMenuWrapper
             key={props.id}
+            baseKey={props.id.toString()}
             className={classNames(baseCss, { 'full': props.isFull })}
             style={styleObj}
             items={getContextWrapperItems({ sMenu: props, showUninstall: true, openApp: props?.onClick })}

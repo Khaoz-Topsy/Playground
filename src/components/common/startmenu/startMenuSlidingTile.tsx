@@ -77,6 +77,7 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
         return (
             <ContextMenuWrapper
                 key={this.props.id}
+                baseKey={this.props.id.toString()}
                 className={baseCss}
                 style={styleObj}
                 items={getContextWrapperItems({ sMenu: this.props, showUninstall: true, openApp: this.props?.onClick })}

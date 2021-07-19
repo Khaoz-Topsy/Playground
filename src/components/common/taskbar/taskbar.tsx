@@ -20,6 +20,7 @@ import { TaskbarTime } from '../time/taskbarTime';
 
 import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
 import { TaskbarBatteryIcon } from './taskbarBatteryIcon';
+import { TaskbarDiscordIcon } from './taskbarDiscordIcon';
 import { TaskbarIcon } from './taskbarIcon';
 
 interface IWithoutExpectedServices {
@@ -121,6 +122,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                 </Center>
             </TriggerAfterXClicks>
             <TaskbarBatteryIcon toggleStartMenu={props.toggleStartMenu} sillyService={props.sillyService} />
+            <TaskbarDiscordIcon toggleStartMenu={props.toggleStartMenu} />
         </div>
     );
 }

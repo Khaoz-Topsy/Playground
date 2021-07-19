@@ -174,6 +174,7 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             onClick={clickFileOrFolder}
             onDoubleClick={doubleClickFileOrFolder(props.iconData)}>
             <ContextMenuWrapper
+                baseKey={props.iconData.id.toString()}
                 onContextOpen={clickFileOrFolder}
                 items={getContextWrapperItems(props.iconData)}
             >

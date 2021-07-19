@@ -22,6 +22,7 @@ export interface IContextMenuItemProps {
 }
 
 interface IContextMenuProps {
+    baseKey: string;
     style?: React.CSSProperties;
     className?: string;
     children: ReactNode;
@@ -72,8 +73,8 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
     };
 
     const renderMenuItem = (menuItem: IContextMenuItemProps, index: number) => {
-        const menuItemKey = `${menuItem.name}-${index}`;
-        if (menuItem?.optionState === OptionState.Divider) return (<hr />);
+        const menuItemKey = `${props.baseKey}-${menuItem.name}-${index}`;
+        if (menuItem?.optionState === OptionState.Divider) return (<hr key={menuItemKey} />);
 
         const noAccess = menuItem.optionState === OptionState.NoAccess;
         const classesObj = {

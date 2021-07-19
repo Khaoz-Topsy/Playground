@@ -14,6 +14,7 @@ export const StartMenuMostUsedItem: React.FC<IProps> = (props: IProps) => {
     return (
         <li key={props.id} onClick={props?.onClick}>
             <ContextMenuWrapper
+                baseKey={props.id.toString()}
                 items={getContextWrapperItems({ sMenu: props as any, openApp: props?.onClick })}
             >
                 {windowIcon(props.appletType)}

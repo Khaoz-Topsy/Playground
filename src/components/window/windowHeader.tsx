@@ -3,6 +3,7 @@ import { ChevronDownIcon, ExternalLinkIcon } from '@chakra-ui/icons';
 import { Popover, PopoverArrow, PopoverBody, PopoverCloseButton, PopoverContent, PopoverTrigger, Tooltip } from '@chakra-ui/react';
 
 import { SpotlightSearchResultMeta } from '../common/spotlight/spotlightSearchResultMeta';
+import { AppletType } from '../../constants/enum/appletType';
 import { allKnownApps } from '../../constants/knownApplets';
 import { LocaleKey } from '../../localization/LocaleKey';
 import { openExternalInNewTab } from '../../helper/linkHelper';
@@ -12,6 +13,7 @@ import { WindowActions } from './windowActions';
 
 interface IProps {
     name: LocaleKey;
+    appletType: AppletType;
     windowIcon?: ReactNode;
     onMinimise: (e: any) => void;
     onMaximise: (e: any) => void;
@@ -21,7 +23,7 @@ interface IProps {
 export const WindowHeader: React.FC<IProps> = (props: IProps) => {
     let foundApplet;
     for (const appletProp of allKnownApps()) {
-        if (appletProp.name === props.name) {
+        if (appletProp.appletType === props.appletType) {
             foundApplet = { ...appletProp };
             break;
         }
