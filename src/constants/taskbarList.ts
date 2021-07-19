@@ -4,5 +4,7 @@ import { IAppletFile } from '../contracts/interface/IFile';
 
 export const TaskbarList: Array<IAppletFile> = [
     KnownApplets.explorer,
+    KnownApplets.email,
+    KnownApplets.terminal,
     KnownApplets.settings,
 ];

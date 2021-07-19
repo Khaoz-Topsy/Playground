@@ -22,8 +22,10 @@ import { dependencyInjectionToProps, IExpectedServices } from './taskbar.depende
 import { TaskbarBatteryIcon } from './taskbarBatteryIcon';
 import { TaskbarDiscordIcon } from './taskbarDiscordIcon';
 import { TaskbarIcon } from './taskbarIcon';
+import classNames from 'classnames';
 
 interface IWithoutExpectedServices {
+    isStartMenuOpen: boolean;
     toggleStartMenu: (newValue?: boolean) => void;
     drawerOnOpen: () => void;
 };
@@ -94,6 +96,11 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                     numberOfRequiredClicks={5}
                     trigger={doHarlemShake}
                 >
+                    {/* <div className={classNames('hamburgler', { 'no-hamburgler': props.isStartMenuOpen })}>
+                        <div className="bun top"></div>
+                        <div className="meat"></div>
+                        <div className="bun bottom"></div>
+                    </div> */}
                     <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
                 </TriggerAfterXClicks>
                 {

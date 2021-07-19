@@ -131,11 +131,11 @@ $startmenu-tile-hover-border: 2;
         }
 
         .tile-tall {
-            grid-area: span 1/span 2;
+            grid-area: span 2/span 1;
         }
 
         .tile-wide {
-            grid-area: span 2/span 1;
+            grid-area: span 1/span 2;
         }
 
         .tile-small {
@@ -240,5 +240,65 @@ $startmenu-tile-hover-border: 2;
                 transition: unset;
             }
         }
+    }
+}
+
+.taskbar .start-menu.applet-shortcut {
+    margin-left: 0.5em !important;
+}
+
+$radius: 50px;
+
+.hamburgler {
+    width: 3em;
+    height: 1.5em;
+    display: block;
+    margin: 0.35em auto;
+    transition: .3s all ease-in-out;
+
+    &.no-hamburgler {
+        transform: rotate(-45deg);
+        height: 3em;
+        width: 4em;
+        margin-top: 0;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+}
+
+.bun,
+.meat {
+    display: block;
+    width: 100%;
+    background: _palette(accent);
+    height: 20%;
+    transition: .3s ease all;
+    border-radius: $radius;
+}
+
+.top {
+    .no-hamburgler & {
+        height: 38%;
+        width: 20%;
+        margin-left: 40%;
+        border-radius: $radius $radius 0 0;
+    }
+}
+
+.bottom {
+    .no-hamburgler & {
+        height: 38%;
+        width: 20%;
+        margin-left: 40%;
+        border-radius: 0 0 $radius $radius;
+    }
+}
+
+.meat {
+    margin: 20% 0;
+
+    .no-hamburgler & {
+        margin: 2% 0;
+
     }
 }

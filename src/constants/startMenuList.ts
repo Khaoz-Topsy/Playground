@@ -2,7 +2,8 @@
 import { KnownApplets } from '../constants/knownApplets';
 import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuAnimation, StartMenuSize } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
-import { AppletIcon, MiscIcon } from './appImage';
+import { AppletIcon, FileIcon, MiscIcon } from './appImage';
+import { AppletType } from './enum/appletType';
 import { site } from './site';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [
@@ -65,5 +66,46 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         ...KnownApplets.notes,
         size: StartMenuSize.small,
         backgroundColour: '#0C76B3',
+    },
+];
+
+export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
+    {
+        id: 101,
+        parentId: 101,
+        name: LocaleKey.assistantApps,
+        imgUrl: AppletIcon.assistantApps,
+        backgroundColour: '#1D1D1B',
+        backgroundImage: 'linear-gradient(330deg, #1D1D1B 0%, #31312e 80%)',
+        type: FileType.link,
+        meta: { external: site.assistantApps.website },
+        size: StartMenuSize.small,
+    },
+    {
+        id: 102,
+        parentId: 102,
+        name: LocaleKey.assistantApps,
+        imgUrl: FileIcon.discord,
+        backgroundColour: '#1D1D1B',
+        type: FileType.link,
+        meta: { external: site.assistantApps.website },
+        size: StartMenuSize.small,
+    },
+    {
+        ...KnownApplets.twitterTimeline,
+        backgroundColour: '#00ACED',
+        meta: { src: site.assistantApps.nms.twitter },
+        size: StartMenuSize.small,
+    },
+    {
+        id: 102,
+        parentId: 102,
+        name: LocaleKey.blog,
+        imgUrl: AppletIcon.blog,
+        backgroundColour: '#2C2C2C',
+        backgroundImage: 'linear-gradient(315deg, #232323 0%, #2C2C2C 75%)',
+        type: FileType.link,
+        meta: { external: site.kurt.blog },
+        size: StartMenuSize.small,
     },
 ];

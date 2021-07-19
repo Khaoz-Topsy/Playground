@@ -10,6 +10,7 @@
   "vsCode": "VS Code",
   "assistantNMS": "Assistant for No Man's Sky",
   "assistantSMS": "Assistant for Scrap Mechanic",
+  "assistantApps": "AssistantApps",
   "musicPlayer": "Music Player",
   "nyanCat": "Nyan Cat",
   "applications": "Applications",
@@ -119,5 +120,6 @@
   "openDeeplyNestedSecretFileHowTo": "Open the deeply nested secret file",
   "enterFullscreen": "Enter Fullscreen",
   "exitFullscreen": "Exit Fullscreen",
+  "blog": "Kurt's Blog",
   "unknown": "Unknown"
 }

@@ -99,6 +99,7 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
       <Desktop />
       <WindowManager />
       <Taskbar
+        isStartMenuOpen={isStartMenuOpen}
         drawerOnOpen={onOpen}
         toggleStartMenu={toggleStartMenu}
       />

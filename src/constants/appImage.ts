@@ -6,6 +6,7 @@ export const error = imgFolder + 'appIcons/error.png';
 
 export class AppletIcon {
     static kurt = imgFolder + 'appIcons/kurt.png';
+    static blog = imgFolder + 'appIcons/blog.png';
     static music = imgFolder + 'appIcons/music.png';
     static email = imgFolder + 'appIcons/email.png';
     static liveTv = imgFolder + 'appIcons/live.png';
@@ -14,11 +15,13 @@ export class AppletIcon {
     static monitor = imgFolder + 'appIcons/monitor.png';
     static nyanCat = imgFolder + 'appIcons/nyanCat.png';
     static windows = imgFolder + 'appIcons/windows.png';
+    static internet = imgFolder + 'appIcons/internet.png';
     static settings = imgFolder + 'appIcons/setting3.png';
     static terminal = imgFolder + 'appIcons/terminal.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
     static application = imgFolder + 'appIcons/application.png';
+    static assistantApps = imgFolder + 'assistantApps.png';
     static twitter = imgFolder + 'appIcons/twitter.png';
     static twitch = imgFolder + 'twitch.png';
 }
@@ -26,6 +29,7 @@ export class AppletIcon {
 export class FileIcon {
     static applicationIcon = imgFolder + 'fileIcons/applicationIcon.png';
     static markdown = imgFolder + 'fileIcons/markdown2.png';
+    static discord = imgFolder + 'fileIcons/discord.svg';
     static picture = imgFolder + 'fileIcons/picture.png';
     static android = imgFolder + 'fileIcons/android.png';
     static success = imgFolder + 'fileIcons/success.png';

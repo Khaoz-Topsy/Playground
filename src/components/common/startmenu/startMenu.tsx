@@ -1,7 +1,8 @@
 import React from 'react';
 import classNames from 'classnames';
 
-import { StartMenuApplications, StartMenuMostUsed } from '../../../constants/startMenuList';
+import { KnownApplets } from '../../../constants/knownApplets';
+import { StartMenuApplications, StartMenuExplore, StartMenuMostUsed } from '../../../constants/startMenuList';
 import { IAppletFile, IFile, IStartMenuAppletFile, IStartMenuFile } from '../../../contracts/interface/IFile';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
@@ -14,7 +15,6 @@ import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
 import { StartMenuSlidingTile } from './startMenuSlidingTile';
 import { StartMenuProfile } from './startMenuProfile';
 import { StartMenuTile } from './startMenuTile';
-import { KnownApplets } from '../../../constants/knownApplets';
 
 interface IProps {
     isOpen: boolean;
@@ -95,12 +95,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                             <h3 className="mt1">Explore</h3>
                         </header>
                         <div className="tiles-wrapper">
-                            <div className="tile tile-small"></div>
-                            <div className="tile tile-large"></div>
-                            <div className="tile x-large"></div>
-                            <div className="tile"></div>
-                            <div className="tile"></div>
-                            <div className="tile"></div>
+                            {StartMenuExplore.map(renderTile)}
                         </div>
                     </div>
                 </section>

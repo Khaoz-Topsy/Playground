@@ -23,6 +23,8 @@ Few cool things added:
 - secrets found page
 - Toast on finding a secret
 - Monitor.kurtlourens.com
+- console.log 
+  - add drawing
 - Live tv
   - https://codepen.io/joshbader/pen/gNbNvw
   - https://masivaturk.com/resimler/genel-kultur/uzay/televizyonlardaki-karincalanmanin-sebebi-buyuk-patlama/tv-karincalanma.gif
@@ -31,6 +33,12 @@ Few cool things added:
   - https://projects.wojtekmaj.pl/react-calendar/
 - Twitter Timelie
   - https://www.npmjs.com/package/react-twitter-widgets
+- More tracked secrets
+  - Cow command
+  - Opened the secret md file
+- Add hints for the secrets
+- Add Size on cloud
+- Launch Discord from Taskbar icon
 
 
 Things that I will be adding 
@@ -39,20 +47,11 @@ Things that I will be adding
   - https://www.npmjs.com/package/mermaid
   - https://github.com/learn-anything/react-mindmap
 - More sillies
-- More tracked secrets
-  - Cow command
-  - Opened the secret md file
-- Add hints for the secrets
 - console.log 
   - secrets
-  - add drawing
   - Function they must execute
 - Mention that I am looking to emigrate?
 - Confetti
   - https://codepen.io/bertdida/pen/pQWPaZ
 - Recorded TV
   - https://codepen.io/HIC/pen/mdbrxXR
-- Twitch
-  - https://www.npmjs.com/package/twitch-fetcher
-- Add Size on cloud
-- Launch Discord from Taskbar icon
