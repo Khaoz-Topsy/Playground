@@ -114,7 +114,7 @@
   "resetFoundSecrets": "Reset found secrets",
   "asciiCow": "ASCII Cow",
   "asciiCowOpenFromTerminal": "Run the command in the terminal to display an ASCII Cow",
-  "openDeeplyNestedSecretFile": "Open deeply nested secret file",
-  "openDeeplyNestedSecretFileHowTo": "Open deeply nested secret file",
+  "openDeeplyNestedSecretFile": "Found the secret file",
+  "openDeeplyNestedSecretFileHowTo": "Open the deeply nested secret file",
   "unknown": "Unknown"
 }
