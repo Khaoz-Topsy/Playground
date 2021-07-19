@@ -4,6 +4,7 @@ import { ChakraProvider } from '@chakra-ui/react';
 // import reportWebVitals from './reportWebVitals';
 
 import { AppShell } from './appShell';
+import { site } from './constants/site';
 import { log, startupMessage } from './integration/logging';
 import { DependencyInjectionProvider } from './integration/dependencyInjection';
 import { getJSON, defaultConfig } from './utils';
@@ -47,7 +48,7 @@ getJSON('/assets/config.json', (status: boolean, response: string) => {
         </ChakraProvider>
       </DependencyInjectionProvider>
     </React.Fragment>,
-    document.getElementById('kurt-lourens-desktop')
+    document.getElementById(site.reactId)
   );
 })
 

@@ -1,5 +1,6 @@
 export const site = {
     ref: 'KurtLourensPlayground',
+    reactId: 'kurt-lourens-desktop',
     url: 'patreonbanner.com',
     captchaKey: '916895db-249a-4ae3-bf39-9fe42e72d196',
     repo: 'https://github1s.com/Khaoz-Topsy/KurtLourens-CV/blob/master/README.md',

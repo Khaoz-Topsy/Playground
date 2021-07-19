@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import Calendar from 'react-calendar';
-import { Center } from '@chakra-ui/react';
+import { Box, Center, SimpleGrid } from '@chakra-ui/react';
 
+import { ArrowExpand } from '../../core/icon';
 import { currentShortTime, currentShortDate, currentMediumTime, currentMediumDate } from '../../../helper/dateHelper';
+import { enterFullScreen, exitFullScreen, isFullscreen } from '../../../helper/documentHelper';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { SettingStore } from '../../../state/setting/store';
 
 interface IProps {
     toggleStartMenu: (newValue?: boolean) => void;
@@ -29,6 +34,14 @@ export const TaskbarTime: React.FC<IProps> = (props: IProps) => {
         props.toggleStartMenu(false);
     }
 
+    const toggleFullscreen = () => {
+        if (isFullscreen()) {
+            exitFullScreen();
+        } else {
+            enterFullScreen();
+        }
+    }
+
     return (
         <>
             {
@@ -42,6 +55,14 @@ export const TaskbarTime: React.FC<IProps> = (props: IProps) => {
                 <hr />
                 <Calendar value={new Date()} />
                 <hr />
+                <SimpleGrid mt={2} mb={4} mx={2} minChildWidth="200px" columnGap="10px" rowGap="10px" className="options">
+                    <Box mt={1} ml={1} p={2} className="option" onClick={toggleFullscreen}>
+                        <Center className="icon"><ArrowExpand /></Center>
+                        <Center key={clockValue?.toISOString?.()}>
+                            <p>{translate(isFullscreen() ? LocaleKey.exitFullscreen : LocaleKey.enterFullscreen)}</p>
+                        </Center>
+                    </Box>
+                </SimpleGrid>
             </div>
             <div className="taskbar-tray taskbar-highlight-on-hover noselect" onClick={() => setTimeOpen(!isTimeOpen)}>
                 <Center>

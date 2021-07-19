@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { PullstateProvider } from "pullstate";
+import { PullstateProvider } from 'pullstate';
+import { Button, Center } from '@chakra-ui/react';
 
 import { InitialisationScreen } from './components/common/initialisationScreen';
 import { ToasterContainer } from './components/core/toast';
@@ -8,7 +9,6 @@ import { PullstateCore } from './state/stateCore';
 import { subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
 
 import { App } from './app';
-import { Button, Center } from '@chakra-ui/react';
 import { translate } from './integration/i18n';
 import { LocaleKey } from './localization/LocaleKey';
 

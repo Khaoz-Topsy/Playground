@@ -45,7 +45,7 @@ export class KnownApplets {
         appletType: AppletType.notes,
         type: FileType.applet,
         numAllowedInstances: 5,
-        info: { version: '0.2.2', size: 700, installedOn: new Date('2021-06-20') },
+        info: { version: '0.2.3', size: 700, installedOn: new Date('2021-06-20'), updatedOn: new Date('2021-07-19') },
     };
     static terminal: IAppletFile = {
         id: 1.06,

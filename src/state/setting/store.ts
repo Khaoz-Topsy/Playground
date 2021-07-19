@@ -15,7 +15,7 @@ export const defaultSettingProps: ISettingStore = {
     brightness: 100,
     volume: 100,
     language: 'en',
-    showSecretHints: false
+    showSecretHints: false,
 };
 
 export const SettingStore = new Store<ISettingStore>(defaultSettingProps);

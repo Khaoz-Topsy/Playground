@@ -7,6 +7,7 @@ import { BasicLink } from "../../core/link";
 import { LocaleKey } from "../../../localization/LocaleKey";
 import { translate } from "../../../integration/i18n";
 import { currentMediumDate } from "../../../helper/dateHelper";
+import { seededRandom } from "../../../helper/randomHelper";
 
 interface IProps {
     hideImage?: boolean;
@@ -42,6 +43,7 @@ export const SpotlightSearchResultMeta: React.FC<IProps> = (props: IProps) => {
                 {(author != null || projectUrl != null) && divider()}
                 {(version != null) && renderInfoRow(LocaleKey.version, version)}
                 {(size !== 0) && renderInfoRow(LocaleKey.size, size.toString() + ' kb')}
+                {(size !== 0) && renderInfoRow(LocaleKey.sizeOnCloud, Math.round(size + seededRandom(100, size)).toString() + ' kb')}
                 {divider()}
                 {(installedOn != null) && renderInfoRow(LocaleKey.installedOn, currentMediumDate(installedOn))}
                 {(updatedOn != null) && renderInfoRow(LocaleKey.updatedOn, currentMediumDate(updatedOn))}

@@ -82,6 +82,7 @@
   "projectUrl": "Project Url",
   "version": "Version",
   "size": "Size",
+  "sizeOnCloud": "Size on cloud",
   "installedOn": "Installed On",
   "updatedOn": "Last updated On",
   "openDirectory": "Open directory",
@@ -116,5 +117,7 @@
   "asciiCowOpenFromTerminal": "Run the command in the terminal to display an ASCII Cow",
   "openDeeplyNestedSecretFile": "Found the secret file",
   "openDeeplyNestedSecretFileHowTo": "Open the deeply nested secret file",
+  "enterFullscreen": "Enter Fullscreen",
+  "exitFullscreen": "Exit Fullscreen",
   "unknown": "Unknown"
 }

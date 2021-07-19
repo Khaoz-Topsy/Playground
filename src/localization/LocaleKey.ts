@@ -81,6 +81,7 @@ export enum LocaleKey {
   projectUrl,
   version,
   size,
+  sizeOnCloud,
   installedOn,
   updatedOn,
   openDirectory,
@@ -115,6 +116,8 @@ export enum LocaleKey {
   asciiCowOpenFromTerminal,
   openDeeplyNestedSecretFile,
   openDeeplyNestedSecretFileHowTo,
+  enterFullscreen,
+  exitFullscreen,
   loading,
   unknown
 }

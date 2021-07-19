@@ -49,6 +49,7 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
       SecretStore.update(store => ({ ...store, ...secretStore }));
       initLocalization(settingStore.language);
     }
+
     Mousetrap.bind(knownKeybinds.spotlight, (e) => toggleSpotlight(e));
     Mousetrap.bind(knownKeybinds.spotlightAlt, (e) => toggleSpotlight(e));
     Mousetrap.bind(knownKeybinds.konami, () => konamiCodeFunc());

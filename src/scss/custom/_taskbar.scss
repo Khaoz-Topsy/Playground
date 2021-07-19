@@ -122,7 +122,8 @@
     border-top-left-radius: 20px;
     transition: height 250ms ease-in-out;
     transition-property: height, padding, opacity;
-    overflow-y: hidden;
+    overflow-y: auto;
+    @extend .hide-scrollbar;
     z-index: -1;
     opacity: 0;
 
@@ -132,6 +133,7 @@
         min-height: 50vh;
         opacity: 1;
     }
+
 
     .taskbar-time-current {
         padding: 0 1em 0.75em 1em;
@@ -181,6 +183,31 @@
 
     .react-calendar__tile.react-calendar__tile--now.react-calendar__tile--active {
         border-radius: 5px;
+    }
+
+    .options {
+        .option {
+            display: flex;
+            flex-direction: row;
+            border: 2px dashed darken(_palette(fg), 30%);
+            border-radius: 0.5em;
+            cursor: pointer;
+
+            .icon {
+                width: 2em;
+
+                svg {
+                    max-height: 3em;
+                    color: darken(_palette(fg), 20%);
+                }
+            }
+
+            p {
+                margin-left: 5px;
+                font-size: 1.1rem;
+                color: darken(_palette(fg), 10%);
+            }
+        }
     }
 }
 
