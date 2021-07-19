@@ -5,6 +5,7 @@ export enum AppletType {
     terminal,
     explorer,
     picture,
+    tweeter,
     email,
     notes,
     iframe,

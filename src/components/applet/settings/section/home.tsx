@@ -1,9 +1,10 @@
 import React from 'react';
 import { SunIcon } from '@chakra-ui/icons';
-import { Box, Checkbox, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text, useToast } from '@chakra-ui/react';
+import { Box, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text, useToast } from '@chakra-ui/react';
 
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { Backgrounds } from '../../../../constants/appImage';
+import { CustomCheckbox } from '../../../../components/core/checkbox';
 import { addSecretIfNotFound } from '../../../../helper/secretFoundHelper';
 import { changeLocalization, supportedLangs, translate } from '../../../../integration/i18n';
 import { withServices } from '../../../../integration/dependencyInjection';
@@ -129,14 +130,10 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 </SimpleGrid>
                 <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
                     <Box mt={3} mb={5}>
-                        <Checkbox colorScheme={'primary'} iconColor="white" isChecked={enabledClippy} onChange={onEnableClippyChange}>{translate(LocaleKey.enableClippy)}</Checkbox>
+                        <CustomCheckbox name={LocaleKey.enableClippy} isChecked={enabledClippy} onChange={onEnableClippyChange} />
                         <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>{translate(LocaleKey.clippyDescription)}</Text>
                     </Box>
                 </SimpleGrid>
-                {/* <Box my={5}>
-                    <Checkbox colorScheme={'primary'} isChecked={colorMode === 'dark'} onChange={toggleColorMode}>Use Dark Mode</Checkbox>
-                    <Text ml={6} fontSize={'sm'} color={'whiteAlpha.600'}>Use the website in dark mode.</Text>
-                </Box> */}
             </SettingItemSection>
         </Box>
     );

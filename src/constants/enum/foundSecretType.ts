@@ -3,4 +3,5 @@ export enum FoundSecretType {
     nyanCat,
     harlemShake,
     asciiCow,
+    openDeeplyNestedSecretFile,
 }

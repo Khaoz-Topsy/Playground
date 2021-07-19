@@ -1,4 +1,4 @@
-export const staticList = {
+export const staticList = () => ({
     contact: {
         description: 'Get my contact information.',
         list: [
@@ -112,4 +112,4 @@ export const staticList = {
             { type: 'black', label: 'D', content: '· CSS -999/100' }
         ]
     },
-}
+});

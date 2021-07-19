@@ -61,6 +61,12 @@ a {
     left: 0
 }
 
+.pos-abs-top-right {
+    position: absolute;
+    top: 0;
+    right: 0
+}
+
 .fullscreen.layer.initial.show-in-mobile {
     flex-direction: column;
     color: white;

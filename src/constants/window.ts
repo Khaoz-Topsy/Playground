@@ -24,5 +24,9 @@ export const defaultMusicPlayerHeight = 500;
 export const defaultMonitorWidth = 500;
 export const defaultMonitorHeight = 600;
 
+// TwitterTimeline
+export const defaultTwitterWidth = minWidth;
+export const defaultTwitterHeight = 600;
+
 export const defaultPictureViewerWidth = 650;
 export const defaultPictureViewerHeight = 400;

@@ -108,6 +108,13 @@ export enum LocaleKey {
   uninstall,
   properties,
   minimiseAllWindows,
+  twitterFeed,
+  showHints,
+  resetFoundSecrets,
+  asciiCow,
+  asciiCowOpenFromTerminal,
+  openDeeplyNestedSecretFile,
+  openDeeplyNestedSecretFileHowTo,
   loading,
   unknown
 }

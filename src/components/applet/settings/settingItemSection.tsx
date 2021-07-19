@@ -3,11 +3,13 @@ import { Box, Divider, Text, Tooltip } from "@chakra-ui/react";
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { ReactNode } from 'react-markdown';
 
 interface ISettingItemSection {
     heading: string;
     subTexts?: string[];
     showDivider?: boolean;
+    topRightChild?: ReactNode;
     headingTooltip?: LocaleKey;
 }
 
@@ -23,6 +25,12 @@ export const SettingItemSection: React.FunctionComponent<ISettingItemSection> = 
                     </Tooltip>
                 }
             </Text>
+            {
+                (props.topRightChild) &&
+                <Box className="pos-abs-top-right">
+                    {props.topRightChild}
+                </Box>
+            }
             {
                 (props.showDivider ?? true) &&
                 <Divider mt={2} mb={2} />

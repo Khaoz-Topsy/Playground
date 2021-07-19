@@ -27,8 +27,8 @@ svg.handle {
     // }
 
     >div {
-        width: 1px;
-        height: 1px;
+        width: 0;
+        height: 0;
     }
 
     .react-resizable,
@@ -304,4 +304,9 @@ svg.handle {
 .chakra-modal__content-container,
 .chakra-modal__content-container.css-v9b9hc {
     z-index: 20000;
+}
+
+.window.tweeter .window-content.full-content div[twdiv] {
+    @extend .pos-abs-top-left;
+    width: 100%;
 }

@@ -109,5 +109,12 @@
   "uninstall": "Uninstall",
   "properties": "Properties",
   "minimiseAllWindows": "Minimise all windows",
+  "twitterFeed": "Twitter Timeline",
+  "showHints": "Show Hints",
+  "resetFoundSecrets": "Reset found secrets",
+  "asciiCow": "ASCII Cow",
+  "asciiCowOpenFromTerminal": "Run the command in the terminal to display an ASCII Cow",
+  "openDeeplyNestedSecretFile": "Open deeply nested secret file",
+  "openDeeplyNestedSecretFileHowTo": "Open deeply nested secret file",
   "unknown": "Unknown"
 }

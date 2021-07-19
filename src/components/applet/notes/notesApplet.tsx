@@ -1,19 +1,22 @@
 import React, { ReactNode, useEffect, useState } from 'react'
+import { Center, useToast } from '@chakra-ui/react';
+import classNames from 'classnames';
 
 import { LoadingImage } from '../../core/loader';
 import { MarkdownContent } from '../../core/markdown';
 import { IApplet } from '../../../contracts/interface/IApplet'
 import { NetworkState } from '../../../constants/enum/networkState';
+import { FoundSecretType } from '../../../constants/enum/foundSecretType';
+import { MarkdownFile, visibleNotesList } from '../../../constants/markdownFile';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
+import { IExistingNoteMeta } from '../../../contracts/interface/IExistingNoteMeta';
+import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { withServices } from '../../../integration/dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { SecretStore } from '../../../state/secrets/store';
 import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './notesApplet.dependencyInjection';
-import { visibleNotesList } from '../../../constants/markdownFile';
-import { IExistingNoteMeta } from '../../../contracts/interface/IExistingNoteMeta';
-import classNames from 'classnames';
-import { Center } from '@chakra-ui/react';
-import { translate } from '../../../integration/i18n';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices {
@@ -29,6 +32,7 @@ interface IState {
 
 export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const file = props?.meta?.file;
+    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
     const [fullWindow, setFullWindow] = useState<boolean>(file != null);
     const [state, setState] = useState<IState>({
         file,
@@ -36,12 +40,22 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         networkState: file ? NetworkState.Loading : NetworkState.Pending,
         content: props?.meta?.content ?? 'Failed to load content to display',
     });
+    const toastFunc = useToast();
 
     useEffect(() => {
         const newFullWindow = file != null;
         if (fullWindow !== newFullWindow) setFullWindow(newFullWindow);
 
         getContentFromDataService(state.selectedNoteIndex);
+
+        if (file?.toLowerCase?.().includes(MarkdownFile.secrets?.toLowerCase?.())) {
+            addSecretIfNotFound({
+                secretStore: SecretStore,
+                currentSecretsFound,
+                toastFunc,
+                secretToAdd: FoundSecretType.openDeeplyNestedSecretFile,
+            });
+        }
         // eslint-disable-next-line
     }, [file]);
 

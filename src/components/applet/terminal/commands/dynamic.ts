@@ -1,14 +1,22 @@
+import { site } from '../../../../constants/site';
+import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { IReactTerminalPrintProps } from '../../../../contracts/terminal';
 import { currentMediumTime } from '../../../../helper/dateHelper';
 import { getFunnyMessages } from '../../../../helper/funnyLoadingMessagesHelper';
 import { cowMessageAsArray } from '../../../../helper/cowHelper';
-import { VirtualAssistantService } from '../../../../services/VirtualAssistantService';
-import { site } from '../../../../constants/site';
 import { openExternalInNewTab } from '../../../../helper/linkHelper';
+import { addSecretIfNotFound } from '../../../../helper/secretFoundHelper';
+import { VirtualAssistantService } from '../../../../services/VirtualAssistantService';
+import { Store } from 'pullstate';
+import { ISecretStore } from '../../../../state/secrets/store';
 
 interface IProps {
     virtualAssistantService: VirtualAssistantService;
     clippyIsEnabled: boolean;
+
+    secretStore: Store<ISecretStore>;
+    currentSecretsFound: Array<FoundSecretType>;
+    toastFunc: (opts: any) => void;
     enableClippy: (enabled: boolean) => void;
 }
 
@@ -86,6 +94,12 @@ export const dynamicListFunc = (props: IProps) => {
                     for (let cowIndex = 0; cowIndex < cowArray.length; cowIndex++) {
                         print(cowArray[cowIndex]);
                     }
+                    addSecretIfNotFound({
+                        secretStore: props.secretStore,
+                        currentSecretsFound: props.currentSecretsFound,
+                        secretToAdd: FoundSecretType.asciiCow,
+                        toastFunc: props.toastFunc,
+                    });
                     resolve('');
                 });
             }
@@ -130,17 +144,6 @@ export const dynamicListFunc = (props: IProps) => {
                     print({ type: 'success', label: 'Success', content: 'Opening' });
 
                     openExternalInNewTab(site.kurt.blog);
-                    resolve({ type: 'success', label: 'Done', content: ':)' });
-                })
-            }
-        },
-        resume: {
-            description: 'Open my resume in a new tab.',
-            run(print: any) {
-                return new Promise((resolve) => {
-                    print({ type: 'success', label: 'Success', content: 'Opening' });
-
-                    openExternalInNewTab('https://tomotoes.com/blog/resume');
                     resolve({ type: 'success', label: 'Done', content: ':)' });
                 })
             }

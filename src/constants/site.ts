@@ -48,6 +48,7 @@ export const site = {
             appleStore: 'https://apps.apple.com/us/app/id1519215611',
             githubOrg: 'https://github.com/AssistantSMS',
             githubApp: 'https://github.com/AssistantSMS/App',
+            vscodeUrlForApp: 'https://github1s.com/AssistantSMS/App/blob/master/README.md',
         }
     }
 }

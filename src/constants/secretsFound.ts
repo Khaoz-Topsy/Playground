@@ -1,7 +1,16 @@
 import { LocaleKey } from '../localization/LocaleKey';
 import { FoundSecretType } from './enum/foundSecretType';
 
-export const secretsFound = [
+export interface ISecretFound {
+    name: LocaleKey;
+    type: FoundSecretType;
+    howTo: Array<LocaleKey>;
+    isFound: (secretsFound: Array<FoundSecretType>) => boolean;
+}
+
+const secretHasBeenFound = (secretToFind: FoundSecretType) => (secretsFound: Array<FoundSecretType>) => secretsFound.includes(secretToFind);
+
+export const secretsFound: Array<ISecretFound> = [
     {
         name: LocaleKey.clippy,
         type: FoundSecretType.clippy,
@@ -9,13 +18,13 @@ export const secretsFound = [
             LocaleKey.clippySecretSettingsDescription,
             LocaleKey.clippySecretTerminalDescription,
         ],
-        isFound: (secretsFound: Array<FoundSecretType>) => secretsFound.includes(FoundSecretType.clippy),
+        isFound: secretHasBeenFound(FoundSecretType.clippy),
     },
     {
         name: LocaleKey.nyanCat,
         type: FoundSecretType.nyanCat,
         howTo: [LocaleKey.nyanCatSecretDescription],
-        isFound: (secretsFound: Array<FoundSecretType>) => secretsFound.includes(FoundSecretType.nyanCat),
+        isFound: secretHasBeenFound(FoundSecretType.nyanCat),
     },
     {
         name: LocaleKey.harlemShake,
@@ -25,6 +34,18 @@ export const secretsFound = [
             LocaleKey.harlemShakeSecretTaskbarDescription,
             LocaleKey.harlemShakeSecretKonamiCodeDescription,
         ],
-        isFound: (secretsFound: Array<FoundSecretType>) => secretsFound.includes(FoundSecretType.harlemShake),
+        isFound: secretHasBeenFound(FoundSecretType.harlemShake),
+    },
+    {
+        name: LocaleKey.asciiCow,
+        type: FoundSecretType.asciiCow,
+        howTo: [LocaleKey.asciiCowOpenFromTerminal],
+        isFound: secretHasBeenFound(FoundSecretType.asciiCow),
+    },
+    {
+        name: LocaleKey.openDeeplyNestedSecretFile,
+        type: FoundSecretType.openDeeplyNestedSecretFile,
+        howTo: [LocaleKey.openDeeplyNestedSecretFileHowTo],
+        isFound: secretHasBeenFound(FoundSecretType.openDeeplyNestedSecretFile),
     }
 ]

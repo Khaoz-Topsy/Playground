@@ -10,12 +10,16 @@ import { withServices } from '../../../integration/dependencyInjection';
 import { ISettingStore, SettingStore } from '../../../state/setting/store';
 
 import { IExpectedServices, dependencyInjectionToProps } from './terminalApplet.dependencyInjection';
+import { SecretStore } from '../../../state/secrets/store';
+import { useToast } from '@chakra-ui/react';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IApplet, IWithoutExpectedServices, IExpectedServices { }
 
 export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSettings = SettingStore.useState(store => store);
+    const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
+    const toastFunc = useToast();
 
     const enableClippy = (enabled: boolean) => {
         SettingStore.update((store: ISettingStore) => {
@@ -24,14 +28,17 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     const dynListProps = {
-        enableClippy: enableClippy,
         clippyIsEnabled: currentSettings.enabledClippy,
         virtualAssistantService: props.virtualAssistantService,
+        secretStore: SecretStore,
+        currentSecretsFound,
+        toastFunc,
+        enableClippy: enableClippy,
     }
 
     const cmd = {
         dynamicList: dynamicListFunc(dynListProps),
-        staticList,
+        staticList: staticList(),
     }
 
     const config = {

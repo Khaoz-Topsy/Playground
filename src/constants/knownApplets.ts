@@ -26,8 +26,8 @@ export class KnownApplets {
         name: LocaleKey.pictureViewer,
         appletType: AppletType.picture,
         type: FileType.applet,
-        info: { version: '0.1.9', size: 121, installedOn: new Date('2021-06-10') },
         numAllowedInstances: 3,
+        info: { version: '0.1.9', size: 121, installedOn: new Date('2021-06-10') },
     };
     static nyanCat: IAppletFile = {
         id: 1.04,
@@ -35,8 +35,8 @@ export class KnownApplets {
         name: LocaleKey.nyanCat,
         appletType: AppletType.nyanCat,
         type: FileType.applet,
-        info: { version: '0.3.4', size: 20, installedOn: new Date('2021-06-04'), author: 'Cristina Sturm', projectUrl: 'https://cristurm.github.io/nyan-cat/' },
         numAllowedInstances: 3,
+        info: { version: '0.3.4', size: 20, installedOn: new Date('2021-06-04'), author: 'Cristina Sturm', projectUrl: 'https://cristurm.github.io/nyan-cat/' },
     };
     static notes: IAppletFile = {
         id: 1.05,
@@ -44,6 +44,7 @@ export class KnownApplets {
         name: LocaleKey.notes,
         appletType: AppletType.notes,
         type: FileType.applet,
+        numAllowedInstances: 5,
         info: { version: '0.2.2', size: 700, installedOn: new Date('2021-06-20') },
     };
     static terminal: IAppletFile = {
@@ -110,6 +111,14 @@ export class KnownApplets {
         appletType: AppletType.liveTv,
         type: FileType.applet,
         info: { version: '0.44.4', size: 3751, installedOn: new Date('2021-07-12'), updatedOn: new Date('2021-07-12') },
+    };
+    static twitterTimeline: IAppletFile = {
+        id: 1.15,
+        parentId: 1.15,
+        name: LocaleKey.twitterFeed,
+        appletType: AppletType.tweeter,
+        type: FileType.applet,
+        info: { version: '0.3.4', size: 191, installedOn: new Date('2021-07-19') },
     };
 }
 

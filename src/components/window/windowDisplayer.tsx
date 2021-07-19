@@ -9,6 +9,7 @@ import { LiveTvApplet } from '../applet/kurt/liveTvApplet';
 import { IFrameApplet } from '../applet/iframe/iframeApplet';
 import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
 import { MonitorApplet } from '../applet/kurt/monitorApplet';
+import { TweetListApplet } from '../applet/tweeter/tweetList';
 import { PictureApplet } from '../applet/picture/pictureApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
@@ -34,6 +35,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.nyanCat: return <NyanCatApplet key={appKey} {...appProps} />
         case AppletType.picture: return <PictureApplet key={appKey} {...appProps} />
         case AppletType.setting: return <SettingApplet key={appKey} {...appProps} />
+        case AppletType.tweeter: return <TweetListApplet key={appKey} {...appProps} />
         case AppletType.terminal: return <TerminalApplet key={appKey} {...appProps} />
         case AppletType.musicPlayer: return <MusicPlayerApplet key={appKey} {...appProps} />
         case AppletType.assistantSMS: return <AssistantSMSApplet key={appKey} {...appProps} />
