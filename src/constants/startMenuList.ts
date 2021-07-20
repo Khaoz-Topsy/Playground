@@ -3,7 +3,6 @@ import { KnownApplets } from '../constants/knownApplets';
 import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuAnimation, StartMenuSize } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
 import { AppletIcon, FileIcon, MiscIcon } from './appImage';
-import { AppletType } from './enum/appletType';
 import { site } from './site';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [

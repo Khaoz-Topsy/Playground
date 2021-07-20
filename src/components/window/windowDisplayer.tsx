@@ -39,6 +39,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.terminal: return <TerminalApplet key={appKey} {...appProps} />
         case AppletType.musicPlayer: return <MusicPlayerApplet key={appKey} {...appProps} />
         case AppletType.assistantSMS: return <AssistantSMSApplet key={appKey} {...appProps} />
+        case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />
     }
 
     return null;

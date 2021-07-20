@@ -8,7 +8,6 @@ import { currentShortTime, currentShortDate, currentMediumTime, currentMediumDat
 import { enterFullScreen, exitFullScreen, isFullscreen } from '../../../helper/documentHelper';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
-import { SettingStore } from '../../../state/setting/store';
 
 interface IProps {
     toggleStartMenu: (newValue?: boolean) => void;

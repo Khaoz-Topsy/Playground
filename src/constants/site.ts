@@ -33,6 +33,7 @@ export const site = {
         tools: 'https://tools.assistantapps.com',
         github: 'https://assistantapps.com/github',
         discord: 'https://assistantapps.com/discord',
+        discordInviteEmbed: 'https://discord.com/widget?id=625007826913198080&theme=dark',
         patreon: 'https://www.patreon.com/AssistantApps',
         youtube: 'https://www.youtube.com/channel/UCpKNMVk7ZWvBk-psQQZqz5w',
         nms: {

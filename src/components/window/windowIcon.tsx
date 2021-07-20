@@ -17,6 +17,7 @@ export const windowIconString = (appletType: AppletType): string => {
         case AppletType.setting: return AppletIcon.settings;
         case AppletType.terminal: return AppletIcon.terminal;
         case AppletType.musicPlayer: return AppletIcon.music;
+        case AppletType.discordInvite: return FileIcon.discord;
         case AppletType.assistantSMS: return AppletIcon.assistantSMS;
     }
     return error;

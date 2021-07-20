@@ -7,7 +7,12 @@ import { BasicImage } from '../../core/image';
 import { site } from '../../../constants/site';
 import { FileIcon } from '../../../constants/appImage';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { openAppletOrFile } from '../../../helper/appletHelper';
 import { openExternalInNewTab } from '../../../helper/linkHelper';
+import { WindowStore } from '../../../state/window/store';
+import { FileType, IAppletFile } from '../../../contracts/interface/IFile';
+import { AppletType } from '../../../constants/enum/appletType';
+import { minWidth } from '../../../constants/window';
 
 interface IProps {
     toggleStartMenu: (newValue?: boolean) => void;
@@ -34,13 +39,27 @@ export const TaskbarDiscordIcon: React.FC<IProps> = (props: IProps) => {
         }
     ];
 
+    const openDiscordIframe = () => {
+        const tempApplet: IAppletFile = {
+            id: 333,
+            parentId: 333,
+            appletType: AppletType.discordInvite,
+            name: 'Discord' as any,
+            imgUrl: FileIcon.discord,
+            type: FileType.applet,
+            info: null as any,
+            meta: { src: site.assistantApps.discordInviteEmbed, defaultWidth: minWidth },
+        };
+        openAppletOrFile(WindowStore, tempApplet);
+    }
+
     return (
         <ContextMenuWrapper
             baseKey="TaskbarDiscord"
             className="taskbar-notification taskbar-highlight-on-hover noselect"
             items={menuItems}
         >
-            <Center>
+            <Center onClick={openDiscordIframe}>
                 <DiscordMiniLogo />
             </Center>
         </ContextMenuWrapper>

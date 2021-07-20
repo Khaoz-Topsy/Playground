@@ -3,6 +3,7 @@ import { AppletType } from '../constants/enum/appletType';
 
 interface IBaseIframeRequirements {
     appletType: AppletType;
+    imgUrl?: string;
     meta?: any;
 }
 
