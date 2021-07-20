@@ -28,8 +28,7 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
             break;
         }
     }
-
-    const iframeUrl = getIframeUrl(foundApplet);
+    const iframeUrl = getIframeUrl(foundApplet ?? props);
 
     return (
         <div className="window-header" onDoubleClick={props.onMaximise}>
@@ -41,32 +40,28 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
             }
             {
                 (foundApplet != null) &&
-                <>
-                    <Popover placement="top-start">
-                        <PopoverTrigger>
-                            <div className="window-info">
-                                <ChevronDownIcon />
-                            </div>
-                        </PopoverTrigger>
-                        <PopoverContent border="none" className="popover-custom">
-                            <PopoverArrow />
-                            <PopoverCloseButton />
-                            {/* <PopoverHeader>Confirmation!</PopoverHeader> */}
-                            <PopoverBody>
-                                <SpotlightSearchResultMeta searchResult={foundApplet} hideImage={true} />
-                            </PopoverBody>
-                        </PopoverContent>
-                    </Popover>
-
-                    {
-                        iframeUrl &&
-                        <Tooltip label="Open in new tab" fontSize="md">
-                            <div className="window-info" onClick={() => openExternalInNewTab(iframeUrl)}>
-                                <ExternalLinkIcon />
-                            </div>
-                        </Tooltip>
-                    }
-                </>
+                <Popover placement="top-start">
+                    <PopoverTrigger>
+                        <div className="window-info">
+                            <ChevronDownIcon />
+                        </div>
+                    </PopoverTrigger>
+                    <PopoverContent border="none" className="popover-custom">
+                        <PopoverArrow />
+                        <PopoverCloseButton />
+                        <PopoverBody>
+                            <SpotlightSearchResultMeta searchResult={foundApplet} hideImage={true} />
+                        </PopoverBody>
+                    </PopoverContent>
+                </Popover>
+            }
+            {
+                iframeUrl &&
+                <Tooltip label="Open in new tab" fontSize="md">
+                    <div className="window-info" onClick={() => openExternalInNewTab(iframeUrl)}>
+                        <ExternalLinkIcon />
+                    </div>
+                </Tooltip>
             }
             <div className="content noselect">
                 {translate(props.name)}

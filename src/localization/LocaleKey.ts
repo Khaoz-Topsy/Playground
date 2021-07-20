@@ -121,6 +121,7 @@ export enum LocaleKey {
   exitFullscreen,
   exit,
   blog,
+  iotPublication,
   loading,
   unknown
 }

@@ -120,6 +120,15 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '0.3.4', size: 191, installedOn: new Date('2021-07-19') },
     };
+    static iotPublication: IAppletFile = {
+        id: 1.16,
+        parentId: 1.16,
+        name: LocaleKey.iotPublication,
+        appletType: AppletType.iotPublication,
+        type: FileType.applet,
+        meta: { key: "iotPublication-iframe", src: getIframeUrl({ appletType: AppletType.iotPublication } as any) },
+        info: { version: '1.0.0', size: 191, installedOn: new Date('2021-07-20') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

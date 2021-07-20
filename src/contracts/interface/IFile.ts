@@ -65,4 +65,5 @@ export const isApplet = (fileOrApplet: IFile | IAppletFile): fileOrApplet is IAp
 }
 export const isLink = (fileOrApplet: IFile | IAppletFile): fileOrApplet is IFile => {
     return (fileOrApplet as IFile)?.meta?.external !== undefined;
+    // return (fileOrApplet as IFile)?.meta?.external !== undefined && (fileOrApplet as IAppletFile).appletType == undefined;
 }
