@@ -118,7 +118,7 @@
     display: inline-block;
     height: 0;
     color: _palette(fg);
-    background-color: _palette(bg-transparent);
+    background-color: _palette(bg-transparent-focused);
     border-top-left-radius: 20px;
     transition: height 250ms ease-in-out;
     transition-property: height, padding, opacity;

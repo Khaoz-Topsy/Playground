@@ -1,9 +1,7 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
 
-import { secretsFound } from '../../constants/secretsFound';
 import { CustomCheckbox } from '../core/checkbox';
-import { SecretStore } from '../../state/secrets/store';
 import { Sticky } from './sticky';
 import { LocaleKey } from '../../localization/LocaleKey';
 
