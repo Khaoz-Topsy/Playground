@@ -16,8 +16,9 @@ export enum AppletType {
     assistantSMS,
     musicPlayer,
     monitor,
-    discordInvite,
     liveTv,
+    discordInvite,
+    iotPublication,
 
     // Funny
     nyanCat,

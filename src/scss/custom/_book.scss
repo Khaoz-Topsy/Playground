@@ -2,7 +2,7 @@ $bookWidth: 150;
 $bookHeight: 149;
 $bookBorderRadius: 0 3px 3px 0;
 
-@keyframes initAnimation-eddf {
+@keyframes initAnimation {
     0% {
         transform: rotateY(0deg);
     }
@@ -12,7 +12,15 @@ $bookBorderRadius: 0 3px 3px 0;
     }
 }
 
-.book-container-eddf {
+.iot-container {
+    cursor: pointer;
+
+    &:hover .book-container .book {
+        transform: rotateY(-10deg);
+    }
+}
+
+.book-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -25,11 +33,7 @@ $bookBorderRadius: 0 3px 3px 0;
         transform-style: preserve-3d;
         transform: rotateY(-30deg);
         transition: transform 1s ease;
-        animation: 500ms ease 0s 1 initAnimation-eddf;
-
-        &:hover {
-            transform: rotateY(-10deg);
-        }
+        animation: 500ms ease 0s 1 initAnimation;
 
         &::before {
             position: absolute;

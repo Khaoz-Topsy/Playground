@@ -1,4 +1,4 @@
-import { AppletIcon, FileIcon, error } from '../../constants/appImage';
+import { AppletIcon, FileIcon, error, MiscIcon } from '../../constants/appImage';
 import { AppletType } from '../../constants/enum/appletType';
 import { BasicImage } from '../../components/core/image';
 
@@ -18,6 +18,7 @@ export const windowIconString = (appletType: AppletType): string => {
         case AppletType.terminal: return AppletIcon.terminal;
         case AppletType.musicPlayer: return AppletIcon.music;
         case AppletType.discordInvite: return FileIcon.discord;
+        case AppletType.iotPublication: return MiscIcon.iotPublication;
         case AppletType.assistantSMS: return AppletIcon.assistantSMS;
     }
     return error;

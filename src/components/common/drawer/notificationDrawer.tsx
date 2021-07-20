@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, SimpleGrid, Spinner } from '@chakra-ui/react';
 
-import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
-import { withServices } from '../../../integration/dependencyInjection';
-import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
-import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
-import { NotificationDrawerIcon } from './notificationDrawerIcon';
-import { NetworkState } from '../../../constants/enum/networkState';
 import { BasicLazyImage } from '../../core/image';
 import { MiscIcon } from '../../../constants/appImage';
-import { openExternalInNewTab } from '../../../helper/linkHelper';
-import { site } from '../../../constants/site';
+import { DocumentFile } from '../../../constants/documentFile';
+import { AppletType } from '../../../constants/enum/appletType';
+import { NetworkState } from '../../../constants/enum/networkState';
+import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
+import { FileType, IAppletFile } from '../../../contracts/interface/IFile';
+import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
+import { openAppletOrFile } from '../../../helper/appletHelper';
+import { withServices } from '../../../integration/dependencyInjection';
+import { WindowStore } from '../../../state/window/store';
+
+import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
+import { NotificationDrawerIcon } from './notificationDrawerIcon';
 
 interface IWithoutExpectedServices {
-    onClose(): void
+    onClose: () => void
 };
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
@@ -32,6 +36,20 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
         });
         // eslint-disable-next-line
     }, []);
+
+    const openIotPublicationInIframe = () => {
+        props.onClose();
+        const tempApplet: IAppletFile = {
+            id: 444,
+            parentId: 444,
+            appletType: AppletType.iotPublication,
+            name: 'IoT Publication' as any,
+            type: FileType.applet,
+            info: null as any,
+            meta: { src: DocumentFile.iotPublications },
+        };
+        openAppletOrFile(WindowStore, tempApplet);
+    }
 
     return (
         <>
@@ -62,8 +80,8 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                     }
                     <br />
                     <hr />
-                    <Flex px={2} cursor="pointer" onClick={() => openExternalInNewTab(site.kurt.iotPublication)}>
-                        <Box mt={10} className="book-container-eddf">
+                    <Flex px={2} className="iot-container" onClick={openIotPublicationInIframe}>
+                        <Box mt={10} className="book-container">
                             <div className="book">
                                 <BasicLazyImage imageUrl={MiscIcon.iotPublication} />
                             </div>
