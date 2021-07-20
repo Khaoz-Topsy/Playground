@@ -9,7 +9,6 @@ import { distinctFilter } from '../../../../helper/sortHelper';
 import { translate } from '../../../../integration/i18n';
 import { SecretStore } from '../../../../state/secrets/store';
 import { SettingItemSection } from '../settingItemSection';
-import { useState } from 'react';
 import { SettingStore } from '../../../../state/setting/store';
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { CustomCheckbox } from '../../../core/checkbox';
