@@ -5,10 +5,11 @@ import { IScanItem } from '../../contracts/virusScan';
 export interface IMiscStore {
     fileToScan?: IScanItem;
     appletViewProperties?: IAppletFile;
+    newEmailIsOpen: boolean;
 }
 
 export const defaultMiscProps: IMiscStore = {
-    // fileToScan: null,
+    newEmailIsOpen: false,
 };
 
 export const MiscStore = new Store<IMiscStore>(defaultMiscProps);

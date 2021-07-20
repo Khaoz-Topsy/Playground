@@ -2,7 +2,7 @@ import DragSelect from 'dragselect';
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 
-// import { TutorialSticky } from '../../sticky/tutorialSticky';
+import { TutorialSticky } from '../../sticky/tutorialSticky';
 import { AppletType } from '../../../constants/enum/appletType';
 import { DesktopIcons } from '../../../constants/desktopIconList';
 import { WindowStore } from '../../../state/window/store';
@@ -75,7 +75,7 @@ export const Desktop: React.FC = () => {
 
     return (
         <div className={classNames('fullscreen layer', 'bg', background)}>
-            <div id="desktop-grid" className="fullscreen p1">
+            <div id="desktop-grid" className="fullscreen px1">
                 {
                     DesktopIcons.map((desktopIcon, index: number) => {
                         return (
@@ -90,7 +90,7 @@ export const Desktop: React.FC = () => {
                         );
                     })
                 }
-                {/* <TutorialSticky /> */}
+                <TutorialSticky />
             </div>
         </div>
     );

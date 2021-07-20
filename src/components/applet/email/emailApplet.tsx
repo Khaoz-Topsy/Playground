@@ -1,5 +1,7 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import { Badge, Center } from '@chakra-ui/react';
+import { Fab } from '@material-ui/core';
+import { AddIcon } from '@chakra-ui/icons';
 import classNames from 'classnames';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
@@ -11,13 +13,13 @@ import { LoadingImage } from '../../../components/core/loader';
 import { MarkdownContent } from '../../core/markdown';
 import { sortByPropAsc } from '../../../helper/sortHelper';
 import { withServices } from '../../../integration/dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 import { EmailStore } from '../../../state/email/store';
 import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
-import { NewEmailPopup } from './newEmailPopup';
-import { LocaleKey } from '../../../localization/LocaleKey';
-import { translate } from '../../../integration/i18n';
+import { MiscStore } from '../../../state/misc/store';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -92,7 +94,9 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                         </div>
                     ))
                 }
-                <NewEmailPopup />
+                <Fab color="primary" aria-label="add" onClick={() => MiscStore.update(store => ({ ...store, newEmailIsOpen: true }))}>
+                    <AddIcon />
+                </Fab>
             </div>
         );
     }

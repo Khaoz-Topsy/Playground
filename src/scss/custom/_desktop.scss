@@ -1,13 +1,15 @@
 #desktop-grid {
     display: grid;
-    grid-template-columns: repeat(12, minmax(50px, 10%));
+    grid-template-columns: repeat($desktopGridNumColumns, minmax(50px, 10%));
     grid-template-rows: repeat(5, minmax(50px, 20%));
     grid-row-gap: 4px;
     grid-column-gap: 4px;
     grid-auto-flow: column;
 
     .desktop-icon-slot {
-        padding: 0.5em 0 0.25em 0;
+        width: #{$desktopIconSize}em;
+        height: #{$desktopIconSize}em;
+        margin: 1em 0;
         border-radius: 7px;
         background-color: transparent;
         border: 2px solid transparent;
@@ -19,6 +21,10 @@
             background-color: _palette(windows-select);
             border-color: _palette(windows-select-border);
 
+            &:hover {
+                cursor: grab;
+            }
+
             p {
                 -webkit-line-clamp: 2;
             }
@@ -29,13 +35,13 @@
         }
 
         img {
-            // width: calc(100% - 3em);
-            height: 60%;
+            height: #{$desktopIconSize - 2}em;
             margin: 0 auto;
             border-radius: 5px;
         }
 
-        p {@extend .single-line;
+        p {
+            @extend .single-line;
             text-align: center;
             color: _palette(fg);
             text-shadow: 0 0 3px _palette(bg);

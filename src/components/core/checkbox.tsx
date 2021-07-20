@@ -6,13 +6,17 @@ import { LocaleKey } from '../../localization/LocaleKey';
 
 export interface ICustomCheckbox {
     name?: LocaleKey;
-    isChecked: boolean;
+    isChecked?: boolean;
     children?: ReactNode;
     onChange?: (newIsChecked: boolean) => void;
 }
 export const CustomCheckbox = (props: ICustomCheckbox) => {
+    const onChange = props.onChange != null
+        ? () => props.onChange?.(!props.isChecked)
+        : undefined;
+
     return (
-        <Checkbox colorScheme="primary" iconColor="white" isChecked={props.isChecked} onChange={() => props.onChange?.(!props.isChecked)}>
+        <Checkbox colorScheme="primary" iconColor="white" isChecked={props.isChecked} onChange={onChange}>
             {props.name && translate(props.name)}
             {props.children && props.children}
         </Checkbox>

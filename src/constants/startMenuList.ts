@@ -70,7 +70,7 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
 
 export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
     {
-        id: 101,
+        id: 201,
         parentId: 101,
         name: LocaleKey.assistantApps,
         imgUrl: AppletIcon.assistantApps,
@@ -81,7 +81,7 @@ export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
         size: StartMenuSize.small,
     },
     {
-        id: 102,
+        id: 202,
         parentId: 102,
         name: LocaleKey.assistantApps,
         imgUrl: FileIcon.discord,
@@ -92,13 +92,15 @@ export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
     },
     {
         ...KnownApplets.twitterTimeline,
+        id: 203,
+        parentId: 103,
         backgroundColour: '#00ACED',
         meta: { src: site.assistantApps.nms.twitter },
         size: StartMenuSize.small,
     },
     {
-        id: 102,
-        parentId: 102,
+        id: 204,
+        parentId: 104,
         name: LocaleKey.blog,
         imgUrl: AppletIcon.blog,
         backgroundColour: '#2C2C2C',

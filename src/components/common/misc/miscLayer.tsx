@@ -3,6 +3,7 @@ import React from 'react';
 import { VirusScan } from '../../../components/common/virusScan';
 import { AppletDetail } from '../../../components/window/applet/appletDetail';
 import { MiscStore } from '../../../state/misc/store';
+import { NewEmailPopup } from '../../applet/email/newEmailPopup';
 
 interface IProps { }
 
@@ -21,6 +22,12 @@ export const MiscLayer: React.FC<IProps> = (props: IProps) => {
         }));
     }
 
+    const closeEmailModal = () => {
+        MiscStore.update(() => ({
+            newEmailIsOpen: false,
+        }));
+    }
+
     return (
         <>
             <VirusScan
@@ -36,6 +43,12 @@ export const MiscLayer: React.FC<IProps> = (props: IProps) => {
                 isOpen={miscStr?.appletViewProperties != null}
                 applet={miscStr?.appletViewProperties}
                 onClose={closePropertiesModal}
+            />
+
+            <NewEmailPopup
+                key={miscStr?.newEmailIsOpen?.toString?.()}
+                isOpen={miscStr?.newEmailIsOpen}
+                onClose={closeEmailModal}
             />
         </>
     );

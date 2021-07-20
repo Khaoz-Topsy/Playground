@@ -20,7 +20,7 @@ export const VirusScan: React.FC<IVirusScanProps> = (props: IVirusScanProps) => 
     useEffect(() => {
         if (!isScanning) return;
 
-        const milliSeconds = (Math.random() * 2000) + 4000; // between 4 - 6 seconds
+        const milliSeconds = (Math.random() * 2000) + 2000; // between 2 - 4 seconds
         const timeout = setTimeout(() => setScanning(false), milliSeconds);
         return () => clearTimeout(timeout);
         // eslint-disable-next-line

@@ -64,6 +64,9 @@ $taskbar-bottom-highlight-minimised: 4;
 $taskbar-bottom-highlight-background: 10;
 $taskbar-hover: rgba(255, 255, 255, 0.1);
 
+$desktopIconSize: 8;
+$desktopGridNumColumns: 12;
+
 .glass-background {
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(5.0px);
@@ -82,6 +85,7 @@ $taskbar-hover: rgba(255, 255, 255, 0.1);
 .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
+
     &::-webkit-scrollbar {
         display: none;
     }

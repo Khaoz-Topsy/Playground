@@ -36,10 +36,11 @@ export const TaskbarDiscordIcon: React.FC<IProps> = (props: IProps) => {
         {
             name: LocaleKey.exit,
             optionState: OptionState.Disabled,
-        }
+        },
     ];
 
     const openDiscordIframe = () => {
+        props.toggleStartMenu(false);
         const tempApplet: IAppletFile = {
             id: 333,
             parentId: 333,

@@ -11,21 +11,23 @@
     font-smoothing: subpixel-antialiased;
 
     width: 250px;
-    height: 250px;
     max-width: 520px;
-    max-height: 250px;
+    min-height: 250px;
 
     &.tutorial {
         grid-row-start: 1;
         grid-row-end: 3;
-        grid-column-start: 2;
-        grid-column-end: 3;
+        grid-column-start: #{$desktopGridNumColumns - 1};
+        grid-column-end: $desktopGridNumColumns;
+        margin-top: 1em;
+        margin-left: 0em;
         color: white;
         background: linear-gradient(#366c95, #275b83);
     }
 
     &:hover {
         box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+        cursor: grab;
     }
 
     &:focus {
