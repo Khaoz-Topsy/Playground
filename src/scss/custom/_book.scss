@@ -1,0 +1,92 @@
+$bookWidth: 150;
+$bookHeight: 149;
+$bookBorderRadius: 0 3px 3px 0;
+
+@keyframes initAnimation-eddf {
+    0% {
+        transform: rotateY(0deg);
+    }
+
+    100% {
+        transform: rotateY(-30deg);
+    }
+}
+
+.book-container-eddf {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 600px;
+
+    .book {
+        width: #{$bookWidth}px;
+        height: #{$bookHeight}px;
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateY(-30deg);
+        transition: transform 1s ease;
+        animation: 500ms ease 0s 1 initAnimation-eddf;
+
+        &:hover {
+            transform: rotateY(-10deg);
+        }
+
+        &::before {
+            position: absolute;
+            content: ' ';
+            left: 0;
+            top: 3px;
+            width: #{$bookWidth * 0.24}px;
+            height: #{$bookHeight * 0.965}px;
+            transform: translateX(#{$bookWidth * 0.86}px) rotateY(90deg);
+            background: linear-gradient(90deg,
+                    #fff 0%,
+                    #f9f9f9 5%,
+                    #fff 10%,
+                    #f9f9f9 15%,
+                    #fff 20%,
+                    #f9f9f9 25%,
+                    #fff 30%,
+                    #f9f9f9 35%,
+                    #fff 40%,
+                    #f9f9f9 45%,
+                    #fff 50%,
+                    #f9f9f9 55%,
+                    #fff 60%,
+                    #f9f9f9 65%,
+                    #fff 70%,
+                    #f9f9f9 75%,
+                    #fff 80%,
+                    #f9f9f9 85%,
+                    #fff 90%,
+                    #f9f9f9 95%,
+                    #fff 100%);
+        }
+
+        &::after {
+            position: absolute;
+            top: 0;
+            left: 0;
+            content: ' ';
+            width: #{$bookWidth}px;
+            height: #{$bookHeight}px;
+            transform: translateZ(-25px);
+            background-color: #01060f;
+            border-radius: $bookBorderRadius;
+            box-shadow: -10px 0 50px 10px #aaaaaa;
+        }
+
+        > :first-child {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: #{$bookWidth}px;
+            height: #{$bookHeight}px;
+            transform: translateZ(25px);
+            background-color: #01060f;
+            border-radius: $bookBorderRadius;
+            box-shadow: 5px 5px 20px #aaaaaa;
+            background-color: #01060f;
+        }
+    }
+}

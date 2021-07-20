@@ -51,7 +51,7 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         animatedTile: StartMenuAnimation.slideverticalinverse,
         secondsPerImage: 10,
         images: [
-            AppletIcon.twitch,
+            MiscIcon.twitch,
             MiscIcon.streamPreview,
         ]
     },
@@ -73,7 +73,7 @@ export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
         id: 201,
         parentId: 101,
         name: LocaleKey.assistantApps,
-        imgUrl: AppletIcon.assistantApps,
+        imgUrl: MiscIcon.assistantApps,
         backgroundColour: '#1D1D1B',
         backgroundImage: 'linear-gradient(330deg, #1D1D1B 0%, #31312e 80%)',
         type: FileType.link,

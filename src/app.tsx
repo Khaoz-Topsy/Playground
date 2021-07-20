@@ -108,6 +108,7 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
         toggleStartMenu={toggleStartMenu}
       />
       <Drawer
+        size="md"
         isOpen={isOpen}
         placement="right"
         onClose={onClose}

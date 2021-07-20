@@ -138,7 +138,7 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
                 <ArrowForwardIcon />
             </motion.div>
 
-            <div className="content noselect" style={{ marginRight: '1.25em' }}>
+            <div className="content noselect">
                 <Breadcrumb style={{ marginTop: '2px' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>
                     {
                         props.breadcrumbs.map((bread: IBreadcrumb) => (

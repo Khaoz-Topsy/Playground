@@ -21,9 +21,7 @@ export class AppletIcon {
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
     static application = imgFolder + 'appIcons/application.png';
-    static assistantApps = imgFolder + 'assistantApps.png';
     static twitter = imgFolder + 'appIcons/twitter.png';
-    static twitch = imgFolder + 'twitch.png';
 }
 
 export class FileIcon {
@@ -41,6 +39,10 @@ export class FileIcon {
 }
 
 export class MiscIcon {
+    static iotPublication = imgFolder + 'IoTPublication.png';
+    static assistantApps = imgFolder + 'assistantApps.png';
+    static twitch = imgFolder + 'twitch.png';
+
     static streamPreview = vidFolder + 'streamPreview.min.gif';
     static static = vidFolder + 'static.gif';
 }

@@ -14,10 +14,16 @@ export const TutorialSticky: React.FC<IProps> = (props: IProps) => {
     return (
         <Sticky classNames="tutorial">
             <Box className="noselect">
-                <h1>Things you can do:</h1>
-                {renderCheckbox('Open StartMenu' as any)}
-                {renderCheckbox('Open Applet from Desktop' as any)}
-                {renderCheckbox('Open Applet from Taskbar' as any)}
+                <b>Welcome! Here are some things you can do on this site</b>
+                <hr />
+                {renderCheckbox('Open the StartMenu' as any)}
+                {renderCheckbox('Open an Applet from Desktop' as any)}
+                {renderCheckbox('Open an Applet from Taskbar' as any)}
+                {renderCheckbox('Open the File Explorer and navigate around a bit' as any)}
+                {renderCheckbox('Open the Settings Applet and customize' as any)}
+                {renderCheckbox('Try some keyboard shortcuts' as any)}
+                {renderCheckbox('Find some secrets' as any)}
+                {renderCheckbox('Send an Email' as any)}
             </Box>
         </Sticky>
     );

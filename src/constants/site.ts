@@ -17,6 +17,7 @@ export const site = {
         linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
         twitchLivePlayer: 'https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true',
+        iotPublication: 'https://culture.entelect.co.za/wp-content/uploads/2021/07/Entelect-Demystifying-IoT-1.pdf',
         twitchPanel: 'https://www.twitch.tv/popout/khaoztopsy/extensions/kd1to03pwcm70z85apafwy5rl9mr53/panel',
         monitor: 'https://monitor.kurtlourens.com/KhaozNet-AssistantNMS-AssistantApps-RedRubyIT',
         steam: 'https://steamcommunity.com/id/Khaoz-Topsy',

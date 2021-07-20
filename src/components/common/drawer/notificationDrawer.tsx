@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Spinner } from '@chakra-ui/react';
+import { Box, Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Flex, SimpleGrid, Spinner } from '@chakra-ui/react';
 
 import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
 import { withServices } from '../../../integration/dependencyInjection';
@@ -7,6 +7,10 @@ import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
 import { NotificationDrawerIcon } from './notificationDrawerIcon';
 import { NetworkState } from '../../../constants/enum/networkState';
+import { BasicLazyImage } from '../../core/image';
+import { MiscIcon } from '../../../constants/appImage';
+import { openExternalInNewTab } from '../../../helper/linkHelper';
+import { site } from '../../../constants/site';
 
 interface IWithoutExpectedServices {
     onClose(): void
@@ -38,26 +42,37 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                 <hr />
 
                 <DrawerBody>
-                    <p>Welcome! to Kurt's Playground 🕹🎮</p>
-                    <br />
                     {
                         (blogItems?.length > 0) &&
                         <>
                             <h3>Latest blog posts</h3>
-                            <ul>
+                            <SimpleGrid minChildWidth="150px" columnGap="10px" rowGap="10px" className="mt1">
                                 {
-                                    (blogItems?.slice?.(0, 5) ?? []).map(item => {
+                                    (blogItems?.slice?.(0, 6) ?? []).map(item => {
                                         return (
                                             <NotificationDrawerIcon key={item.guid} {...item} />
                                         );
                                     })
                                 }
-                            </ul>
+                            </SimpleGrid>
                         </>
                     }
                     {
                         (networkState === NetworkState.Loading) && <Center><Spinner size="xl" /></Center>
                     }
+                    <br />
+                    <hr />
+                    <Flex px={2} cursor="pointer" onClick={() => openExternalInNewTab(site.kurt.iotPublication)}>
+                        <Box mt={10} className="book-container-eddf">
+                            <div className="book">
+                                <BasicLazyImage imageUrl={MiscIcon.iotPublication} />
+                            </div>
+                        </Box>
+                        <Box ml={7} className="mt2 ta-center">
+                            <h2>IoT Publication</h2>
+                            <p>I had the opportunity to contribute to this beautiful document that gives some fantastic info on the Internet of Things. Its free for you to look at and download!</p>
+                        </Box>
+                    </Flex>
                 </DrawerBody>
 
                 <DrawerFooter>

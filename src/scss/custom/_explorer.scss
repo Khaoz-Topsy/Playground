@@ -55,6 +55,12 @@ $explorer-icon-size: 100px;
                 overflow: hidden;
                 height: #{$window-header-explorer-height}px;
                 pointer-events: all;
+
+                .chakra-breadcrumb {
+                    position: relative;
+                    margin-right: 5em;
+                    margin-left: 10em;
+                }
             }
 
             .window-actions {

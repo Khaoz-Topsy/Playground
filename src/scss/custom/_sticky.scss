@@ -10,17 +10,18 @@
     font-smooth: subpixel-antialiased;
     font-smoothing: subpixel-antialiased;
 
-    width: 250px;
-    max-width: 520px;
-    min-height: 250px;
+    width: 300px;
+    min-height: 150px;
 
     &.tutorial {
+        position: absolute;
+        top: 0;
+        right: 0;
         grid-row-start: 1;
         grid-row-end: 3;
         grid-column-start: #{$desktopGridNumColumns - 1};
-        grid-column-end: $desktopGridNumColumns;
+        grid-column-end: #{$desktopGridNumColumns + 1};
         margin-top: 1em;
-        margin-left: 0em;
         color: white;
         background: linear-gradient(#366c95, #275b83);
     }
