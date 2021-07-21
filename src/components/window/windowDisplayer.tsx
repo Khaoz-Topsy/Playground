@@ -15,6 +15,8 @@ import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
 import { SettingApplet } from '../applet/settings/settingApplet';
 import { TerminalApplet } from '../applet/terminal/terminalApplet';
+import { PresentationApplet } from '../applet/kurt/presentationApplet';
+import { AssistantNMSApplet } from '../applet/assistantApps/assistantNMSApplet';
 import { AssistantSMSApplet } from '../applet/assistantApps/assistantSMSApplet';
 
 import { IApplet } from '../../contracts/interface/IApplet';
@@ -38,7 +40,9 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.tweeter: return <TweetListApplet key={appKey} {...appProps} />
         case AppletType.terminal: return <TerminalApplet key={appKey} {...appProps} />
         case AppletType.musicPlayer: return <MusicPlayerApplet key={appKey} {...appProps} />
+        case AppletType.assistantNMS: return <AssistantNMSApplet key={appKey} {...appProps} />
         case AppletType.assistantSMS: return <AssistantSMSApplet key={appKey} {...appProps} />
+        case AppletType.presentation: return <PresentationApplet key={appKey} {...appProps} />
 
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.iotPublication: return <IFrameApplet key={appKey} {...appProps} />

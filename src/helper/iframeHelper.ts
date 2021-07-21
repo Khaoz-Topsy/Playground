@@ -16,6 +16,7 @@ export const getIframeUrl = (applet: IBaseIframeRequirements | undefined): strin
 
     if (applet.appletType === AppletType.kurt) return site.kurt.website;
     if (applet.appletType === AppletType.monitor) return site.kurt.monitor;
+    if (applet.appletType === AppletType.presentation) return site.kurt.presentation;
     if (applet.appletType === AppletType.assistantSMS) return site.assistantApps.sms.webapp;
     if (applet.appletType === AppletType.assistantNMS) return site.assistantApps.nms.webapp;
     if (applet.appletType === AppletType.iotPublication) return DocumentFile.iotPublications;

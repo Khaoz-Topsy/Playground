@@ -15,6 +15,7 @@ export const site = {
         github: 'https://github.com/Khaoz-Topsy',
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
         linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
+        presentation: 'https://presentation.kurtlourens.com',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
         twitchLivePlayer: 'https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true',
         twitchPanel: 'https://www.twitch.tv/popout/khaoztopsy/extensions/kd1to03pwcm70z85apafwy5rl9mr53/panel',

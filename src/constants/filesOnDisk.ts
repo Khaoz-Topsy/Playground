@@ -52,6 +52,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.nms.googlePlay));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.nms.appleStore));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.noMansSky });
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.nms.webapp));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.homepage, FileIcon.web, site.assistantApps.nms.website));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.nms.github));
@@ -67,7 +68,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.sms.githubOrg));
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.vsCode, meta: { url: site.assistantApps.sms.vscodeUrlForApp } });
 
-    warn({ ...rootFolder.toIFolder() });
+    warn('filesOnDisk', { ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();
 };
 

@@ -71,33 +71,41 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '1.55.0-dev', size: 5063, installedOn: new Date('2021-06-06'), author: 'conwnet', projectUrl: 'https://github.com/conwnet/github1s' },
     };
-    static scrapMechanic: IAppletFile = {
+    static noMansSky: IAppletFile = {
         id: 1.09,
         parentId: 1.09,
+        name: LocaleKey.assistantNMS,
+        appletType: AppletType.assistantNMS,
+        type: FileType.applet,
+        info: { version: '0.3.18', size: 3598, installedOn: new Date('2021-07-21') },
+    };
+    static scrapMechanic: IAppletFile = {
+        id: 1.10,
+        parentId: 1.10,
         name: LocaleKey.assistantSMS,
         appletType: AppletType.assistantSMS,
         type: FileType.applet,
         info: { version: '0.5.1', size: 5907, installedOn: new Date('2021-06-11') },
     };
     static musicPlayer: IAppletFile = {
-        id: 1.10,
-        parentId: 1.10,
+        id: 1.11,
+        parentId: 1.11,
         name: LocaleKey.musicPlayer,
         appletType: AppletType.musicPlayer,
         type: FileType.applet,
         info: { version: '62.548.1', size: 98, installedOn: new Date('2021-06-27') },
     };
     static email: IAppletFile = {
-        id: 1.11,
-        parentId: 1.11,
+        id: 1.12,
+        parentId: 1.12,
         name: LocaleKey.email,
         appletType: AppletType.email,
         type: FileType.applet,
         info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
     };
     static monitor: IAppletFile = {
-        id: 1.12,
-        parentId: 1.12,
+        id: 1.14,
+        parentId: 1.14,
         name: LocaleKey.monitor,
         appletType: AppletType.monitor,
         type: FileType.applet,
@@ -105,29 +113,37 @@ export class KnownApplets {
         info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
     };
     static liveTv: IAppletFile = {
-        id: 1.14,
-        parentId: 1.14,
+        id: 1.15,
+        parentId: 1.15,
         name: LocaleKey.liveTv,
         appletType: AppletType.liveTv,
         type: FileType.applet,
         info: { version: '0.44.4', size: 3751, installedOn: new Date('2021-07-12'), updatedOn: new Date('2021-07-12') },
     };
     static twitterTimeline: IAppletFile = {
-        id: 1.15,
-        parentId: 1.15,
+        id: 1.16,
+        parentId: 1.16,
         name: LocaleKey.twitterFeed,
         appletType: AppletType.tweeter,
         type: FileType.applet,
         info: { version: '0.3.4', size: 191, installedOn: new Date('2021-07-19') },
     };
     static iotPublication: IAppletFile = {
-        id: 1.16,
-        parentId: 1.16,
+        id: 1.17,
+        parentId: 1.17,
         name: LocaleKey.iotPublication,
         appletType: AppletType.iotPublication,
         type: FileType.applet,
         meta: { key: "iotPublication-iframe", src: getIframeUrl({ appletType: AppletType.iotPublication } as any) },
         info: { version: '1.0.0', size: 191, installedOn: new Date('2021-07-20') },
+    };
+    static presentation: IAppletFile = {
+        id: 1.18,
+        parentId: 1.18,
+        name: LocaleKey.presentation,
+        appletType: AppletType.presentation,
+        type: FileType.applet,
+        info: { version: '0.0.5', size: 5043, installedOn: new Date('2021-07-21') },
     };
 }
 

@@ -58,9 +58,10 @@ export const translate = (key: LocaleKey) => {
   const transKey = LocaleKey?.[key]?.toString?.() ?? LocaleKey.unknown;
   const trans = i18next.t(transKey);
   if (trans) return trans;
+  // return '.' + trans;
 
   if ((window as any).i18nextIsSetup === true) warn(`key not found: ${transKey.toString()}`);
 
   return transKey.toString();
-  // return '.' + i18next.t(key.toString());
+  // return '++' + i18next.t(key.toString());
 }

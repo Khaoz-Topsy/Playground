@@ -122,6 +122,10 @@ export enum LocaleKey {
   exit,
   blog,
   iotPublication,
+  iotPublicationDescrip,
+  presentation,
+  notifications,
+  latestBlogPosts,
   loading,
   unknown
 }

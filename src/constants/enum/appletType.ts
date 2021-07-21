@@ -19,6 +19,7 @@ export enum AppletType {
     liveTv,
     discordInvite,
     iotPublication,
+    presentation,
 
     // Funny
     nyanCat,

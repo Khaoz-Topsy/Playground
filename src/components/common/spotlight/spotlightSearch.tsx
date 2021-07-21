@@ -10,7 +10,7 @@ import { windowIcon } from '../../window/windowIcon';
 import { SpotlightSearchResultMeta } from './spotlightSearchResultMeta';
 
 interface IProps {
-    searchText: string;
+    searchText?: string;
     selectedSearchResult: number;
     searchResults: Array<IAppletFile>;
     setSelectedSearchResult: (newIndex: number) => void;
@@ -51,7 +51,7 @@ export const SpotlightSearchResult: React.FC<IProps> = (props: IProps) => {
                                 {windowIcon(appOrFile.appletType)}
                                 <p>{
                                     translate(appOrFile.name).split('').map((char: string, index: number) => {
-                                        const itemClassObj = { 'highlight': props.searchText.includes(char.toLocaleLowerCase()) };
+                                        const itemClassObj = { 'highlight': props.searchText?.includes?.(char?.toLocaleLowerCase?.()) };
                                         return (
                                             <span key={`${char}-${index}`} className={classNames(itemClassObj)}>{char}</span>
                                         );

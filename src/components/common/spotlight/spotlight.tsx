@@ -21,7 +21,7 @@ interface IProps {
 }
 
 export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
-    const [text, setText] = useState('');
+    const [text, setText] = useState<string | undefined>();
     const [selectedSearchResult, setSelectedSearchResult] = useState(0);
     let inputRef = useRef<HTMLInputElement | null>(null);
 
@@ -43,11 +43,11 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
         return false;
     }
 
-    const getSearchResults = (searchText: string): Array<IAppletFile> => {
+    const getSearchResults = (searchText?: string): Array<IAppletFile> => {
         const searchResults: Array<IAppletFile> = [];
-        if (searchText != null && searchText.length > 0) {
+        if (searchText != null) {
             for (const appletProp of allKnownApps()) {
-                if (searchText.includes('*') || lenientMatch(translate(appletProp.name).toLocaleLowerCase(), searchText)) {
+                if (searchText === '' || searchText.includes('*') || lenientMatch(translate(appletProp.name).toLocaleLowerCase(), searchText)) {
                     searchResults.push(appletProp)
                 }
             }
@@ -58,7 +58,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     const onCloseSpotlight = () => {
         (inputRef as any)?.blur?.();
         setTimeout(() => {
-            setText('');
+            setText(undefined);
             setSelectedSearchResult(0);
         }, 1000);
         props.onClose?.();
@@ -117,7 +117,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     }
 
     const onClick = (props.isOpen) ? onCloseSpotlight : () => { };
-    const searchResults: Array<IAppletFile> = getSearchResults(text.toLocaleLowerCase());
+    const searchResults: Array<IAppletFile> = getSearchResults(text?.toLocaleLowerCase?.());
 
     return (
         <div className="spotlight layer">
@@ -142,7 +142,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
                             id="spotlight"
                             type="text"
                             placeholder="Search"
-                            value={text}
+                            value={text ?? ''}
                             onKeyDown={onSpotlightType}
                             onChange={onSpotlightTextChange}
                         />

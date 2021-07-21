@@ -15,6 +15,8 @@ import { WindowStore } from '../../../state/window/store';
 
 import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
 import { NotificationDrawerIcon } from './notificationDrawerIcon';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 interface IWithoutExpectedServices {
     onClose: () => void
@@ -56,14 +58,14 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
             <DrawerOverlay />
             <DrawerContent className="notification-drawer">
                 <DrawerCloseButton />
-                <DrawerHeader>Notifications</DrawerHeader>
+                <DrawerHeader>{translate(LocaleKey.notifications)}</DrawerHeader>
                 <hr />
 
                 <DrawerBody>
                     {
                         (blogItems?.length > 0) &&
                         <>
-                            <h3>Latest blog posts</h3>
+                            <h3>{translate(LocaleKey.latestBlogPosts)}</h3>
                             <SimpleGrid minChildWidth="150px" columnGap="10px" rowGap="10px" className="mt1">
                                 {
                                     (blogItems?.slice?.(0, 6) ?? []).map(item => {
@@ -87,8 +89,8 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                             </div>
                         </Box>
                         <Box ml={7} className="mt2 ta-center">
-                            <h2>IoT Publication</h2>
-                            <p>I had the opportunity to contribute to this beautiful document that gives some fantastic info on the Internet of Things. Its free for you to look at and download!</p>
+                            <h2>{translate(LocaleKey.iotPublication)}</h2>
+                            <p>{translate(LocaleKey.iotPublicationDescrip)}</p>
                         </Box>
                     </Flex>
                 </DrawerBody>

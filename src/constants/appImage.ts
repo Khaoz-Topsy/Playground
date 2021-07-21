@@ -20,6 +20,7 @@ export class AppletIcon {
     static terminal = imgFolder + 'appIcons/terminal.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
+    static presentation = imgFolder + 'appIcons/presentation.png';
     static application = imgFolder + 'appIcons/application.png';
     static twitter = imgFolder + 'appIcons/twitter.png';
 }

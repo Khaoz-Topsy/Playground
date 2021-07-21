@@ -3,6 +3,9 @@ import { Icon } from '@chakra-ui/icons';
 import { FolderIcon, MusicNoteIcon, PhotographIcon } from '@heroicons/react/solid';
 import classNames from 'classnames';
 
+import { BasicImage } from '../../core/image';
+import { FileIcon } from '../../../constants/appImage';
+import { KnownApplets } from '../../../constants/knownApplets';
 import { IFolder } from '../../../contracts/interface/IFolder';
 import { IAppletFile, IFile } from '../../../contracts/interface/IFile';
 import { applicationFolderId, desktopFolderId, documentFolderId } from '../../../constants/filesOnDisk';
@@ -12,9 +15,6 @@ import { translate } from '../../../integration/i18n';
 import { withServices } from '../../../integration/dependencyInjection';
 
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
-import { BasicImage } from '../../core/image';
-import { FileIcon } from '../../../constants/appImage';
-import { KnownApplets } from '../../../constants/knownApplets';
 
 interface IWithoutExpectedServices {
     currentFolder: IFolder;
@@ -58,10 +58,10 @@ export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
                 </div>
             }
             <div className="item" onClick={props.openFileOrFolder?.(KnownApplets.musicPlayer)}>
-                <Icon as={MusicNoteIcon} />&nbsp;&nbsp;Music
+                <Icon as={MusicNoteIcon} />&nbsp;&nbsp;{translate(KnownApplets.musicPlayer.name)}
             </div>
             <div className="item" onClick={props.openFileOrFolder?.(KnownApplets.picture)}>
-                <Icon as={PhotographIcon} />&nbsp;&nbsp;Photos
+                <Icon as={PhotographIcon} />&nbsp;&nbsp;{translate(KnownApplets.picture.name)}
             </div>
             <hr />
         </div>
