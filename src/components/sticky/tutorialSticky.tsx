@@ -13,12 +13,14 @@ export const TutorialSticky: React.FC<IProps> = (props: IProps) => {
         <Sticky classNames="tutorial">
             <Box className="noselect">
                 <b>Welcome! Here are some things you can do on this site</b>
-                <hr />
+            </Box>
+            <hr />
+            <Box className="noselect">
                 {renderCheckbox('Open the StartMenu' as any)}
-                {renderCheckbox('Open an Applet from Desktop' as any)}
-                {renderCheckbox('Open an Applet from Taskbar' as any)}
-                {renderCheckbox('Open the File Explorer and navigate around a bit' as any)}
-                {renderCheckbox('Open the Settings Applet and customize' as any)}
+                {renderCheckbox('Open an App from Desktop' as any)}
+                {renderCheckbox('Open an App from Taskbar' as any)}
+                {renderCheckbox('Open the File Explorer and navigate through the files' as any)}
+                {renderCheckbox('Open the Settings App and customize' as any)}
                 {renderCheckbox('Try some keyboard shortcuts' as any)}
                 {renderCheckbox('Find some secrets' as any)}
                 {renderCheckbox('Send an Email' as any)}
@@ -29,7 +31,7 @@ export const TutorialSticky: React.FC<IProps> = (props: IProps) => {
 
 export const renderCheckbox = (title: LocaleKey) => {
     return (
-        <Box key={title} my={2}>
+        <Box key={title} mb={2}>
             <CustomCheckbox name={title} />
         </Box>
     );

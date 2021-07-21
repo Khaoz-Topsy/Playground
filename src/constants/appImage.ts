@@ -40,6 +40,9 @@ export class FileIcon {
 
 export class MiscIcon {
     static iotPublication = imgFolder + 'IoTPublication.png';
+    static iotPublication1 = imgFolder + 'IoTPublication1.png';
+    static iotPublication2 = imgFolder + 'IoTPublication2.png';
+    static iotPublication3 = imgFolder + 'IoTPublication3.png';
     static assistantApps = imgFolder + 'assistantApps.png';
     static twitch = imgFolder + 'twitch.png';
 

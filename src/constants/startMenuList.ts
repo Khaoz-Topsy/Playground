@@ -71,7 +71,7 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
 export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
     {
         id: 201,
-        parentId: 101,
+        parentId: 201,
         name: LocaleKey.assistantApps,
         imgUrl: MiscIcon.assistantApps,
         backgroundColour: '#1D1D1B',
@@ -82,25 +82,25 @@ export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
     },
     {
         id: 202,
-        parentId: 102,
+        parentId: 202,
         name: LocaleKey.assistantApps,
         imgUrl: FileIcon.discord,
         backgroundColour: '#1D1D1B',
         type: FileType.link,
-        meta: { external: site.assistantApps.website },
+        meta: { external: site.assistantApps.discord },
         size: StartMenuSize.small,
     },
     {
         ...KnownApplets.twitterTimeline,
         id: 203,
-        parentId: 103,
+        parentId: 203,
         backgroundColour: '#00ACED',
         meta: { src: site.assistantApps.nms.twitter },
         size: StartMenuSize.small,
     },
     {
         id: 204,
-        parentId: 104,
+        parentId: 204,
         name: LocaleKey.blog,
         imgUrl: AppletIcon.blog,
         backgroundColour: '#2C2C2C',
@@ -108,5 +108,21 @@ export const StartMenuExplore: Array<IStartMenuAppletFile | IStartMenuFile> = [
         type: FileType.link,
         meta: { external: site.kurt.blog },
         size: StartMenuSize.small,
+    },
+    {
+        ...KnownApplets.iotPublication,
+        id: 205,
+        parentId: 205,
+        backgroundColour: '#2C2C2C',
+        isFull: true,
+        size: StartMenuSize.large,
+        animatedTile: StartMenuAnimation.opacity,
+        secondsPerImage: 3,
+        images: [
+            MiscIcon.iotPublication,
+            MiscIcon.iotPublication1,
+            MiscIcon.iotPublication2,
+            MiscIcon.iotPublication3,
+        ]
     },
 ];

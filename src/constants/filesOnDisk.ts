@@ -1,14 +1,15 @@
-import { IFolder } from "../contracts/interface/IFolder";
-import { Folder } from "../contracts/implementation/Folder";
-import { Backgrounds, FileIcon, External, AppletIcon } from "./appImage";
-import { MarkdownFile } from "./markdownFile";
-import { DesktopIcons } from "./desktopIconList";
-import { allKnownApps, KnownApplets } from "./knownApplets";
-import { site } from "./site";
-import { imageFile, linkFile, markDownFile } from "../helper/fileHelper";
-import { sortByPropDesc } from "../helper/sortHelper";
-import { LocaleKey } from "../localization/LocaleKey";
-import { translate } from "../integration/i18n";
+import { site } from './site';
+import { Backgrounds, FileIcon, External, AppletIcon } from './appImage';
+import { MarkdownFile } from './markdownFile';
+import { DesktopIcons } from './desktopIconList';
+import { IFolder } from '../contracts/interface/IFolder';
+import { Folder } from '../contracts/implementation/Folder';
+import { allKnownApps, KnownApplets } from './knownApplets';
+import { imageFile, linkFile, markDownFile } from '../helper/fileHelper';
+import { sortByPropDesc } from '../helper/sortHelper';
+import { translate } from '../integration/i18n';
+import { warn } from '../integration/logging';
+import { LocaleKey } from '../localization/LocaleKey';
 
 export const applicationFolderId: any = '0.0';
 export const desktopFolderId: any = '0.1';
@@ -66,7 +67,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.sms.githubOrg));
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.vsCode, meta: { url: site.assistantApps.sms.vscodeUrlForApp } });
 
-    // console.warn({ ...rootFolder.toIFolder() });
+    warn({ ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();
 };
 

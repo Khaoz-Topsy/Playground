@@ -1,9 +1,10 @@
 import React from 'react';
 import { Icon } from '@chakra-ui/icons';
-import { Image, Center, useToast } from '@chakra-ui/react';
+import { Center, useToast } from '@chakra-ui/react';
 import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
+import { BasicImage } from '../../core/image';
 import { AppletIcon } from '../../../constants/appImage';
 import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
@@ -101,7 +102,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                         <div className="meat"></div>
                         <div className="bun bottom"></div>
                     </div> */}
-                    <Image src={AppletIcon.windows} alt={AppletIcon.windows} />
+                    <BasicImage imageUrl={AppletIcon.windows} alt={AppletIcon.windows} />
                 </TriggerAfterXClicks>
                 {
                     appsToDisplay.map((applet: LaunchedApp | NotLaunchedApp, index: number) => {

@@ -3,13 +3,13 @@ import { Box, Center, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter
 
 import { BasicLazyImage } from '../../core/image';
 import { MiscIcon } from '../../../constants/appImage';
-import { DocumentFile } from '../../../constants/documentFile';
 import { AppletType } from '../../../constants/enum/appletType';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { FileType, IAppletFile } from '../../../contracts/interface/IFile';
 import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
 import { openAppletOrFile } from '../../../helper/appletHelper';
+import { getIframeUrl } from '../../../helper/iframeHelper';
 import { withServices } from '../../../integration/dependencyInjection';
 import { WindowStore } from '../../../state/window/store';
 
@@ -46,7 +46,7 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
             name: 'IoT Publication' as any,
             type: FileType.applet,
             info: null as any,
-            meta: { src: DocumentFile.iotPublications },
+            meta: { src: getIframeUrl({ appletType: AppletType.iotPublication }) },
         };
         openAppletOrFile(WindowStore, tempApplet);
     }
@@ -73,13 +73,13 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
                                     })
                                 }
                             </SimpleGrid>
+                            <br />
+                            <hr />
                         </>
                     }
                     {
                         (networkState === NetworkState.Loading) && <Center><Spinner size="xl" /></Center>
                     }
-                    <br />
-                    <hr />
                     <Flex px={2} className="iot-container" onClick={openIotPublicationInIframe}>
                         <Box mt={10} className="book-container">
                             <div className="book">
