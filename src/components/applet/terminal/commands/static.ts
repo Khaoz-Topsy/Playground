@@ -1,31 +1,8 @@
+import { site } from "../../../../constants/site";
+
 export const staticList = () => ({
-    contact: {
-        description: 'Get my contact information.',
-        list: [
-            {
-                type: 'info',
-                label: 'Email:',
-                content: 'hi@kurtlourens.com'
-            },
-            {
-                type: 'info',
-                label: 'Github:',
-                content: 'https://github.com/khaoz-topsy'
-            },
-            {
-                type: 'info',
-                label: 'Twitter:',
-                content: 'https://twitter.com/khaoztopsy'
-            },
-            {
-                type: 'info',
-                label: 'blog:',
-                content: 'https://blog.kurtlourens.com'
-            },
-        ]
-    },
     current: {
-        description: 'Get my contact information.',
+        description: 'What my current goals are and what I have been up to.',
         list: [
             {
                 type: 'info',
@@ -49,67 +26,25 @@ export const staticList = () => ({
             },
         ]
     },
-    whoami: {
-        description: 'Returns information on the current user',
-        list: [
-            {
-                type: 'success',
-                label: 'Compiled',
-                content: '1   const'
-            },
-            {
-                type: 'success',
-                label: 'Compiled',
-                content: '2     tomatoes = "番茄",'
-            },
-            {
-                type: 'success',
-                label: 'Compiled',
-                content: '3     tomotoes = "坏掉的番茄";'
-            },
-            {
-                type: 'success',
-                label: 'Compiled',
-                content: '4   const myTomotoes = new Promise((resolve, reject) => {'
-            },
-            {
-                type: 'warning',
-                label: 'Compiled',
-                content: '5     tomatoes === "番茄"?resolve(tomotoes):reject(tomatoes)'
-            },
-            {
-                type: 'success',
-                label: 'Compiled',
-                content: '6   }).then(()=>"My tomatoes,I\'m coming!")'
-            },
-            {
-                type: 'error',
-                label: 'SyntaxError',
-                content: '7   .catch(()=>"What the f*ck!");'
-            }
-        ]
-    },
     skill: {
         description: 'Return a list of my skills and my rating of them.',
         list: [
-            { type: 'success', label: 'A', content: '· JavaScript 99/100' },
-            { type: 'success', label: 'A', content: '· Go 90/100' },
-            { type: 'success', label: 'A', content: '· Java 80/100' },
-            { type: 'success', label: 'A', content: '· Kotlin 80/100' },
+            { type: 'success', label: 'A', content: '· JavaScript / Typescript' },
+            { type: 'success', label: 'A', content: '· C#' },
+            { type: 'success', label: 'A', content: '· ASP.NET Core' },
+            { type: 'success', label: 'A', content: '· Flutter' },
+            { type: 'success', label: 'A', content: '· React' },
+            { type: 'success', label: 'A', content: '· SASS + CSS' },
 
-            { type: 'warning', label: 'B', content: '· TypeScript 70/100' },
-            { type: 'warning', label: 'B', content: '· Python 70/100' },
-            { type: 'warning', label: 'B', content: '· C 70/100' },
-            { type: 'warning', label: 'B', content: '· Shell 70/100' },
+            { type: 'warning', label: 'B', content: '· PWA' },
+            { type: 'warning', label: 'B', content: '· Angular' },
+            { type: 'warning', label: 'B', content: '· Azure DevOps' },
+            { type: 'warning', label: 'B', content: '· CodeMagic.io' },
 
-            { type: 'error', label: 'C', content: '· C# 60/100' },
-            { type: 'error', label: 'C', content: '· Rust 60/100' },
-            { type: 'error', label: 'C', content: '· Scala 60/100' },
-            { type: 'error', label: 'C', content: '· Lua 60/100' },
-            { type: 'error', label: 'C', content: '· Haskell 60/100' },
-            { type: 'error', label: 'C', content: '· Ruby 60/100' },
-
-            { type: 'black', label: 'D', content: '· CSS -999/100' }
+            { type: 'error', label: 'C', content: '· MSSQL' },
+            { type: 'error', label: 'C', content: '· React Native' },
+            { type: 'error', label: 'C', content: '· Xamarin' },
+            { type: 'error', label: 'C', content: '· Arduino' },
         ]
     },
 });

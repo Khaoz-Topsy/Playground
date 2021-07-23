@@ -61,6 +61,15 @@ export const dynamicListFunc = (props: IProps) => {
                 })
             }
         },
+        contact: {
+            description: 'Get my contact information.',
+            run(print: (printProps: string | IReactTerminalPrintProps) => void) {
+
+                return new Promise(resolve => {
+                    resolve('over');
+                })
+            },
+        },
         clippy: {
             description: 'Enable or disable Clippy. type `clippy true|false`.',
             run(print: any, input: any) {
@@ -117,6 +126,15 @@ export const dynamicListFunc = (props: IProps) => {
                     resolve({ type: 'success', label: '', content: '' });
                 })
             }
+        },
+        exit: {
+            description: 'Close Terminal.',
+            run(print: (printProps: string | IReactTerminalPrintProps) => void) {
+
+                return new Promise(resolve => {
+                    resolve('over');
+                })
+            },
         },
         open: {
             description: 'Open a specified url in a new tab.',

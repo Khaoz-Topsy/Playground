@@ -1,0 +1,19 @@
+.custom-terminal {
+    padding: 4px 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    span {
+        color: white;
+    }
+
+    input,
+    input:focus-visible {
+        flex-grow: 1;
+        display: inline-block;
+        background-color: transparent;
+        border-color: transparent;
+        color: white;
+        border: none;
+        outline: none;
+    }
+}

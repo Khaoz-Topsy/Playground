@@ -1,6 +1,7 @@
 /// <reference path='../../../types.d.ts' />
 import React from 'react';
 import Terminal from 'react-terminal-app';
+// import { CommandEnum, ITerminalProps, Terminal } from './customTerminal';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { Applet } from '../../window/applet/applet';
@@ -45,7 +46,15 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         prompt: '➜ ',
         version: '0.0.1',
         initialDirectory: 'workspace',
-        bootCmd: 'intro'
+        bootCmd: 'intro',
+        commands: {
+            start: {
+                descrip: 'testDescrip' as any,
+                run: async () => {
+                    alert('test');
+                }
+            }
+        },
     }
 
     return (
@@ -55,6 +64,7 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
             isFullscreen={true}
         >
             <Terminal cmd={cmd} config={config} />
+            {/* <Terminal {...config} /> */}
         </Applet>
     );
 }
