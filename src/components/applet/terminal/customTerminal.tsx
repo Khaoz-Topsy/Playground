@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { knownKeyCodes } from '../../../constants/keybind';
 
 import { LocaleKey } from '../../../localization/LocaleKey';
-import { systemCmdList } from './commands/systemDefaultCommands';
 
 interface IExecutedCommand {
     key: string;

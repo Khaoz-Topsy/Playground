@@ -1,5 +1,3 @@
-import { site } from "../../../../constants/site";
-
 export const staticList = () => ({
     current: {
         description: 'What my current goals are and what I have been up to.',
