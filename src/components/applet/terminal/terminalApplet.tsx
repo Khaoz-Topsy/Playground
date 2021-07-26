@@ -1,19 +1,20 @@
-/// <reference path='../../../types.d.ts' />
 import React from 'react';
-import Terminal from 'react-terminal-app';
-// import { Terminal } from './customTerminal';
+import { Terminal } from './terminalWindow';
+import { useToast } from '@chakra-ui/react';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
 import { Applet } from '../../window/applet/applet';
-import { staticList } from './commands/static';
-import { dynamicListFunc } from './commands/dynamic';
 import { withServices } from '../../../integration/dependencyInjection';
 import { ISettingStore, SettingStore } from '../../../state/setting/store';
+import { SecretStore } from '../../../state/secrets/store';
+import { closeApp } from '../../../state/window/reducer';
+import { WindowStore } from '../../../state/window/store';
 
 import { IExpectedServices, dependencyInjectionToProps } from './terminalApplet.dependencyInjection';
-import { SecretStore } from '../../../state/secrets/store';
-import { useToast } from '@chakra-ui/react';
-import { CommandEnum, IExecutedCommand } from './command';
+import { allKnownApps } from '../../../constants/knownApplets';
+import { AppletType } from '../../../constants/enum/appletType';
+import { CommandEnum } from './command';
+import { staticList } from './commands/static';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IApplet, IWithoutExpectedServices, IExpectedServices { }
@@ -22,6 +23,8 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSettings = SettingStore.useState(store => store);
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
     const toastFunc = useToast();
+
+    let info: any = allKnownApps().find(app => app.appletType === AppletType.terminal)?.info;
 
     const enableClippy = (enabled: boolean) => {
         SettingStore.update((store: ISettingStore) => {
@@ -38,33 +41,19 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         enableClippy: enableClippy,
     }
 
-    const cmd = {
-        dynamicList: dynamicListFunc(dynListProps),
-        staticList: staticList(),
-    }
-
     const config = {
         prompt: '➜ ',
-        version: props?.info?.version ?? '0.0.1',
-        initialDirectory: 'workspace',
-        bootCmd: 'intro',
+        user: 'kurt.lourens',
+        version: info?.version ?? '0.0.1',
+        folderStructure: props.folderStructure,
         commands: {
-            intro: {
-                descrip: 'testDescrip' as any,
-                run: async (print: (cmd: IExecutedCommand) => void) => {
-                    print({
-                        type: CommandEnum.SystemInfo,
-                        tag: 'Loading',
-                        value: `Welcome to Kurt's Terminal`,
-                    });
-                }
+            exit: {
+                type: CommandEnum.System,
+                descrip: 'Type "exit" to closse the terminal.',
+                aliasList: ['kill', 'back'],
+                run: async () => WindowStore.update(closeApp(props.guid)),
             },
-            start: {
-                descrip: 'testDescrip' as any,
-                run: async () => {
-                    alert('test');
-                }
-            }
+            ...staticList
         },
     }
 
@@ -74,8 +63,7 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
             classNames="terminal"
             isFullscreen={true}
         >
-            <Terminal cmd={cmd} config={config} />
-            {/* <Terminal {...config} /> */}
+            <Terminal {...config} />
         </Applet>
     );
 }

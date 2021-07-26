@@ -1,6 +1,16 @@
 .custom-terminal {
+    min-height: 100%;
+    height: unset !important;
     padding: 4px 8px;
     background-color: rgba(0, 0, 0, 0.5);
+
+    .input {
+        display: flex;
+
+        span {
+            margin-right: 0.3em;
+        }
+    }
 
     span {
         color: white;
@@ -34,5 +44,62 @@
         &.SystemSuccess {
             background-color: #27ae60;
         }
+
+        &.SystemWarning {
+            background-color: orange;
+        }
+
+        &.SystemDanger {
+            background-color: red;
+        }
+
+        &.Error {
+            background-color: rgb(200, 0, 0);
+        }
+    }
+
+    .loading {
+        width: 70px;
+        margin-top: 0.5em;
+    }
+
+    .msg {
+        &.animate {
+            animation-duration: 500ms;
+            animation-name: enlarge-in;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            /* number of lines to show */
+            -webkit-box-orient: vertical;
+
+            >span {
+                max-width: 100%;
+            }
+        }
+
+        .user {
+            font-style: italic;
+            color: lightgreen;
+        }
+
+        .dir {
+            font-style: italic;
+            color: yellow;
+        }
+
+        .error {
+            color: red;
+        }
+    }
+}
+
+@keyframes enlarge-in {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: 100%;
     }
 }

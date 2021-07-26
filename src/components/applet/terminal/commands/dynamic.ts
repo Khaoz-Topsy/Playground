@@ -22,45 +22,6 @@ interface IProps {
 
 export const dynamicListFunc = (props: IProps) => {
     return {
-        intro: {
-            description: 'Introducting myself again.',
-            run(print: (printProps: string | IReactTerminalPrintProps) => void) {
-                let i = 0
-                const funnyMessages = getFunnyMessages(3);
-                const introduction: Array<string | IReactTerminalPrintProps> = [
-                    `Welcome to Kurt's Terminal`,
-                    ...funnyMessages.map(funny => ({
-                        type: 'info',
-                        label: 'Loading',
-                        content: funny,
-                    })),
-                    {
-                        type: 'success',
-                        label: 'Success',
-                        content: 'Successfully loaded!',
-                    }
-                ];
-
-                return new Promise(resolve => {
-                    const interval = setInterval(() => {
-                        try {
-                            print(introduction[i]);
-                        } catch (ex) {
-                            clearInterval(interval);
-                            return;
-                        }
-                        i++
-                        if ((i + 1) >= introduction.length) {
-                            clearInterval(interval);
-                            setTimeout(() => {
-                                resolve(introduction[i]);
-                                props.virtualAssistantService.play('GetAttention');
-                            }, 1000);
-                        }
-                    }, 1000);
-                })
-            }
-        },
         contact: {
             description: 'Get my contact information.',
             run(print: (printProps: string | IReactTerminalPrintProps) => void) {
@@ -126,15 +87,6 @@ export const dynamicListFunc = (props: IProps) => {
                     resolve({ type: 'success', label: '', content: '' });
                 })
             }
-        },
-        exit: {
-            description: 'Close Terminal.',
-            run(print: (printProps: string | IReactTerminalPrintProps) => void) {
-
-                return new Promise(resolve => {
-                    resolve('over');
-                })
-            },
         },
         open: {
             description: 'Open a specified url in a new tab.',

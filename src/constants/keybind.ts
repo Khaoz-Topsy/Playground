@@ -5,6 +5,7 @@ export const knownKeybinds = {
     spotlight: 'ctrl+space',
     spotlightAlt: 'ctrl+k',
     minimiseAll: 'ctrl+down',
+    terminalKill: 'ctrl+c',
     goPrev: 'alt+left',
     goNext: 'alt+right',
     minimiseAllAlt: 'alt+down',
@@ -18,6 +19,7 @@ export const knownKeyCodes = {
     enter: 13,
     esc: 27,
     up: 38,
+    tab: 9,
     down: 40,
 };
 

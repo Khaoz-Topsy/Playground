@@ -35,6 +35,10 @@ export const get24HourLocalTimeFromUtcHour = (utcHour: number) => {
     return currentShortTime(date);
 }
 
+export const getDateMilli = (additional = '') => {
+    return (new Date()).getTime().toString() + additional;
+}
+
 // export const isLeapYear = (now: Date = new Date()) => {
 //     const year = now.getFullYear();
 //     if ((year & 3) !== 0) return false;

@@ -1,5 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
+import { BasicLazyImage } from './image';
+import { MiscIcon } from '../../constants/appImage';
 
 interface IProps {
     text?: string;
@@ -31,4 +33,8 @@ export const LoadingImage = (isSmall?: boolean) => {
         </div>
     );
 }
+
+
+export const TerminalLoadingImage = () => (<BasicLazyImage imageUrl={MiscIcon.threeDotsLoader} classNames="loading" />);
+
 

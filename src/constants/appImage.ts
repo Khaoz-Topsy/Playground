@@ -46,6 +46,7 @@ export class MiscIcon {
     static iotPublication3 = imgFolder + 'IoTPublication3.png';
     static assistantApps = imgFolder + 'assistantApps.png';
     static twitch = imgFolder + 'twitch.png';
+    static threeDotsLoader = imgFolder + 'three-dots.svg';
 
     static streamPreview = vidFolder + 'streamPreview.min.gif';
     static static = vidFolder + 'static.gif';
