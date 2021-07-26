@@ -20,6 +20,7 @@ export enum AppletType {
     discordInvite,
     iotPublication,
     presentation,
+    swagger,
 
     // Funny
     nyanCat,

@@ -30,6 +30,7 @@ export const site = {
     },
     assistantApps: {
         name: 'AssistantApps',
+        api: 'https://api.assistantapps.com',
         email: 'mailto:support@assistantapps.com',
         website: 'https://assistantapps.com',
         tools: 'https://tools.assistantapps.com',
@@ -39,6 +40,7 @@ export const site = {
         patreon: 'https://www.patreon.com/AssistantApps',
         youtube: 'https://www.youtube.com/channel/UCpKNMVk7ZWvBk-psQQZqz5w',
         nms: {
+            api: 'https://api.nmsassistant.com',
             website: 'https://nmsassistant.com',
             webapp: 'https://app.nmsassistant.com',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.no_mans_sky_recipes',
@@ -47,6 +49,7 @@ export const site = {
             github: 'https://github.com/AssistantNMS',
         },
         sms: {
+            api: 'https://api.scrapassistant.com',
             webapp: 'https://scrapassistant.com/',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.scrap_mechanic',
             appleStore: 'https://apps.apple.com/us/app/id1519215611',

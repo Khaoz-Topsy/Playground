@@ -5,7 +5,7 @@ import { DesktopIcons } from './desktopIconList';
 import { IFolder } from '../contracts/interface/IFolder';
 import { Folder } from '../contracts/implementation/Folder';
 import { allKnownApps, KnownApplets } from './knownApplets';
-import { imageFile, linkFile, markDownFile } from '../helper/fileHelper';
+import { iframeApplet, imageFile, linkFile, markDownFile } from '../helper/fileHelper';
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
 import { warn } from '../integration/logging';
@@ -48,6 +48,9 @@ export const getFilesOnDisk = (): IFolder => {
     // const kurtFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Kurt' }));
     // getFolder(rootFolder, kurtFolderIndex)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
 
+    // const assistantAppsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantApps }));
+    // getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
+
     const assistantNMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantNMS }));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.nms.googlePlay));
@@ -55,6 +58,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.noMansSky });
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.nms.webapp));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.homepage, FileIcon.web, site.assistantApps.nms.website));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.nms.api } });
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.nms.github));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.twitterTimeline, meta: { src: site.assistantApps.nms.twitter } });
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(imageFile('loader.svg' as any, External.assistantNmsLoader, [External.assistantNmsLoader]));
@@ -65,6 +69,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.sms.appleStore));
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.scrapMechanic });
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.sms.webapp));
+    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.sms.api } });
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.sms.githubOrg));
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.vsCode, meta: { url: site.assistantApps.sms.vscodeUrlForApp } });
 

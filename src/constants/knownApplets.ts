@@ -109,7 +109,7 @@ export class KnownApplets {
         name: LocaleKey.monitor,
         appletType: AppletType.monitor,
         type: FileType.applet,
-        meta: { key: "monitor-iframe", src: getIframeUrl({ appletType: AppletType.monitor } as any) },
+        meta: { key: 'monitor-iframe', src: getIframeUrl({ appletType: AppletType.monitor } as any) },
         info: { version: '0.0.4', size: 342, installedOn: new Date('2021-06-28') },
     };
     static liveTv: IAppletFile = {
@@ -134,7 +134,7 @@ export class KnownApplets {
         name: LocaleKey.iotPublication,
         appletType: AppletType.iotPublication,
         type: FileType.applet,
-        meta: { key: "iotPublication-iframe", src: getIframeUrl({ appletType: AppletType.iotPublication } as any) },
+        meta: { key: 'iotPublication-iframe', src: getIframeUrl({ appletType: AppletType.iotPublication } as any) },
         info: { version: '1.0.0', size: 191, installedOn: new Date('2021-07-20') },
     };
     static presentation: IAppletFile = {
@@ -144,6 +144,14 @@ export class KnownApplets {
         appletType: AppletType.presentation,
         type: FileType.applet,
         info: { version: '0.0.5', size: 5043, installedOn: new Date('2021-07-21') },
+    };
+    static swagger: IAppletFile = {
+        id: 1.19,
+        parentId: 1.19,
+        name: LocaleKey.apiDocs,
+        appletType: AppletType.swagger,
+        type: FileType.applet,
+        info: { version: '0.0.1', size: 100, installedOn: new Date('2021-07-26') },
     };
 }
 

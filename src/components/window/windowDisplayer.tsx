@@ -14,6 +14,7 @@ import { PictureApplet } from '../applet/picture/pictureApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
 import { SettingApplet } from '../applet/settings/settingApplet';
+import { SwaggerApplet } from '../applet/assistantApps/swaggerApplet';
 import { TerminalApplet } from '../applet/terminal/terminalApplet';
 import { PresentationApplet } from '../applet/kurt/presentationApplet';
 import { AssistantNMSApplet } from '../applet/assistantApps/assistantNMSApplet';
@@ -34,6 +35,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.vsCode: return <VsCodeApplet key={appKey} {...appProps} />
         case AppletType.monitor: return <MonitorApplet key={appKey} {...appProps} />
         case AppletType.liveTv: return <LiveTvApplet key={appKey} {...appProps} />
+        case AppletType.swagger: return <SwaggerApplet key={appKey} {...appProps} />
         case AppletType.nyanCat: return <NyanCatApplet key={appKey} {...appProps} />
         case AppletType.picture: return <PictureApplet key={appKey} {...appProps} />
         case AppletType.setting: return <SettingApplet key={appKey} {...appProps} />

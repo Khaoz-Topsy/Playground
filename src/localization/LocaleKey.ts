@@ -126,6 +126,7 @@ export enum LocaleKey {
   presentation,
   notifications,
   latestBlogPosts,
+  apiDocs,
   loading,
   unknown
 }

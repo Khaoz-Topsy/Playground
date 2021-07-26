@@ -1,4 +1,5 @@
 import { FileIcon } from '../constants/appImage';
+import { AppletType } from '../constants/enum/appletType';
 import { IBreadcrumb } from '../contracts/interface/IBreadcrumb';
 import { FileType, IFile } from '../contracts/interface/IFile';
 import { IFolder, isFolder } from '../contracts/interface/IFolder';
@@ -70,4 +71,14 @@ export const linkFile = (name: LocaleKey, imgUrl: string, external: string, show
     imgUrl,
     type: FileType.link,
     meta: { external, showExternalIcon, }
+});
+
+export const iframeApplet = (name: LocaleKey, frameKey: string, src: string, imgUrl: string) => ({
+    id: 30.01,
+    name,
+    imgUrl,
+    appletType: AppletType.iframe,
+    type: FileType.applet,
+    meta: { key: frameKey, src, imgUrl, },
+    info: { version: '0.0.1', size: 100, installedOn: new Date('2021-07-26') },
 });

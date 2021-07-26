@@ -32,6 +32,7 @@ export class FileIcon {
     static picture = imgFolder + 'fileIcons/picture.png';
     static android = imgFolder + 'fileIcons/android.png';
     static success = imgFolder + 'fileIcons/success.png';
+    static swagger = imgFolder + 'fileIcons/swagger.png';
     static github = imgFolder + 'fileIcons/github.png';
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
