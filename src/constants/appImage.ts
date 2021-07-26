@@ -18,6 +18,7 @@ export class AppletIcon {
     static internet = imgFolder + 'appIcons/internet.png';
     static settings = imgFolder + 'appIcons/setting3.png';
     static terminal = imgFolder + 'appIcons/terminal.png';
+    static yellowPages = imgFolder + 'appIcons/yellowPages.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
     static presentation = imgFolder + 'appIcons/presentation.png';

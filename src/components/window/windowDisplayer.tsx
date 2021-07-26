@@ -14,9 +14,10 @@ import { PictureApplet } from '../applet/picture/pictureApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
 import { SettingApplet } from '../applet/settings/settingApplet';
-import { SwaggerApplet } from '../applet/assistantApps/swaggerApplet';
 import { TerminalApplet } from '../applet/terminal/terminalApplet';
+import { SwaggerApplet } from '../applet/assistantApps/swaggerApplet';
 import { PresentationApplet } from '../applet/kurt/presentationApplet';
+import { YellowPagesApplet } from '../applet/phonebook/yellowPagesApplet';
 import { AssistantNMSApplet } from '../applet/assistantApps/assistantNMSApplet';
 import { AssistantSMSApplet } from '../applet/assistantApps/assistantSMSApplet';
 
@@ -42,6 +43,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.tweeter: return <TweetListApplet key={appKey} {...appProps} />
         case AppletType.terminal: return <TerminalApplet key={appKey} {...appProps} />
         case AppletType.musicPlayer: return <MusicPlayerApplet key={appKey} {...appProps} />
+        case AppletType.yellowPages: return <YellowPagesApplet key={appKey} {...appProps} />
         case AppletType.assistantNMS: return <AssistantNMSApplet key={appKey} {...appProps} />
         case AppletType.assistantSMS: return <AssistantSMSApplet key={appKey} {...appProps} />
         case AppletType.presentation: return <PresentationApplet key={appKey} {...appProps} />

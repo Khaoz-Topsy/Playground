@@ -153,6 +153,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '0.0.1', size: 100, installedOn: new Date('2021-07-26') },
     };
+    static yellowPages: IAppletFile = {
+        id: 1.20,
+        parentId: 1.20,
+        name: LocaleKey.yellowPages,
+        appletType: AppletType.yellowPages,
+        type: FileType.applet,
+        info: { version: '0.2.23', size: 55, installedOn: new Date('2021-07-26') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

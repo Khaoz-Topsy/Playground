@@ -10,6 +10,7 @@
   "vsCode": "VS Code",
   "assistantNMS": "Assistant for No Man's Sky",
   "assistantSMS": "Assistant for Scrap Mechanic",
+  "assistantHYT": "Assistant for Hytale",
   "assistantApps": "AssistantApps",
   "musicPlayer": "Music Player",
   "nyanCat": "Nyan Cat",
@@ -128,5 +129,6 @@
   "notifications": "Notifications",
   "latestBlogPosts": "Latest blog posts",
   "apiDocs": "API Documentation",
+  "yellowPages": "Yellow (Web)Pages",
   "unknown": "Unknown"
 }

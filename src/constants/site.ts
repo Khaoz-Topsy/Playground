@@ -17,12 +17,23 @@ export const site = {
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
         linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
         presentation: 'https://presentation.kurtlourens.com',
+        memedeck: 'https://github.com/Khaoz-Topsy/Stream-Meme-Deck',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
         twitchLivePlayer: 'https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true',
-        twitchPanel: 'https://www.twitch.tv/popout/khaoztopsy/extensions/kd1to03pwcm70z85apafwy5rl9mr53/panel',
         monitor: 'https://monitor.kurtlourens.com/KhaozNet-AssistantNMS-AssistantApps-RedRubyIT',
         steam: 'https://steamcommunity.com/id/Khaoz-Topsy',
         discord: 'KhaozTopsy#1000',
+        khaoznet: {
+            homepage: 'https://khaoznet.xyz',
+            iot: 'https://iot.khaoznet.xyz',
+            plexmedia: 'https://plexmedia.khaoznet.xyz',
+            cah: 'https://cah.khaoznet.xyz',
+            passport: 'https://passport.khaoznet.xyz',
+            zooqle: 'https://zooqle.khaoznet.xyz',
+            download: 'https://download.khaoznet.xyz',
+            timeline: 'https://timeline.khaoznet.xyz',
+            lan: 'https://lan.khaoznet.xyz',
+        }
     },
     stream: {
         twitch: 'https://www.twitch.tv/khaoztopsy',
@@ -47,15 +58,33 @@ export const site = {
             appleStore: 'https://apps.apple.com/us/app/id1480287625',
             twitter: 'https://twitter.com/AssistantNMS',
             github: 'https://github.com/AssistantNMS',
+            nmscd: {
+                website: 'https://nmscd.github.io',
+                projectsList: 'https://nmscd.github.io/projects.html',
+                expeditionAlphabet: 'https://nmscd.github.io/expedition-alphabet',
+            }
         },
         sms: {
             api: 'https://api.scrapassistant.com',
-            webapp: 'https://scrapassistant.com/',
+            webapp: 'https://scrapassistant.com',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.scrap_mechanic',
             appleStore: 'https://apps.apple.com/us/app/id1519215611',
             githubOrg: 'https://github.com/AssistantSMS',
             githubApp: 'https://github.com/AssistantSMS/App',
             vscodeUrlForApp: 'https://github1s.com/AssistantSMS/App/blob/master/README.md',
+        },
+        hyt: {
+            api: 'https://api.hytaleassistant.com',
+            webapp: 'https://hytaleassistant.com',
+        },
+        patreonBanner: {
+            api: 'https://api.assistantapps.stream',
+            website: 'https://patreonbanner.com',
+            twitch: 'https://dashboard.twitch.tv/extensions/kd1to03pwcm70z85apafwy5rl9mr53-0.1.1',
         }
+    },
+    tennodex: {
+        api: 'https://api.tennodex.com',
+        webapp: 'https://tennodex.com',
     }
 }

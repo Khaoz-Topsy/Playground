@@ -1,0 +1,46 @@
+.yellow-pages-viewer {
+    .icon-wrapper {
+        font-size: 2rem;
+
+        svg {
+            padding: 2px;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        &.active {
+            svg {
+                border: 1px solid white;
+            }
+        }
+    }
+
+    .group {
+        padding-bottom: 0.125em;
+        @extend .glass-background;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 5px;
+
+        .group-name {
+            font-size: 125%;
+            font-weight: bold;
+            padding: 0 0.5em 0.125em 0.5em;
+        }
+
+        .pages {
+            .page {
+                padding: 0.125em 0.5em 0.25em 0.5em;
+                border-top: 2px solid rgba(0, 0, 0, 0.1);
+            }
+        }
+    }
+
+    .page {
+        .url {
+            @extend .single-line;
+            color: _palette(accent);
+            cursor: pointer;
+        }
+    }
+}

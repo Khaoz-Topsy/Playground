@@ -21,6 +21,7 @@ export enum AppletType {
     iotPublication,
     presentation,
     swagger,
+    yellowPages,
 
     // Funny
     nyanCat,

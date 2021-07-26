@@ -10,6 +10,7 @@ export enum LocaleKey {
   vsCode,
   assistantNMS,
   assistantSMS,
+  assistantHYT,
   assistantApps,
   musicPlayer,
   nyanCat,
@@ -127,6 +128,7 @@ export enum LocaleKey {
   notifications,
   latestBlogPosts,
   apiDocs,
+  yellowPages,
   loading,
   unknown
 }
