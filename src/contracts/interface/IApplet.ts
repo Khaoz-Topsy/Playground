@@ -1,11 +1,13 @@
-import { AppletType } from "../../constants/enum/appletType";
-import { LocaleKey } from "../../localization/LocaleKey";
+import { IAppletInfo } from './IFile';
+import { AppletType } from '../../constants/enum/appletType';
+import { LocaleKey } from '../../localization/LocaleKey';
 
 export interface IApplet {
     guid: string;
     appletType: AppletType;
     name: LocaleKey;
     meta: any;
+    info?: IAppletInfo;
     isFocused?: boolean;
     isMinimised?: boolean;
     isMaximised?: boolean;

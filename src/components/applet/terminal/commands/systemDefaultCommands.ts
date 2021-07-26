@@ -1,4 +1,4 @@
-import { CommandEnum, ICommand } from '../customTerminal';
+import { CommandEnum, ICommand } from '../command';
 
 export const systemCmdList: { [key: string]: ICommand } = {
     clear: {
@@ -31,4 +31,22 @@ export const systemCmdList: { [key: string]: ICommand } = {
         descrip: 'Print version of the current project.',
         aliasList: ['version']
     }
+}
+
+export const allSystemCmdListNames = (): Array<string> => {
+    const cmds: Array<string> = [];
+    for (const appletProp in systemCmdList) {
+        cmds.push(appletProp);
+    }
+    return cmds;
+}
+
+export const allSystemCmdList = (): Array<ICommand> => {
+    const cmds: Array<ICommand> = [];
+    for (const cmdName in systemCmdList) {
+        if (Object.prototype.hasOwnProperty.call(systemCmdList, cmdName)) {
+            cmds.push((systemCmdList as any)[cmdName]);
+        }
+    }
+    return cmds;
 }

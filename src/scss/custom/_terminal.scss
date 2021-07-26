@@ -1,6 +1,6 @@
 .custom-terminal {
     padding: 4px 8px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.5);
 
     span {
         color: white;
@@ -15,5 +15,24 @@
         color: white;
         border: none;
         outline: none;
+    }
+
+    .background {
+        background-color: #999999;
+        padding: 0.05em 0.25em;
+        margin-right: 0.25em;
+        text-transform: capitalize;
+
+        &.System {
+            text-transform: unset;
+        }
+
+        &.SystemInfo {
+            background-color: #2980ca;
+        }
+
+        &.SystemSuccess {
+            background-color: #27ae60;
+        }
     }
 }
