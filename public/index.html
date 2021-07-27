@@ -1,24 +1,158 @@
-<!DOCTYPE html>
-<html lang="en" id="html">
+<!DOCTYPE HTML>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="application-name" content="Playground by Kurt Lourens">
+  <meta name="application-name" content="Playground">
   <title>Playground by Kurt Lourens</title>
-
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="%PUBLIC_URL%/favicon-16x16.png">
-  <meta name="theme-color" content="#000000" />
-  <meta name="description"
-    content="A silly website with some fun things for you to mess around with. Made by Kurt Lourens" />
-  <link rel="manifest" href="%PUBLIC_URL%/site.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="%PUBLIC_URL%/favicon-192x192.png">
 
-  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png">
-  <link rel="mask-icon" href="%PUBLIC_URL%/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="index" href="https://playground.kurtlourens.com">
+  <link rel="canonical" href="https://playground.kurtlourens.com">
+  <meta name="referrer" content="no-referrer">
+  <link rel="manifest" href="manifest.json">
+  <link rel="author" href="humans.txt">
+  <link rel="me" href="mailto:hi@kurtlourens.com">
+  <link rel="me" href="https://playground.kurtlourens.com" type="text/html">
+  <link rel="search" href="open-search.xml" type="application/opensearchdescription+xml" title="Search Title">
+
+  <meta name="theme-color" content="#4285f4">
+  <meta name="subject"
+    content="A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments">
+  <meta name="description"
+    content="A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments">
+  <meta name="rating" content="General">
+  <meta name="robots" content="index,follow">
+
+  <!-- Google -->
+  <meta name="googlebot" content="index,follow">
+  <meta name="google" content="nositelinkssearchbox">
+  <meta name="mobile-web-app-capable" content="yes">
+
+  <!-- Apple -->
+  <link rel="apple-touch-icon" sizes="57x57" href="%PUBLIC_URL%/assets/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="%PUBLIC_URL%/assets/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="%PUBLIC_URL%/assets/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="%PUBLIC_URL%/assets/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="%PUBLIC_URL%/assets/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="%PUBLIC_URL%/assets/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="%PUBLIC_URL%/assets/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="%PUBLIC_URL%/assets/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/assets/favicon/apple-icon-180x180.png">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#2b5797">
+  <!-- <link rel="apple-touch-startup-image" href="/path/to/launch.png"> -->
+  <meta name="apple-mobile-web-app-title" content="Playground">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@KhaozTopsy">
+  <meta name="twitter:creator" content="@KhaozTopsy">
+  <meta name="twitter:url" content="https://playground.kurtlourens.com">
+  <meta name="twitter:title" content="Playground">
+  <meta name="twitter:description"
+    content="A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments">
+  <meta name="twitter:image" content="https://mugshotbot.com/m/zkrIydZc">
+  <meta name="twitter:image:alt" content="KhaozTopsy profile pic">
+
+  <!-- Facebook -->
+  <meta property="og:url" content="https://playground.kurtlourens.com">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Playground by Kurt Lourens">
+  <meta property="og:image" content="https://mugshotbot.com/m/zkrIydZc">
+  <meta property="og:image:alt" content="KhaozTopsy profile pic">
+  <meta property="og:description"
+    content="A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments">
+  <meta property="og:site_name" content="Playground by Kurt Lourens">
+  <meta property="og:locale" content="en_UK">
+  <meta property="article:author" content="Kurt Lourens">
+
+  <!-- Microsoft -->
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="skype_toolbar" content="skype_toolbar_parser_compatible">
+  <meta name="msapplication-config" content="browserconfig.xml">
   <meta name="msapplication-TileColor" content="#2b5797">
-  <meta name="msapplication-TileImage" content="%PUBLIC_URL%/mstile-144x144.png">
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="preconnect" href="https://cdn.assistantapps.com">
+
+  <script type="application/ld+json">
+        {
+            "@context": "https://schema.org/",
+            "@type": "SoftwareApplication",
+            "name": "Playground",
+            "url": "https://playground.kurtlourens.com",
+            "about": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments",
+            "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments",
+            "image": "%PUBLIC_URL%/favicon-192x192.png",
+            "applicationCategory": "Application",
+            "operatingSystem": "Android Lollipop, iOS, Chrome, Firefox, Opera, Internet Explorer, Edge",
+            "softwareVersion": "1.0.0",
+            "version": "1.0.0",
+            "author": {
+                "@type": "Person",
+                "name": "Kurt Lourens",
+                "givenName": "Kurt Lourens",
+                "familyName": "Kurt Lourens",
+                "additionalName": "KhaozTopsy",
+                "url": "https://playground.kurtlourens.com",
+                "image": "https://kurtlourens.com/assets/images/KurtAvatar.svg",
+                "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments",
+                "jobTitle": "Software Engineer"
+            },
+            "creator": {
+                "@type": "Person",
+                "name": "Kurt Lourens",
+                "givenName": "Kurt Lourens",
+                "familyName": "Kurt Lourens",
+                "additionalName": "KhaozTopsy",
+                "url": "https://playground.kurtlourens.com",
+                "image": "https://kurtlourens.com/assets/images/KurtAvatar.svg",
+                "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments",
+                "jobTitle": "Software Engineer"
+            },
+            "offers": {
+                "@type": "offer",
+                "price": "0",
+                "priceCurrency": "USD",
+                "name": "Playground",
+                "url": "https://playground.kurtlourens.com",
+                "image": "%PUBLIC_URL%/favicon-192x192.png",
+                "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments",
+                "itemOffered": {
+                    "@type": "service",
+                    "name": "Playground",
+                    "brand": {
+                        "@type": "brand",
+                        "name": "Playground",
+                        "url": "https://playground.kurtlourens.com",
+                        "logo": "%PUBLIC_URL%/favicon-192x192.png",
+                        "image": "%PUBLIC_URL%/favicon-192x192.png",
+                        "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments"
+                    },
+                    "url": "https://playground.kurtlourens.com",
+                    "logo": "%PUBLIC_URL%/favicon-192x192.png",
+                    "image": "%PUBLIC_URL%/favicon-192x192.png",
+                    "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments",
+                }
+            },
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "bestRating": "5",
+                "ratingCount": "1",
+                "reviewCount": "5",
+                "ratingValue": "5"
+            },
+            "inLanguage": "en",
+            "dateCreated": "2021-07-27",
+            "dateModified": "2021-07-27",
+            "datePublished": "2021-07-27"
+        }
+    </script>
 
   <link rel="stylesheet" href="/assets/css/custom.css">
   <style>

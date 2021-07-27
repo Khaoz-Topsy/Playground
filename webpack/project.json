@@ -1,9 +1,9 @@
 {
-    "rootUrl": "https://assistantapps.com",
+    "rootUrl": "https://playground.kurtlourens.com",
     "kurt": {
         "name": "Kurt Lourens",
         "email": "mailto:hi@kurtlourens.com",
-        "website": "https://kurtlourens.com",
+        "website": "https://playground.kurtlourens.com",
         "image": "https://kurtlourens.com/assets/images/KurtAvatar.svg",
         "additionalName": "KhaozTopsy",
         "twitter": "@KhaozTopsy"
@@ -15,7 +15,7 @@
     "meta": {
         "appName": "Playground",
         "title": "Playground by Kurt Lourens",
-        "description": "Home page of the Assistant Apps. Get the apps on Google Play, Apple App Store and on the web"
+        "description": "A silly desktop experience created by Kurt Lourens. This site is a playground where Kurt can place his silly experiments"
     },
     "twitter": {
         "handle": "@KhaozTopsy",
