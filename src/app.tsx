@@ -15,13 +15,15 @@ import { addSecretIfNotFound } from './helper/secretFoundHelper';
 import { IDependencyInjection, withServices } from './integration/dependencyInjection';
 import { initLocalization } from './integration/i18n';
 import { SillyService } from './services/SillyService';
+import { VirtualAssistantService } from './services/VirtualAssistantService';
 import { defaultSettingProps } from './state/setting/store';
 import { defaultSecretProps } from './state/secrets/store';
 import { loadStateFromLocalStorage } from './state/stateFromLocalStorage';
 import { PullstateCore } from './state/stateCore';
 
 interface IExpectedServices {
-  sillyService: SillyService
+  sillyService: SillyService;
+  virtualAssistantService: VirtualAssistantService;
 }
 interface IWithoutExpectedServices { };
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
@@ -44,6 +46,8 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
       const stateFromLocalStorage = loadStateFromLocalStorage();
       const settingStore = { ...defaultSettingProps, ...stateFromLocalStorage.SettingStore };
       const secretStore = { ...defaultSecretProps, ...stateFromLocalStorage.SecretStore };
+
+      if (settingStore.enabledClippy) props.virtualAssistantService.show();
 
       SettingStore.update(store => ({ ...store, ...settingStore }));
       SecretStore.update(store => ({ ...store, ...secretStore }));
@@ -128,5 +132,8 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
 
 export const App = withServices<IWithoutExpectedServices, IExpectedServices>(
   AppUnconnected,
-  (services: IDependencyInjection): IExpectedServices => ({ sillyService: services.sillyService }),
+  (services: IDependencyInjection): IExpectedServices => ({
+    sillyService: services.sillyService,
+    virtualAssistantService: services.virtualAssistantService,
+  }),
 );

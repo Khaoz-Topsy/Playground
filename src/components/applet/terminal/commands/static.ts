@@ -1,7 +1,28 @@
-import { CommandEnum, ICommand, IExecutedCommand } from '../command';
+import { site } from '../../../../constants/site';
+import { openExternalInNewTab } from '../../../../helper/linkHelper';
+import { CommandEnum, ICommand, IExecutedCommand } from '../../../../contracts/interface/ICommand';
 
 export const staticList: { [key: string]: ICommand } = {
+    blog: {
+        sortOrder: 10,
+        descrip: 'Open my blog in a new tab.',
+        run: async (printer: (cmd: IExecutedCommand) => void, inputCommand?: string) => {
+            printer({
+                tag: 'Success',
+                type: CommandEnum.SystemInfo,
+                value: 'Opening...',
+            });
+
+            openExternalInNewTab(site.kurt.blog);
+            printer({
+                tag: 'Done',
+                type: CommandEnum.SystemSuccess,
+                value: '🎉',
+            });
+        }
+    },
     current: {
+        sortOrder: 12,
         descrip: 'What my current goals are and what I have been up to.' as any,
         run: async (print: (cmd: IExecutedCommand) => void) => {
             const list = [
@@ -32,7 +53,19 @@ export const staticList: { [key: string]: ICommand } = {
             }
         },
     },
+    contact: {
+        sortOrder: 14,
+        descrip: 'Get my contact information.',
+        run: async (printer: (cmd: IExecutedCommand) => void) => {
+            printer({
+                tag: 'Email',
+                type: CommandEnum.SystemInfo,
+                value: site.kurt.email,
+            });
+        },
+    },
     skill: {
+        sortOrder: 20,
         descrip: 'Return a list of my skills and my rating of them.',
         run: async (print: (cmd: IExecutedCommand) => void) => {
             const list = [

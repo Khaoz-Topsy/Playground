@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { LocaleKey } from '../../../localization/LocaleKey';
+import { LocaleKey } from '../../localization/LocaleKey';
 
 export enum CommandEnum {
     None,
@@ -23,7 +23,7 @@ export interface IExecutedCommand {
 }
 
 export interface ICommand {
-    type?: CommandEnum;
+    sortOrder: number;
     descrip: LocaleKey | string;
     aliasList?: Array<string>;
     run?: (printer: (cmd: IExecutedCommand) => void, inputCommand?: string) => Promise<void>;

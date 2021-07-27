@@ -5,7 +5,7 @@ import { DesktopIcons } from './desktopIconList';
 import { IFolder } from '../contracts/interface/IFolder';
 import { Folder } from '../contracts/implementation/Folder';
 import { allKnownApps, KnownApplets } from './knownApplets';
-import { iframeApplet, imageFile, linkFile, markDownFile } from '../helper/fileHelper';
+import { imageFile, linkFile, markDownFile } from '../helper/fileHelper';
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
 import { warn } from '../integration/logging';

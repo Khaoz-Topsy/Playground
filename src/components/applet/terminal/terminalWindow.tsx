@@ -6,13 +6,13 @@ import { TerminalLoadingImage } from '../../core/loader';
 import { IAppletFile, IFile, isApplet } from '../../../contracts/interface/IFile';
 import { IFolder, isFolder } from '../../../contracts/interface/IFolder';
 import { getDateMilli } from '../../../helper/dateHelper';
-import { wait } from '../../../helper/timeoutHelper';
+import { searchFilesOnDisk } from '../../../helper/fileHelper';
 import { getFunnyMessages } from '../../../helper/funnyLoadingMessagesHelper';
+import { wait } from '../../../helper/timeoutHelper';
 import { translate } from '../../../integration/i18n';
 import { warn } from '../../../integration/logging';
 
-import { CommandEnum, ICommand, IExecutedCommand } from './command';
-import { searchFilesOnDisk } from '../../../helper/fileHelper';
+import { CommandEnum, ICommand, IExecutedCommand } from '../../../contracts/interface/ICommand';
 
 const appletSuffix = '.applet';
 
@@ -63,6 +63,7 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
 
     systemCmdList = (): { [key: string]: ICommand } => ({
         intro: {
+            sortOrder: 10,
             descrip: 'Terminal loading process' as any,
             run: async () => {
                 this.print({
@@ -88,37 +89,40 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
             }
         },
         clear: {
-            type: CommandEnum.System,
+            sortOrder: 90,
             descrip: 'Type "clear" to clear the terminal screen.',
             aliasList: ['cls'],
             run: async () => this.setState({ displayedMessages: [] }),
         },
         help: {
-            type: CommandEnum.System,
+            sortOrder: 89,
             descrip: 'Type "help" to get a supporting command list.',
             run: async () => {
                 const commands = this.systemCmdList();
-                const commandList: Array<IExecutedCommand> = [];
+                const commandList: Array<ICommand> = [];
                 for (const cmdName in commands) {
                     if (Object.prototype.hasOwnProperty.call(commands, cmdName)) {
                         const cmd: ICommand = (commands as any)[cmdName];
-                        commandList.push({ type: CommandEnum.System, tag: cmdName, value: cmd.descrip.toString() });
+                        commandList.push({ ...cmd, tag: cmdName } as any);
                     }
                 }
-                commandList.sort((a: IExecutedCommand, b: IExecutedCommand) => {
-                    if (a.tag! < b.tag!) { return -1; }
-                    if (a.tag! > b.tag!) { return 1; }
+                const orderedList = commandList.sort((a: ICommand, b: ICommand) => {
+                    if (a.sortOrder < b.sortOrder) { return -1; }
+                    if (a.sortOrder > b.sortOrder) { return 1; }
                     return 0;
-                }).map(this.print);
+                }).map((c: any) => ({ type: CommandEnum.System, tag: c.tag, value: c.descrip.toString() }));
+                for (const orderedItem of orderedList) {
+                    this.print(orderedItem);
+                }
             }
         },
         exit: {
-            type: CommandEnum.System,
+            sortOrder: 99,
             descrip: 'Type "exit" to closse the terminal.',
             aliasList: ['back'],
         },
         ls: {
-            type: CommandEnum.System,
+            sortOrder: 16,
             descrip: 'Print name of current directory.',
             aliasList: ['pwd'],
             run: async () => {
@@ -137,7 +141,7 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
             }
         },
         cd: {
-            type: CommandEnum.System,
+            sortOrder: 15,
             descrip: 'Change current directory.',
             run: async (printer: any, secondParam?: string) => {
                 if (secondParam == null || secondParam.length < 1) {
@@ -183,7 +187,7 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
             }
         },
         version: {
-            type: CommandEnum.System,
+            sortOrder: 88,
             descrip: 'Print version of the current project.',
             run: async () => {
                 this.print({ type: CommandEnum.System, value: this.props.version });
@@ -386,7 +390,7 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
         ) {
             return (
                 <div key={msg.key} className="msg animate">
-                    <span className={classNames('background', CommandEnum[msg.type], msg.tag ?? 'System')}>
+                    <span className={classNames('tag', CommandEnum[msg.type], msg.tag ?? 'System')}>
                         {msg.tag ?? 'System'}
                     </span>
                     <span>{msg.value}</span>
@@ -421,7 +425,10 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
                             {this.state.currentFolder && this.renderDirectory(translate(this.state.currentFolder.name), this.state.displayedMessages.length)}
                             <div className="input">
                                 <span>{this.props.prompt}</span>
-                                <input ref={this.$inputEl} autoFocus
+                                <input ref={this.$inputEl}
+                                    autoFocus={true}
+                                    spellCheck="false"
+                                    autoComplete="off"
                                     value={this.state.commandTyped}
                                     onChange={this.onInputTextChange}
                                     onKeyDown={this.onInputKeyDown}

@@ -39,6 +39,7 @@ Few cool things added:
 - Add hints for the secrets
 - Add Size on cloud
 - Launch Discord from Taskbar icon
+- Yellow(Web)Pages
 
 
 Things that I will be adding 
@@ -55,53 +56,5 @@ Things that I will be adding
   - https://codepen.io/bertdida/pen/pQWPaZ
 - Recorded TV
   - https://codepen.io/HIC/pen/mdbrxXR
-- Yellow(Web)Pages
-  - AssistantApps
-    - Api
-    - Home
-    - Admin?
-    - TranslationTool
-    - SrteamToys
-  - NMSAssistant
-    - Api
-    - Home
-    - WebApp
-    - ManagementTool
-    - NMSCD
-      - Home
-      - ExpeditionAlphabet
-      - Projects
-    - APK
-  - ScrapAssistant
-    - Api
-    - WebApp
-  - PatreonBanner
-    - Home
-    - Twitch
-    - Api
-  - KurtLourens
-    - CV
-    - Blog
-    - Playground
-    - Build Monitor
-    - IoT
-    - MemeDeck
-    - KhaozNet
-    - Plexmedia
-    - CardsAgainstHumanity
-    - Passport
-    - Zooqle
-    - Download
-    - Timeline
-    - LAN
-  - RedRubyIT
-    - Home
-    - BTS
-    - RemoteConfigs
-  - HytaleAssistant
-    - Api
-    - App
-  - TennoDex
-    - Home
-    - API
+  - 
 

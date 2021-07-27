@@ -27,7 +27,7 @@
         outline: none;
     }
 
-    .background {
+    .tag {
         background-color: #999999;
         padding: 0.05em 0.25em;
         margin-right: 0.25em;
@@ -55,6 +55,10 @@
 
         &.Error {
             background-color: rgb(200, 0, 0);
+        }
+
+        &.clippy {
+            position: static;
         }
     }
 

@@ -34,7 +34,8 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
         if (sMenu.images != null && sMenu.images.length > 0) {
             return (
                 <StartMenuSlidingTile
-                    key={`${sMenu.id}-isOpen:${props.isOpen.toString()}`}
+                    key={sMenu.id}
+                    // key={`${sMenu.id}-isOpen:${props.isOpen.toString()}`}
                     {...sMenu}
                     onClick={onClick}
                 />
