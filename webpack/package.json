@@ -1,0 +1,20 @@
+{
+  "name": "playground-meta",
+  "version": "1.0.0",
+  "description": "Handlebar template for generating the index file",
+  "scripts": {
+    "build": "npm-run-all --sequential javascript:* sass:*",
+    "javascript:main": "webpack --progress --profile --mode production",
+    "sass:main": "sass webpack/scss/main.scss assets/css/main.css"
+  },
+  "author": "Kurt Lourens",
+  "license": "ISC",
+  "devDependencies": {
+    "handlebars-webpack-plugin": "^2.2.1",
+    "move-file": "^2.0.0",
+    "npm-run-all": "^4.1.5",
+    "sass": "^1.26.10",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.1"
+  }
+}
