@@ -28,5 +28,9 @@ export const defaultMonitorHeight = 600;
 export const defaultTwitterWidth = minWidth;
 export const defaultTwitterHeight = 600;
 
+// Notes
+export const defaultNotesWidth = 800;
+export const defaultNotesHeight = 550;
+
 export const defaultPictureViewerWidth = 650;
 export const defaultPictureViewerHeight = 400;

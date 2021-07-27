@@ -5,6 +5,7 @@ import classNames from 'classnames';
 import { LoadingImage } from '../../core/loader';
 import { MarkdownContent } from '../../core/markdown';
 import { IApplet } from '../../../contracts/interface/IApplet'
+import { endOfFileContent } from '../../../constants/jsonFile';
 import { NetworkState } from '../../../constants/enum/networkState';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { MarkdownFile, visibleNotesList } from '../../../constants/markdownFile';
@@ -17,6 +18,7 @@ import { SecretStore } from '../../../state/secrets/store';
 import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './notesApplet.dependencyInjection';
+import { defaultNotesHeight, defaultNotesWidth } from '../../../constants/window';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices {
@@ -110,7 +112,7 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         );
 
         return (<div className="content noselect p1">
-            <MarkdownContent content={localState.content} />
+            <MarkdownContent content={localState.content + endOfFileContent} />
         </div>
         );
     }
@@ -121,6 +123,8 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
             {...props}
             classNames="notes-viewer"
             isFullscreen={true}
+            defaultHeight={defaultNotesHeight}
+            defaultWidth={defaultNotesWidth}
             sidebar={fullWindow === false ? renderSidebar() : undefined}
         >
             {
