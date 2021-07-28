@@ -129,6 +129,7 @@ export enum LocaleKey {
   latestBlogPosts,
   apiDocs,
   yellowPages,
+  browser,
   loading,
   unknown
 }

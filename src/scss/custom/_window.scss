@@ -3,6 +3,7 @@ $window-border-line: 3px;
 $window-header-height: 30;
 $window-header-explorer-height: 50;
 $window-header-divider-space: 10;
+$window-header-browser-height: 50;
 $window-shadow: 4px 6px 10px 5px rgba(0, 0, 0, 0.5);
 $window-no-shadow: 0px 0px 0px 0px transparent;
 
@@ -114,6 +115,32 @@ svg.handle {
     >*,
     >*>* {
         color: _palette(fg);
+    }
+
+    .chakra-button.menu,
+    .icon-button {
+        position: relative;
+        display: inline-block;
+        background-color: _palette(bg-transparent);
+        border-radius: $window-border-radius;
+        cursor: pointer;
+        opacity: 1;
+
+        &:hover {
+            opacity: 0.8;
+        }
+
+        &.disabled {
+            cursor: not-allowed;
+            opacity: 0.4;
+        }
+
+        svg {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
     }
 
     .window-header {

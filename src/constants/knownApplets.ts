@@ -18,7 +18,7 @@ export class KnownApplets {
         name: LocaleKey.explorer,
         appletType: AppletType.explorer,
         type: FileType.applet,
-        info: { version: '12.71', size: 55, installedOn: new Date('2021-06-23') },
+        info: { version: '12.71', size: 55, installedOn: new Date('2021-06-23'), updatedOn: new Date('2021-07-26') },
     };
     static picture: IAppletFile = {
         id: 1.03,
@@ -160,6 +160,14 @@ export class KnownApplets {
         appletType: AppletType.yellowPages,
         type: FileType.applet,
         info: { version: '0.2.23', size: 55, installedOn: new Date('2021-07-26') },
+    };
+    static browser: IAppletFile = {
+        id: 1.21,
+        parentId: 1.21,
+        name: LocaleKey.browser,
+        appletType: AppletType.browser,
+        type: FileType.applet,
+        info: { version: '0.0.1', size: 8071, installedOn: new Date('2021-07-28') },
     };
 }
 

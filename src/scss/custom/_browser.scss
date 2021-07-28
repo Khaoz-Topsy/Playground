@@ -5,6 +5,7 @@ $browser-icon-size: 100px;
     flex-direction: row;
     height: #{$window-header-browser-height}px;
 
+    .chakra-button.menu,
     .icon-button {
         height: #{$window-header-browser-height - $window-header-divider-space}px;
         min-width: #{$window-header-browser-height - $window-header-divider-space}px;

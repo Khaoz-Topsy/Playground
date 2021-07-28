@@ -22,6 +22,7 @@ export enum AppletType {
     presentation,
     swagger,
     yellowPages,
+    browser,
 
     // Funny
     nyanCat,

@@ -1,22 +1,19 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Breadcrumb, BreadcrumbItem, Button } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
-import classNames from 'classnames';
-import { motion } from 'framer-motion';
 
+import { knownKeybinds } from '../../../constants/keybind';
 import { IBreadcrumb } from '../../../contracts/interface/IBreadcrumb';
 import { IFolder } from '../../../contracts/interface/IFolder';
 import { IFile } from '../../../contracts/interface/IFile';
+import { AnimatedIconButton } from '../../../components/common/button';
 import { withServices } from '../../../integration/dependencyInjection';
-
-import { searchFilesOnDisk } from '../../../helper/fileHelper';
-import { WindowActions } from '../windowActions';
-import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
 import { translate } from '../../../integration/i18n';
-import { knownKeybinds } from '../../../constants/keybind';
+import { searchFilesOnDisk } from '../../../helper/fileHelper';
 
-const navButtonAnimDuration = 250;
+import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+import { WindowActions } from '../windowActions';
 
 interface IWithoutExpectedServices {
     selectedId: number;
@@ -37,8 +34,6 @@ interface IWithoutExpectedServices {
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
 
 export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
-    const [prevActivated, setPrevActivated] = useState<boolean>(false);
-    const [nextActivated, setNextActivated] = useState<boolean>(false);
 
     useEffect(() => {
         Mousetrap.bind(knownKeybinds.goPrev, onPrevClick);
@@ -54,17 +49,13 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
     const onPrevClick = (e: any) => {
         e.preventDefault?.();
         if (!props.hasPrev) return;
-        setPrevActivated(true);
         props.goToPrev?.();
-        setTimeout(() => setPrevActivated(false), navButtonAnimDuration);
     }
 
     const onNextClick = (e: any) => {
         e.preventDefault?.();
         if (!props.hasNext) return;
-        setNextActivated(true);
         props.goToNext?.();
-        setTimeout(() => setNextActivated(false), navButtonAnimDuration);
     }
 
     const onBreadCrumbClick = (id: number) => (e: any) => {
@@ -94,18 +85,6 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
         );
     }
 
-    const variants = {
-        initial: {
-            scale: 0,
-        },
-        resting: {
-            scale: 1,
-        },
-        activated: {
-            scale: 1.2,
-        },
-    }
-
     return (
         <div className="window-header explorer">
             <div className="window-icon">
@@ -113,30 +92,16 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
             </div>
             <div className="v-divider icon-space"></div>
 
-
-            <motion.div
-                initial={variants.initial}
-                transition={{ duration: 100 / navButtonAnimDuration }}
-                animate={prevActivated ? 'activated' : 'resting'}
-                variants={variants}
-                exit={variants.resting}
-                className={classNames('icon-button', { 'disabled': !props.hasPrev })}
+            <AnimatedIconButton
+                icon={<ArrowBackIcon />}
+                disabled={!props.hasPrev}
                 onClick={onPrevClick}
-            >
-                <ArrowBackIcon />
-            </motion.div>
-
-            <motion.div
-                initial={variants.initial}
-                transition={{ duration: 100 / navButtonAnimDuration }}
-                animate={nextActivated ? 'activated' : 'resting'}
-                variants={variants}
-                exit={variants.resting}
-                className={classNames('icon-button', { 'disabled': !props.hasNext })}
+            />
+            <AnimatedIconButton
+                icon={<ArrowForwardIcon />}
+                disabled={!props.hasNext}
                 onClick={onNextClick}
-            >
-                <ArrowForwardIcon />
-            </motion.div>
+            />
 
             <div className="content noselect">
                 <Breadcrumb style={{ marginTop: '2px' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>

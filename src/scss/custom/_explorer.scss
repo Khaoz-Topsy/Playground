@@ -24,37 +24,15 @@ $explorer-icon-size: 100px;
             }
 
             .icon-button {
-                position: relative;
-                display: inline-block;
                 height: #{$window-header-explorer-height - $window-header-divider-space}px;
                 min-width: #{$window-header-explorer-height - $window-header-divider-space}px;
                 margin: #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px;
-                background-color: _palette(bg-transparent);
-                border-radius: $window-border-radius;
-                cursor: pointer;
-                opacity: 1;
-
-                &:hover {
-                    opacity: 0.8;
-                }
-
-                &.disabled {
-                    cursor: unset;
-                    opacity: 0.4;
-                }
-
-                svg {
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                }
             }
 
             .content {
                 overflow: hidden;
                 height: #{$window-header-explorer-height}px;
-                pointer-events: all;
+                // pointer-events: all;
 
                 .chakra-breadcrumb {
                     position: relative;

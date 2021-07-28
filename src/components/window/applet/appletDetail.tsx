@@ -35,7 +35,7 @@ export const AppletDetail: React.FC<IAppletDetailProps> = (props: IAppletDetailP
                             </div>
                             <div className="content">
                                 <h1>{props.applet?.name && translate(props.applet.name)}</h1>
-                                <p>Id:&nbsp;{props.applet?.id}</p>
+                                {props.applet?.id && <p>Id:&nbsp;{props.applet.id}</p>}
                             </div>
                         </div>
                         <Divider mx="auto" mt="1.5em" mb={2} opacity={0.25} />

@@ -15,7 +15,7 @@ export class AppletIcon {
     static monitor = imgFolder + 'appIcons/monitor.png';
     static nyanCat = imgFolder + 'appIcons/nyanCat.png';
     static windows = imgFolder + 'appIcons/windows.png';
-    static internet = imgFolder + 'appIcons/internet.png';
+    static internet = imgFolder + 'appIcons/internet3.png';
     static settings = imgFolder + 'appIcons/setting3.png';
     static terminal = imgFolder + 'appIcons/terminal.png';
     static yellowPages = imgFolder + 'appIcons/yellowPages.png';

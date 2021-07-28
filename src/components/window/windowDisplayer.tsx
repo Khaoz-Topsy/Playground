@@ -10,6 +10,7 @@ import { IFrameApplet } from '../applet/iframe/iframeApplet';
 import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
 import { MonitorApplet } from '../applet/kurt/monitorApplet';
 import { TweetListApplet } from '../applet/tweeter/tweetList';
+import { BrowserApplet } from '../applet/browser/browserApplet';
 import { PictureApplet } from '../applet/picture/pictureApplet';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
@@ -32,11 +33,11 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.email: return <EmailApplet key={appKey} {...appProps} />
         case AppletType.explorer: return <Explorer key={appKey} {...appProps} />
         case AppletType.notes: return <NotesApplet key={appKey} {...appProps} />
-        case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
+        case AppletType.liveTv: return <LiveTvApplet key={appKey} {...appProps} />
         case AppletType.vsCode: return <VsCodeApplet key={appKey} {...appProps} />
         case AppletType.monitor: return <MonitorApplet key={appKey} {...appProps} />
-        case AppletType.liveTv: return <LiveTvApplet key={appKey} {...appProps} />
         case AppletType.swagger: return <SwaggerApplet key={appKey} {...appProps} />
+        case AppletType.browser: return <BrowserApplet key={appKey} {...appProps} />
         case AppletType.nyanCat: return <NyanCatApplet key={appKey} {...appProps} />
         case AppletType.picture: return <PictureApplet key={appKey} {...appProps} />
         case AppletType.setting: return <SettingApplet key={appKey} {...appProps} />
@@ -48,6 +49,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.assistantSMS: return <AssistantSMSApplet key={appKey} {...appProps} />
         case AppletType.presentation: return <PresentationApplet key={appKey} {...appProps} />
 
+        case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.iotPublication: return <IFrameApplet key={appKey} {...appProps} />
     }
