@@ -179,10 +179,13 @@ export const setNewFocusForApp = (guid: string) => (store: IWindowStore): IWindo
 }
 
 const InternalSetNewFocusForApp = (store: IWindowStore, guid: string): IWindowStore => {
-    // const currentApps = store.activeApps.map(aa => ({ ...aa }));
-    // const sortOrderArray = currentApps.filter(aa => aa.guid !== guid).map(aa => aa.openOrder);
-    // const nextAppToFocus = currentApps.find(aa => aa.openOrder === Math.max(...sortOrderArray));
+    const currentApps = store.activeApps.map(aa => ({ ...aa }));
+    const sortOrderArray = currentApps.filter(aa => aa.guid !== guid).map(aa => aa.openOrder);
+    const nextAppToFocus = currentApps.find(aa => aa.openOrder === Math.max(...sortOrderArray));
 
-    store.currentFocused = guid;
+    store.currentFocused = (nextAppToFocus != null)
+        ? nextAppToFocus.guid
+        : guid;
+
     return store;
 }
