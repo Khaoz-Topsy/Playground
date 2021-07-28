@@ -111,6 +111,14 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
             const applet = iconData as IAppletFile;
             return [
                 {
+                    name: applet.name,
+                    optionState: OptionState.UnSelectable,
+                },
+                {
+                    name: (applet.name.toString() + 'divider') as any,
+                    optionState: OptionState.Divider,
+                },
+                {
                     name: LocaleKey.runApplication,
                     onClick: doubleClickFileOrFolder(applet),
                 },

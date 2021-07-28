@@ -15,6 +15,7 @@ import { StartMenuMostUsedItem } from './startMenuMostUsedItem';
 import { StartMenuSlidingTile } from './startMenuSlidingTile';
 import { StartMenuProfile } from './startMenuProfile';
 import { StartMenuTile } from './startMenuTile';
+import { MiscStore } from '../../../state/misc/store';
 
 interface IProps {
     isOpen: boolean;
@@ -34,10 +35,11 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
         if (sMenu.images != null && sMenu.images.length > 0) {
             return (
                 <StartMenuSlidingTile
-                    key={sMenu.id}
-                    // key={`${sMenu.id}-isOpen:${props.isOpen.toString()}`}
+                    // key={sMenu.id}
+                    key={`${sMenu.id}-isOpen:${props.isOpen.toString()}`}
                     {...sMenu}
                     onClick={onClick}
+                    openAppProperties={() => MiscStore.update(() => ({ appletViewProperties: sMenu }))}
                 />
             );
         }
@@ -47,14 +49,20 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                 key={sMenu.id} {...sMenu}
                 imgUrl={sMenu.imgUrl ?? windowIconString((sMenu as any)?.appletType)}
                 onClick={onClick}
+                openAppProperties={() => MiscStore.update(() => ({ appletViewProperties: sMenu }))}
             />
         );
+    }
+
+    const closeStartMenuClick = (e: any) => {
+        e?.preventDefault?.();
+        props.toggleStartMenu(false);
     }
 
     return (
         <>
             {
-                props.isOpen && <div className="startmenu-bg fullscreen" onClick={() => props.toggleStartMenu(false)}></div>
+                props.isOpen && <div className="startmenu-bg fullscreen" onClick={closeStartMenuClick} onContextMenu={closeStartMenuClick}></div>
             }
             <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })} onContextMenu={disabledContext}>
                 <section className="list">
@@ -66,6 +74,7 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
                                 <StartMenuMostUsedItem
                                     key={sMenu.id} {...sMenu}
                                     onClick={openApp(sMenu)}
+                                    openAppProperties={() => MiscStore.update(() => ({ appletViewProperties: sMenu }))}
                                 />
                             ))
                         }

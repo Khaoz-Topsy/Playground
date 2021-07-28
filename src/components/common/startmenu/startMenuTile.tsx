@@ -14,6 +14,7 @@ interface IProps extends IStartMenuItemProps {
     imgUrl: string;
     size: StartMenuSize;
     onClick: (e: any) => void;
+    openAppProperties: () => void;
 }
 
 export const StartMenuTile: React.FC<IProps> = (props: IProps) => {
@@ -29,7 +30,12 @@ export const StartMenuTile: React.FC<IProps> = (props: IProps) => {
             baseKey={props.id.toString()}
             className={classNames(baseCss, { 'full': props.isFull })}
             style={styleObj}
-            items={getContextWrapperItems({ sMenu: props, showUninstall: true, openApp: props?.onClick })}
+            items={getContextWrapperItems({
+                sMenu: props,
+                showUninstall: true,
+                openApp: props?.onClick,
+                openAppProperties: props?.openAppProperties,
+            })}
         >
             <BasicImage imageUrl={props.imgUrl} onClick={props?.onClick} />
             <p onClick={props?.onClick}>{translate(props.name)}</p>

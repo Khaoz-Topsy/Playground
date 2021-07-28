@@ -13,6 +13,7 @@ interface IProps extends IStartMenuItemProps {
     name: LocaleKey;
     animatedTile?: StartMenuAnimation;
     onClick: (e: any) => void;
+    openAppProperties: () => void;
 }
 
 interface IState {
@@ -34,7 +35,7 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
     }
 
     async componentDidMount() {
-        await wait(2000);
+        await wait(1000);
 
         this.transitionImages();
         const secondsPerImage = this.props.secondsPerImage || 5;
@@ -80,7 +81,12 @@ export class StartMenuSlidingTile extends React.Component<IProps, IState> {
                 baseKey={this.props.id.toString()}
                 className={baseCss}
                 style={styleObj}
-                items={getContextWrapperItems({ sMenu: this.props, showUninstall: true, openApp: this.props?.onClick })}
+                items={getContextWrapperItems({
+                    sMenu: this.props,
+                    showUninstall: true,
+                    openApp: this.props?.onClick,
+                    openAppProperties: this.props?.openAppProperties,
+                })}
             >
                 <StartMenuSlidingTileImage imageUrl={(this.props.images ?? [])?.[this.state.oldIndex]} className={animationCss} onClick={this.props?.onClick} />
                 <StartMenuSlidingTileImage imageUrl={currentImage} className={transitionCss} onClick={this.props?.onClick} />

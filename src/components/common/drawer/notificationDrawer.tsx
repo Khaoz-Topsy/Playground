@@ -9,14 +9,15 @@ import { ResultWithValue } from '../../../contracts/results/ResultWithValue';
 import { FileType, IAppletFile } from '../../../contracts/interface/IFile';
 import { KhaozBlogItem } from '../../../contracts/interface/IBlogRssFeed';
 import { openAppletOrFile } from '../../../helper/appletHelper';
+import { disabledContext } from '../../../helper/clickHelper';
 import { getIframeUrl } from '../../../helper/iframeHelper';
 import { withServices } from '../../../integration/dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 import { WindowStore } from '../../../state/window/store';
 
 import { dependencyInjectionToProps, IExpectedServices } from './notificationDrawer.dependencyInjection';
 import { NotificationDrawerIcon } from './notificationDrawerIcon';
-import { translate } from '../../../integration/i18n';
-import { LocaleKey } from '../../../localization/LocaleKey';
 
 interface IWithoutExpectedServices {
     onClose: () => void
@@ -55,8 +56,8 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
 
     return (
         <>
-            <DrawerOverlay />
-            <DrawerContent className="notification-drawer">
+            <DrawerOverlay onContextMenu={disabledContext} />
+            <DrawerContent onContextMenu={disabledContext} className="notification-drawer noselect">
                 <DrawerCloseButton />
                 <DrawerHeader>{translate(LocaleKey.notifications)}</DrawerHeader>
                 <hr />

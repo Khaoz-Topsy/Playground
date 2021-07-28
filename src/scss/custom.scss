@@ -91,6 +91,12 @@ ul.MuiList-root.MuiMenu-list {
         text-decoration-color: rgba(255, 255, 255, 0.5);
     }
 
+    .MuiMenuItem-root.MuiListItem-button.un-selectable {
+        opacity: 0.5;
+        text-decoration-color: rgba(255, 255, 255, 0.5);
+        place-content: center;
+    }
+
     hr {
         border-color: rgba(150, 150, 150, 0.5);
         margin: 0.25em 0;

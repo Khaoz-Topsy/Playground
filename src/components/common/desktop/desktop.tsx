@@ -5,6 +5,8 @@ import classNames from 'classnames';
 import { TutorialSticky } from '../../sticky/tutorialSticky';
 import { AppletType } from '../../../constants/enum/appletType';
 import { DesktopIcons } from '../../../constants/desktopIconList';
+import { disabledContext } from '../../../helper/clickHelper';
+import { MiscStore } from '../../../state/misc/store';
 import { WindowStore } from '../../../state/window/store';
 import { SettingStore } from '../../../state/setting/store';
 import { openAppFromDesktop } from '../../../state/window/reducer';
@@ -74,7 +76,7 @@ export const Desktop: React.FC = () => {
     }
 
     return (
-        <div className={classNames('fullscreen layer', 'bg', background)}>
+        <div className={classNames('fullscreen layer', 'bg', background)} onContextMenu={disabledContext}>
             <div id="desktop-grid" className="fullscreen px1">
                 {
                     DesktopIcons.map((desktopIcon, index: number) => {
@@ -86,6 +88,7 @@ export const Desktop: React.FC = () => {
                                 selectedIconIndexes={selectedIconIndexes}
                                 setSelected={setIndex}
                                 openApp={openApp}
+                                openAppProperties={() => MiscStore.update(() => ({ appletViewProperties: desktopIcon }))}
                             />
                         );
                     })

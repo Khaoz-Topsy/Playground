@@ -12,6 +12,7 @@ export enum OptionState {
     Disabled,
     Important,
     NoAccess,
+    UnSelectable,
 }
 
 export interface IContextMenuItemProps {
@@ -80,6 +81,7 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
         const classesObj = {
             'important': noAccess || menuItem.optionState === OptionState.Important,
             'disabled': noAccess || menuItem.optionState === OptionState.Disabled,
+            'un-selectable': noAccess || menuItem.optionState === OptionState.UnSelectable,
         };
         return (
             <MenuItem

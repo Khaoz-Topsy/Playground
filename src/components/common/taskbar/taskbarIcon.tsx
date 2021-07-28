@@ -53,6 +53,14 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
     const getContextWrapperItems = (applet: LaunchedApp | NotLaunchedApp) => {
         const menuItems: Array<IContextMenuItemProps> = [
             {
+                name: applet.name,
+                optionState: OptionState.UnSelectable,
+            },
+            {
+                name: (applet.name.toString() + 'divider') as any,
+                optionState: OptionState.Divider,
+            },
+            {
                 name: LocaleKey.runApplication,
                 optionState: (isMinimised || isSelected || isOpen) ? OptionState.Disabled : undefined,
                 onClick: props?.openApp?.(applet),
