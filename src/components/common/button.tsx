@@ -1,7 +1,6 @@
-import React, { ReactNode, useEffect, useState } from 'react';
+import React, { ReactNode, useState } from 'react';
 import { motion } from 'framer-motion';
 import classNames from 'classnames';
-import { ArrowBackIcon, ArrowForwardIcon } from '@chakra-ui/icons';
 
 const navButtonAnimDuration = 250;
 

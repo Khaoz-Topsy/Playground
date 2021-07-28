@@ -1,7 +1,7 @@
 import { TrashIcon } from '@heroicons/react/solid';
 
 import { IContextMenuItemProps, OptionState } from '../../core/contextMenu';
-import { IAppletFile, isLink, IStartMenuItemProps } from '../../../contracts/interface/IFile';
+import { isLink, IStartMenuItemProps } from '../../../contracts/interface/IFile';
 import { openExternalInNewWindow } from '../../../helper/linkHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { InfoOutlineIcon } from '@chakra-ui/icons';

@@ -21,6 +21,7 @@ interface IProps extends IApplet { }
 
 
 export const BrowserApplet: React.FC<IProps> = (props: IProps) => {
+    // eslint-disable-next-line
     const [url, setUrl] = useState('https://www.google.com/webhp?igu=1&gws_rd=ssl');
 
     let info: any = allKnownApps().find(app => app.appletType === AppletType.browser)?.info;
