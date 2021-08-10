@@ -10,7 +10,8 @@ export enum CommandEnum {
     SystemDanger,
     Directory,
     Error,
-    User
+    User,
+    Link,
 }
 
 export interface IExecutedCommand {
@@ -19,6 +20,7 @@ export interface IExecutedCommand {
     tag?: string;
     dir?: string;
     time?: string;
+    onClick?: () => void;
     value: string | ReactNode;
 }
 

@@ -1,11 +1,10 @@
 import React from 'react';
+import classNames from 'classnames';
 import { Icon } from '@chakra-ui/icons';
 import { Center, useToast } from '@chakra-ui/react';
 import { BellIcon } from '@heroicons/react/solid';
 import { AnimatePresence } from 'framer-motion';
 
-import { BasicImage } from '../../core/image';
-import { AppletIcon } from '../../../constants/appImage';
 import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
@@ -97,12 +96,12 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                     numberOfRequiredClicks={5}
                     trigger={doHarlemShake}
                 >
-                    {/* <div className={classNames('hamburgler', { 'no-hamburgler': props.isStartMenuOpen })}>
-                        <div className="bun top"></div>
-                        <div className="meat"></div>
-                        <div className="bun bottom"></div>
-                    </div> */}
-                    <BasicImage imageUrl={AppletIcon.windows} alt={AppletIcon.windows} />
+                    <div className={classNames('start-burger', { 'no-start-burger': props.isStartMenuOpen })}>
+                        <div className="bar top"></div>
+                        <div className="center-bar"></div>
+                        <div className="bar bottom"></div>
+                    </div>
+                    {/* <BasicImage imageUrl={AppletIcon.windows} alt={AppletIcon.windows} style={{ padding: '0.2em' }} /> */}
                 </TriggerAfterXClicks>
                 {
                     appsToDisplay.map((applet: LaunchedApp | NotLaunchedApp, index: number) => {

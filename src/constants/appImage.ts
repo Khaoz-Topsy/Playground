@@ -14,7 +14,7 @@ export class AppletIcon {
     static vsCode = imgFolder + 'appIcons/vsCode.png';
     static monitor = imgFolder + 'appIcons/monitor.png';
     static nyanCat = imgFolder + 'appIcons/nyanCat.png';
-    static windows = imgFolder + 'appIcons/windows.png';
+    static windows = imgFolder + 'appIcons/menu-dots.svg';
     static internet = imgFolder + 'appIcons/internet3.png';
     static settings = imgFolder + 'appIcons/setting3.png';
     static terminal = imgFolder + 'appIcons/terminal.png';

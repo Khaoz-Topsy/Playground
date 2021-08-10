@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import classNames from 'classnames';
+import { ExternalLinkIcon } from '@chakra-ui/icons';
 
 import { knownKeyCodes } from '../../../constants/keybind';
 import { TerminalLoadingImage } from '../../core/loader';
@@ -402,6 +403,18 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
             return (
                 <div key={msg.key} className="msg animate">
                     <span className="error">{msg.value}</span>
+                    <br />
+                </div>
+            );
+        }
+        if (msg.type === CommandEnum.Link) {
+            return (
+                <div key={msg.key} className="msg animate" onClick={msg.onClick}>
+                    <span className={classNames('tag', CommandEnum[msg.type], msg.tag ?? 'System')}>
+                        {msg.tag ?? 'System'}
+                    </span>
+                    <span className="Link">{msg.value}</span>
+                    {msg.onClick !== null && <span className="Link"><ExternalLinkIcon ml="1" color="blue.400" /></span>}
                     <br />
                 </div>
             );

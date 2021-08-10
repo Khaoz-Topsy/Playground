@@ -11,7 +11,6 @@ import { openAppletOrFile } from '../../../helper/appletHelper';
 import { disabledContext } from '../../../helper/clickHelper';
 import { getBreadcrumbList, searchFilesOnDisk } from '../../../helper/fileHelper';
 import { withServices } from '../../../integration/dependencyInjection';
-import { LocaleKey } from '../../../localization/LocaleKey';
 import { WindowStore } from '../../../state/window/store';
 
 import { Window } from '../window';
@@ -39,19 +38,15 @@ interface IState {
 }
 
 export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
-    const initialFileId = props.initialFileId ?? 0;
+    const initialFileId = props.meta.initialFileId ?? props.initialFileId ?? 0;
     const file = searchFilesOnDisk(props.folderStructure, initialFileId);
 
-    const [selectedId, setSelectedId] = useState<number>(0);
+    const [selectedId, setSelectedId] = useState<number>(file?.id ?? 0);
     const [folderState, setFolderState] = useState<IState>({
         currentChangeIndex: 0,
         currentFolder: {
-            ...props.folderStructure,
-            breadcrumbs: [{
-                id: file?.id ?? 0,
-                isActive: true,
-                name: file?.name ?? LocaleKey.unknown,
-            }]
+            ...(isFolder(file!) ? file : props.folderStructure),
+            breadcrumbs: getBreadcrumbList(file?.id ?? 0, props.folderStructure),
         },
         previousFolders: [],
         nextFolders: [],

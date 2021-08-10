@@ -1,9 +1,10 @@
+import { site } from './site';
+import { AppletIcon, FileIcon, MiscIcon } from './appImage';
+import { applicationFolderId } from './filesOnDisk';
 
 import { KnownApplets } from '../constants/knownApplets';
 import { FileType, IAppletFile, IStartMenuAppletFile, IStartMenuFile, StartMenuAnimation, StartMenuSize } from '../contracts/interface/IFile';
 import { LocaleKey } from '../localization/LocaleKey';
-import { AppletIcon, FileIcon, MiscIcon } from './appImage';
-import { site } from './site';
 
 export const StartMenuMostUsed: Array<IAppletFile> = [
     KnownApplets.settings,
@@ -34,10 +35,18 @@ export const StartMenuApplications: Array<IStartMenuAppletFile | IStartMenuFile>
         backgroundColour: 'silver',
         textColour: 'black',
     },
+    // {
+    //     ...KnownApplets.vsCode,
+    //     size: StartMenuSize.small,
+    //     backgroundColour: '#0C76B3',
+    // },
     {
-        ...KnownApplets.vsCode,
+        ...KnownApplets.explorer,
+        name: LocaleKey.applications,
+        imgUrl: AppletIcon.application,
+        meta: { key: 'start-menu-app', initialFileId: applicationFolderId },
         size: StartMenuSize.small,
-        backgroundColour: '#0C76B3',
+        backgroundColour: '#014d78',
     },
     {
         id: 99,

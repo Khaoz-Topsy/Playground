@@ -15,7 +15,7 @@ export const site = {
         twitch: 'https://twitch.tv/khaoztopsy',
         github: 'https://github.com/Khaoz-Topsy',
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
-        linkedin: 'https://www.linkedin.com/in/kurtlourensza/',
+        linkedin: 'https://www.linkedin.com/in/kurtlourensza',
         presentation: 'https://presentation.kurtlourens.com',
         memedeck: 'https://github.com/Khaoz-Topsy/Stream-Meme-Deck',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',

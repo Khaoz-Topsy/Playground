@@ -1,6 +1,12 @@
 import { site } from '../../../../constants/site';
 import { openExternalInNewTab } from '../../../../helper/linkHelper';
 import { CommandEnum, ICommand, IExecutedCommand } from '../../../../contracts/interface/ICommand';
+import { translate } from '../../../../integration/i18n';
+import { LocaleKey } from '../../../../localization/LocaleKey';
+
+const cleanUrl = (url: string) => {
+    return url.replace('http://', '').replace('https://', '');
+}
 
 export const staticList: { [key: string]: ICommand } = {
     blog: {
@@ -59,8 +65,44 @@ export const staticList: { [key: string]: ICommand } = {
         run: async (printer: (cmd: IExecutedCommand) => void) => {
             printer({
                 tag: 'Email',
+                type: CommandEnum.Link,
+                value: cleanUrl(site.kurt.email),
+                onClick: () => openExternalInNewTab(`mailto:${site.kurt.email}`),
+            });
+            printer({
+                tag: translate(LocaleKey.github),
+                type: CommandEnum.Link,
+                value: cleanUrl(site.kurt.github),
+                onClick: () => openExternalInNewTab(site.kurt.github),
+            });
+            printer({
+                tag: 'Twitter',
+                type: CommandEnum.Link,
+                value: cleanUrl(site.kurt.twitter),
+                onClick: () => openExternalInNewTab(site.kurt.twitter),
+            });
+            printer({
+                tag: 'Twitch',
+                type: CommandEnum.Link,
+                value: cleanUrl(site.kurt.twitch),
+                onClick: () => openExternalInNewTab(site.kurt.twitch),
+            });
+            printer({
+                tag: 'LinkedIn',
+                type: CommandEnum.Link,
+                value: cleanUrl(site.kurt.linkedin),
+                onClick: () => openExternalInNewTab(site.kurt.linkedin),
+            });
+            printer({
+                tag: 'Steam',
+                type: CommandEnum.Link,
+                value: cleanUrl(site.kurt.steam),
+                onClick: () => openExternalInNewTab(site.kurt.steam),
+            });
+            printer({
+                tag: 'Discord',
                 type: CommandEnum.SystemInfo,
-                value: site.kurt.email,
+                value: site.kurt.discord,
             });
         },
     },

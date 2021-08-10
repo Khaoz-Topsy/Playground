@@ -246,14 +246,14 @@ $startmenu-tile-hover-border: 2;
 
 $radius: 50px;
 
-.hamburgler {
+.start-burger {
     width: 3em;
     height: 1.5em;
     display: block;
     margin: 0.35em auto;
     transition: .3s all ease-in-out;
 
-    &.no-hamburgler {
+    &.no-start-burger {
         transform: rotate(-45deg);
         height: 3em;
         width: 4em;
@@ -263,18 +263,19 @@ $radius: 50px;
     }
 }
 
-.bun,
-.meat {
+.bar,
+.center-bar {
     display: block;
     width: 100%;
-    background: _palette(accent);
+    // background: _palette(accent);
+    background: white;
     height: 20%;
     transition: .3s ease all;
     border-radius: $radius;
 }
 
 .top {
-    .no-hamburgler & {
+    .no-start-burger & {
         height: 38%;
         width: 20%;
         margin-left: 40%;
@@ -283,7 +284,7 @@ $radius: 50px;
 }
 
 .bottom {
-    .no-hamburgler & {
+    .no-start-burger & {
         height: 38%;
         width: 20%;
         margin-left: 40%;
@@ -291,10 +292,10 @@ $radius: 50px;
     }
 }
 
-.meat {
+.center-bar {
     margin: 20% 0;
 
-    .no-hamburgler & {
+    .no-start-burger & {
         margin: 2% 0;
 
     }
