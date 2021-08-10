@@ -50,10 +50,10 @@ export class SillyService {
         }
 
         return {
-            status: BatteryStatus.Unknown,
+            status: BatteryStatus.NotAvailable,
             chargingTime: 0,
             dischargingTime: Infinity,
-            percent: 100,
+            percent: -1,
         }
     }
 }

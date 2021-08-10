@@ -7,6 +7,7 @@ export interface IBatteryData {
 
 export enum BatteryStatus {
     Unknown,
+    NotAvailable,
     PluggedInFullCharge,
     PluggedInIsCharging,
     Discharging,

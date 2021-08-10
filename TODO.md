@@ -43,6 +43,7 @@ Few cool things added:
 - window not focused overlay (to handle clicking on unfocused window containing iframe better)
 - Custom contextMenuItems (Like right clicking on email icon in taskbar to open send email easily)
 - Fix window resize handle animate
+- Fix Firefox infinite loop
 
 
 Things that I will be adding 

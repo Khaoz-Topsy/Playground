@@ -79,7 +79,13 @@ export const TaskbarBatteryIcon: React.FC<IProps> = (props: IProps) => {
                     <Icon as={iconToDisplay} />
                 </Center>
                 <Center>
-                    <h1>{batteryData.percent.toFixed(0)}%</h1>
+                    <h1>
+                        {
+                            (batteryData.percent > 0)
+                                ? batteryData.percent.toFixed(0) + '%'
+                                : '??'
+                        }
+                    </h1>
                 </Center>
             </div>
         </>
