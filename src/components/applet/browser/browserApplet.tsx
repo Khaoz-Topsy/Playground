@@ -12,6 +12,8 @@ import { closeApp } from '../../../state/window/reducer';
 import { MiscStore } from '../../../state/misc/store';
 import { allKnownApps } from '../../../constants/knownApplets';
 import { AppletType } from '../../../constants/enum/appletType';
+import { site } from '../../../constants/site';
+import { HomeIcon } from '@heroicons/react/solid';
 
 declare global {
     interface browserFrame { contentWindow: any; }
@@ -21,8 +23,8 @@ interface IProps extends IApplet { }
 
 
 export const BrowserApplet: React.FC<IProps> = (props: IProps) => {
-    // eslint-disable-next-line
-    const [url, setUrl] = useState('https://www.google.com/webhp?igu=1&gws_rd=ssl');
+    const homeUrl = 'https://www.google.com/webhp?igu=1&gws_rd=ssl';
+    const [url, setUrl] = useState(homeUrl);
 
     let info: any = allKnownApps().find(app => app.appletType === AppletType.browser)?.info;
 
@@ -45,6 +47,10 @@ export const BrowserApplet: React.FC<IProps> = (props: IProps) => {
                         disabled={true}
                         onClick={() => { }}
                     />
+                    <AnimatedIconButton
+                        icon={<HomeIcon />}
+                        onClick={() => setUrl(homeUrl)}
+                    />
                     <Input mr={3} value={url} disabled />
                     <Menu>
                         <MenuButton
@@ -54,10 +60,10 @@ export const BrowserApplet: React.FC<IProps> = (props: IProps) => {
                             icon={<HamburgerIcon />}
                         />
                         <MenuList>
-                            <MenuItem icon={<StarIcon />}>
+                            <MenuItem icon={<StarIcon />} onClick={() => setUrl(site.kurt.website)}>
                                 {translate(LocaleKey.kurtLourensCV)}
                             </MenuItem>
-                            <MenuItem icon={<StarIcon />}>
+                            <MenuItem icon={<StarIcon />} disabled={true} className="disabled">
                                 New Window
                             </MenuItem>
                             <Divider my={1} />

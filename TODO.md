@@ -41,6 +41,8 @@ Few cool things added:
 - Launch Discord from Taskbar icon
 - Yellow(Web)Pages
 - window not focused overlay (to handle clicking on unfocused window containing iframe better)
+- Custom contextMenuItems (Like right clicking on email icon in taskbar to open send email easily)
+- Fix window resize handle animate
 
 
 Things that I will be adding 
@@ -57,8 +59,6 @@ Things that I will be adding
   - https://codepen.io/bertdida/pen/pQWPaZ
 - Recorded TV
   - https://codepen.io/HIC/pen/mdbrxXR
-- Fix window resize handle animate
 - Swagger app sidebar
   - Ability to open the other docs
-- Custom contextMenuItems (Like right clicking on email icon in taskbar to open send email easily)
 

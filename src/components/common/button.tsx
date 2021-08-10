@@ -17,7 +17,7 @@ const navButtonAnimVariants = {
 }
 
 interface IAnimatedNavButtonProps {
-    disabled: boolean;
+    disabled?: boolean;
     icon: ReactNode;
     onClick: (e: any) => void;
 }

@@ -102,3 +102,7 @@ ul.MuiList-root.MuiMenu-list {
         margin: 0.25em 0;
     }
 }
+
+.chakra-menu__menuitem.disabled {
+    text-decoration: line-through;
+}
