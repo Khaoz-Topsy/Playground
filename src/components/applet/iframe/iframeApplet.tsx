@@ -14,9 +14,11 @@ export const IFrameApplet: React.FC<IProps> = (props: IProps) => {
         refreshOnResize = false,
         defaultHeight = undefined,
         defaultWidth = undefined,
+        handleUnfocusedClick = undefined,
     } = props?.meta;
 
     const propsFromMeta = {
+        handleUnfocusedClick: (handleUnfocusedClick !== false) ? true : false,
         refreshOnResize,
         defaultHeight,
         defaultWidth,

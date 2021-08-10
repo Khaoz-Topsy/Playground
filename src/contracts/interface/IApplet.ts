@@ -11,6 +11,7 @@ export interface IApplet {
     isFocused?: boolean;
     isMinimised?: boolean;
     isMaximised?: boolean;
+    handleUnfocusedClick?: boolean;
     zIndex?: number;
 
     defaultX?: number;

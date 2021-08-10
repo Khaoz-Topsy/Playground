@@ -140,6 +140,11 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                                         : windowContentNode
                                 }
                             </WindowContent>
+                            {
+                                (isFocused == false && props.handleUnfocusedClick) && (
+                                    <div className="window-content full-content pos-abs-top-left" onClick={props?.onSetFocus} style={{ position: 'absolute' }}></div>
+                                )
+                            }
                         </div>
                     </motion.div>
                 </ResizableBox>
