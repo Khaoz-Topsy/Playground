@@ -32,6 +32,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
     });
 
     const onResize = (_: any, data: ResizeCallbackData) => {
+        console.log('hi');
         setState({
             width: data.size.width,
             height: data.size.height
@@ -39,7 +40,8 @@ export const Window: React.FC<IProps> = (props: IProps) => {
     };
 
     const onResizeStop = (_: any, __: ResizeCallbackData) => {
-        if (props.refreshOnResize !== true) return;
+        // if (props.refreshOnResize !== true) return;
+        console.log('bye');
         setKeyIndex(keyIndex + 1);
     };
 
@@ -53,19 +55,21 @@ export const Window: React.FC<IProps> = (props: IProps) => {
     };
 
     const CustomResizeHandle = React.forwardRef((props, ref: any) => {
-        const classes = classNames('handle', { isMinimised });
+        const classes = classNames('handle', 'noselect', { isMinimised });
         return (
             <motion.div
+                {...props}
                 key={`handle-w${state.width}-h${state.height}`} ref={ref} className={classes}
                 initial={variants.initial}
                 transition={{ duration: 0.25 }}
                 animate={(isMinimised ?? false) ? "minimised" : "open"}
                 variants={variants}
                 exit={variants.closed}
+                draggable="false"
             >
                 <WindowDragHandle />
             </motion.div >
-        )
+        );
     });
 
     const { defaultX, defaultY, } = props;
@@ -101,6 +105,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
 
     return (
         <div
+            draggable="false"
             style={{ ...topLevelStyle, zIndex: isMinimised ? -1 : topLevelStyle.zIndex }}
             className={classNames({ 'is-minimised': isMinimised, 'is-maximised': (isMaximised && !isMinimised) })}
         >
@@ -114,11 +119,13 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                     width={isMinimised ? 0 : state.width}
                     onResize={onResize}
                     onResizeStop={onResizeStop}
+                    onResizeStart={() => console.log('start')}
                     minConstraints={[minWidth, minHeight]}
                     handle={<CustomResizeHandle key={`${props.appletType}-handle`} />}
                 >
                     <motion.div
                         key={`motion-${props.appletType}`}
+                        draggable="false"
                         initial={variants.initial}
                         transition={{ duration: 0.5 }}
                         animate={(isMinimised ?? false) ? "minimised" : "open"}
@@ -126,6 +133,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                         exit={variants.closed}
                     >
                         <div
+                            draggable="false"
                             className={classNames('window box', AppletType[props.appletType], { 'is-focused': isFocused })}
                             style={isMinimised ? { width: 0, height: 0 } : windowStyle}
                             onClick={isFocused ? (_) => { } : props?.onSetFocus}
@@ -140,7 +148,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
                                 {
                                     (props.sidebar != null)
                                         ? (
-                                            <div className="window-with-sidebar">
+                                            <div className="window-with-sidebar" draggable="false">
                                                 <div className="sidebar">{props.sidebar}</div>
                                                 <div className={classNames('offset-content', { 'full-content': props.isFullscreen })}>{windowContentNode}</div>
                                             </div>

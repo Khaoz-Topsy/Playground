@@ -89,7 +89,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
     }
 
     return (
-        <div className="taskbar" onContextMenu={disabledContext}>
+        <div className="taskbar" draggable="false" onContextMenu={disabledContext}>
             <AnimatePresence>
                 <TriggerAfterXClicks classNames="start-menu taskbar-highlight-on-hover applet-shortcut noselect"
                     onClick={() => props.toggleStartMenu()}

@@ -56,8 +56,8 @@ export const NotificationDrawerUnconnected: React.FC<IProps> = (props: IProps) =
 
     return (
         <>
-            <DrawerOverlay onContextMenu={disabledContext} />
-            <DrawerContent onContextMenu={disabledContext} className="notification-drawer noselect">
+            <DrawerOverlay onContextMenu={disabledContext} draggable="false" />
+            <DrawerContent onContextMenu={disabledContext} className="notification-drawer noselect" draggable="false">
                 <DrawerCloseButton />
                 <DrawerHeader>{translate(LocaleKey.notifications)}</DrawerHeader>
                 <hr />

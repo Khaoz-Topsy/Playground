@@ -193,16 +193,6 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     description: '',
                     url: site.kurt.khaoznet.download,
                 },
-                {
-                    name: 'Timeline',
-                    description: '',
-                    url: site.kurt.khaoznet.timeline,
-                },
-                {
-                    name: 'LAN',
-                    description: '',
-                    url: site.kurt.khaoznet.lan,
-                },
             ]
         },
         {
@@ -216,7 +206,7 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                 {
                     name: 'BTS',
                     description: '',
-                    url: 'https://btsra.co.za',
+                    url: 'https://app.btsra.co.za',
                 },
                 {
                     name: 'RemoteConfigs',
@@ -252,6 +242,21 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'WebApp',
                     description: '',
                     url: site.tennodex.webapp,
+                },
+            ]
+        },
+        {
+            name: LocaleKey.archived,
+            pages: [
+                {
+                    name: 'Timeline',
+                    description: '',
+                    url: site.kurt.khaoznet.timeline,
+                },
+                {
+                    name: 'LAN',
+                    description: '',
+                    url: site.kurt.khaoznet.lan,
                 },
             ]
         },

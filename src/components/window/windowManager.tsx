@@ -73,7 +73,7 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
     }
 
     return (
-        <div className="window-manager layer fullscreen">
+        <div className="window-manager layer fullscreen" draggable="false">
             <AnimatePresence>
                 {
                     (activeApps ?? [])

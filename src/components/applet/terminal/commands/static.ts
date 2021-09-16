@@ -46,7 +46,7 @@ export const staticList: { [key: string]: ICommand } = {
                 },
                 {
                     label: ' ➜ ',
-                    content: 'Creating another app for the AssistantApps group.'
+                    content: '👨‍💻 Creating another app for the AssistantApps group.'
                 },
             ];
 

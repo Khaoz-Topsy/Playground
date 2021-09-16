@@ -131,5 +131,9 @@ export enum LocaleKey {
   yellowPages,
   browser,
   loading,
+  archived,
+  language,
+  wallpaper,
+  font,
   unknown
 }

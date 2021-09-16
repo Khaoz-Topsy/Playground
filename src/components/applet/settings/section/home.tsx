@@ -1,9 +1,10 @@
 import React from 'react';
 import { SunIcon } from '@chakra-ui/icons';
-import { Box, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text, useToast } from '@chakra-ui/react';
+import { Box, FormControl, FormLabel, Select, SimpleGrid, Slider, SliderFilledTrack, SliderThumb, SliderTrack, Text, useToast } from '@chakra-ui/react';
 
 import { FoundSecretType } from '../../../../constants/enum/foundSecretType';
 import { Backgrounds } from '../../../../constants/appImage';
+import { Fonts } from '../../../../constants/font';
 import { CustomCheckbox } from '../../../../components/core/checkbox';
 import { addSecretIfNotFound } from '../../../../helper/secretFoundHelper';
 import { changeLocalization, supportedLangs, translate } from '../../../../integration/i18n';
@@ -14,6 +15,7 @@ import { SecretStore } from '../../../../state/secrets/store';
 import { ISettingStore, SettingStore } from '../../../../state/setting/store';
 
 import { IExpectedServices, dependencyInjectionToProps } from './home.dependencyInjection';
+import { setFontClass } from '../../../../helper/documentHelper';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IWithoutExpectedServices, IExpectedServices { }
@@ -40,6 +42,16 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
             store.language = newValue;
         });
         changeLocalization(newValue);
+    }
+
+    const fontDropDownChange = (e: any) => {
+        const newValue = e?.target?.value;
+        if (newValue == null) return;
+
+        SettingStore.update((store: ISettingStore) => {
+            store.font = newValue;
+        });
+        setFontClass(newValue);
     }
 
     const onEnableClippyChange = (e: any) => {
@@ -69,6 +81,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
     const {
         background,
         brightness,
+        font,
         // volume,
         language,
         enabledClippy,
@@ -81,41 +94,61 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 subTexts={[translate(LocaleKey.customiseSettings)]}
             >
                 <SimpleGrid mt={2} mb={4} minChildWidth="250px" columnGap="10px" rowGap="10px">
-                    <Select mt={1} isFullWidth={true} value={language} onChange={languageDropDownChange}>
-                        {
-                            supportedLangs.map(dropdownOpt => {
-                                return (
-                                    <option key={dropdownOpt.value} value={dropdownOpt.value}>
-                                        {dropdownOpt.name}
-                                    </option>
-                                );
-                            })
-                        }
-                    </Select>
-                    <Select mt={1} isFullWidth={true} value={background} onChange={stateChange('background')}>
-                        {
-                            Backgrounds.map(dropdownOpt => {
-                                return (
-                                    <option key={dropdownOpt.value} value={dropdownOpt.value}>
-                                        {dropdownOpt.name}
-                                    </option>
-                                );
-                            })
-                        }
-                    </Select>
-                </SimpleGrid>
-                <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px">
-                    <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2" className="border-transition">
-                        <Text fontSize="md">{translate(LocaleKey.brightness)}</Text>
-                        <Slider mb="1" defaultValue={brightness} onChange={sliderOnChange('brightness')}>
-                            <SliderTrack>
-                                <SliderFilledTrack bg="blue.400" />
-                            </SliderTrack>
-                            <SliderThumb boxSize={6}>
-                                <SunIcon color="blue.400" />
-                            </SliderThumb>
-                        </Slider>
-                    </Box>
+                    <FormControl mt={1}>
+                        <FormLabel>{translate(LocaleKey.language)}</FormLabel>
+                        <Select isFullWidth={true} value={language} onChange={languageDropDownChange}>
+                            {
+                                supportedLangs.map(dropdownOpt => {
+                                    return (
+                                        <option key={dropdownOpt.value} value={dropdownOpt.value}>
+                                            {dropdownOpt.name}
+                                        </option>
+                                    );
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                    <FormControl mt={1}>
+                        <FormLabel>{translate(LocaleKey.wallpaper)}</FormLabel>
+                        <Select isFullWidth={true} value={background} onChange={stateChange('background')}>
+                            {
+                                Backgrounds.map(dropdownOpt => {
+                                    return (
+                                        <option key={dropdownOpt.value} value={dropdownOpt.value}>
+                                            {dropdownOpt.name}
+                                        </option>
+                                    );
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                    <FormControl mt={1}>
+                        <FormLabel>{translate(LocaleKey.font)}</FormLabel>
+                        <Select isFullWidth={true} value={font} onChange={fontDropDownChange}>
+                            {
+                                Fonts.map(dropdownOpt => {
+                                    return (
+                                        <option key={dropdownOpt.value} value={dropdownOpt.value}>
+                                            {dropdownOpt.name}
+                                        </option>
+                                    );
+                                })
+                            }
+                        </Select>
+                    </FormControl>
+                    <FormControl mt={1}>
+                        <FormLabel>{translate(LocaleKey.brightness)}</FormLabel>
+                        <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2" className="border-transition">
+                            <Slider mb={1.5} defaultValue={brightness} onChange={sliderOnChange('brightness')}>
+                                <SliderTrack>
+                                    <SliderFilledTrack bg="blue.400" />
+                                </SliderTrack>
+                                <SliderThumb boxSize={6}>
+                                    <SunIcon color="blue.400" />
+                                </SliderThumb>
+                            </Slider>
+                        </Box>
+                    </FormControl>
                     {/* <Box mb={2} borderWidth="1px" borderColor="whiteAlpha.700" borderRadius="lg" paddingLeft="4" paddingRight="8" paddingY="2">
                         <Text fontSize="md">{translate(LocaleKey.volume)}</Text>
                         <Slider mb="1" value={volume} onChange={sliderOnChange('volume')}>

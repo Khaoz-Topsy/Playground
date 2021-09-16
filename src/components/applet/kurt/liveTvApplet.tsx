@@ -137,6 +137,13 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                                 )
                             })
                         }
+                        <br />
+                        <div className="item">
+                            <div className="wrapper">
+                                <span className="day-of-the-week ta-center">⏸ Streaming paused ⏸</span>
+                                <span className="title ta-center">Sorry I am currently moving <img src="/assets/img/dutch.png" alt="dutch flag" style={{ display: 'inline', height: '1.5em' }} /></span>
+                            </div>
+                        </div>
                     </div>
                 </Box>
             }

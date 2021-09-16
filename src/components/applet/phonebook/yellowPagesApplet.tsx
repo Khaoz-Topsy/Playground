@@ -33,7 +33,7 @@ export const YellowPagesApplet: React.FC<IProps> = (props: IProps) => {
         if (selectedIcon === 0) {
             return (
                 yellowPagesList.map(y => (
-                    <Box key={y.name} className="group">
+                    <Box key={y.name} className="group noselect">
                         <Box className="group-name">{translate(y.name)}</Box>
                         <Box className="pages">
                             {

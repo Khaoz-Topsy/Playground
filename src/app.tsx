@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Drawer, useDisclosure, useToast } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
+import classNames from 'classnames';
 
 import { SpotlightSearch } from './components/common/spotlight/spotlight';
 import { NotificationDrawer } from './components/common/drawer/notificationDrawer';
@@ -97,7 +98,9 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
 
   return (
     <div
-      className="fullscreen layer"
+      id="app"
+      draggable="false"
+      className={classNames('fullscreen layer', currentSettings.font)}
       style={{ filter: `brightness(${brightnessPerc}%)` }}
     >
       <Desktop />

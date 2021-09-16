@@ -120,7 +120,7 @@ export const SpotlightSearch: React.FC<IProps> = (props: IProps) => {
     const searchResults: Array<IAppletFile> = getSearchResults(text?.toLocaleLowerCase?.());
 
     return (
-        <div className="spotlight layer">
+        <div className="spotlight layer" draggable="false">
             <div className={classNames('spotlight-bg fullscreen', { 'isOpen': props.isOpen })} onClick={onClick}></div>
             <motion.div
                 key="spotlight"

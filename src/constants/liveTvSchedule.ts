@@ -17,12 +17,12 @@ export const WeeklySchedule: Array<Array<ScheduleItem>> = [
     [],
     // thu
     [
-        { utcHour: 17, numHours: 4, title: LocaleKey.codingStream }
+        //{ utcHour: 17, numHours: 4, title: LocaleKey.codingStream }
     ],
     // fri
     [],
     // sat
     [
-        { utcHour: 17, numHours: 4, title: LocaleKey.gamingStream }
+        //{ utcHour: 17, numHours: 4, title: LocaleKey.gamingStream }
     ],
 ]

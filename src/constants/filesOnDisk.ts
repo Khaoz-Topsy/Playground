@@ -1,5 +1,5 @@
 import { site } from './site';
-import { Backgrounds, FileIcon, External, AppletIcon } from './appImage';
+import { Backgrounds, FileIcon, External, AppletIcon, MiscIcon } from './appImage';
 import { MarkdownFile } from './markdownFile';
 import { DesktopIcons } from './desktopIconList';
 import { IFolder } from '../contracts/interface/IFolder';
@@ -40,16 +40,13 @@ export const getFilesOnDisk = (): IFolder => {
     const moreSecretsDocFolder = getFolder(secretsDocFolder, documentFolderMoreSecretsIndex);
     moreSecretsDocFolder.addFile(markDownFile(LocaleKey.secretFileName, MarkdownFile.secrets));
 
-    getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
+    // getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {
         docFolder?.addFile?.(imageFile(background.name as any, null, [background.url]));
     }
 
     // const kurtFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Kurt' }));
     // getFolder(rootFolder, kurtFolderIndex)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
-
-    // const assistantAppsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantApps }));
-    // getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
 
     const assistantNMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantNMS }));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
@@ -72,6 +69,12 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.sms.api } });
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.sms.githubOrg));
     getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.vsCode, meta: { url: site.assistantApps.sms.vscodeUrlForApp } });
+
+    const assistantAppsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantApps }));
+    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantAppsGeneral));
+    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.homepage, MiscIcon.assistantApps, site.assistantApps.website));
+    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile('Discord' as any, FileIcon.discord, site.assistantApps.discord));
+    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.twitterFeed, AppletIcon.twitter, site.assistantApps.nms.twitter));
 
     warn('filesOnDisk', { ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();

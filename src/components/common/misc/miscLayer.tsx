@@ -29,7 +29,7 @@ export const MiscLayer: React.FC<IProps> = (props: IProps) => {
     }
 
     return (
-        <>
+        <div draggable="false">
             <VirusScan
                 key={miscStr?.fileToScan?.name}
                 isOpen={miscStr?.fileToScan != null}
@@ -50,6 +50,6 @@ export const MiscLayer: React.FC<IProps> = (props: IProps) => {
                 isOpen={miscStr?.newEmailIsOpen}
                 onClose={closeEmailModal}
             />
-        </>
+        </div>
     );
 }

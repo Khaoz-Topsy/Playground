@@ -62,9 +62,9 @@ export const StartMenu: React.FC<IProps> = (props: IProps) => {
     return (
         <>
             {
-                props.isOpen && <div className="startmenu-bg fullscreen" onClick={closeStartMenuClick} onContextMenu={closeStartMenuClick}></div>
+                props.isOpen && <div className="startmenu-bg fullscreen" draggable="false" onClick={closeStartMenuClick} onContextMenu={closeStartMenuClick}></div>
             }
-            <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })} onContextMenu={disabledContext}>
+            <div className={classNames('startmenu', 'noselect', { 'isOpen': props.isOpen })} onContextMenu={disabledContext} draggable="false">
                 <section className="list">
                     <StartMenuProfile onClick={openApp(KnownApplets.kurtLourens)} />
                     <h3 className="mt1">{translate(LocaleKey.mostUsedItems)}</h3>

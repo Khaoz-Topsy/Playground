@@ -47,3 +47,14 @@ export const exitFullScreen = (): void => {
         document?.exitFullscreen?.();
     } catch (e: any) { }
 };
+
+export const setFontClass = (fontClass: string): void => {
+    try {
+        const element = document.getElementById('app');
+        const classList = (element?.classList ?? []) as Array<string>;
+        for (const clsItem of classList) {
+            if (clsItem.includes('font-')) element?.classList?.remove?.(clsItem);
+        }
+        element?.classList?.add?.(fontClass);
+    } catch (e: any) { }
+};

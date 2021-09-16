@@ -57,7 +57,7 @@ export class MiscIcon {
 export const Backgrounds = [
     {
         value: 'bg1',
-        name: 'OuterSpace',
+        name: 'OuterSpace (default)',
         url: backgroundsFolder + 'outerSpace.jpg',
     },
     {

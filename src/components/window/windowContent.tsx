@@ -8,7 +8,7 @@ interface IProps {
 
 export const WindowContent: React.FC<IProps> = (props: IProps) => {
     return (
-        <div className={classNames('window-content', props.classNames)}>
+        <div className={classNames('window-content', props.classNames)} draggable="false">
             {props.children}
         </div>
     );
