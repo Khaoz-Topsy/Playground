@@ -44,6 +44,7 @@ Few cool things added:
 - Custom contextMenuItems (Like right clicking on email icon in taskbar to open send email easily)
 - Fix window resize handle animate
 - Fix Firefox infinite loop
+- Font selection
 
 
 Things that I will be adding 
