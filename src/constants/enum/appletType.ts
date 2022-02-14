@@ -26,6 +26,8 @@ export enum AppletType {
 
     // Funny
     nyanCat,
+    minecraft,
+    doom,
 }
 
 export const appletsThatCanHaveTheirNamesChanged: Array<AppletType> = [

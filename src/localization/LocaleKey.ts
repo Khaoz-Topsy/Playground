@@ -135,5 +135,6 @@ export enum LocaleKey {
   language,
   wallpaper,
   font,
+  minecraft,
   unknown
 }

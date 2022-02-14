@@ -169,6 +169,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '0.0.1', size: 8071, installedOn: new Date('2021-07-28') },
     };
+    static minecraft: IAppletFile = {
+        id: 1.30,
+        parentId: 1.30,
+        name: LocaleKey.minecraft,
+        appletType: AppletType.minecraft,
+        type: FileType.applet,
+        info: { version: '62.548.1', size: 98, installedOn: new Date('2022-02-11') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {
