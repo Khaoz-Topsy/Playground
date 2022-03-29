@@ -19,6 +19,7 @@
     .group {
         padding-bottom: 0.125em;
         @extend .glass-background;
+        box-shadow: none;
         background: rgba(255, 255, 255, 0.15);
         border-radius: 5px;
 

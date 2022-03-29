@@ -3,5 +3,6 @@ export const ApiUrl = {
         blog: 'Kurt/Blog',
         isLive: 'Kurt/isLive'
     },
-    contactForm: 'Contact/'
+    contactForm: 'Contact/',
+    wttr: 'https://wttr.in/?1nATFq'
 }

@@ -136,5 +136,7 @@ export enum LocaleKey {
   wallpaper,
   font,
   minecraft,
+  diablo,
+  couldNotFetchWeatherInfo,
   unknown
 }

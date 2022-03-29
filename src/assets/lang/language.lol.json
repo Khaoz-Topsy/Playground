@@ -133,5 +133,8 @@
   "language": "Language",
   "wallpaper": "Wallpaper",
   "font": "Font",
+  "minecraft": "Minecraft",
+  "diablo": "Diablo",
+  "couldNotFetchWeatherInfo": "Could not fetch weather data",
   "unknown": "Unknown"
 }

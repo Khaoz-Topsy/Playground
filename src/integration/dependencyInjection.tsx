@@ -10,6 +10,7 @@ import { StorageService } from '../services/StorageService';
 import { AnalyticsService } from '../services/AnalyticsService';
 import { SillyService } from '../services/SillyService';
 import { getFilesOnDisk } from '../constants/filesOnDisk';
+import { ExternalApiService } from '../services/api/ExternalApiService';
 
 export interface IDependencyInjection {
     // Common
@@ -20,6 +21,7 @@ export interface IDependencyInjection {
     sillyService: SillyService;
 
     // Network
+    externalApiService: ExternalApiService;
     assistantAppsService: AssistantAppsService;
     virtualAssistantService: VirtualAssistantService;
 }
@@ -37,6 +39,7 @@ export const defaultDependencyInjectionFunc: GetServices = () => {
         sillyService: new SillyService(),
 
         // Network
+        externalApiService: new ExternalApiService(),
         assistantAppsService: new AssistantAppsService(storageService),
         virtualAssistantService: new VirtualAssistantService(),
     }

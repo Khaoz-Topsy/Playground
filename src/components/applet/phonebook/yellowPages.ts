@@ -19,14 +19,14 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
             name: LocaleKey.assistantApps,
             pages: [
                 {
-                    name: 'API documentation (Swagger)',
-                    description: '',
-                    url: site.assistantApps.api,
-                },
-                {
                     name: 'Homepage',
                     description: '',
                     url: site.assistantApps.website,
+                },
+                {
+                    name: 'API documentation (Swagger)',
+                    description: '',
+                    url: site.assistantApps.api,
                 },
                 // {
                 //     name: 'Admin dashboard',
@@ -39,9 +39,19 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     url: site.assistantApps.tools,
                 },
                 {
+                    name: 'Documentation',
+                    description: '',
+                    url: 'https://docs.assistantapps.com',
+                },
+                {
                     name: 'Stream Toys',
                     description: '',
                     url: 'https://stream.assistantapps.com',
+                },
+                {
+                    name: 'Crazy Chat Overlay',
+                    description: '',
+                    url: 'https://assistantapps.github.io/Crazy-Chat-Overlay/',
                 },
             ]
         },
@@ -153,46 +163,46 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     description: '',
                     url: site.kurt.monitor,
                 },
-                {
-                    name: 'IoT',
-                    description: '',
-                    url: site.kurt.khaoznet.iot,
-                },
+                // {
+                //     name: 'IoT',
+                //     description: '',
+                //     url: site.kurt.khaoznet.iot,
+                // },
                 {
                     name: 'MemeDeck',
                     description: '',
                     url: site.kurt.memedeck,
                 },
-                {
-                    name: 'Directory of websites',
-                    description: '',
-                    url: site.kurt.khaoznet.homepage,
-                },
-                {
-                    name: 'PlexMedia',
-                    description: '',
-                    url: site.kurt.khaoznet.plexmedia,
-                },
+                // {
+                //     name: 'Directory of websites',
+                //     description: '',
+                //     url: site.kurt.khaoznet.homepage,
+                // },
+                // {
+                //     name: 'PlexMedia',
+                //     description: '',
+                //     url: site.kurt.khaoznet.plexmedia,
+                // },
                 {
                     name: 'Cards Against Humanity',
                     description: '',
                     url: site.kurt.khaoznet.cah,
                 },
-                {
-                    name: 'Passport',
-                    description: '',
-                    url: site.kurt.khaoznet.passport,
-                },
-                {
-                    name: 'Zooqle',
-                    description: '',
-                    url: site.kurt.khaoznet.zooqle,
-                },
-                {
-                    name: 'Download',
-                    description: '',
-                    url: site.kurt.khaoznet.download,
-                },
+                // {
+                //     name: 'Passport',
+                //     description: '',
+                //     url: site.kurt.khaoznet.passport,
+                // },
+                // {
+                //     name: 'Zooqle',
+                //     description: '',
+                //     url: site.kurt.khaoznet.zooqle,
+                // },
+                // {
+                //     name: 'Download',
+                //     description: '',
+                //     url: site.kurt.khaoznet.download,
+                // },
             ]
         },
         {
@@ -257,6 +267,36 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'LAN',
                     description: '',
                     url: site.kurt.khaoznet.lan,
+                },
+                {
+                    name: 'IoT',
+                    description: '',
+                    url: site.kurt.khaoznet.iot,
+                },
+                {
+                    name: 'Directory of websites',
+                    description: '',
+                    url: site.kurt.khaoznet.homepage,
+                },
+                {
+                    name: 'PlexMedia',
+                    description: '',
+                    url: site.kurt.khaoznet.plexmedia,
+                },
+                {
+                    name: 'Passport',
+                    description: '',
+                    url: site.kurt.khaoznet.passport,
+                },
+                {
+                    name: 'Zooqle',
+                    description: '',
+                    url: site.kurt.khaoznet.zooqle,
+                },
+                {
+                    name: 'Download',
+                    description: '',
+                    url: site.kurt.khaoznet.download,
                 },
             ]
         },

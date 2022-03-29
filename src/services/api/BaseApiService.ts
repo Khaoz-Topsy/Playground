@@ -43,7 +43,7 @@ export class BaseApiService {
       return {
         isSuccess: false,
         value: anyObject,
-        errorMessage: ex.message
+        errorMessage: (ex as any).message
       }
     }
   }
@@ -62,8 +62,8 @@ export class BaseApiService {
       return {
         isSuccess: false,
         value: anyObject,
-        statusCode: ex.response?.status,
-        errorMessage: ex.message
+        statusCode: (ex as any).response?.status,
+        errorMessage: (ex as any).message
       }
     }
   }
@@ -79,7 +79,7 @@ export class BaseApiService {
     } catch (ex) {
       return {
         isSuccess: false,
-        errorMessage: ex.message
+        errorMessage: (ex as any).message
       }
     }
   }

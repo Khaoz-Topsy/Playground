@@ -12,6 +12,7 @@ export enum CommandEnum {
     Error,
     User,
     Link,
+    MonoSpace,
 }
 
 export interface IExecutedCommand {

@@ -85,7 +85,7 @@
             /* number of lines to show */
             -webkit-box-orient: vertical;
 
-            >span {
+            > span {
                 max-width: 100%;
             }
         }
@@ -102,6 +102,10 @@
 
         .error {
             color: red;
+        }
+
+        &.MonoSpace {
+            font-family: monospace;
         }
     }
 }

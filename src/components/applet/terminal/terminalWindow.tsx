@@ -420,7 +420,7 @@ export class Terminal extends React.Component<ITerminalProps, IState> {
             );
         }
         return (
-            <div key={msg.key} className="msg">
+            <div key={msg.key} className={classNames('msg', CommandEnum[msg.type])}>
                 <span>{msg.value}</span>
                 <br />
             </div>

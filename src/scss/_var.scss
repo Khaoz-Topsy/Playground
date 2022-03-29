@@ -1,32 +1,32 @@
 $base-bg: #2f2f2f;
-$base-bg-transparent: rgba(47, 47, 47, 0.6);
-$base-bg-transparent-focused: rgba(47, 47, 47, 0.95);
+$base-bg-transparent: rgba(47, 47, 47, 0.9);
+$base-bg-transparent-focused: rgba(47, 47, 47, 0.97);
 $base-bg-divider: rgba(47, 47, 47, 0.4);
 $base-fg: #f2f2f2;
 
-$zindex: ( //
+$zindex: (
+    //
     desktop: 1,
     window-base: 10000,
     startmenu: 10025,
     taskbar: 10050,
     chakra-portal: 10100,
-    spotlight: 10150,
+    spotlight: 10150
 );
 
 // Palette.
-$palette: ( //
+$palette: (
+    //
     bg: $base-bg,
     bg-transparent: $base-bg-transparent,
     bg-transparent-focused: $base-bg-transparent-focused,
     bg-divider: $base-bg-divider,
     bg-sidebar: lighten($base-bg, 5%),
     bg-header: lighten($base-bg, 10%),
-
     fg: $base-fg,
 
     windows-select: #91cdff,
     windows-select-border: #46a1ec,
-
 
     //
     // fg-bold: #ffffff,
@@ -35,7 +35,6 @@ $palette: ( //
     // border-bg: rgba(255, 255, 255, 0.075),
     // border2: rgba(255, 255, 255, 0.75),
     // border2-bg: rgba(255, 255, 255, 0.2),
-
     // invert: (bg: whitesmoke,
     //     bg-alt: rgb(235, 235, 235),
     //     fg: #636363,
@@ -46,7 +45,6 @@ $palette: ( //
     //     border2: #dddddd,
     //     border2-bg: rgba(222, 222, 222, 0.5),
     // ),
-
     accent: #4299e1,
     accent1: #40e2ff,
     accent2: #009fbb,
@@ -55,7 +53,7 @@ $palette: ( //
     accent5: #5f2aff,
     loading: #89edff,
     bg1: #0d6372,
-    bg2: #341e77,
+    bg2: #341e77
 );
 
 $taskbar-height: 4;
@@ -69,8 +67,8 @@ $desktopGridNumColumns: 12;
 
 .glass-background {
     box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    backdrop-filter: blur(5.0px);
-    -webkit-backdrop-filter: blur(5.0px);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
 }
 
 .single-line {

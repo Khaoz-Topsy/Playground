@@ -18,6 +18,8 @@ import { staticList } from './commands/static';
 import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { cowMessageAsArray } from '../../../helper/cowHelper';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IApplet, IWithoutExpectedServices, IExpectedServices { }
@@ -99,6 +101,39 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                     secretToAdd: FoundSecretType.asciiCow,
                     toastFunc: toastFunc,
                 });
+            }
+        },
+        wttr: {
+            sortOrder: 80,
+            type: CommandEnum.SystemSuccess,
+            descrip: 'Gets the weather forecast for your IP address',
+            run: async (printer: (cmd: IExecutedCommand) => void) => {
+                const wttrResult = await props.externalApiService.getWeather();
+                if (wttrResult.isSuccess === false) {
+                    printer({
+                        type: CommandEnum.Error,
+                        value: translate(LocaleKey.couldNotFetchWeatherInfo),
+                    });
+                    return;
+                }
+                const wttrLines = (wttrResult.value ?? '').split('\n');
+                for (let wttrIndex = 0; wttrIndex < wttrLines.length; wttrIndex++) {
+                    const fullLine = wttrLines[wttrIndex];
+
+                    if (wttrIndex === 0) {
+                        printer({
+                            type: CommandEnum.SystemInfo,
+                            tag: 'Weather report',
+                            value: fullLine,
+                        });
+                        continue;
+                    }
+
+                    printer({
+                        type: CommandEnum.MonoSpace,
+                        value: fullLine.replaceAll(' ', ' '),
+                    });
+                }
             }
         },
     };

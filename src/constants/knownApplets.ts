@@ -177,6 +177,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '62.548.1', size: 98, installedOn: new Date('2022-02-11') },
     };
+    static diablo: IAppletFile = {
+        id: 1.31,
+        parentId: 1.31,
+        name: LocaleKey.diablo,
+        appletType: AppletType.diablo,
+        type: FileType.applet,
+        info: { version: '78.3.1', size: 98, installedOn: new Date('2022-03-29') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

@@ -25,6 +25,7 @@ export class AppletIcon {
     static presentation = imgFolder + 'appIcons/presentation.png';
     static application = imgFolder + 'appIcons/application.png';
     static twitter = imgFolder + 'appIcons/twitter.png';
+    static diablo = imgFolder + 'appIcons/diablo.png';
 }
 
 export class FileIcon {

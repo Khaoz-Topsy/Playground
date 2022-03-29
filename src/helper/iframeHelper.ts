@@ -23,6 +23,7 @@ export const getIframeUrl = (applet: IBaseIframeRequirements | undefined): strin
     if (applet.appletType === AppletType.iotPublication) return DocumentFile.iotPublications;
     if (applet.appletType === AppletType.musicPlayer) return site.kurt.spotifyPublicLikedSongs;
     if (applet.appletType === AppletType.nyanCat) return 'https://cristurm.github.io/nyan-cat/';
+    if (applet.appletType === AppletType.diablo) return 'https://d07riv.github.io/diabloweb/';
 
     return null;
 }

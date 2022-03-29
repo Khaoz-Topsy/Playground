@@ -32,7 +32,6 @@ export const Window: React.FC<IProps> = (props: IProps) => {
     });
 
     const onResize = (_: any, data: ResizeCallbackData) => {
-        console.log('hi');
         setState({
             width: data.size.width,
             height: data.size.height
@@ -41,7 +40,6 @@ export const Window: React.FC<IProps> = (props: IProps) => {
 
     const onResizeStop = (_: any, __: ResizeCallbackData) => {
         // if (props.refreshOnResize !== true) return;
-        console.log('bye');
         setKeyIndex(keyIndex + 1);
     };
 
