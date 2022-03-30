@@ -26,6 +26,9 @@ export class AppletIcon {
     static application = imgFolder + 'appIcons/application.png';
     static twitter = imgFolder + 'appIcons/twitter.png';
     static diablo = imgFolder + 'appIcons/diablo.png';
+    static folderAA = imgFolder + 'appIcons/folderAA.png';
+    static folderNMS = imgFolder + 'appIcons/folderNMS.png';
+    static folderSMS = imgFolder + 'appIcons/folderSMS.png';
 }
 
 export class FileIcon {
@@ -37,6 +40,7 @@ export class FileIcon {
     static success = imgFolder + 'fileIcons/success.png';
     static swagger = imgFolder + 'fileIcons/swagger.png';
     static github = imgFolder + 'fileIcons/github.png';
+    static nmscd = imgFolder + 'fileIcons/nmscd.png';
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
 
