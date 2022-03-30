@@ -16,6 +16,7 @@ import { DesktopIcon } from './desktopIcon';
 export const Desktop: React.FC = () => {
     const [selectedIconIndexes, setSelectedIconIndexes] = useState<Array<number>>([]);
     const [dragSelect, setDragSelect] = useState<any>(null);
+    const [stickyVisible, setStickyVisible] = useState<boolean>(true);
     const background = SettingStore.useState(store => store.background);
 
     useEffect(() => {
@@ -93,7 +94,10 @@ export const Desktop: React.FC = () => {
                         );
                     })
                 }
-                <TutorialSticky />
+                <TutorialSticky
+                    stickyVisible={stickyVisible}
+                    setStickyVisible={setStickyVisible}
+                />
             </div>
         </div>
     );

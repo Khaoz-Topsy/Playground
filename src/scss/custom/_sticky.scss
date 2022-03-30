@@ -1,46 +1,51 @@
-.sticky {
-    margin: 0 20px 20px 0;
-    border: 0;
-    border-radius: 3px;
-    background: linear-gradient(#F9EFAF, #F7E98D);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: box-shadow 0.5s ease;
-    font-smooth: subpixel-antialiased;
+.sticky-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    .sticky {
+        margin: 0 20px 20px 0;
+        border: 0;
+        border-radius: 3px;
+        background: linear-gradient(#f9efaf, #f7e98d);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: box-shadow 0.5s ease;
+        font-smooth: subpixel-antialiased;
 
-    width: 300px;
-    min-height: 150px;
+        width: 350px;
+        min-height: 150px;
 
-    &.tutorial {
-        position: absolute;
-        top: 0;
-        right: 0;
-        grid-row-start: 1;
-        grid-row-end: 3;
-        grid-column-start: #{$desktopGridNumColumns - 1};
-        grid-column-end: #{$desktopGridNumColumns + 1};
-        margin-top: 1em;
-        color: white;
-        background: linear-gradient(#366c95, #275b83);
-    }
+        &.tutorial {
+            position: absolute;
+            top: 0;
+            right: 0;
+            grid-row-start: 1;
+            grid-row-end: 3;
+            grid-column-start: #{$desktopGridNumColumns - 1};
+            grid-column-end: #{$desktopGridNumColumns + 1};
+            margin-top: 1em;
+            color: white;
+            background: linear-gradient(#366c95, #275b83);
+        }
 
-    &:hover {
-        box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
-        cursor: grab;
-    }
+        &:hover {
+            box-shadow: 0 5px 8px rgba(0, 0, 0, 0.15);
+            cursor: grab;
+        }
 
-    &:focus {
-        box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
-        outline: none;
-    }
+        &:focus {
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
 
-    >div {
-        padding: 1em 1.25em;
-    }
+        > div {
+            padding: 1em 1.25em;
+        }
 
-    hr {
-        border-color: rgba(255, 255, 255, 0.25);
-        margin-top: -0.5em;
-        margin-bottom: -0.25em;
+        hr {
+            border-color: rgba(255, 255, 255, 0.25);
+            margin-top: -0.5em;
+            margin-bottom: -0.25em;
+        }
     }
 }
