@@ -13,7 +13,6 @@ import { settingPages } from './settingPages';
 import { VirtualAssistantService } from '../../../services/VirtualAssistantService';
 import { IDependencyInjection, withServices } from '../../../integration/dependencyInjection';
 import { translate } from '../../../integration/i18n';
-import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices {
 }
