@@ -136,5 +136,13 @@
   "minecraft": "Minecraft",
   "diablo": "Diablo",
   "couldNotFetchWeatherInfo": "Could not fetch weather data",
+  "clippySendEmail": "It looks like you are trying to send an email",
+  "clippyAdvancedUser": "Wow you seem to be an advanced user!",
+  "clippyVsCode": "Time for some coding!",
+  "clippyCV": "Wow what an amazing CV 😮",
+  "clippyLiveTV": "Time for some LiveTV!",
+  "clippySettings": "More settings, more problems",
+  "clippyGame": "Game time!",
+  "clippySecretFound": "Wow you found a secret!!",
   "unknown": "Unknown"
 }

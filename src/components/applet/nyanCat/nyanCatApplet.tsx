@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useToast } from '@chakra-ui/react';
 
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
@@ -10,6 +10,9 @@ import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
 import { SecretStore } from '../../../state/secrets/store';
 
 import { dependencyInjectionToProps, IExpectedServices } from './nyanCat.dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -18,12 +21,18 @@ export const NyanCatAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
     const toastFunc = useToast();
 
-    addSecretIfNotFound({
-        secretStore: SecretStore,
-        currentSecretsFound,
-        toastFunc,
-        secretToAdd: FoundSecretType.nyanCat,
-    });
+
+    useEffect(() => {
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippySecretFound));
+        props.virtualAssistantService.play?.(virtualAssistantAnimations.congratulate);
+        addSecretIfNotFound({
+            secretStore: SecretStore,
+            currentSecretsFound,
+            toastFunc,
+            secretToAdd: FoundSecretType.nyanCat,
+        });
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <IFrameApplet

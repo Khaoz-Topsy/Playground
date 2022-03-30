@@ -8,7 +8,6 @@ import { allKnownApps, KnownApplets } from './knownApplets';
 import { imageFile, linkFile, markDownFile } from '../helper/fileHelper';
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
-import { warn } from '../integration/logging';
 import { LocaleKey } from '../localization/LocaleKey';
 
 export const applicationFolderId: any = '0.0';
@@ -76,7 +75,6 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile('Discord' as any, FileIcon.discord, site.assistantApps.discord));
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.twitterFeed, AppletIcon.twitter, site.assistantApps.nms.twitter));
 
-    // warn('filesOnDisk', { ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();
 };
 

@@ -19,6 +19,8 @@ import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './notesApplet.dependencyInjection';
 import { defaultNotesHeight, defaultNotesWidth } from '../../../constants/window';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices {
@@ -51,6 +53,8 @@ export const NotesAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         getContentFromDataService(state.selectedNoteIndex);
 
         if (file?.toLowerCase?.().includes(MarkdownFile.secrets?.toLowerCase?.())) {
+            props.virtualAssistantService.say?.(translate(LocaleKey.clippySecretFound));
+            props.virtualAssistantService.play?.(virtualAssistantAnimations.writing);
             addSecretIfNotFound({
                 secretStore: SecretStore,
                 currentSecretsFound,

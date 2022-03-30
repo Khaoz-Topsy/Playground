@@ -138,5 +138,14 @@ export enum LocaleKey {
   minecraft,
   diablo,
   couldNotFetchWeatherInfo,
-  unknown
+  clippySendEmail,
+  clippyAdvancedUser,
+  clippyVsCode,
+  clippyCV,
+  clippyLiveTV,
+  clippySettings,
+  clippyGame,
+  clippySecretFound,
+  clippyTimeToDance,
+  unknown,
 }

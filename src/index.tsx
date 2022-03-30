@@ -16,7 +16,11 @@ import 'react-calendar/dist/Calendar.css';
 import 'react-toastify/dist/ReactToastify.css';
 
 declare global {
-  interface Window { config: any; registration: any }
+  interface Window {
+    config: any;
+    registration: any,
+    CLIPPY_CDN: any
+  }
 }
 
 // let persistedState: any = loadStateFromLocalStorage();
@@ -35,6 +39,7 @@ getJSON('/assets/config.json', (status: boolean, response: string) => {
     ? response || {}
     : defaultConfig;
 
+  window.CLIPPY_CDN = '/assets/agents/';
   startupMessage();
   log(window.config);
 

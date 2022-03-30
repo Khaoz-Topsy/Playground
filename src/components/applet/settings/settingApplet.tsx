@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box } from '@chakra-ui/react';
 
 import { IApplet } from '../../../contracts/interface/IApplet';
@@ -10,8 +10,19 @@ import { windowIcon } from '../../window/windowIcon';
 import { Window } from '../../window/window';
 import { SettingItem } from './settingItem';
 import { settingPages } from './settingPages';
+import { VirtualAssistantService } from '../../../services/VirtualAssistantService';
+import { IDependencyInjection, withServices } from '../../../integration/dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
-interface IProps extends IApplet {
+interface IWithoutExpectedServices {
+}
+
+interface IExpectedServices {
+    virtualAssistantService: VirtualAssistantService;
+}
+
+interface IProps extends IWithoutExpectedServices, IExpectedServices, IApplet {
     currentSelectedSubPage?: LocaleKey;
 }
 
@@ -19,13 +30,18 @@ interface IState {
     pageIndex: number;
 }
 
-export const SettingApplet: React.FC<IProps> = (props: IProps) => {
+export const SettingAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const passedInPageIndex = props.currentSelectedSubPage != null
         ? settingPages.findIndex(p => p.title === props.currentSelectedSubPage)
         : -1;
     const [state, setState] = useState<IState>({
         pageIndex: passedInPageIndex > -1 ? passedInPageIndex : 0,
     });
+
+    useEffect(() => {
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippySettings));
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <Window
@@ -61,3 +77,12 @@ export const SettingApplet: React.FC<IProps> = (props: IProps) => {
         </Window>
     );
 }
+
+export const SettingApplet = withServices<IWithoutExpectedServices, IExpectedServices>(
+    SettingAppletUnconnected,
+    (services: IDependencyInjection): IExpectedServices => {
+        return {
+            virtualAssistantService: services.virtualAssistantService,
+        }
+    }
+);

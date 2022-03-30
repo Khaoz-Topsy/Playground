@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Terminal } from './terminalWindow';
 import { useToast } from '@chakra-ui/react';
 
@@ -20,6 +20,7 @@ import { FoundSecretType } from '../../../constants/enum/foundSecretType';
 import { cowMessageAsArray } from '../../../helper/cowHelper';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices { }
 interface IProps extends IApplet, IWithoutExpectedServices, IExpectedServices { }
@@ -28,6 +29,12 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     const currentSettings = SettingStore.useState(store => store);
     const currentSecretsFound = SecretStore.useState(store => store.secretsFound);
     const toastFunc = useToast();
+
+    useEffect(() => {
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippyAdvancedUser));
+        props.virtualAssistantService.play?.(virtualAssistantAnimations.getTechy);
+        // eslint-disable-next-line
+    }, []);
 
     let info: any = allKnownApps().find(app => app.appletType === AppletType.terminal)?.info;
 
@@ -95,6 +102,8 @@ export const TerminalAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                         value: cowArray[cowIndex],
                     });
                 }
+                props.virtualAssistantService.say?.(translate(LocaleKey.clippySecretFound));
+                props.virtualAssistantService.play?.(virtualAssistantAnimations.congratulate);
                 addSecretIfNotFound({
                     secretStore: SecretStore,
                     currentSecretsFound: currentSecretsFound,

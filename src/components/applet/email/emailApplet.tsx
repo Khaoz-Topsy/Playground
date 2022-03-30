@@ -20,6 +20,7 @@ import { Applet } from '../../window/applet/applet';
 
 import { dependencyInjectionToProps, IExpectedServices } from './emailApplet.dependencyInjection';
 import { MiscStore } from '../../../state/misc/store';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -58,6 +59,12 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
         });
     }
 
+    const openNewEmailPopup = () => {
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippySendEmail));
+        props.virtualAssistantService.play?.(virtualAssistantAnimations.sendMail);
+        MiscStore.update(store => ({ ...store, newEmailIsOpen: true }));
+    }
+
     const renderSidebar = (localState: IState, localAllEmails: Array<ISavedEmail>): ReactNode => {
         if (localState.networkState === NetworkState.Loading) return LoadingImage(true);
 
@@ -94,7 +101,7 @@ export const EmailAppletUnconnected: React.FC<IProps> = (props: IProps) => {
                         </div>
                     ))
                 }
-                <Fab color="primary" aria-label="add" onClick={() => MiscStore.update(store => ({ ...store, newEmailIsOpen: true }))}>
+                <Fab color="primary" aria-label="add" onClick={openNewEmailPopup}>
                     <AddIcon />
                 </Fab>
             </div>

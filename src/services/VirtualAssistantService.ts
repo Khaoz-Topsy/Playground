@@ -41,3 +41,4 @@ export class VirtualAssistantService {
         this._agentIsVisible = false;
     }
 }
+

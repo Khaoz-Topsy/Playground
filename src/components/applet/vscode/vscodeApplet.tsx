@@ -1,12 +1,31 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { site } from '../../../constants/site';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 import { IApplet } from '../../../contracts/interface/IApplet'
+import { IDependencyInjection, withServices } from '../../../integration/dependencyInjection';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { VirtualAssistantService } from '../../../services/VirtualAssistantService';
 import { Applet } from '../../window/applet/applet'
 
-interface IProps extends IApplet { }
+interface IWithoutExpectedServices {
+}
 
-export const VsCodeApplet: React.FC<IProps> = (props: IProps) => {
+interface IExpectedServices {
+    virtualAssistantService: VirtualAssistantService;
+}
+
+interface IProps extends IWithoutExpectedServices, IExpectedServices, IApplet { }
+
+export const VsCodeAppletUnconnected: React.FC<IProps> = (props: IProps) => {
+
+    useEffect(() => {
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippyVsCode));
+        props.virtualAssistantService.play?.(virtualAssistantAnimations.getWizardy);
+        // eslint-disable-next-line
+    }, []);
+
     const githubUrl = props?.meta?.url ?? site.repo;
     return (
         <Applet
@@ -27,3 +46,12 @@ export const VsCodeApplet: React.FC<IProps> = (props: IProps) => {
         </Applet>
     );
 }
+
+export const VsCodeApplet = withServices<IWithoutExpectedServices, IExpectedServices>(
+    VsCodeAppletUnconnected,
+    (services: IDependencyInjection): IExpectedServices => {
+        return {
+            virtualAssistantService: services.virtualAssistantService,
+        }
+    }
+);

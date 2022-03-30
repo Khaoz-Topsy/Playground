@@ -15,9 +15,12 @@ import { AssistantAppsService } from '../../../services/api/AssistantAppsService
 import { Applet } from '../../window/applet/applet';
 import { addDays, get24HourLocalTimeFromUtcHour, getIntlWeekdayText } from '../../../helper/dateHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
+import { VirtualAssistantService } from '../../../services/VirtualAssistantService';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 export interface IExpectedServices {
     assistantAppsService: AssistantAppsService;
+    virtualAssistantService: VirtualAssistantService;
 }
 interface IWithoutExpectedServices { };
 interface IProps extends IApplet, IExpectedServices, IWithoutExpectedServices { }
@@ -30,6 +33,8 @@ export const LiveTvAppletUnconnected: React.FC<IProps> = (props: IProps) => {
     useEffect(() => {
         if (networkState === NetworkState.Success) return;
         getIsKurtLive();
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippyLiveTV));
+        props.virtualAssistantService.play?.(virtualAssistantAnimations.congratulate);
         // eslint-disable-next-line
     }, []);
 
@@ -161,6 +166,7 @@ export const LiveTvApplet = withServices<IWithoutExpectedServices, IExpectedServ
     (services: IDependencyInjection): IExpectedServices => {
         return {
             assistantAppsService: services.assistantAppsService,
+            virtualAssistantService: services.virtualAssistantService,
         }
     }
 );

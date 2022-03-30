@@ -23,6 +23,9 @@ import { TaskbarBatteryIcon } from './taskbarBatteryIcon';
 import { TaskbarDiscordIcon } from './taskbarDiscordIcon';
 import { TaskbarEmailIcon } from './taskbarEmailIcon';
 import { TaskbarIcon } from './taskbarIcon';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices {
     isStartMenuOpen: boolean;
@@ -61,7 +64,11 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
         currentSecretsFound,
         toastFunc,
         secretToAdd: FoundSecretType.harlemShake,
-        callbackFinally: () => props.sillyService.doHarlemShake?.(),
+        callbackFinally: () => {
+            props.sillyService.doHarlemShake?.();
+            props.virtualAssistantService.say?.(translate(LocaleKey.clippyTimeToDance));
+            props.virtualAssistantService.play?.(virtualAssistantAnimations.getArtsy);
+        },
     });
 
     const appsToDisplay: Array<LaunchedApp | NotLaunchedApp> = [];
