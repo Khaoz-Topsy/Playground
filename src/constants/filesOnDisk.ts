@@ -76,7 +76,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile('Discord' as any, FileIcon.discord, site.assistantApps.discord));
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.twitterFeed, AppletIcon.twitter, site.assistantApps.nms.twitter));
 
-    warn('filesOnDisk', { ...rootFolder.toIFolder() });
+    // warn('filesOnDisk', { ...rootFolder.toIFolder() });
     return rootFolder.toIFolder();
 };
 

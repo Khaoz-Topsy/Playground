@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Handlebar template for generating the index file",
   "scripts": {
-    "build": "npm-run-all --sequential javascript:* sass:*",
-    "javascript:main": "webpack --progress --profile --mode production",
-    "sass:main": "sass webpack/scss/main.scss assets/css/main.css"
+    "build": "npm-run-all --sequential javascript:*",
+    "javascript:main": "webpack --progress --profile --mode production"
   },
   "author": "Kurt Lourens",
   "license": "ISC",

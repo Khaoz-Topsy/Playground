@@ -29,22 +29,22 @@
     "images": {
         "maskIcon": "/safari-pinned-tab.svg",
         "favicon": {
-            "ico": "%PUBLIC_URL%/favicon.ico",
-            "x16": "%PUBLIC_URL%/favicon-16x16.png",
-            "x32": "%PUBLIC_URL%/favicon-32x32.png",
-            "x96": "%PUBLIC_URL%/favicon-96x96.png",
-            "x192": "%PUBLIC_URL%/favicon-192x192.png"
+            "ico": "/favicon.ico",
+            "x16": "/favicon-16x16.png",
+            "x32": "/favicon-32x32.png",
+            "x96": "/favicon-96x96.png",
+            "x192": "/favicon-192x192.png"
         },
         "apple": {
-            "x57": "%PUBLIC_URL%/assets/favicon/apple-icon-57x57.png",
-            "x60": "%PUBLIC_URL%/assets/favicon/apple-icon-60x60.png",
-            "x72": "%PUBLIC_URL%/assets/favicon/apple-icon-72x72.png",
-            "x76": "%PUBLIC_URL%/assets/favicon/apple-icon-76x76.png",
-            "x114": "%PUBLIC_URL%/assets/favicon/apple-icon-114x114.png",
-            "x120": "%PUBLIC_URL%/assets/favicon/apple-icon-120x120.png",
-            "x144": "%PUBLIC_URL%/assets/favicon/apple-icon-144x144.png",
-            "x152": "%PUBLIC_URL%/assets/favicon/apple-icon-152x152.png",
-            "x180": "%PUBLIC_URL%/assets/favicon/apple-icon-180x180.png"
+            "x57": "/assets/favicon/apple-icon-57x57.png",
+            "x60": "/assets/favicon/apple-icon-60x60.png",
+            "x72": "/assets/favicon/apple-icon-72x72.png",
+            "x76": "/assets/favicon/apple-icon-76x76.png",
+            "x114": "/assets/favicon/apple-icon-114x114.png",
+            "x120": "/assets/favicon/apple-icon-120x120.png",
+            "x144": "/assets/favicon/apple-icon-144x144.png",
+            "x152": "/assets/favicon/apple-icon-152x152.png",
+            "x180": "/assets/favicon/apple-icon-180x180.png"
         },
         "twitter": "https://mugshotbot.com/m/zkrIydZc",
         "facebook": "https://mugshotbot.com/m/zkrIydZc"
