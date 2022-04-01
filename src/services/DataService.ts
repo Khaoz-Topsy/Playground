@@ -17,7 +17,7 @@ export class DataService {
             return {
                 isSuccess: false,
                 value: anyObject,
-                errorMessage: ex.message
+                errorMessage: (ex as any).message
             }
         }
     }
@@ -35,7 +35,7 @@ export class DataService {
             return {
                 isSuccess: false,
                 value: anyObject,
-                errorMessage: ex.message
+                errorMessage: (ex as any).message
             }
         }
     }
