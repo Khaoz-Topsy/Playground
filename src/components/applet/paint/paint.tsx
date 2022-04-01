@@ -21,7 +21,7 @@ interface IProps extends IWithoutExpectedServices, IExpectedServices, IApplet { 
 export const PaintAppletUnconnected: React.FC<IProps> = (props: IProps) => {
 
     useEffect(() => {
-        props.virtualAssistantService.say?.(translate(LocaleKey.clippyCV));
+        props.virtualAssistantService.say?.(translate(LocaleKey.clippyArt));
         props.virtualAssistantService.play?.(virtualAssistantAnimations.getArtsy);
         // eslint-disable-next-line
     }, []);
