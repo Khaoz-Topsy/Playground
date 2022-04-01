@@ -144,5 +144,7 @@
   "clippySettings": "More settings, more problems",
   "clippyGame": "Game time!",
   "clippySecretFound": "Wow you found a secret!!",
+  "clippyArt": "It looks like you are trying to draw something beautiful",
+  "paint": "Simple Paint",
   "unknown": "Unknown"
 }

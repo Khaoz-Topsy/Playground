@@ -26,6 +26,7 @@ import { AssistantSMSApplet } from '../applet/assistantApps/assistantSMSApplet';
 
 import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
+import { PaintApplet } from '../applet/paint/paint';
 
 export const windowDisplayer = (appProps: IApplet): ReactNode => {
     const appKey = `AppletType-${appProps.appletType}`;
@@ -52,6 +53,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.presentation: return <PresentationApplet key={appKey} {...appProps} />
         case AppletType.minecraft: return <MinecraftClassicApplet key={appKey} {...appProps} />
         case AppletType.diablo: return <DiabloApplet key={appKey} {...appProps} />
+        case AppletType.paint: return <PaintApplet key={appKey} {...appProps} />
 
         case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />

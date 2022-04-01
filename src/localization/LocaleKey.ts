@@ -147,5 +147,7 @@ export enum LocaleKey {
   clippyGame,
   clippySecretFound,
   clippyTimeToDance,
+  clippyArt,
+  paint,
   unknown,
 }

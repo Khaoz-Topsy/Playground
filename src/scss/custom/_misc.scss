@@ -25,3 +25,11 @@
         }
     }
 }
+
+div[class*="paletteContainer"] {
+    transform: translateY(-0.5em);
+}
+
+div[class*="appContainer"] {
+    height: 100%;
+}

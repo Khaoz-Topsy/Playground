@@ -29,6 +29,7 @@ export class AppletIcon {
     static folderAA = imgFolder + 'appIcons/folderAA.png';
     static folderNMS = imgFolder + 'appIcons/folderNMS.png';
     static folderSMS = imgFolder + 'appIcons/folderSMS.png';
+    static paint = imgFolder + 'appIcons/paint.png';
 }
 
 export class FileIcon {

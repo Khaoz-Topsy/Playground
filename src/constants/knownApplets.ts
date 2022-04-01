@@ -169,6 +169,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '0.0.1', size: 8071, installedOn: new Date('2021-07-28') },
     };
+    static paint: IAppletFile = {
+        id: 1.22,
+        parentId: 1.22,
+        name: LocaleKey.paint,
+        appletType: AppletType.paint,
+        type: FileType.applet,
+        info: { version: '1509.432.1', size: 371, installedOn: new Date('2022-04-01'), author: 'leftstick', projectUrl: 'https://github.com/leftstick/react-do-painting' },
+    };
     static minecraft: IAppletFile = {
         id: 1.30,
         parentId: 1.30,

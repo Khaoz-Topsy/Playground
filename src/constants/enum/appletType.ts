@@ -23,6 +23,7 @@ export enum AppletType {
     swagger,
     yellowPages,
     browser,
+    paint,
 
     // Funny
     nyanCat,

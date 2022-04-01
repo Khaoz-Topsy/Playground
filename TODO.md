@@ -64,9 +64,7 @@ Things that I will be adding
 - Swagger app sidebar
   - Ability to open the other docs
 
-https://d07riv.github.io/diabloweb/
 https://jspaint.app/
 https://windows96.net/
-https://wttr.in/?1nAF
 
 https://cspscanner.com/?q=playground.kurtlourens.com
