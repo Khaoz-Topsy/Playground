@@ -96,7 +96,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                 <SimpleGrid mt={2} mb={4} minChildWidth="250px" columnGap="10px" rowGap="10px">
                     <FormControl mt={1}>
                         <FormLabel>{translate(LocaleKey.language)}</FormLabel>
-                        <Select isFullWidth={true} value={language} onChange={languageDropDownChange}>
+                        <Select width="100%" value={language} onChange={languageDropDownChange}>
                             {
                                 supportedLangs.map(dropdownOpt => {
                                     return (
@@ -110,7 +110,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </FormControl>
                     <FormControl mt={1}>
                         <FormLabel>{translate(LocaleKey.wallpaper)}</FormLabel>
-                        <Select isFullWidth={true} value={background} onChange={stateChange('background')}>
+                        <Select width="100%" value={background} onChange={stateChange('background')}>
                             {
                                 Backgrounds.map(dropdownOpt => {
                                     return (
@@ -124,7 +124,7 @@ export const SettingHomeUnconnected: React.FC<IProps> = (props: IProps) => {
                     </FormControl>
                     <FormControl mt={1}>
                         <FormLabel>{translate(LocaleKey.font)}</FormLabel>
-                        <Select isFullWidth={true} value={font} onChange={fontDropDownChange}>
+                        <Select width="100%" value={font} onChange={fontDropDownChange}>
                             {
                                 Fonts.map(dropdownOpt => {
                                     return (

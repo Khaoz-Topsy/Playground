@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ChakraProvider } from '@chakra-ui/react';
 // import reportWebVitals from './reportWebVitals';
 
 import { AppShell } from './appShell';
@@ -11,7 +10,7 @@ import { getJSON, defaultConfig } from './utils';
 import { CustomThemeProvider } from './themeProvider';
 
 import './scss/custom.scss';
-import 'react-image-lightbox/style.css';
+import 'react-18-image-lightbox/style.css';
 import 'react-calendar/dist/Calendar.css';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -46,11 +45,9 @@ getJSON('/assets/config.json', (status: boolean, response: string) => {
   ReactDOM.render(
     <React.Fragment>
       <DependencyInjectionProvider>
-        <ChakraProvider>
-          <CustomThemeProvider>
-            <AppShell />
-          </CustomThemeProvider>
-        </ChakraProvider>
+        <CustomThemeProvider>
+          <AppShell />
+        </CustomThemeProvider>
       </DependencyInjectionProvider>
     </React.Fragment>,
     document.getElementById(site.reactId)

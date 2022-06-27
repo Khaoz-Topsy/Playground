@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
-import { DarkMode } from '@chakra-ui/react';
+import { DarkMode, ChakraProvider } from '@chakra-ui/react';
 import {
-  createMuiTheme,
+  createTheme,
   ThemeProvider,
 } from '@material-ui/core/styles';
 
@@ -11,7 +11,7 @@ interface IProps {
 
 export const CustomThemeProvider: React.FC<IProps> = (props: IProps) => {
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       type: 'dark',
       primary: { 500: '#46a1ec' },
@@ -19,11 +19,13 @@ export const CustomThemeProvider: React.FC<IProps> = (props: IProps) => {
   } as any);
 
   return (
-    <DarkMode>
-      <ThemeProvider theme={theme}>
-        {props.children}
-      </ThemeProvider>
-    </DarkMode>
+    <ChakraProvider>
+      <DarkMode>
+        <ThemeProvider theme={theme}>
+          {props.children}
+        </ThemeProvider>
+      </DarkMode>
+    </ChakraProvider>
   );
 }
 

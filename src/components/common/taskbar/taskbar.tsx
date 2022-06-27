@@ -1,31 +1,31 @@
-import React from 'react';
-import classNames from 'classnames';
 import { Icon } from '@chakra-ui/icons';
 import { Center, useToast } from '@chakra-ui/react';
 import { BellIcon } from '@heroicons/react/solid';
-import { AnimatePresence } from 'framer-motion';
+import classNames from 'classnames';
+import React from 'react';
 
-import { TaskbarList } from '../../../constants/taskbarList';
 import { FoundSecretType } from '../../../constants/enum/foundSecretType';
+import { TaskbarList } from '../../../constants/taskbarList';
 import { LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
 import { disabledContext, TriggerAfterXClicks } from '../../../helper/clickHelper';
 import { newGuid } from '../../../helper/guidHelper';
-import { anyObject } from '../../../helper/typescriptHacks';
 import { addSecretIfNotFound } from '../../../helper/secretFoundHelper';
+import { anyObject } from '../../../helper/typescriptHacks';
 import { withServices } from '../../../integration/dependencyInjection';
+import { SecretStore } from '../../../state/secrets/store';
 import { closeApp, openAppFromTaskbar } from '../../../state/window/reducer';
 import { WindowStore } from '../../../state/window/store';
-import { SecretStore } from '../../../state/secrets/store';
+import { AnimatePresenceWithoutType } from '../../core/framerMotionFix';
 import { TaskbarTime } from '../time/taskbarTime';
 
+import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
+import { translate } from '../../../integration/i18n';
+import { LocaleKey } from '../../../localization/LocaleKey';
 import { dependencyInjectionToProps, IExpectedServices } from './taskbar.dependencyInjection';
 import { TaskbarBatteryIcon } from './taskbarBatteryIcon';
 import { TaskbarDiscordIcon } from './taskbarDiscordIcon';
 import { TaskbarEmailIcon } from './taskbarEmailIcon';
 import { TaskbarIcon } from './taskbarIcon';
-import { translate } from '../../../integration/i18n';
-import { LocaleKey } from '../../../localization/LocaleKey';
-import { virtualAssistantAnimations } from '../../../constants/virtualAssistantAnim';
 
 interface IWithoutExpectedServices {
     isStartMenuOpen: boolean;
@@ -97,7 +97,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
 
     return (
         <div className="taskbar" draggable="false" onContextMenu={disabledContext}>
-            <AnimatePresence>
+            <AnimatePresenceWithoutType>
                 <TriggerAfterXClicks classNames="start-menu taskbar-highlight-on-hover applet-shortcut noselect"
                     onClick={() => props.toggleStartMenu()}
                     numberOfRequiredClicks={5}
@@ -124,7 +124,7 @@ export const TaskbarUnconnected: React.FC<IProps> = (props: IProps) => {
                         );
                     })
                 }
-            </AnimatePresence>
+            </AnimatePresenceWithoutType>
             <TaskbarTime toggleStartMenu={props.toggleStartMenu} />
             <TriggerAfterXClicks classNames="taskbar-notification taskbar-highlight-on-hover noselect"
                 onClick={notificationBellClick}

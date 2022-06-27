@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 
 import { IFolder } from '../contracts/interface/IFolder';
 import { anyObject } from '../helper/typescriptHacks';
@@ -47,7 +47,10 @@ export const defaultDependencyInjectionFunc: GetServices = () => {
 
 export const DependencyInjectionContext = React.createContext<IDependencyInjection>(anyObject);
 
-export const DependencyInjectionProvider: React.FC = ({ children }) => {
+interface IDependencyInjectionProviderProps {
+    children: ReactNode;
+}
+export const DependencyInjectionProvider: React.FC<IDependencyInjectionProviderProps> = ({ children }) => {
     return (
         <DependencyInjectionContext.Provider value={defaultDependencyInjectionFunc()}>
             {children}

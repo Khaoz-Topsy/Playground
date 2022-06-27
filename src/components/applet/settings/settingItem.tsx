@@ -1,6 +1,5 @@
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import { Box } from "@chakra-ui/react";
-import { ReactNode } from 'react-markdown';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { translate } from '../../../integration/i18n';
 

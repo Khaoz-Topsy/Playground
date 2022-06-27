@@ -1,9 +1,8 @@
-import * as React from 'react';
+import React, { ReactNode } from 'react';
 import { Box, Divider, Text, Tooltip } from "@chakra-ui/react";
 import { InfoOutlineIcon } from '@chakra-ui/icons';
 import { translate } from '../../../integration/i18n';
 import { LocaleKey } from '../../../localization/LocaleKey';
-import { ReactNode } from 'react-markdown';
 
 interface ISettingItemSection {
     heading: string;
@@ -11,6 +10,7 @@ interface ISettingItemSection {
     showDivider?: boolean;
     topRightChild?: ReactNode;
     headingTooltip?: LocaleKey;
+    children?: ReactNode;
 }
 
 export const SettingItemSection: React.FunctionComponent<ISettingItemSection> = props => {

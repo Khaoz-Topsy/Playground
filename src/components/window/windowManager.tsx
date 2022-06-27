@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { AnimatePresence } from 'framer-motion';
 import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay } from '@chakra-ui/react';
+import React, { useState } from 'react';
 
-import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
-import { defaultWindowCoordShift, defaultWindowXPosition, defaultWindowYPosition } from '../../constants/window';
-import { LaunchedApp } from '../../contracts/launchedApp';
 import { windowActionEvent } from '../../constants/enum/customWindowEvent';
+import { defaultWindowCoordShift, defaultWindowXPosition, defaultWindowYPosition } from '../../constants/window';
+import { IApplet } from '../../contracts/interface/IApplet';
+import { LaunchedApp } from '../../contracts/launchedApp';
 import { closeApp, maximiseApp, minimiseApp, setNewFocusForApp } from '../../state/window/reducer';
 import { WindowStore } from '../../state/window/store';
 
+import { AnimatePresenceWithoutType } from '../core/framerMotionFix';
 import { windowDisplayer } from './windowDisplayer';
 
 interface IProps { }
@@ -74,12 +74,12 @@ export const WindowManager: React.FC<IProps> = (props: IProps) => {
 
     return (
         <div className="window-manager layer fullscreen" draggable="false">
-            <AnimatePresence>
+            <AnimatePresenceWithoutType>
                 {
                     (activeApps ?? [])
                         .map(renderSupportedWindows(currentFocused))
                 }
-            </AnimatePresence>
+            </AnimatePresenceWithoutType>
             <Modal isOpen={modalData.isOpen} onClose={onCloseModal}>
                 <ModalOverlay />
                 <ModalContent>

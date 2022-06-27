@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Lightbox from 'react-image-lightbox';
+import Lightbox from 'react-18-image-lightbox';
 
 interface IProps {
     images: Array<string>,

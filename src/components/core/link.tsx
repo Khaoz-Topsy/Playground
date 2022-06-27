@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
 
 import { appendRef } from "../../helper/linkHelper";
 
@@ -34,16 +33,3 @@ export const BasicLink = (props: IProps) => {
         </a>
     );
 }
-
-
-export const BasicInternalLink = (props: IProps) => {
-    return (
-        <Link
-            to={props.href}
-            className={classNames(props.additionalClassNames ?? '')}
-            draggable={false}>
-            {props.children}
-        </Link>
-    );
-}
-
