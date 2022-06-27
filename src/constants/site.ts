@@ -64,7 +64,11 @@ export const site = {
             nmscd: {
                 website: 'https://nmscd.github.io',
                 projectsList: 'https://nmscd.github.io/projects.html',
+                nmsColorParser: 'https://nmscd.github.io/nmscolorparser/',
                 expeditionAlphabet: 'https://nmscd.github.io/expedition-alphabet',
+                universalFont: 'https://github.com/NMSCD/No-Mans-Sky-Universal-Font',
+                enhancedImages: 'https://github.com/NMSCD/No-Mans-Sky-Enhanced-Images',
+                communityMissionProgressViewer: 'https://nmscd.github.io/CommunityMission-Progress-Viewer/',
             }
         },
         sms: {

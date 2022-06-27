@@ -10,6 +10,7 @@ export class AppletIcon {
     static music = imgFolder + 'appIcons/music.png';
     static email = imgFolder + 'appIcons/email.png';
     static liveTv = imgFolder + 'appIcons/live.png';
+    static radio = imgFolder + 'appIcons/tuneIn.svg';
     static folder = imgFolder + 'appIcons/folder.png';
     static vsCode = imgFolder + 'appIcons/vsCode.png';
     static monitor = imgFolder + 'appIcons/monitor.png';
@@ -30,6 +31,7 @@ export class AppletIcon {
     static folderAA = imgFolder + 'appIcons/folderAA.png';
     static folderNMS = imgFolder + 'appIcons/folderNMS.png';
     static folderSMS = imgFolder + 'appIcons/folderSMS.png';
+    static folderNMSCD = imgFolder + 'appIcons/folderNMSCD.png';
     static paint = imgFolder + 'appIcons/paint.png';
 }
 
@@ -48,6 +50,12 @@ export class FileIcon {
     static web = imgFolder + 'fileIcons/web.png';
 
     static miniLink = imgFolder + 'fileIcons/externalIcon.png';
+
+    static communityMissionProgressViewer = imgFolder + 'fileIcons/communityMissionProgressViewer.png';
+    static expeditionAlphabet = imgFolder + 'fileIcons/expeditionAlphabet.png';
+    static nmsColorParser = imgFolder + 'fileIcons/nmsColorParser.png';
+    static nmsUniversalFont = imgFolder + 'fileIcons/nmsUniversalFont.png';
+    static nmsEnhancedImages = imgFolder + 'fileIcons/nmsEnhancedImages.png';
 }
 
 export class MiscIcon {

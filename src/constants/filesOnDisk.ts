@@ -51,41 +51,54 @@ export const getFilesOnDisk = (): IFolder => {
     }
 
     const downloadsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.downloads }));
-    getFolder(rootFolder, downloadsFolderIndex)?.addFile(imageFile('AssistantNMS-Architecture-V2.drawio' as any, DownloadFile.AssistantNMSArchitecture, [DownloadFile.AssistantNMSArchitecture]));
-    getFolder(rootFolder, downloadsFolderIndex)?.addFile(imageFile('CommunityMissionProgressViewerSmoothing' as any, DownloadFile.communityMissionProgressViewerSmoothing, [DownloadFile.communityMissionProgressViewerSmoothing]));
-    getFolder(rootFolder, downloadsFolderIndex)?.addFile(objFile('Khaoz-Topsy-2021.stl' as any, DownloadFile.khaozTopsyGithubContribution));
+    const downloadsFolder = getFolder(rootFolder, downloadsFolderIndex);
+    downloadsFolder?.addFile(imageFile('AssistantNMS-Architecture-V2.drawio' as any, DownloadFile.AssistantNMSArchitecture, [DownloadFile.AssistantNMSArchitecture]));
+    downloadsFolder?.addFile(imageFile('CommunityMissionProgressViewerSmoothing' as any, DownloadFile.communityMissionProgressViewerSmoothing, [DownloadFile.communityMissionProgressViewerSmoothing]));
+    downloadsFolder?.addFile(objFile('Khaoz-Topsy-2021.stl' as any, DownloadFile.khaozTopsyGithubContribution));
 
     const assistantAppsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantApps, imgUrl: AppletIcon.folderAA }));
-    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantAppsGeneral));
-    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.homepage, MiscIcon.assistantApps, site.assistantApps.website));
-    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.github));
-    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.documentation, MiscIcon.assistantApps, site.assistantApps.docs));
-    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile('Discord' as any, FileIcon.discord, site.assistantApps.discord));
-    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.twitterFeed, AppletIcon.twitter, site.assistantApps.nms.twitter));
+    const assistantAppsFolder = getFolder(rootFolder, assistantAppsFolderIndex);
+    assistantAppsFolder?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantAppsGeneral));
+    assistantAppsFolder?.addFile(linkFile(LocaleKey.homepage, MiscIcon.assistantApps, site.assistantApps.website));
+    assistantAppsFolder?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.github));
+    assistantAppsFolder?.addFile(linkFile(LocaleKey.documentation, MiscIcon.assistantApps, site.assistantApps.docs));
+    assistantAppsFolder?.addFile(linkFile('Discord' as any, FileIcon.discord, site.assistantApps.discord));
+    assistantAppsFolder?.addFile(linkFile(LocaleKey.twitterFeed, AppletIcon.twitter, site.assistantApps.nms.twitter));
 
     const assistantNMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantNMS, imgUrl: AppletIcon.folderNMS }));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.nms.googlePlay));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.nms.appleStore));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.windowsApp, FileIcon.windows, site.assistantApps.nms.windowsStore));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.noMansSky });
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.nms.webapp));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.homepage, FileIcon.web, site.assistantApps.nms.website));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.nms.api } });
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.nms.github));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile('NMSCD' as any, FileIcon.nmscd, site.assistantApps.nms.nmscd.website));
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.twitterTimeline, meta: { src: site.assistantApps.nms.twitter } });
-    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(imageFile('loader.svg' as any, External.assistantNmsLoader, [External.assistantNmsLoader]));
+    const assistantNMSFolder = getFolder(rootFolder, assistantNMSFolderIndex);
+    assistantNMSFolder?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
+    assistantNMSFolder?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.nms.googlePlay));
+    assistantNMSFolder?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.nms.appleStore));
+    assistantNMSFolder?.addFile(linkFile(LocaleKey.windowsApp, FileIcon.windows, site.assistantApps.nms.windowsStore));
+    assistantNMSFolder?.addFile({ ...KnownApplets.noMansSky });
+    assistantNMSFolder?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.nms.webapp));
+    assistantNMSFolder?.addFile(linkFile(LocaleKey.homepage, FileIcon.web, site.assistantApps.nms.website));
+    assistantNMSFolder?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.nms.api } });
+    assistantNMSFolder?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.nms.github));
+    // NMSCD Folder
+    const assistantNMSCDFolderIndex = assistantNMSFolder.addSubFolder(new Folder({ name: 'NMSCD' as any, imgUrl: AppletIcon.folderNMSCD }));
+    const assistantNMSCDFolder = getFolder(assistantNMSFolder, assistantNMSCDFolderIndex);
+    assistantNMSCDFolder?.addFile(linkFile(LocaleKey.homepage, FileIcon.nmscd, site.assistantApps.nms.nmscd.website));
+    assistantNMSCDFolder?.addFile(linkFile('Community Mission Progress Viewer' as any, FileIcon.communityMissionProgressViewer, site.assistantApps.nms.nmscd.communityMissionProgressViewer));
+    assistantNMSCDFolder?.addFile(linkFile('Expedition Alphabet' as any, FileIcon.expeditionAlphabet, site.assistantApps.nms.nmscd.expeditionAlphabet));
+    assistantNMSCDFolder?.addFile(linkFile('NMS Color Parser' as any, FileIcon.nmsColorParser, site.assistantApps.nms.nmscd.nmsColorParser));
+    assistantNMSCDFolder?.addFile(linkFile('NMS Universal Font' as any, FileIcon.nmsUniversalFont, site.assistantApps.nms.nmscd.universalFont));
+    assistantNMSCDFolder?.addFile(linkFile('NMS Enhanced Images' as any, FileIcon.nmsEnhancedImages, site.assistantApps.nms.nmscd.enhancedImages));
+    // End Folder
+    assistantNMSFolder?.addFile({ ...KnownApplets.twitterTimeline, meta: { src: site.assistantApps.nms.twitter } });
+    assistantNMSFolder?.addFile(imageFile('loader.svg' as any, External.assistantNmsLoader, [External.assistantNmsLoader]));
 
     const assistantSMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantSMS, imgUrl: AppletIcon.folderSMS }));
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantSMSGeneral));
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.sms.googlePlay));
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.sms.appleStore));
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.scrapMechanic });
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.sms.webapp));
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.sms.api } });
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.sms.githubOrg));
-    getFolder(rootFolder, assistantSMSFolderIndex)?.addFile({ ...KnownApplets.vsCode, meta: { url: site.assistantApps.sms.vscodeUrlForApp } });
+    const assistantSMSFolder = getFolder(rootFolder, assistantSMSFolderIndex);
+    assistantSMSFolder?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantSMSGeneral));
+    assistantSMSFolder?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.sms.googlePlay));
+    assistantSMSFolder?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.sms.appleStore));
+    assistantSMSFolder?.addFile({ ...KnownApplets.scrapMechanic });
+    assistantSMSFolder?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.sms.webapp));
+    assistantSMSFolder?.addFile({ ...KnownApplets.swagger, meta: { src: site.assistantApps.sms.api } });
+    assistantSMSFolder?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.sms.githubOrg));
+    assistantSMSFolder?.addFile({ ...KnownApplets.vsCode, meta: { url: site.assistantApps.sms.vscodeUrlForApp } });
 
     return rootFolder.toIFolder();
 };

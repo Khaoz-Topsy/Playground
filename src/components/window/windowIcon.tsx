@@ -29,6 +29,7 @@ export const windowIconString = (appletType: AppletType): string => {
         case AppletType.assistantNMS: return AppletIcon.assistantNMS;
         case AppletType.assistantSMS: return AppletIcon.assistantSMS;
         case AppletType.paint: return AppletIcon.paint;
+        case AppletType.radio: return AppletIcon.radio;
     }
     return error;
 }

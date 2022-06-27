@@ -195,11 +195,19 @@ export class KnownApplets {
     };
     static modelViewer: IAppletFile = {
         id: 1.32,
-        parentId: 1.31,
+        parentId: 1.32,
         name: LocaleKey.modelViewer,
         appletType: AppletType.modelViewer,
         type: FileType.model,
         info: { version: '0.0.29', size: 840, installedOn: new Date('2022-06-27') },
+    };
+    static radio: IAppletFile = {
+        id: 1.33,
+        parentId: 1.33,
+        name: LocaleKey.radio,
+        appletType: AppletType.radio,
+        type: FileType.applet,
+        info: { version: '2.0.1', size: 4286, installedOn: new Date('2022-06-27') },
     };
 }
 

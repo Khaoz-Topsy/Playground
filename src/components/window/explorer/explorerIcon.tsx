@@ -13,6 +13,7 @@ import { openExternalInNewWindow } from '../../../helper/linkHelper';
 import { LocaleKey } from '../../../localization/LocaleKey';
 import { MiscStore } from '../../../state/misc/store';
 import { windowIcon, windowIconString } from '../windowIcon';
+import { Center } from '@chakra-ui/react';
 
 interface IProps {
     index: number;
@@ -186,10 +187,10 @@ export const ExplorerIcon: React.FC<IProps> = (props: IProps) => {
                 onContextOpen={clickFileOrFolder}
                 items={getContextWrapperItems(props.iconData)}
             >
-                <div className="img-container">
+                <Center className="img-container">
                     {renderImage(props.iconData)}
                     {renderFileMiniImage(props.iconData)}
-                </div>
+                </Center>
                 <p draggable={false}>{translate(props.iconData.name)}</p>
             </ContextMenuWrapper>
         </div>

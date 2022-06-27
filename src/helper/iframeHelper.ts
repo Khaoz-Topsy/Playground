@@ -24,6 +24,7 @@ export const getIframeUrl = (applet: IBaseIframeRequirements | undefined): strin
     if (applet.appletType === AppletType.musicPlayer) return site.kurt.spotifyPublicLikedSongs;
     if (applet.appletType === AppletType.nyanCat) return 'https://cristurm.github.io/nyan-cat/';
     if (applet.appletType === AppletType.diablo) return 'https://d07riv.github.io/diabloweb/';
+    if (applet.appletType === AppletType.radio) return 'https://tunein.com/';
 
     return null;
 }

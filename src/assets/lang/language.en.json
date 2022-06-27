@@ -150,5 +150,9 @@
   "clippySecretFound": "Wow you found a secret!!",
   "clippyArt": "It looks like you are trying to draw something beautiful",
   "paint": "Simple Paint",
+  "downloads": "Downloads",
+  "documentation": "Documentation",
+  "modelViewer": "Model Viewer",
+  "radio": "Radio",
   "unknown": "Unknown"
 }

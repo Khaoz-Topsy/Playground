@@ -94,6 +94,11 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     url: site.assistantApps.nms.nmscd.website,
                 },
                 {
+                    name: 'Community Mission Progress Viewer',
+                    description: '',
+                    url: site.assistantApps.nms.nmscd.communityMissionProgressViewer,
+                },
+                {
                     name: 'NMS - Expedition Alphabet',
                     description: '',
                     url: site.assistantApps.nms.nmscd.expeditionAlphabet,

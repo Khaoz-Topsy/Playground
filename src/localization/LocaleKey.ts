@@ -154,5 +154,6 @@ export enum LocaleKey {
   downloads,
   documentation,
   modelViewer,
+  radio,
   unknown,
 }
