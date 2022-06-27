@@ -14,6 +14,6 @@ Welcome to my **Web-Desktop-Playground**. This web app is intended to feel like 
 
 
 
-The desktop experience in a website was inspired by 
-https://goodmanwen.github.io/
-https://portfolio.zxh.io/
+The desktop experience in a website was inspired by \
+https://goodmanwen.github.io/ \
+https://portfolio.zxh.io/ 
