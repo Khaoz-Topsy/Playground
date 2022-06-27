@@ -1,6 +1,6 @@
 {
   "name": "kurtlourens_playground",
-  "version": "0.1.84",
+  "version": "0.1.85",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.13",
@@ -10,13 +10,6 @@
     "@hcaptcha/react-hcaptcha": "^0.3.6",
     "@heroicons/react": "^1.0.1",
     "@material-ui/core": "^4.11.4",
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^12.20.13",
-    "@types/react": "^17.0.8",
-    "@types/react-dom": "^17.0.5",
     "axios": "^0.21.1",
     "classnames": "^2.3.1",
     "clippyjs": "0.0.3",
@@ -74,10 +67,17 @@
     ]
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^5.12.0",
+    "@testing-library/react": "^11.2.7",
+    "@testing-library/user-event": "^12.8.3",
     "@types/debounce": "^1.2.0",
     "@types/dragselect": "^1.13.1",
+    "@types/jest": "^26.0.23",
     "@types/mousetrap": "^1.6.8",
+    "@types/node": "^12.20.13",
+    "@types/react": "^17.0.8",
     "@types/react-calendar": "^3.4.1",
+    "@types/react-dom": "^17.0.5",
     "@types/react-resizable": "^1.7.2",
     "@types/react-router-dom": "^5.1.7",
     "@types/webpack-env": "^1.16.0"
