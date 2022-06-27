@@ -29,7 +29,7 @@ interface IExpectedServices {
 interface IWithoutExpectedServices { };
 interface IProps extends IExpectedServices, IWithoutExpectedServices { }
 
-export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
+export const DesktopAppUnconnected: React.FC<IProps> = (props: IProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isLoaded, setIsLoaded] = useState(false);
   const [isStartMenuOpen, setStartMenuOpen] = useState(false);
@@ -133,8 +133,8 @@ export const AppUnconnected: React.FC<IProps> = (props: IProps) => {
   );
 }
 
-export const App = withServices<IWithoutExpectedServices, IExpectedServices>(
-  AppUnconnected,
+export const DesktopApp = withServices<IWithoutExpectedServices, IExpectedServices>(
+  DesktopAppUnconnected,
   (services: IDependencyInjection): IExpectedServices => ({
     sillyService: services.sillyService,
     virtualAssistantService: services.virtualAssistantService,

@@ -8,7 +8,7 @@ import { appPreloadAssets } from './helper/cacheHelper';
 import { PullstateCore } from './state/stateCore';
 import { subscribeToSecretChanges, subscribeToSettingsChanges } from './state/stateFromLocalStorage';
 
-import { App } from './app';
+import { DesktopApp } from './desktopApp';
 import { translate } from './integration/i18n';
 import { LocaleKey } from './localization/LocaleKey';
 
@@ -41,7 +41,7 @@ export const AppShell: React.FC<IProps> = (props: IProps) => {
 
   return (
     <PullstateProvider instance={instance}>
-      {(shouldFade) && <App />}
+      {(shouldFade) && <DesktopApp />}
       <ToasterContainer />
       {
         (!mobileConfirmed) && (

@@ -1,4 +1,3 @@
-import React from 'react';
 import { SettingsIcon, InfoOutlineIcon, StarIcon, QuestionIcon, UnlockIcon } from '@chakra-ui/icons';
 
 import { SettingHome } from './section/home';

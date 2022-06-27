@@ -64,7 +64,7 @@ Things that I will be adding
 - Swagger app sidebar
   - Ability to open the other docs
 
-https://jspaint.app/
-https://windows96.net/
+https://jspaint.app/ \
+https://windows96.net/ \
 
 https://cspscanner.com/?q=playground.kurtlourens.com
