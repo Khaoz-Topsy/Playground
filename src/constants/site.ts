@@ -14,6 +14,7 @@ export const site = {
         twitter: 'https://twitter.com/KhaozTopsy',
         twitch: 'https://twitch.tv/khaoztopsy',
         github: 'https://github.com/Khaoz-Topsy',
+        behance: 'https://www.behance.net/kurtlourens',
         youtube: 'https://www.youtube.com/channel/UCq31H8M274aWNvLt02_0g7A',
         linkedin: 'https://www.linkedin.com/in/kurtlourensza',
         presentation: 'https://presentation.kurtlourens.com',

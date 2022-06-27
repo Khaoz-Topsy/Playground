@@ -44,6 +44,7 @@ export class FileIcon {
     static success = imgFolder + 'fileIcons/success.png';
     static swagger = imgFolder + 'fileIcons/swagger.png';
     static windows = imgFolder + 'fileIcons/windows.png';
+    static behance = imgFolder + 'fileIcons/behance.png';
     static github = imgFolder + 'fileIcons/github.png';
     static nmscd = imgFolder + 'fileIcons/nmscd.png';
     static apple = imgFolder + 'fileIcons/apple2.png';

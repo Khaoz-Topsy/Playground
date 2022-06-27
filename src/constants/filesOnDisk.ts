@@ -44,10 +44,11 @@ export const getFilesOnDisk = (): IFolder => {
     kurtDocsFolder?.addFile({ ...KnownApplets.kurtLourens });
     kurtDocsFolder?.addFile(linkFile('Android CV App' as any, FileIcon.android, site.kurt.googlePlay));
     kurtDocsFolder?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.kurt.github));
+    kurtDocsFolder?.addFile(linkFile('Behance' as any, FileIcon.behance, site.kurt.behance));
 
     // getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {
-        docFolder?.addFile?.(imageFile(background.name as any, null, [background.url]));
+        docFolder?.addFile?.(imageFile(background.name as any, background.url, [background.url]));
     }
 
     const downloadsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.downloads }));
