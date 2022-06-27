@@ -2,7 +2,6 @@ $code-bg: #1a1a1a;
 $code-fg: #c8c8c8;
 
 .notes-viewer {
-
     .item {
         width: 100%;
         cursor: pointer;
@@ -131,5 +130,15 @@ $code-fg: #c8c8c8;
     img {
         max-height: 15em;
         max-width: 15em;
+
+        &[alt*="full"] {
+            max-width: 720px;
+            max-height: unset;
+            width: 100%;
+        }
+
+        &[alt*="center"] {
+            margin: 0 auto;
+        }
     }
 }

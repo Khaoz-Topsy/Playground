@@ -18,6 +18,7 @@ export const site = {
         linkedin: 'https://www.linkedin.com/in/kurtlourensza',
         presentation: 'https://presentation.kurtlourens.com',
         memedeck: 'https://github.com/Khaoz-Topsy/Stream-Meme-Deck',
+        googlePlay: 'https://play.google.com/store/apps/details?id=com.kurt_lourens_cv',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
         twitchLivePlayer: 'https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true',
         monitor: 'https://monitor.kurtlourens.com/KhaozNet-AssistantNMS-AssistantApps-RedRubyIT',
@@ -44,6 +45,7 @@ export const site = {
         api: 'https://api.assistantapps.com',
         email: 'mailto:support@assistantapps.com',
         website: 'https://assistantapps.com',
+        docs: 'https://docs.assistantapps.com',
         tools: 'https://tools.assistantapps.com',
         github: 'https://assistantapps.com/github',
         discord: 'https://assistantapps.com/discord',
@@ -56,6 +58,7 @@ export const site = {
             webapp: 'https://app.nmsassistant.com',
             googlePlay: 'https://play.google.com/store/apps/details?id=com.kurtlourens.no_mans_sky_recipes',
             appleStore: 'https://apps.apple.com/us/app/id1480287625',
+            windowsStore: 'https://apps.microsoft.com/store/detail/assistant-for-no-mans-sky/9NQLF7XD0LF3',
             twitter: 'https://twitter.com/AssistantNMS',
             github: 'https://github.com/AssistantNMS',
             nmscd: {
@@ -75,7 +78,7 @@ export const site = {
         },
         hyt: {
             api: 'https://api.hytaleassistant.com',
-            webapp: 'https://hytaleassistant.com',
+            webapp: 'https://app.hytaleassistant.com',
         },
         patreonBanner: {
             api: 'https://api.assistantapps.stream',

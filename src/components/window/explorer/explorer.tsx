@@ -19,6 +19,7 @@ import { ExplorerHeader } from './explorerHeader';
 import { ExplorerSidebar } from './explorerSidebar';
 import { ExplorerIcon } from './explorerIcon';
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+import { defaultExplorerHeight, defaultExplorerWidth } from '../../../constants/window';
 
 interface IWithoutExpectedServices {
     initialFileId?: number;
@@ -134,6 +135,8 @@ export const ExplorerUnconnected: React.FC<IProps> = (props: IProps) => {
             isFullscreen={true}
             classNames="explorer"
             headerFunc={headerFunc}
+            defaultWidth={defaultExplorerWidth}
+            defaultHeight={defaultExplorerHeight}
             sidebar={
                 <ExplorerSidebar
                     currentFolder={currentFolder}

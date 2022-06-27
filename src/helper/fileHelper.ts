@@ -1,4 +1,4 @@
-import { FileIcon } from '../constants/appImage';
+import { AppletIcon, FileIcon } from '../constants/appImage';
 import { AppletType } from '../constants/enum/appletType';
 import { IBreadcrumb } from '../contracts/interface/IBreadcrumb';
 import { FileType, IFile } from '../contracts/interface/IFile';
@@ -71,6 +71,13 @@ export const linkFile = (name: LocaleKey, imgUrl: string, external: string, show
     imgUrl,
     type: FileType.link,
     meta: { external, showExternalIcon, }
+});
+
+export const objFile = (name: LocaleKey, objUrl: string) => ({
+    name,
+    imgUrl: AppletIcon.modelViewer,
+    type: FileType.model,
+    meta: { model: objUrl }
 });
 
 export const iframeApplet = (name: LocaleKey, frameKey: string, src: string, imgUrl: string) => ({

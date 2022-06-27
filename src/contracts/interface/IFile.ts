@@ -8,6 +8,7 @@ export enum FileType {
     image,
     markdown,
     link,
+    model,
 }
 
 export enum StartMenuSize {

@@ -20,6 +20,7 @@ export class AppletIcon {
     static settings = imgFolder + 'appIcons/setting3.png';
     static terminal = imgFolder + 'appIcons/terminal.png';
     static yellowPages = imgFolder + 'appIcons/yellowPages.png';
+    static modelViewer = imgFolder + 'appIcons/modelViewer.png';
     static assistantNMS = imgFolder + 'appIcons/assistantNMS.png';
     static assistantSMS = imgFolder + 'appIcons/assistantSMS.png';
     static presentation = imgFolder + 'appIcons/presentation.png';
@@ -40,6 +41,7 @@ export class FileIcon {
     static android = imgFolder + 'fileIcons/android.png';
     static success = imgFolder + 'fileIcons/success.png';
     static swagger = imgFolder + 'fileIcons/swagger.png';
+    static windows = imgFolder + 'fileIcons/windows.png';
     static github = imgFolder + 'fileIcons/github.png';
     static nmscd = imgFolder + 'fileIcons/nmscd.png';
     static apple = imgFolder + 'fileIcons/apple2.png';

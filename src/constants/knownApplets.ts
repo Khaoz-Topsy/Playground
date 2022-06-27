@@ -193,6 +193,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '78.3.1', size: 98, installedOn: new Date('2022-03-29') },
     };
+    static modelViewer: IAppletFile = {
+        id: 1.32,
+        parentId: 1.31,
+        name: LocaleKey.modelViewer,
+        appletType: AppletType.modelViewer,
+        type: FileType.model,
+        info: { version: '0.0.29', size: 840, installedOn: new Date('2022-06-27') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

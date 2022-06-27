@@ -141,7 +141,7 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
             ]
         },
         {
-            name: 'Kurt Lourens' as any,
+            name: LocaleKey.kurtLourens,
             pages: [
                 {
                     name: translate(LocaleKey.kurtLourensCV),

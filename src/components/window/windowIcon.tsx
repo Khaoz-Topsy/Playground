@@ -23,6 +23,7 @@ export const windowIconString = (appletType: AppletType): string => {
         case AppletType.minecraft: return AppletIcon.minecraft;
         case AppletType.diablo: return AppletIcon.diablo;
         case AppletType.yellowPages: return AppletIcon.yellowPages;
+        case AppletType.modelViewer: return AppletIcon.modelViewer;
         case AppletType.iotPublication: return MiscIcon.iotPublication;
         case AppletType.presentation: return AppletIcon.presentation;
         case AppletType.assistantNMS: return AppletIcon.assistantNMS;

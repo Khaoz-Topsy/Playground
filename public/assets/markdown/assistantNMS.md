@@ -6,6 +6,10 @@ During a few days while my home internet connection was down, I picked up the ga
 
 &nbsp;
 
+![banner full centered](/assets/img/notes/windowsStoreAppBanner.jpeg)
+
+&nbsp;
+
 I wanted an app that would allow me to get those recipes as easily and fast as possible. There was one app on the Google Play Store, however a lot of its functionality was behind a pay wall. I then decided to build my own version using Flutter. 
 
 &nbsp;

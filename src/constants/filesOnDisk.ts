@@ -1,14 +1,15 @@
-import { site } from './site';
-import { Backgrounds, FileIcon, External, AppletIcon, MiscIcon } from './appImage';
-import { MarkdownFile } from './markdownFile';
-import { DesktopIcons } from './desktopIconList';
-import { IFolder } from '../contracts/interface/IFolder';
 import { Folder } from '../contracts/implementation/Folder';
-import { allKnownApps, KnownApplets } from './knownApplets';
-import { imageFile, linkFile, markDownFile } from '../helper/fileHelper';
+import { IFolder } from '../contracts/interface/IFolder';
+import { imageFile, linkFile, markDownFile, objFile } from '../helper/fileHelper';
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
 import { LocaleKey } from '../localization/LocaleKey';
+import { AppletIcon, Backgrounds, External, FileIcon, MiscIcon } from './appImage';
+import { DesktopIcons } from './desktopIconList';
+import { DownloadFile } from './documentFile';
+import { allKnownApps, KnownApplets } from './knownApplets';
+import { MarkdownFile } from './markdownFile';
+import { site } from './site';
 
 export const applicationFolderId: any = '0.0';
 export const desktopFolderId: any = '0.1';
@@ -38,18 +39,27 @@ export const getFilesOnDisk = (): IFolder => {
     const documentFolderMoreSecretsIndex = secretsDocFolder?.addSubFolder?.(new Folder({ name: LocaleKey.moreSecrets }));
     const moreSecretsDocFolder = getFolder(secretsDocFolder, documentFolderMoreSecretsIndex);
     moreSecretsDocFolder.addFile(markDownFile(LocaleKey.secretFileName, MarkdownFile.secrets));
+    const documentFolderKurtFolderIndex = docFolder?.addSubFolder?.(new Folder({ name: 'Kurt' as any }));
+    const kurtDocsFolder = getFolder(docFolder, documentFolderKurtFolderIndex);
+    kurtDocsFolder?.addFile({ ...KnownApplets.kurtLourens });
+    kurtDocsFolder?.addFile(linkFile('Android CV App' as any, FileIcon.android, site.kurt.googlePlay));
+    kurtDocsFolder?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.kurt.github));
 
     // getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {
         docFolder?.addFile?.(imageFile(background.name as any, null, [background.url]));
     }
 
-    // const kurtFolderIndex = rootFolder.addSubFolder(new Folder({ name: 'Kurt' }));
-    // getFolder(rootFolder, kurtFolderIndex)?.addFile(linkFile('Android App', FileIcon.android, site.assistantApps.nms.googlePlay));
+    const downloadsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.downloads }));
+    getFolder(rootFolder, downloadsFolderIndex)?.addFile(imageFile('AssistantNMS-Architecture-V2.drawio' as any, DownloadFile.AssistantNMSArchitecture, [DownloadFile.AssistantNMSArchitecture]));
+    getFolder(rootFolder, downloadsFolderIndex)?.addFile(imageFile('CommunityMissionProgressViewerSmoothing' as any, DownloadFile.communityMissionProgressViewerSmoothing, [DownloadFile.communityMissionProgressViewerSmoothing]));
+    getFolder(rootFolder, downloadsFolderIndex)?.addFile(objFile('Khaoz-Topsy-2021.stl' as any, DownloadFile.khaozTopsyGithubContribution));
 
     const assistantAppsFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantApps, imgUrl: AppletIcon.folderAA }));
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantAppsGeneral));
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.homepage, MiscIcon.assistantApps, site.assistantApps.website));
+    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.assistantApps.github));
+    getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.documentation, MiscIcon.assistantApps, site.assistantApps.docs));
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile('Discord' as any, FileIcon.discord, site.assistantApps.discord));
     getFolder(rootFolder, assistantAppsFolderIndex)?.addFile(linkFile(LocaleKey.twitterFeed, AppletIcon.twitter, site.assistantApps.nms.twitter));
 
@@ -57,6 +67,7 @@ export const getFilesOnDisk = (): IFolder => {
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(markDownFile(LocaleKey.readMe, MarkdownFile.assistantNMSGeneral));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.androidApp, FileIcon.android, site.assistantApps.nms.googlePlay));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.iOSApp, FileIcon.apple, site.assistantApps.nms.appleStore));
+    getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.windowsApp, FileIcon.windows, site.assistantApps.nms.windowsStore));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile({ ...KnownApplets.noMansSky });
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.webApp, FileIcon.web, site.assistantApps.nms.webapp));
     getFolder(rootFolder, assistantNMSFolderIndex)?.addFile(linkFile(LocaleKey.homepage, FileIcon.web, site.assistantApps.nms.website));

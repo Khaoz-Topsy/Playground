@@ -27,6 +27,7 @@ import { AssistantSMSApplet } from '../applet/assistantApps/assistantSMSApplet';
 import { IApplet } from '../../contracts/interface/IApplet';
 import { AppletType } from '../../constants/enum/appletType';
 import { PaintApplet } from '../applet/paint/paint';
+import { ModelViewerApplet } from '../applet/modelViewer/modelViewerApplet';
 
 export const windowDisplayer = (appProps: IApplet): ReactNode => {
     const appKey = `AppletType-${appProps.appletType}`;
@@ -48,6 +49,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.terminal: return <TerminalApplet key={appKey} {...appProps} />
         case AppletType.musicPlayer: return <MusicPlayerApplet key={appKey} {...appProps} />
         case AppletType.yellowPages: return <YellowPagesApplet key={appKey} {...appProps} />
+        case AppletType.modelViewer: return <ModelViewerApplet key={appKey} {...appProps} />
         case AppletType.assistantNMS: return <AssistantNMSApplet key={appKey} {...appProps} />
         case AppletType.assistantSMS: return <AssistantSMSApplet key={appKey} {...appProps} />
         case AppletType.presentation: return <PresentationApplet key={appKey} {...appProps} />

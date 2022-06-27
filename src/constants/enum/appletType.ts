@@ -24,6 +24,7 @@ export enum AppletType {
     yellowPages,
     browser,
     paint,
+    modelViewer,
 
     // Funny
     nyanCat,

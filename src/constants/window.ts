@@ -12,6 +12,10 @@ export const defaultHeight = 500;
 export const defaultSettingWidth = 730;
 export const defaultSettingHeight = 550;
 
+// Explorer
+export const defaultExplorerWidth = 850;
+export const defaultExplorerHeight = 600;
+
 // ScrapMechanic
 export const defaultScrapMechanicWidth = minWidth;
 export const defaultScrapMechanicHeight = 600;
