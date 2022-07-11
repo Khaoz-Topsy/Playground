@@ -45,6 +45,7 @@ Few cool things added:
 - Fix window resize handle animate
 - Fix Firefox infinite loop
 - Font selection
+- Radio applet
 
 
 Things that I will be adding 

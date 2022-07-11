@@ -53,7 +53,7 @@ export class KnownApplets {
         name: LocaleKey.terminal,
         appletType: AppletType.terminal,
         type: FileType.applet,
-        info: { version: '1.6.8', size: 5341, installedOn: new Date('2021-06-14'), author: 'Simon Ma - 中文文档', projectUrl: 'https://www.npmjs.com/package/react-terminal-app' },
+        info: { version: '1.6.8', size: 5341, installedOn: new Date('2021-06-14'), },
     };
     static kurtLourens: IAppletFile = {
         id: 1.07,
