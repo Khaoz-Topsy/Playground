@@ -26,6 +26,7 @@ import { Explorer } from './explorer/explorer';
 
 import { AppletType } from '../../constants/enum/appletType';
 import { IApplet } from '../../contracts/interface/IApplet';
+import { DigDugApplet } from '../applet/games/digDug';
 import { ModelViewerApplet } from '../applet/modelViewer/modelViewerApplet';
 import { RadioPlayerApplet } from '../applet/music/radioPlayer';
 import { PaintApplet } from '../applet/paint/paint';
@@ -58,6 +59,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.diablo: return <DiabloApplet key={appKey} {...appProps} />
         case AppletType.paint: return <PaintApplet key={appKey} {...appProps} />
         case AppletType.radio: return <RadioPlayerApplet key={appKey} {...appProps} />
+        case AppletType.digdug: return <DigDugApplet key={appKey} {...appProps} />
 
         case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />

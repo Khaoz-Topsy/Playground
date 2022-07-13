@@ -23,6 +23,7 @@ export const getIframeUrl = (applet: IBaseIframeRequirements | undefined): strin
     if (applet.appletType === AppletType.iotPublication) return DocumentFile.iotPublications;
     if (applet.appletType === AppletType.musicPlayer) return site.kurt.spotifyPublicLikedSongs;
     if (applet.appletType === AppletType.nyanCat) return 'https://cristurm.github.io/nyan-cat/';
+    if (applet.appletType === AppletType.digdug) return 'https://v6p9d9t4.ssl.hwcdn.net/html/1383798/index.html';
     if (applet.appletType === AppletType.diablo) return 'https://d07riv.github.io/diabloweb/';
     if (applet.appletType === AppletType.radio) return 'https://tunein.com/';
 

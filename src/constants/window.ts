@@ -36,5 +36,9 @@ export const defaultTwitterHeight = 600;
 export const defaultNotesWidth = 800;
 export const defaultNotesHeight = 550;
 
+// DigDug
+export const defaultDigDugWidth = 1000;
+export const defaultDigDugHeight = 700;
+
 export const defaultPictureViewerWidth = 650;
 export const defaultPictureViewerHeight = 400;

@@ -209,6 +209,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '2.0.1', size: 4286, installedOn: new Date('2022-06-27') },
     };
+    static digDug: IAppletFile = {
+        id: 1.34,
+        parentId: 1.34,
+        name: LocaleKey.digdug,
+        appletType: AppletType.digdug,
+        type: FileType.applet,
+        info: { version: '1.0.4', size: 8173, installedOn: new Date('2022-07-13'), author: 'Turtled', projectUrl: 'https://turtled.itch.io/dig-dug' },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

@@ -28,6 +28,7 @@ export class AppletIcon {
     static application = imgFolder + 'appIcons/application.png';
     static twitter = imgFolder + 'appIcons/twitter.png';
     static diablo = imgFolder + 'appIcons/diablo.png';
+    static digdug = imgFolder + 'appIcons/digdug.png';
     static folderAA = imgFolder + 'appIcons/folderAA.png';
     static folderNMS = imgFolder + 'appIcons/folderNMS.png';
     static folderSMS = imgFolder + 'appIcons/folderSMS.png';
