@@ -1,10 +1,8 @@
 import { Center } from '@chakra-ui/react';
-import { AnimatePresence, motion } from 'framer-motion';
 import Mousetrap from 'mousetrap';
 import React, { ReactNode, useEffect, useState } from 'react'
-import { Backgrounds, Presentation } from '../../../../constants/appImage';
+import { Presentation } from '../../../../constants/appImage';
 import { knownKeybinds } from '../../../../constants/keybind';
-import { AnimatePresenceWithoutType } from '../../../core/framerMotionFix';
 
 interface IProps {
     isFocused?: boolean;
@@ -13,7 +11,7 @@ interface IProps {
 }
 
 export const SlideTemplate: React.FC<IProps> = (props: IProps) => {
-    const [[currentSlideIndex, direction], setCurrentSlideIndex] = useState([0, 0]);
+    const [[currentSlideIndex], setCurrentSlideIndex] = useState([0, 0]);
 
     const paginate = (newDirection: number) => {
         setCurrentSlideIndex((oldValue) => {
@@ -36,57 +34,21 @@ export const SlideTemplate: React.FC<IProps> = (props: IProps) => {
             Mousetrap.unbind(knownKeybinds.left);
             Mousetrap.unbind(knownKeybinds.right);
         }
+        // eslint-disable-next-line
     }, [props.isFocused]);
-
-    const variants = {
-        enter: () => ({
-            x: 0,
-            opacity: 0.5,
-        }),
-        center: {
-            x: 0,
-            opacity: 1,
-        },
-        exit: () => ({
-            x: -1000,
-            opacity: 0,
-        })
-    };
 
     const currentSlide = props.slides[currentSlideIndex];
     const bg = props.bgRender(currentSlideIndex);
     return (
         <>
-            <AnimatePresenceWithoutType initial={false}>
+            <>
                 {
                     (bg != null) &&
-                    <motion.div
-                        key={`bg-${currentSlideIndex}`}
-                        className="prezz-container-bg pos-abs-top-left"
-                        variants={variants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{
-                            x: { type: "spring", stiffness: 300, damping: 30 },
-                            opacity: { duration: 0.2 }
-                        }}
-                    >
+                    <div key={`bg-${currentSlideIndex}`} className="prezz-container-bg pos-abs-top-left">
                         {bg}
-                    </motion.div>
+                    </div>
                 }
-                <motion.div
-                    key={`slide-${currentSlideIndex}`}
-                    className="prezz-container"
-                    variants={variants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={{
-                        x: { type: "spring", stiffness: 300, damping: 30 },
-                        opacity: { duration: 0.2 }
-                    }}
-                >
+                <div key={`slide-${currentSlideIndex}`} className="prezz-container">
                     {currentSlide(paginate)}
                     {
                         (currentSlideIndex < (props.slides.length - 1)) &&
@@ -96,8 +58,8 @@ export const SlideTemplate: React.FC<IProps> = (props: IProps) => {
                         (currentSlideIndex > 0) &&
                         <Center className="prezz-prev" onClick={() => paginate(-1)}>&lt;</Center>
                     }
-                </motion.div>
-            </AnimatePresenceWithoutType>
+                </div>
+            </>
         </>
     );
 }

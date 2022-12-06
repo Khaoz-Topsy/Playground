@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Menu, MenuItem } from '@mui/material';
+import { Menu, MenuItem } from '@material-ui/core';
 import { Icon } from '@chakra-ui/react';
 import classNames from 'classnames';
 

@@ -57,7 +57,7 @@ export const Window: React.FC<IProps> = (props: IProps) => {
         return (
             <motion.div
                 {...props}
-                key={`handle-w${state.width}-h${state.height}`} ref={ref} className={classes}
+                key="window-handle" ref={ref} className={classes}
                 initial={variants.initial}
                 transition={{ duration: 0.25 }}
                 animate={(isMinimised ?? false) ? "minimised" : "open"}

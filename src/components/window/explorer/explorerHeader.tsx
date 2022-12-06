@@ -105,7 +105,7 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
 
             <div className="content noselect">
                 <Center height="100%">
-                    <Breadcrumb style={{ marginBottom: '5px', pointerEvents: 'all' }} spacing="0" separator={<ChevronRightIcon color="#9E9E9E" mx={5} />}>
+                    <Breadcrumb style={{ marginBottom: '5px', pointerEvents: 'all' }} spacing="0" separator={<ChevronRightIcon color="#9E9E9E" mx={1} />}>
                         {
                             props.breadcrumbs.map((bread: IBreadcrumb) => (
                                 <BreadcrumbItem key={`${bread.id}-${bread.name}`}>

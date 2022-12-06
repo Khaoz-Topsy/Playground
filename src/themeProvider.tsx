@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react';
-import { ChakraProvider } from '@chakra-ui/react';
+import { ChakraProvider, DarkMode } from '@chakra-ui/react';
 import {
   createTheme,
   ThemeProvider,
-} from '@mui/material/styles';
+} from '@material-ui/core/styles';
 
 interface IProps {
   children: ReactNode;
@@ -20,9 +20,11 @@ export const CustomThemeProvider: React.FC<IProps> = (props: IProps) => {
 
   return (
     <ChakraProvider>
-      <ThemeProvider theme={theme}>
-        {props.children}
-      </ThemeProvider>
+      <DarkMode>
+        <ThemeProvider theme={theme}>
+          {props.children}
+        </ThemeProvider>
+      </DarkMode>
     </ChakraProvider>
   );
 }

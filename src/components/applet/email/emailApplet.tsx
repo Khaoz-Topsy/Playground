@@ -1,6 +1,6 @@
 import React, { useEffect, useState, ReactNode } from 'react';
 import { Badge, Center } from '@chakra-ui/react';
-import { Fab } from '@mui/material';
+import { Fab } from '@material-ui/core';
 import { AddIcon } from '@chakra-ui/icons';
 import classNames from 'classnames';
 

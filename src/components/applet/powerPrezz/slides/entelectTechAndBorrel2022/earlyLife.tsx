@@ -18,7 +18,7 @@ export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<IProps> = (props
             slides={[
                 (_) => (
                     <Center>
-                        <Text fontSize="3xl" textAlign="center">Entelect<br />Tech & Borrel</Text>
+                        <Text size="3xl" textAlign="center">Entelect<br />Tech & Borrel</Text>
                     </Center>
                 ),
                 () => (

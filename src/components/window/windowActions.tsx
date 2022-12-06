@@ -12,7 +12,7 @@ interface IProps {
 
 export const WindowActions: React.FC<IProps> = (props: IProps) => {
     const circleSize = '17px';
-    const iconSize = 10;
+    const iconSize = 2;
 
     const onMinimise = (e: any) => {
         e.customEvent = windowActionEvent;
