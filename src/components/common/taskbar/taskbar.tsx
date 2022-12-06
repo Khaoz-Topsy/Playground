@@ -1,6 +1,6 @@
 import { Icon } from '@chakra-ui/icons';
 import { Center, useToast } from '@chakra-ui/react';
-import { BellIcon } from '@heroicons/react/solid';
+import { BellIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 import React from 'react';
 

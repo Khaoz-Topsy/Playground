@@ -11,8 +11,8 @@ interface IProps {
 }
 
 export const WindowActions: React.FC<IProps> = (props: IProps) => {
-    const circleSize = "15px";
-    const iconSize = 2;
+    const circleSize = '17px';
+    const iconSize = 10;
 
     const onMinimise = (e: any) => {
         e.customEvent = windowActionEvent;
@@ -33,17 +33,17 @@ export const WindowActions: React.FC<IProps> = (props: IProps) => {
         <div className="window-actions">
             <div className="window-buttons">
                 <HStack>
-                    <Circle size={circleSize} bg="orange.300" color="orange.300" onClick={onMinimise}
-                        _hover={{ color: 'black', background: 'orange.500' }}>
-                        <MinusIcon w={iconSize} h={iconSize} />
+                    <Circle size={circleSize} bg="#FFB74D" color="#FFB74D" onClick={onMinimise}
+                        _hover={{ color: 'black', background: '#FFB74D' }}>
+                        <MinusIcon w={iconSize} h={iconSize} pr="1px" />
                     </Circle>
-                    <Circle size={circleSize} bg="green.300" color="green.300" onClick={onMaximise}
-                        _hover={{ color: 'black', background: 'green.500' }}>
-                        <UpDownIcon w={iconSize} h={iconSize} />
+                    <Circle size={circleSize} bg="#81C784" color="#81C784" onClick={onMaximise}
+                        _hover={{ color: 'black', background: '#81C784' }}>
+                        <UpDownIcon w={iconSize} h={iconSize} pr="1px" />
                     </Circle>
-                    <Circle size={circleSize} bg="red.500" color="red.500" onClick={onClose}
-                        _hover={{ color: 'black', background: 'red.700' }}>
-                        <CloseIcon w={iconSize} h={iconSize} />
+                    <Circle size={circleSize} bg="#F44336" color="#F44336" onClick={onClose}
+                        _hover={{ color: 'black', background: '#D32F2F' }}>
+                        <CloseIcon w={iconSize} h={iconSize} pr="1px" />
                     </Circle>
                 </HStack>
             </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Box, Center, Divider, Icon, SimpleGrid, VStack } from '@chakra-ui/react';
-import { ViewGridIcon, ViewListIcon } from '@heroicons/react/solid';
+import { Squares2X2Icon, ListBulletIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 
 import { IApplet } from '../../../contracts/interface/IApplet'
@@ -18,10 +18,10 @@ export const YellowPagesApplet: React.FC<IProps> = (props: IProps) => {
 
     const iconOptions = [
         {
-            icon: ViewGridIcon
+            icon: Squares2X2Icon
         },
         {
-            icon: ViewListIcon
+            icon: ListBulletIcon
         }
     ];
 
@@ -71,11 +71,11 @@ export const YellowPagesApplet: React.FC<IProps> = (props: IProps) => {
         >
             <VStack w="100%" height="100%" spacing={0} align="stretch">
                 <Box px={3} display="flex" flexDirection="row">
-                    <Center>Group by:</Center>
+                    <Center mr={5}>Group by:</Center>
                     {
                         iconOptions.map((iconOpt, index: number) => (
                             <Box ml={3} className={classNames('icon-wrapper', { 'active': selectedIcon === index })} onClick={() => setSelectedIcon(index)}>
-                                <Icon w={10} h={10} as={iconOpt.icon} />
+                                <Icon w={30} h={30} as={iconOpt.icon} />
                             </Box>
                         ))
                     }

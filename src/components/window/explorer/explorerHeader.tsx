@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from 'react';
 import { ArrowBackIcon, ArrowForwardIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { Breadcrumb, BreadcrumbItem, Button } from '@chakra-ui/react';
+import { Breadcrumb, BreadcrumbItem, Button, Center } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
 
 import { knownKeybinds } from '../../../constants/keybind';
@@ -104,15 +104,17 @@ export const ExplorerHeaderUnconnected: React.FC<IProps> = (props: IProps) => {
             />
 
             <div className="content noselect">
-                <Breadcrumb style={{ marginTop: '2px', pointerEvents: 'all' }} spacing="0" separator={<ChevronRightIcon color="gray.500" />}>
-                    {
-                        props.breadcrumbs.map((bread: IBreadcrumb) => (
-                            <BreadcrumbItem key={`${bread.id}-${bread.name}`}>
-                                {displayBreadcrumb(bread)}
-                            </BreadcrumbItem>
-                        ))
-                    }
-                </Breadcrumb>
+                <Center height="100%">
+                    <Breadcrumb style={{ marginBottom: '5px', pointerEvents: 'all' }} spacing="0" separator={<ChevronRightIcon color="#9E9E9E" mx={5} />}>
+                        {
+                            props.breadcrumbs.map((bread: IBreadcrumb) => (
+                                <BreadcrumbItem key={`${bread.id}-${bread.name}`}>
+                                    {displayBreadcrumb(bread)}
+                                </BreadcrumbItem>
+                            ))
+                        }
+                    </Breadcrumb>
+                </Center>
             </div>
             {/* <div className="icon-button disabled" style={{ marginRight: '1.25em' }}><SearchIcon /></div> */}
             <WindowActions {...props} />

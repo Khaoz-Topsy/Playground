@@ -1,6 +1,6 @@
 import React from 'react';
 import { Center } from '@chakra-ui/react';
-import { MailIcon } from '@heroicons/react/solid';
+import { EnvelopeIcon } from '@heroicons/react/24/solid';
 
 import { ContextMenuWrapper, IContextMenuItemProps, OptionState } from '../../core/contextMenu';
 import { KnownApplets } from '../../../constants/knownApplets';
@@ -46,7 +46,7 @@ export const TaskbarEmailIcon: React.FC<IProps> = (props: IProps) => {
             items={menuItems}
         >
             <Center onClick={openEmailApp}>
-                <MailIcon />
+                <EnvelopeIcon />
             </Center>
         </ContextMenuWrapper>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon } from '@chakra-ui/icons';
-import { FolderIcon, MusicNoteIcon, PhotographIcon } from '@heroicons/react/solid';
+import { FolderIcon, MusicalNoteIcon, PhotoIcon } from '@heroicons/react/24/solid';
 import classNames from 'classnames';
 
 import { BasicImage } from '../../core/image';
@@ -15,6 +15,7 @@ import { translate } from '../../../integration/i18n';
 import { withServices } from '../../../integration/dependencyInjection';
 
 import { dependencyInjectionToProps, IExpectedServices } from './explorer.dependencyInjection';
+import { Center, Flex } from '@chakra-ui/layout';
 
 interface IWithoutExpectedServices {
     currentFolder: IFolder;
@@ -28,6 +29,13 @@ export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
     const desktopFolder = searchFilesOnDisk(props.folderStructure, desktopFolderId);
     const documentFolder = searchFilesOnDisk(props.folderStructure, documentFolderId);
 
+    const renderSidebarTile = (icon: any, title: LocaleKey) => (
+        <Flex direction="row">
+            <Center><Icon as={icon} /></Center>
+            <span>&nbsp;&nbsp;{translate(title)}</span>
+        </Flex>
+    );
+
     return (
         <div className="explorer-sidebar noselect">
             {
@@ -36,7 +44,10 @@ export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
                     className={classNames('item', { 'selected': props.currentFolder.id === applicationFolderId })}
                     onClick={props.openFileOrFolder?.(applicationFolder)}
                 >
-                    <BasicImage classNames="explorer-shortcut-icon" imageUrl={FileIcon.applicationIcon} />&nbsp;&nbsp;{translate(LocaleKey.applications)}
+                    <Flex direction="row">
+                        <Center><BasicImage classNames="explorer-shortcut-icon" imageUrl={FileIcon.applicationIcon} /></Center>
+                        <span>&nbsp;&nbsp;{translate(LocaleKey.applications)}</span>
+                    </Flex>
                 </div>
             }
             {
@@ -45,7 +56,7 @@ export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
                     className={classNames('item', { 'selected': props.currentFolder.id === desktopFolderId })}
                     onClick={props.openFileOrFolder?.(desktopFolder)}
                 >
-                    <Icon as={FolderIcon} />&nbsp;&nbsp;{translate(LocaleKey.desktop)}
+                    {renderSidebarTile(FolderIcon, LocaleKey.desktop)}
                 </div>
             }
             {
@@ -54,14 +65,14 @@ export const ExplorerSidebarUnconnected: React.FC<IProps> = (props: IProps) => {
                     className={classNames('item', { 'selected': props.currentFolder.id === documentFolderId })}
                     onClick={props.openFileOrFolder?.(documentFolder)}
                 >
-                    <Icon as={FolderIcon} />&nbsp;&nbsp;{translate(LocaleKey.documents)}
+                    {renderSidebarTile(FolderIcon, LocaleKey.documents)}
                 </div>
             }
             <div className="item" onClick={props.openFileOrFolder?.(KnownApplets.musicPlayer)}>
-                <Icon as={MusicNoteIcon} />&nbsp;&nbsp;{translate(KnownApplets.musicPlayer.name)}
+                {renderSidebarTile(MusicalNoteIcon, KnownApplets.musicPlayer.name)}
             </div>
             <div className="item" onClick={props.openFileOrFolder?.(KnownApplets.picture)}>
-                <Icon as={PhotographIcon} />&nbsp;&nbsp;{translate(KnownApplets.picture.name)}
+                {renderSidebarTile(PhotoIcon, KnownApplets.picture.name)}
             </div>
             <hr />
         </div>

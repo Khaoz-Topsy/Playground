@@ -12,6 +12,28 @@ $browser-icon-size: 100px;
         margin: #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px #{$window-header-divider-space / 2}px;
     }
 
+    .url {
+        width: 100%;
+        min-width: 0px;
+        outline: transparent solid 2px;
+        outline-offset: 2px;
+        position: relative;
+        appearance: none;
+        transition-property: var(--chakra-transition-property-common);
+        transition-duration: var(--chakra-transition-duration-normal);
+        font-size: var(--chakra-fontSizes-md);
+        padding-inline-start: var(--chakra-space-4);
+        padding-inline-end: var(--chakra-space-4);
+        height: var(--chakra-sizes-10);
+        border-radius: var(--chakra-radii-md);
+        border-width: 1px;
+        border-style: solid;
+        border-image: initial;
+        border-color: inherit;
+        background: inherit;
+        margin-right: var(--chakra-space-3);
+    }
+
     .actions {
         background-color: lighten(_palette(bg-transparent-focused), 20%);
 

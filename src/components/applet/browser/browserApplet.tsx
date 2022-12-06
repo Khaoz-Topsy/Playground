@@ -13,7 +13,7 @@ import { MiscStore } from '../../../state/misc/store';
 import { allKnownApps } from '../../../constants/knownApplets';
 import { AppletType } from '../../../constants/enum/appletType';
 import { site } from '../../../constants/site';
-import { HomeIcon } from '@heroicons/react/solid';
+import { HomeIcon } from '@heroicons/react/24/solid';
 
 declare global {
     interface browserFrame { contentWindow: any; }
@@ -51,7 +51,7 @@ export const BrowserApplet: React.FC<IProps> = (props: IProps) => {
                         icon={<HomeIcon />}
                         onClick={() => setUrl(homeUrl)}
                     />
-                    <Input mr={3} value={url} disabled />
+                    <Input mr={3} value={url} disabled className="url" />
                     <Menu>
                         <MenuButton
                             as={IconButton}

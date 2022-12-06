@@ -1,4 +1,4 @@
-import { TrashIcon } from '@heroicons/react/solid';
+import { TrashIcon } from '@heroicons/react/24/solid';
 
 import { IContextMenuItemProps, OptionState } from '../../core/contextMenu';
 import { isLink, IStartMenuItemProps } from '../../../contracts/interface/IFile';

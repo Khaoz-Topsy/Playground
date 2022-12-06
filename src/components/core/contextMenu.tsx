@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { Menu, MenuItem } from '@material-ui/core';
+import { Menu, MenuItem } from '@mui/material';
 import { Icon } from '@chakra-ui/react';
 import classNames from 'classnames';
 
@@ -90,7 +90,7 @@ export const ContextMenuWrapper: React.FC<IContextMenuProps> = (props: IContextM
                 className={classNames(classesObj)}
                 onClick={handleItemClick(menuItem.onClick)}
             >
-                {(menuItem.icon != null) && <Icon as={menuItem.icon} mr={2} />}
+                {(menuItem.icon != null) && <Icon as={menuItem.icon} mr={5} />}
                 {translate(menuItem.name)}
             </MenuItem>
         );
