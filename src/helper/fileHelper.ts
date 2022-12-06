@@ -80,6 +80,15 @@ export const objFile = (name: LocaleKey, objUrl: string) => ({
     meta: { model: objUrl }
 });
 
+export const prezzFile = (name: LocaleKey, slides: string) => ({
+    name,
+    imgUrl: FileIcon.powerPrezz,
+    type: FileType.powerPrezz,
+    meta: {
+        slides,
+    }
+});
+
 export const iframeApplet = (name: LocaleKey, frameKey: string, src: string, imgUrl: string) => ({
     id: 30.01,
     name,

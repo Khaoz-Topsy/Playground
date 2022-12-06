@@ -12,6 +12,8 @@ export const knownKeybinds = {
     esc: 'escape',
     up: 'up',
     down: 'down',
+    left: 'left',
+    right: 'right',
     konami: 'up up down down left right left right b a enter',
 };
 

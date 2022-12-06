@@ -29,6 +29,7 @@ export class AppletIcon {
     static twitter = imgFolder + 'appIcons/twitter.png';
     static diablo = imgFolder + 'appIcons/diablo.png';
     static digdug = imgFolder + 'appIcons/digdug.png';
+    static powerPrezz = imgFolder + 'appIcons/digdug.png';
     static folderAA = imgFolder + 'appIcons/folderAA.png';
     static folderNMS = imgFolder + 'appIcons/folderNMS.png';
     static folderSMS = imgFolder + 'appIcons/folderSMS.png';
@@ -50,6 +51,7 @@ export class FileIcon {
     static nmscd = imgFolder + 'fileIcons/nmscd.png';
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
+    static powerPrezz = imgFolder + 'fileIcons/web.png';
 
     static miniLink = imgFolder + 'fileIcons/externalIcon.png';
 
@@ -100,6 +102,11 @@ export const Backgrounds = [
         url: backgroundsFolder + 'spaceBluePurple.jpg',
     }
 ];
+
+export const Presentation = {
+    entelectbg1: imgFolder + 'presentation/entelectbg.png',
+    entelectbg2: imgFolder + 'presentation/entelectbg2.png',
+}
 
 export class External {
     static githubGeneralStats = 'https://github-readme-stats.vercel.app/api?username=Khaoz-Topsy&amp;show_icons=true&amp;line_height=24';

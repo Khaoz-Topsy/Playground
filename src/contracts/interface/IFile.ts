@@ -9,6 +9,7 @@ export enum FileType {
     markdown,
     link,
     model,
+    powerPrezz,
 }
 
 export enum StartMenuSize {

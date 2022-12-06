@@ -26,6 +26,7 @@ export enum AppletType {
     paint,
     modelViewer,
     radio,
+    powerPrezz,
 
     // Funny
     nyanCat,

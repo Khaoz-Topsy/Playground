@@ -1,15 +1,16 @@
 import { Folder } from '../contracts/implementation/Folder';
 import { IFolder } from '../contracts/interface/IFolder';
-import { imageFile, linkFile, markDownFile, objFile } from '../helper/fileHelper';
+import { imageFile, linkFile, markDownFile, objFile, prezzFile } from '../helper/fileHelper';
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
 import { LocaleKey } from '../localization/LocaleKey';
-import { AppletIcon, Backgrounds, External, FileIcon, MiscIcon } from './appImage';
+import { AppletIcon, Backgrounds, External, FileIcon, MiscIcon, Presentation } from './appImage';
 import { DesktopIcons } from './desktopIconList';
 import { DownloadFile } from './documentFile';
 import { allKnownApps, KnownApplets } from './knownApplets';
 import { MarkdownFile } from './markdownFile';
 import { site } from './site';
+import { knownSlides } from './slides';
 
 export const applicationFolderId: any = '0.0';
 export const desktopFolderId: any = '0.1';
@@ -39,12 +40,25 @@ export const getFilesOnDisk = (): IFolder => {
     const documentFolderMoreSecretsIndex = secretsDocFolder?.addSubFolder?.(new Folder({ name: LocaleKey.moreSecrets }));
     const moreSecretsDocFolder = getFolder(secretsDocFolder, documentFolderMoreSecretsIndex);
     moreSecretsDocFolder.addFile(markDownFile(LocaleKey.secretFileName, MarkdownFile.secrets));
+
+    // START Documents > Kurt
     const documentFolderKurtFolderIndex = docFolder?.addSubFolder?.(new Folder({ name: 'Kurt' as any }));
     const kurtDocsFolder = getFolder(docFolder, documentFolderKurtFolderIndex);
     kurtDocsFolder?.addFile({ ...KnownApplets.kurtLourens });
     kurtDocsFolder?.addFile(linkFile('Android CV App' as any, FileIcon.android, site.kurt.googlePlay));
     kurtDocsFolder?.addFile(linkFile(LocaleKey.github, FileIcon.github, site.kurt.github));
     kurtDocsFolder?.addFile(linkFile('Behance' as any, FileIcon.behance, site.kurt.behance));
+    // END Documents > Kurt
+
+    const documentFolderEntelectTBFolderIndex = docFolder?.addSubFolder?.(new Folder({ name: 'Entelect Tech & Borrel' as any }));
+    const entelectTBFolder = getFolder(docFolder, documentFolderEntelectTBFolderIndex);
+    entelectTBFolder?.addFile({ ...KnownApplets.powerPrezz });
+    entelectTBFolder?.addFile(prezzFile('family life.pptx' as any, knownSlides.EntelectTechAndBorrel2022.EarlyLife));
+    entelectTBFolder?.addFile(prezzFile('gaming.pptx' as any, knownSlides.EntelectTechAndBorrel2022.GamingLife));
+    entelectTBFolder?.addFile(prezzFile('work life.pptx' as any, knownSlides.EntelectTechAndBorrel2022.WorkLife));
+    entelectTBFolder?.addFile(prezzFile('nl.pptx' as any, knownSlides.EntelectTechAndBorrel2022.NLLife));
+    entelectTBFolder?.addFile(imageFile('bg1.png' as any, Presentation.entelectbg1, [Presentation.entelectbg1]));
+    entelectTBFolder?.addFile(imageFile('bg2.png' as any, Presentation.entelectbg2, [Presentation.entelectbg2]));
 
     // getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {

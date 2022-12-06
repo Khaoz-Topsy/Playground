@@ -217,6 +217,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '1.0.4', size: 8173, installedOn: new Date('2022-07-13'), author: 'Turtled', projectUrl: 'https://turtled.itch.io/dig-dug' },
     };
+    static powerPrezz: IAppletFile = {
+        id: 1.35,
+        parentId: 1.35,
+        name: LocaleKey.powerPrezz,
+        appletType: AppletType.powerPrezz,
+        type: FileType.applet,
+        info: { version: '0.0.1', size: 503, installedOn: new Date('2022-12-06') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

@@ -1,14 +1,26 @@
 import { Store } from "pullstate";
+import { AppletType } from "../../constants/enum/appletType";
 import { LaunchedApp } from "../../contracts/launchedApp";
+import { LocaleKey } from "../../localization/LocaleKey";
 
 export interface IWindowStore {
     currentFocused: string;
     activeApps: Array<LaunchedApp>;
 }
 
-export const defaultWindowProps = {
+export const defaultWindowProps: IWindowStore = {
     currentFocused: '',
-    activeApps: [],
+    activeApps: [
+        {
+            guid: '1',
+            name: LocaleKey.apiDocs,
+            openOrder: 1,
+            appletType: AppletType.powerPrezz,
+            meta: {
+                slides: 'EntelectTechAndBorrel2022-early-life'
+            } as any,
+        }
+    ],
 };
 
 export const WindowStore = new Store<IWindowStore>(defaultWindowProps);

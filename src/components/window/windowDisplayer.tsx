@@ -30,6 +30,7 @@ import { DigDugApplet } from '../applet/games/digDug';
 import { ModelViewerApplet } from '../applet/modelViewer/modelViewerApplet';
 import { RadioPlayerApplet } from '../applet/music/radioPlayer';
 import { PaintApplet } from '../applet/paint/paint';
+import { PowerPrezzApplet } from '../applet/powerPrezz/powerPrezzApplet';
 
 export const windowDisplayer = (appProps: IApplet): ReactNode => {
     const appKey = `AppletType-${appProps.appletType}`;
@@ -60,6 +61,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.paint: return <PaintApplet key={appKey} {...appProps} />
         case AppletType.radio: return <RadioPlayerApplet key={appKey} {...appProps} />
         case AppletType.digdug: return <DigDugApplet key={appKey} {...appProps} />
+        case AppletType.powerPrezz: return <PowerPrezzApplet key={appKey} {...appProps} />
 
         case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />

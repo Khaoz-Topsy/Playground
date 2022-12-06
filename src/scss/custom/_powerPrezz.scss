@@ -1,0 +1,33 @@
+.window.box.powerPrezz .window-content {
+    overflow: hidden;
+}
+
+.prezz-container-bg {
+    z-index: -1;
+}
+.prezz-container {
+    > * {
+        height: 100%;
+    }
+
+    .prezz-next,
+    .prezz-prev {
+        position: absolute;
+        top: 0;
+        width: 3em;
+        opacity: 0;
+        background-color: rgba(255, 255, 255, 0.1);
+        transition: opacity 250ms ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+    .prezz-next {
+        right: 0;
+    }
+    .prezz-prev {
+        left: 0;
+    }
+}
