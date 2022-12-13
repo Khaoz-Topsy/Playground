@@ -18,6 +18,7 @@ export class KnownApplets {
         name: LocaleKey.explorer,
         appletType: AppletType.explorer,
         type: FileType.applet,
+        numAllowedInstances: 3,
         info: { version: '12.71', size: 55, installedOn: new Date('2021-06-23'), updatedOn: new Date('2021-07-26') },
     };
     static picture: IAppletFile = {
@@ -232,9 +233,18 @@ export const allKnownApps = (): Array<IAppletFile> => {
     for (const appletProp in KnownApplets) {
         if (Object.prototype.hasOwnProperty.call(KnownApplets, appletProp)) {
             const applet: IAppletFile = (KnownApplets as any)[appletProp];
-            if (appletsHiddenFromApplicationFolder.includes(applet.appletType)) continue;
             apps.push(applet);
         }
+    }
+    return apps;
+}
+
+export const allVisibleApps = (): Array<IAppletFile> => {
+    const apps: Array<IAppletFile> = [];
+    const allKnownAppsArr = allKnownApps();
+    for (const applet of allKnownAppsArr) {
+        if (appletsHiddenFromApplicationFolder.includes(applet.appletType)) continue;
+        apps.push(applet);
     }
     return apps;
 }

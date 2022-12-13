@@ -52,6 +52,7 @@ export class FileIcon {
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
     static powerPrezz = imgFolder + 'fileIcons/web.png';
+    static video = imgFolder + 'fileIcons/picture.png';
 
     static miniLink = imgFolder + 'fileIcons/externalIcon.png';
 
@@ -106,6 +107,19 @@ export const Backgrounds = [
 export const Presentation = {
     entelectbg1: imgFolder + 'presentation/entelectbg.png',
     entelectbg2: imgFolder + 'presentation/entelectbg2.png',
+    flyToMali: vidFolder + 'presentation/flyToMali.mp4',
+    flyToMaliReverse: vidFolder + 'presentation/flyToMali-reverse.mp4',
+    family1: imgFolder + 'presentation/family1.png',
+    family2: imgFolder + 'presentation/family2.png',
+    family3: imgFolder + 'presentation/family3.png',
+    welkom1: imgFolder + 'presentation/welkom.png',
+    gold: imgFolder + 'presentation/gold.webp',
+    studyingAtUJ: vidFolder + 'presentation/studying.mp4',
+    sadiolaGold: vidFolder + 'presentation/sadiola-gold.mp4',
+    school2007: imgFolder + 'presentation/school2007.JPG',
+    mx: imgFolder + 'presentation/mx.png',
+    kilimanjaro: imgFolder + 'presentation/kili.png',
+    fish: imgFolder + 'presentation/fish.png',
 }
 
 export class External {

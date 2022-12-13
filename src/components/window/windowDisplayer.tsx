@@ -1,12 +1,19 @@
 import { ReactNode } from 'react';
 
 // Applets
+import { AppletType } from '../../constants/enum/appletType';
+import { IApplet } from '../../contracts/interface/IApplet';
 import { AssistantNMSApplet } from '../applet/assistantApps/assistantNMSApplet';
 import { AssistantSMSApplet } from '../applet/assistantApps/assistantSMSApplet';
 import { SwaggerApplet } from '../applet/assistantApps/swaggerApplet';
 import { BrowserApplet } from '../applet/browser/browserApplet';
 import { EmailApplet } from '../applet/email/emailApplet';
+import { ModelViewerApplet } from '../applet/fileViewers/modelViewerApplet';
+import { NotesApplet } from '../applet/fileViewers/notesApplet';
+import { PictureApplet } from '../applet/fileViewers/pictureApplet';
+import { VideoApplet } from '../applet/fileViewers/videoApplet';
 import { DiabloApplet } from '../applet/games/diablo';
+import { DigDugApplet } from '../applet/games/digDug';
 import { MinecraftClassicApplet } from '../applet/games/minecraft';
 import { IFrameApplet } from '../applet/iframe/iframeApplet';
 import { KurtApplet } from '../applet/kurt/kurtApplet';
@@ -14,23 +21,16 @@ import { LiveTvApplet } from '../applet/kurt/liveTvApplet';
 import { MonitorApplet } from '../applet/kurt/monitorApplet';
 import { PresentationApplet } from '../applet/kurt/presentationApplet';
 import { MusicPlayerApplet } from '../applet/music/musicPlayer';
-import { NotesApplet } from '../applet/notes/notesApplet';
+import { RadioPlayerApplet } from '../applet/music/radioPlayer';
 import { NyanCatApplet } from '../applet/nyanCat/nyanCatApplet';
+import { PaintApplet } from '../applet/paint/paint';
 import { YellowPagesApplet } from '../applet/phonebook/yellowPagesApplet';
-import { PictureApplet } from '../applet/picture/pictureApplet';
+import { PowerPrezzApplet } from '../applet/powerPrezz/powerPrezzApplet';
 import { SettingApplet } from '../applet/settings/settingApplet';
 import { TerminalApplet } from '../applet/terminal/terminalApplet';
 import { TweetListApplet } from '../applet/tweeter/tweetList';
 import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
 import { Explorer } from './explorer/explorer';
-
-import { AppletType } from '../../constants/enum/appletType';
-import { IApplet } from '../../contracts/interface/IApplet';
-import { DigDugApplet } from '../applet/games/digDug';
-import { ModelViewerApplet } from '../applet/modelViewer/modelViewerApplet';
-import { RadioPlayerApplet } from '../applet/music/radioPlayer';
-import { PaintApplet } from '../applet/paint/paint';
-import { PowerPrezzApplet } from '../applet/powerPrezz/powerPrezzApplet';
 
 export const windowDisplayer = (appProps: IApplet): ReactNode => {
     const appKey = `AppletType-${appProps.appletType}`;
@@ -62,6 +62,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.radio: return <RadioPlayerApplet key={appKey} {...appProps} />
         case AppletType.digdug: return <DigDugApplet key={appKey} {...appProps} />
         case AppletType.powerPrezz: return <PowerPrezzApplet key={appKey} {...appProps} />
+        case AppletType.video: return <VideoApplet key={appKey} {...appProps} />
 
         case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />

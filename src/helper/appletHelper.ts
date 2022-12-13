@@ -35,6 +35,7 @@ export const openFile = (windowStore: Store<IWindowStore>, newFile: IFile) => {
     }
     if (newFile.type === FileType.model) appletType = AppletType.modelViewer;
     if (newFile.type === FileType.powerPrezz) appletType = AppletType.powerPrezz;
+    if (newFile.type === FileType.video) appletType = AppletType.video;
 
     // if (newFile.type === FileType.iframeApplet) {
     //     if (newFile?.meta?.src != null) {

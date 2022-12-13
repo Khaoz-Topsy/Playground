@@ -10,6 +10,7 @@ export enum FileType {
     link,
     model,
     powerPrezz,
+    video,
 }
 
 export enum StartMenuSize {

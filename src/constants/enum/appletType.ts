@@ -27,6 +27,7 @@ export enum AppletType {
     modelViewer,
     radio,
     powerPrezz,
+    video,
 
     // Funny
     nyanCat,
@@ -39,6 +40,8 @@ export const appletsThatCanHaveTheirNamesChanged: Array<AppletType> = [
     AppletType.explorer,
     AppletType.picture,
     AppletType.notes,
+    AppletType.video,
+    AppletType.powerPrezz,
 ];
 
 export const appletsHiddenFromApplicationFolder: Array<AppletType> = [

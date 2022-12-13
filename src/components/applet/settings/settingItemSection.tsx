@@ -38,7 +38,7 @@ export const SettingItemSection: React.FunctionComponent<ISettingItemSection> = 
             {
                 props.subTexts &&
                 props.subTexts.map((text, index) => (
-                    <Text key={index} mb={1} fontSize="md" color={'whiteAlpha.600'} className="noselect">{text}</Text>
+                    <Text key={index} mb={1} fontSize="md" color="whiteAlpha.600" className="noselect">{text}</Text>
                 ))
             }
             <Box mt={1}>{props.children}</Box>

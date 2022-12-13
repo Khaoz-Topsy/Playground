@@ -89,6 +89,13 @@ export const prezzFile = (name: LocaleKey, slides: string) => ({
     }
 });
 
+export const videoFile = (name: LocaleKey, videoUrl: string, previewImgUrl: string | null = null) => ({
+    name,
+    imgUrl: previewImgUrl ?? FileIcon.video,
+    type: FileType.video,
+    meta: { videoUrl, }
+});
+
 export const iframeApplet = (name: LocaleKey, frameKey: string, src: string, imgUrl: string) => ({
     id: 30.01,
     name,

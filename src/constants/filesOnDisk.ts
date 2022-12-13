@@ -1,13 +1,13 @@
 import { Folder } from '../contracts/implementation/Folder';
 import { IFolder } from '../contracts/interface/IFolder';
-import { imageFile, linkFile, markDownFile, objFile, prezzFile } from '../helper/fileHelper';
+import { imageFile, linkFile, markDownFile, objFile, prezzFile, videoFile } from '../helper/fileHelper';
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
 import { LocaleKey } from '../localization/LocaleKey';
 import { AppletIcon, Backgrounds, External, FileIcon, MiscIcon, Presentation } from './appImage';
 import { DesktopIcons } from './desktopIconList';
 import { DownloadFile } from './documentFile';
-import { allKnownApps, KnownApplets } from './knownApplets';
+import { allVisibleApps, KnownApplets } from './knownApplets';
 import { MarkdownFile } from './markdownFile';
 import { site } from './site';
 import { knownSlides } from './slides';
@@ -23,7 +23,7 @@ export const getFilesOnDisk = (): IFolder => {
         name: LocaleKey.applications,
         imgUrl: AppletIcon.application,
     }));
-    const allKnownAppsSorted = sortByPropDesc(allKnownApps().map(ka => ({ ...ka, translated: translate(ka.name) })), 'translated');
+    const allKnownAppsSorted = sortByPropDesc(allVisibleApps().map(ka => ({ ...ka, translated: translate(ka.name) })), 'translated');
     for (const app of allKnownAppsSorted) {
         (rootFolder.contents[appFolderIndex] as Folder)?.addFile?.(app);
     }
@@ -59,6 +59,8 @@ export const getFilesOnDisk = (): IFolder => {
     entelectTBFolder?.addFile(prezzFile('nl.pptx' as any, knownSlides.EntelectTechAndBorrel2022.NLLife));
     entelectTBFolder?.addFile(imageFile('bg1.png' as any, Presentation.entelectbg1, [Presentation.entelectbg1]));
     entelectTBFolder?.addFile(imageFile('bg2.png' as any, Presentation.entelectbg2, [Presentation.entelectbg2]));
+    entelectTBFolder?.addFile(videoFile('sadiolaGold.mp4' as any, Presentation.sadiolaGold));
+    entelectTBFolder?.addFile(videoFile('studyingAtUJ.mp4' as any, Presentation.studyingAtUJ));
 
     // getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {

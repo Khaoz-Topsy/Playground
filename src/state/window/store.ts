@@ -17,7 +17,8 @@ export const defaultWindowProps: IWindowStore = {
             openOrder: 1,
             appletType: AppletType.powerPrezz,
             meta: {
-                slides: 'EntelectTechAndBorrel2022-early-life'
+                slides: 'EntelectTechAndBorrel2022-early-life',
+                isMaximised: true,
             } as any,
         }
     ],
