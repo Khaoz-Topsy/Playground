@@ -38,5 +38,12 @@ export const windowIconString = (appletType: AppletType): string => {
 
 
 export const iframeIcon = (imgUrl: string) => (<BasicImage imageUrl={(imgUrl == null || imgUrl.length < 5) ? error : imgUrl} classNames="noselect" />);
-export const windowIcon = (appletType: AppletType, onClick?: (e: any) => void) => (<BasicImage imageUrl={windowIconString(appletType)} classNames="noselect" onClick={onClick} />);
-export const windowTaskbarIcon = (appletType: AppletType) => (<BasicImage imageUrl={windowIconString(appletType)} />);
+export const windowIcon = (appletType: AppletType, overrideIconUrl?: string, onClick?: (e: any) => void) => {
+    let imageUrl = windowIconString(appletType);
+    if (overrideIconUrl != null && overrideIconUrl.length > 5) {
+        imageUrl = overrideIconUrl;
+    }
+    return (
+        <BasicImage imageUrl={imageUrl} classNames="noselect" onClick={onClick} />
+    );
+}

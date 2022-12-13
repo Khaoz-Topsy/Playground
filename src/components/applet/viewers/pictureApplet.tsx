@@ -5,7 +5,7 @@ import { BasicImage } from '../../core/image';
 import { Backgrounds } from '../../../constants/appImage'
 import { defaultPictureViewerHeight, defaultPictureViewerWidth } from '../../../constants/window';
 import { IApplet } from '../../../contracts/interface/IApplet'
-import { LightBox } from '../../../components/common/lightbox';
+import { LightBox } from '../../common/lightbox';
 
 import { Applet } from '../../window/applet/applet';
 import { anyObject } from '../../../helper/typescriptHacks';

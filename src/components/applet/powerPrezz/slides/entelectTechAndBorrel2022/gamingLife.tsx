@@ -2,7 +2,7 @@ import { CheckIcon } from '@chakra-ui/icons';
 import { Button, Center, Text } from '@chakra-ui/react';
 import React, { ReactNode, useState } from 'react';
 import { getScreenshareStream } from '../../../../../helper/screenshareHelper';
-import { Screenshare } from '../../../../special/screenshare';
+import { ScreenshareWindow } from '../../../../special/screenshareWindow';
 import { SlideTemplate } from '../slideTemplate';
 import { entelectSlideBackground, entelectSlideBackgroundLookup } from './common';
 
@@ -47,14 +47,14 @@ export const EntelectTechAndBorrel2022GamingLifeSlides: React.FC<IProps> = (prop
                     skip: satisfactoryStream == null,
                     backgroundId: entelectSlideBackgroundLookup.default.id,
                     render: (_: any) => (
-                        <Screenshare stream={satisfactoryStream} />
+                        <ScreenshareWindow stream={satisfactoryStream} />
                     ),
                 },
                 {
                     skip: otherStream == null,
                     backgroundId: entelectSlideBackgroundLookup.default.id,
                     render: (_) => (
-                        <Screenshare stream={otherStream} />
+                        <ScreenshareWindow stream={otherStream} />
                     ),
                 },
             ]}

@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import { motion } from 'framer-motion';
 
 import { isNotLaunched, LaunchedApp, NotLaunchedApp } from '../../../contracts/launchedApp';
-import { windowTaskbarIcon } from '../../window/windowIcon';
+import { windowIcon } from '../../window/windowIcon';
 import { ContextMenuWrapper, IContextMenuItemProps, OptionState } from '../../core/contextMenu';
 import { LocaleKey } from '../../../localization/LocaleKey';
 
@@ -114,7 +114,7 @@ export const TaskbarIcon: React.FC<IProps> = (props: IProps) => {
                 items={getContextWrapperItems(props.applet)}
             >
                 <div onClick={props?.openApp?.(props.applet)}>
-                    {windowTaskbarIcon(props.applet.appletType)}
+                    {windowIcon(props.applet.appletType, props.applet?.meta?.customImgUrl)}
                 </div>
             </ContextMenuWrapper>
         </motion.div>

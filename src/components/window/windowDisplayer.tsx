@@ -8,10 +8,6 @@ import { AssistantSMSApplet } from '../applet/assistantApps/assistantSMSApplet';
 import { SwaggerApplet } from '../applet/assistantApps/swaggerApplet';
 import { BrowserApplet } from '../applet/browser/browserApplet';
 import { EmailApplet } from '../applet/email/emailApplet';
-import { ModelViewerApplet } from '../applet/fileViewers/modelViewerApplet';
-import { NotesApplet } from '../applet/fileViewers/notesApplet';
-import { PictureApplet } from '../applet/fileViewers/pictureApplet';
-import { VideoApplet } from '../applet/fileViewers/videoApplet';
 import { DiabloApplet } from '../applet/games/diablo';
 import { DigDugApplet } from '../applet/games/digDug';
 import { MinecraftClassicApplet } from '../applet/games/minecraft';
@@ -29,6 +25,11 @@ import { PowerPrezzApplet } from '../applet/powerPrezz/powerPrezzApplet';
 import { SettingApplet } from '../applet/settings/settingApplet';
 import { TerminalApplet } from '../applet/terminal/terminalApplet';
 import { TweetListApplet } from '../applet/tweeter/tweetList';
+import { ModelViewerApplet } from '../applet/viewers/modelViewerApplet';
+import { NotesApplet } from '../applet/viewers/notesApplet';
+import { PictureApplet } from '../applet/viewers/pictureApplet';
+import { ScreenshareViewerApplet } from '../applet/viewers/screenshareViewerApplet';
+import { VideoApplet } from '../applet/viewers/videoApplet';
 import { VsCodeApplet } from '../applet/vscode/vscodeApplet';
 import { Explorer } from './explorer/explorer';
 
@@ -63,6 +64,7 @@ export const windowDisplayer = (appProps: IApplet): ReactNode => {
         case AppletType.digdug: return <DigDugApplet key={appKey} {...appProps} />
         case AppletType.powerPrezz: return <PowerPrezzApplet key={appKey} {...appProps} />
         case AppletType.video: return <VideoApplet key={appKey} {...appProps} />
+        case AppletType.screenshare: return <ScreenshareViewerApplet key={appKey} {...appProps} />
 
         case AppletType.iframe: return <IFrameApplet key={appKey} {...appProps} />
         case AppletType.discordInvite: return <IFrameApplet key={appKey} {...appProps} />

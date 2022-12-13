@@ -28,6 +28,7 @@ export enum AppletType {
     radio,
     powerPrezz,
     video,
+    screenshare,
 
     // Funny
     nyanCat,

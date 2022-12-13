@@ -226,6 +226,14 @@ export class KnownApplets {
         type: FileType.applet,
         info: { version: '0.0.1', size: 503, installedOn: new Date('2022-12-06') },
     };
+    static screenshare: IAppletFile = {
+        id: 1.36,
+        parentId: 1.36,
+        name: LocaleKey.screenshare,
+        appletType: AppletType.screenshare,
+        type: FileType.applet,
+        info: { version: '17.0.1', size: 208541, installedOn: new Date('2022-12-13') },
+    };
 }
 
 export const allKnownApps = (): Array<IAppletFile> => {

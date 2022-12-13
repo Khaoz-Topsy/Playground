@@ -7,7 +7,7 @@ interface IProps {
     stream: MediaStream | undefined;
 }
 
-export const Screenshare: React.FC<IProps> = (props: IProps) => {
+export const ScreenshareWindow: React.FC<IProps> = (props: IProps) => {
     const localVideo = React.createRef<any>();
 
     useEffect(() => {

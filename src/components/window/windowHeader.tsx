@@ -13,6 +13,7 @@ import { WindowActions } from './windowActions';
 
 interface IProps {
     name: LocaleKey;
+    meta?: any;
     appletType: AppletType;
     windowIcon?: ReactNode;
     onMinimise: (e: any) => void;
@@ -64,7 +65,11 @@ export const WindowHeader: React.FC<IProps> = (props: IProps) => {
                 </Tooltip>
             }
             <div className="content noselect">
-                {translate(props.name)}
+                {
+                    (props.meta?.customName != null)
+                        ? props.meta?.customName
+                        : translate(props.name)
+                }
             </div>
             <WindowActions {...props} />
         </div>

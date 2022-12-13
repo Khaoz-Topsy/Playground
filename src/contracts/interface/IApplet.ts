@@ -28,4 +28,5 @@ export interface IAdditionalAppletProps {
     isMinimised?: boolean;
     isMaximised?: boolean;
     notOpen?: boolean;
+    customImgUrl?: string;
 }

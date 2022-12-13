@@ -157,5 +157,6 @@ export enum LocaleKey {
   radio,
   digdug,
   powerPrezz,
+  screenshare,
   unknown,
 }

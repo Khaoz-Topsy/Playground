@@ -1,7 +1,6 @@
 import { Center } from '@chakra-ui/react';
 import Mousetrap from 'mousetrap';
 import React, { ReactNode, useEffect, useState } from 'react'
-import { Presentation } from '../../../../constants/appImage';
 import { knownKeybinds } from '../../../../constants/keybind';
 
 interface ISlideProps {
@@ -18,7 +17,7 @@ interface IProps {
 
 export const SlideTemplate: React.FC<IProps> = (props: IProps) => {
     const [[currentSlideIndex], setCurrentSlideIndex] = useState([0, 0]);
-    const actualSlides = props.slides.filter(s => s.skip != true);
+    const actualSlides = props.slides.filter(s => s.skip !== true);
 
     const paginate = (newDirection: number) => {
         setCurrentSlideIndex((oldValue) => {

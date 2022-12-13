@@ -7,6 +7,7 @@ import { LocaleKey } from '../../../localization/LocaleKey';
 import { BasicLazyImage } from '../../core/image';
 import { windowIcon } from '../windowIcon';
 import { SpotlightSearchResultMeta } from '../../common/spotlight/spotlightSearchResultMeta';
+import { AppletType } from '../../../constants/enum/appletType';
 
 interface IAppletDetailProps {
     applet?: IAppletFile;
@@ -17,8 +18,10 @@ interface IAppletDetailProps {
 export const AppletDetail: React.FC<IAppletDetailProps> = (props: IAppletDetailProps) => {
 
     const renderAppImage = (applet?: IAppletFile) => {
+        if (applet == null) return windowIcon(AppletType.setting);
         if (applet?.imgUrl != null) return <BasicLazyImage imageUrl={applet.imgUrl} alt={applet.name.toString()} />;
-        return windowIcon((applet as any)?.appletType);
+
+        return windowIcon(applet.appletType, applet.meta?.customImgUrl);
     }
 
     return (
