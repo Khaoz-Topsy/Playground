@@ -1,6 +1,6 @@
 import { CheckIcon } from '@chakra-ui/icons';
 import { Button, Center, FormControl, FormLabel, Input, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, SimpleGrid, Text, useDisclosure } from '@chakra-ui/react';
-import React, { ReactNode, useState } from 'react';
+import React, { useState } from 'react';
 import { AppletIcon, FileIcon, getImageUrlsFromImageClass } from '../../../constants/appImage';
 import { defaultHeight, defaultWidth } from '../../../constants/window';
 import { IApplet } from '../../../contracts/interface/IApplet';

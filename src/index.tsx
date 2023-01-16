@@ -1,6 +1,5 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
-import ReactDOM from 'react-dom';
 // import reportWebVitals from './reportWebVitals';
 
 import { AppShell } from './appShell';
