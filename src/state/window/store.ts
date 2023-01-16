@@ -13,11 +13,11 @@ export const defaultWindowProps: IWindowStore = {
     activeApps: [
         {
             guid: '1',
-            name: LocaleKey.apiDocs,
+            name: LocaleKey.powerPrezz,
             openOrder: 1,
             appletType: AppletType.powerPrezz,
             meta: {
-                slides: 'EntelectTechAndBorrel2022-early-life',
+                slides: 'EntelectTechAndBorrel2022-work-life',
                 isMaximised: true,
             } as any,
         }

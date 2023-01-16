@@ -31,3 +31,19 @@
         left: 0;
     }
 }
+
+img.fullscreen-sway {
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: fullscreenSwayAnim 20s linear infinite;
+}
+
+@keyframes fullscreenSwayAnim {
+    from {
+        -webkit-transform: scale(105%) rotate(0deg) translateX(1em) rotate(0deg);
+    }
+    to {
+        -webkit-transform: scale(105%) rotate(360deg) translateX(1em) rotate(-360deg);
+    }
+}

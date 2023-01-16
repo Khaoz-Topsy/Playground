@@ -53,11 +53,11 @@ export const ScreenshareViewerApplet: React.FC<IProps> = (props: IProps) => {
         );
     }
 
-    const allImageOptioons = [
+    const allImageOptions = [
         ...getImageUrlsFromImageClass(AppletIcon),
         ...getImageUrlsFromImageClass(FileIcon),
     ].filter((value, index, self) => self.indexOf(value) === index);
-    allImageOptioons.sort((a, b) => a.localeCompare(b));
+    allImageOptions.sort((a, b) => a.localeCompare(b));
 
     return (
         <Applet
@@ -77,7 +77,7 @@ export const ScreenshareViewerApplet: React.FC<IProps> = (props: IProps) => {
                     <ModalBody pb={5}>
                         <SimpleGrid minChildWidth="50px" spacing="40px">
                             {
-                                allImageOptioons.map((url) => (<BasicImage key={url} imageUrl={url} onClick={onSelectImage(url)} />))
+                                allImageOptions.map((url) => (<BasicImage key={url} imageUrl={url} onClick={onSelectImage(url)} />))
                             }
                         </SimpleGrid>
                     </ModalBody>

@@ -19,14 +19,22 @@ export const entelectSlideBackgroundLookup: any = {
         id: 'googleEarthWater',
         render: () => (<div style={{ width: '100%', height: '100%', backgroundColor: '#8AB4F8' }}></div>),
     },
+    greyBackground: {
+        id: 'greyBackground',
+        render: () => (<div style={{ width: '100%', height: '100%', backgroundColor: '#322D2A' }}></div>),
+    },
+    rabobank: {
+        id: 'rabobank',
+        render: () => (<img src={Presentation.rabobank} alt="rabobank background" className="fullscreen-sway" />),
+    },
 };
 
-export const imgSlide = (imgUrl: string, imgName: string) => (
+export const imgSlide = (imgUrl: string, imgName: string, backgroundId?: string) => (
     {
-        backgroundId: entelectSlideBackgroundLookup.default.id,
+        backgroundId: backgroundId ?? entelectSlideBackgroundLookup.default.id,
         render: () => (
             <Center>
-                <BasicLazyImage imageUrl={imgUrl} alt={imgName} style={{ borderRadius: '1em', margin: '2em' }} />
+                <BasicLazyImage imageUrl={imgUrl} alt={imgName} style={{ borderRadius: '1em', margin: '2em', maxWidth: '80vw', maxHeight: '80vh' }} />
             </Center>
         ),
     }

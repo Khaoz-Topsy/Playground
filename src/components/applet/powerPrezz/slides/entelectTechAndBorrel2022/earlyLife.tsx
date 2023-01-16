@@ -1,16 +1,12 @@
-import { Button, Center, Text } from '@chakra-ui/react';
+import { Center, Text } from '@chakra-ui/react';
 import React, { ReactNode } from 'react';
 import { Presentation } from '../../../../../constants/appImage';
-import { iframesInSlides } from '../../../../../constants/slides';
+import { iframesInSlides, ISlideProps } from '../../../../../constants/slides';
 import { SlideTemplate } from '../slideTemplate';
 import { entelectSlideBackground, entelectSlideBackgroundLookup, iframeSlide, imgSlide } from './common';
 import { EarlyLifeFlightToMaliSlide } from './earlyLifeFlightToMali';
 
-interface IProps {
-    isFocused?: boolean;
-}
-
-export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<IProps> = (props: IProps) => {
+export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<ISlideProps> = (props: ISlideProps) => {
 
     return (
         <SlideTemplate
@@ -23,8 +19,10 @@ export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<IProps> = (props
                 {
                     backgroundId: entelectSlideBackgroundLookup.default.id,
                     render: (_) => (
-                        <Center>
+                        <Center flexDirection="column">
                             <Text fontSize="4xl" textAlign="center">Entelect<br />Tech & Borrel</Text>
+                            <br /><br />
+                            <Text fontSize="2xl" textAlign="center">Family</Text>
                         </Center>
                     ),
                 },
@@ -92,17 +90,6 @@ export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<IProps> = (props
                     render: (_) => (
                         <Center>
                             <video src={Presentation.studyingAtUJ} autoPlay={true} loop={false} muted style={{ height: '100%' }}></video>
-                        </Center>
-                    ),
-                },
-                {
-                    backgroundId: entelectSlideBackgroundLookup.default.id,
-                    render: (paginate) => (
-                        <Center>
-                            <div>
-                                <Text fontSize="2xl">Tester test</Text>
-                                <Button onClick={() => paginate(-2)}>Hi</Button>
-                            </div>
                         </Center>
                     ),
                 },

@@ -53,10 +53,10 @@ export const getFilesOnDisk = (): IFolder => {
     const documentFolderEntelectTBFolderIndex = docFolder?.addSubFolder?.(new Folder({ name: 'Entelect Tech & Borrel' as any }));
     const entelectTBFolder = getFolder(docFolder, documentFolderEntelectTBFolderIndex);
     entelectTBFolder?.addFile({ ...KnownApplets.powerPrezz });
-    entelectTBFolder?.addFile(prezzFile('family life.pptx' as any, knownSlides.EntelectTechAndBorrel2022.EarlyLife));
-    entelectTBFolder?.addFile(prezzFile('gaming.pptx' as any, knownSlides.EntelectTechAndBorrel2022.GamingLife));
-    entelectTBFolder?.addFile(prezzFile('work life.pptx' as any, knownSlides.EntelectTechAndBorrel2022.WorkLife));
-    entelectTBFolder?.addFile(prezzFile('nl.pptx' as any, knownSlides.EntelectTechAndBorrel2022.NLLife));
+    for (const prop in knownSlides.EntelectTechAndBorrel2022) {
+        const value = (knownSlides.EntelectTechAndBorrel2022 as any)[prop];
+        if (value != null) entelectTBFolder?.addFile(prezzFile(value));
+    }
     entelectTBFolder?.addFile(imageFile('bg1.png' as any, Presentation.entelectbg1, [Presentation.entelectbg1]));
     entelectTBFolder?.addFile(imageFile('bg2.png' as any, Presentation.entelectbg2, [Presentation.entelectbg2]));
     entelectTBFolder?.addFile(videoFile('sadiolaGold.mp4' as any, Presentation.sadiolaGold));

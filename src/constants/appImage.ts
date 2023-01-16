@@ -29,12 +29,13 @@ export class AppletIcon {
     static twitter = imgFolder + 'appIcons/twitter.png';
     static diablo = imgFolder + 'appIcons/diablo.png';
     static digdug = imgFolder + 'appIcons/digdug.png';
-    static powerPrezz = imgFolder + 'appIcons/digdug.png';
     static folderAA = imgFolder + 'appIcons/folderAA.png';
     static folderNMS = imgFolder + 'appIcons/folderNMS.png';
     static folderSMS = imgFolder + 'appIcons/folderSMS.png';
     static folderNMSCD = imgFolder + 'appIcons/folderNMSCD.png';
     static paint = imgFolder + 'appIcons/paint.png';
+    static powerPrezz = imgFolder + 'appIcons/powerprezz.png';
+    static video = imgFolder + 'appIcons/video.png';
 }
 
 export class FileIcon {
@@ -51,8 +52,8 @@ export class FileIcon {
     static nmscd = imgFolder + 'fileIcons/nmscd.png';
     static apple = imgFolder + 'fileIcons/apple2.png';
     static web = imgFolder + 'fileIcons/web.png';
-    static powerPrezz = imgFolder + 'fileIcons/web.png';
-    static video = imgFolder + 'fileIcons/picture.png';
+    static powerPrezz = imgFolder + 'fileIcons/presentation.png';
+    static video = imgFolder + 'fileIcons/video.png';
 
     static miniLink = imgFolder + 'fileIcons/externalIcon.png';
 
@@ -120,6 +121,14 @@ export const Presentation = {
     mx: imgFolder + 'presentation/mx.png',
     kilimanjaro: imgFolder + 'presentation/kili.png',
     fish: imgFolder + 'presentation/fish.png',
+    bootcamp20171: imgFolder + 'presentation/bootcamp2017-1.jpg',
+    bootcamp20172: imgFolder + 'presentation/bootcamp2017-2.jpg',
+    workHollard: imgFolder + 'presentation/work-hollard.png',
+    workBee123: imgFolder + 'presentation/work-bee123.png',
+    workBee123GetGood: imgFolder + 'presentation/work-bee123-get-gud.png',
+    flyToAmsterdam: imgFolder + 'presentation/flyToAmsterdam.gif',
+    nl: imgFolder + 'presentation/nl.png',
+    rabobank: imgFolder + 'presentation/rabobank.jpg',
 }
 
 export class External {

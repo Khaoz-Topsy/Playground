@@ -36,7 +36,6 @@ export class KnownApplets {
         name: LocaleKey.nyanCat,
         appletType: AppletType.nyanCat,
         type: FileType.applet,
-        numAllowedInstances: 3,
         info: { version: '0.3.4', size: 20, installedOn: new Date('2021-06-04'), author: 'Cristina Sturm', projectUrl: 'https://cristurm.github.io/nyan-cat/' },
     };
     static notes: IAppletFile = {
@@ -224,6 +223,7 @@ export class KnownApplets {
         name: LocaleKey.powerPrezz,
         appletType: AppletType.powerPrezz,
         type: FileType.applet,
+        numAllowedInstances: 3,
         info: { version: '0.0.1', size: 503, installedOn: new Date('2022-12-06') },
     };
     static screenshare: IAppletFile = {
@@ -232,6 +232,7 @@ export class KnownApplets {
         name: LocaleKey.screenshare,
         appletType: AppletType.screenshare,
         type: FileType.applet,
+        numAllowedInstances: 3,
         info: { version: '17.0.1', size: 208541, installedOn: new Date('2022-12-13') },
     };
 }

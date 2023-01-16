@@ -80,12 +80,12 @@ export const objFile = (name: LocaleKey, objUrl: string) => ({
     meta: { model: objUrl }
 });
 
-export const prezzFile = (name: LocaleKey, slides: string) => ({
-    name,
+export const prezzFile = (slideObj: any) => ({
+    name: slideObj.name,
     imgUrl: FileIcon.powerPrezz,
     type: FileType.powerPrezz,
     meta: {
-        slides,
+        slides: slideObj.id,
     }
 });
 

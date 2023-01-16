@@ -1,5 +1,5 @@
 .window {
-
+    .window-content.prezz,
     .window-content.emails,
     .window-content.setting,
     .window-content.explorer,
@@ -50,6 +50,7 @@
         height: calc(100% - #{$window-header-explorer-height + 3}px);
     }
 
+    .window-content.prezz,
     .window-content.setting {
         height: 100%;
 
@@ -85,7 +86,6 @@
     }
 
     .window-content.notes-viewer {
-
         .content {
             height: 100%;
         }
