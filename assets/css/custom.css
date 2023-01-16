@@ -1,0 +1,29 @@
+html {
+  background-color: darkslategray;
+}
+
+.bg {
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out;
+}
+
+.bg1 {
+  background-image: url('/assets/img/backgrounds/outerSpace.jpg');
+}
+
+.bg2 {
+  background-image: url('/assets/img/backgrounds/deepSpace.jpg');
+}
+
+.bg3 {
+  background-image: url('/assets/img/backgrounds/illustration.jpg');
+}
+
+.bg4 {
+  background-image: url('/assets/img/backgrounds/interstellar.jpg');
+}
+
+.bg5 {
+  background-image: url('/assets/img/backgrounds/spaceBluePurple.jpg');
+}

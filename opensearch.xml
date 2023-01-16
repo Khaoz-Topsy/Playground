@@ -1,0 +1,18 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+	<ShortName>
+		Playground
+	</ShortName>
+	<Description>
+		A silly desktop experience created by Kurt Lourens
+	</Description>
+	<InputEncoding>
+		UTF-8
+	</InputEncoding>
+	<Image width="16" height="16" type="image/x-icon">
+		https://playground.kurtlourens.com/favicon.ico
+	</Image>
+	<Url type="text/html" template="https://playground.kurtlourens.com?q={searchTerms}">
+		<Param name="searchTerms" value="{searchTerms}" />
+	</Url>
+	<Url type="application/x-suggestions+json" template="https://playground.kurtlourens.com?q={searchTerms}" />
+</OpenSearchDescription>

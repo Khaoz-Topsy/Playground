@@ -1,0 +1,5 @@
+{
+    "googleAnalyticsEnabled": true,
+    "consoleLogDebug": false,
+    "useServiceWorker": true
+}
