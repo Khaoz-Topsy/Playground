@@ -49,7 +49,7 @@ export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<ISlideProps> = (
                     backgroundId: entelectSlideBackgroundLookup.default.id,
                     render: (_) => (
                         <Center>
-                            <video src={Presentation.sadiolaGold} autoPlay={true} loop={false} controls style={{ height: '100%' }}></video>
+                            <video src={Presentation.sadiolaGold} autoPlay={false} loop={false} controls style={{ height: '100%' }}></video>
                         </Center>
                     ),
                 },
@@ -79,6 +79,7 @@ export const EntelectTechAndBorrel2022EarlyLifeSlides: React.FC<ISlideProps> = (
                 imgSlide(Presentation.mx, 'mx'),
                 imgSlide(Presentation.kilimanjaro, 'kilimanjaro'),
                 imgSlide(Presentation.fish, 'fish'),
+                imgSlide(Presentation.travelNoFun, 'not having fun'),
                 {
                     backgroundId: entelectSlideBackgroundLookup.googleEarthWater.id,
                     render: (paginate) => (

@@ -65,6 +65,14 @@ export const EntelectTechAndBorrel2022WorkLifeSlides: React.FC<ISlideProps> = (p
                         </Center>
                     ),
                 },
+                {
+                    backgroundId: entelectSlideBackgroundLookup.default.id,
+                    render: (_) => (
+                        <Center>
+                            <video src={Presentation.babysitGeneralManager} autoPlay={false} loop={false} controls style={{ height: '100%' }}></video>
+                        </Center>
+                    ),
+                },
                 imgSlide(Presentation.workBee123GetGood, 'BEE123 legacy'),
                 {
                     backgroundId: entelectSlideBackgroundLookup.default.id,

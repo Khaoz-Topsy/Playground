@@ -74,6 +74,11 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     url: site.assistantApps.nms.webapp,
                 },
                 {
+                    name: 'WebComponents',
+                    description: '',
+                    url: site.assistantApps.nms.webcomp,
+                },
+                {
                     name: 'API Admin dashboard',
                     description: '',
                     url: 'https://tools.nmsassistant.com',
@@ -82,6 +87,11 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'APK hosting site',
                     description: '',
                     url: 'https://apk.nmsassistant.com',
+                },
+                {
+                    name: 'Github Org',
+                    description: '',
+                    url: site.assistantApps.nms.github,
                 },
             ]
         },
@@ -99,9 +109,24 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     url: site.assistantApps.nms.nmscd.communityMissionProgressViewer,
                 },
                 {
-                    name: 'NMS - Expedition Alphabet',
+                    name: 'Expedition Alphabet',
                     description: '',
                     url: site.assistantApps.nms.nmscd.expeditionAlphabet,
+                },
+                {
+                    name: 'AtlasPass',
+                    description: '',
+                    url: site.assistantApps.nms.nmscd.atlasPass,
+                },
+                {
+                    name: 'Community Search',
+                    description: '',
+                    url: site.assistantApps.nms.nmscd.communitySearch,
+                },
+                {
+                    name: 'HG API Status',
+                    description: '',
+                    url: site.assistantApps.nms.nmscd.status,
                 },
                 {
                     name: 'More NMSCD Projects',
@@ -122,6 +147,11 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'WebApp',
                     description: '',
                     url: site.assistantApps.sms.webapp,
+                },
+                {
+                    name: 'Github Org',
+                    description: '',
+                    url: site.assistantApps.sms.githubOrg,
                 },
             ]
         },

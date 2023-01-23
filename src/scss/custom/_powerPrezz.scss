@@ -32,14 +32,35 @@
     .prezz-prev {
         left: 0;
     }
+
+    .img-row {
+        max-height: 50%;
+
+        &.small {
+            max-height: 40%;
+            flex-wrap: wrap;
+        }
+
+        &.large {
+            max-height: 60%;
+        }
+
+        img {
+            max-height: 100%;
+            flex: 1;
+        }
+    }
 }
 
-img.fullscreen-sway {
+img.fullscreen-bg {
     position: absolute;
     top: 0;
     left: 0;
     min-width: 100%;
     min-height: 100%;
+}
+
+img.fullscreen-bg.sway {
     animation: fullscreenSwayAnim 20s linear infinite;
 }
 

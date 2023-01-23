@@ -116,11 +116,15 @@ export const Presentation = {
     welkom1: imgFolder + 'presentation/welkom.png',
     gold: imgFolder + 'presentation/gold.webp',
     studyingAtUJ: vidFolder + 'presentation/studying.mp4',
+    babysitGeneralManager: vidFolder + 'presentation/babysitagm.mp4',
     sadiolaGold: vidFolder + 'presentation/sadiola-gold.mp4',
     school2007: imgFolder + 'presentation/school2007.JPG',
     mx: imgFolder + 'presentation/mx.png',
     kilimanjaro: imgFolder + 'presentation/kili.png',
     fish: imgFolder + 'presentation/fish.png',
+    travelNoFun: imgFolder + 'presentation/travel-no-fun.JPG',
+
+    // Work 👇
     bootcamp20171: imgFolder + 'presentation/bootcamp2017-1.jpg',
     bootcamp20172: imgFolder + 'presentation/bootcamp2017-2.jpg',
     workHollard: imgFolder + 'presentation/work-hollard.png',
@@ -129,12 +133,26 @@ export const Presentation = {
     flyToAmsterdam: imgFolder + 'presentation/flyToAmsterdam.gif',
     nl: imgFolder + 'presentation/nl.png',
     rabobank: imgFolder + 'presentation/rabobank.jpg',
+
+    // Gaming 👇
+    hobbies: imgFolder + 'presentation/hobbies.gif',
+    gaming: imgFolder + 'presentation/gaming.jpg',
+    watch1: imgFolder + 'presentation/watch1.jpg',
+    watch2: imgFolder + 'presentation/watch2.jpg',
+    watch3: imgFolder + 'presentation/watch3.jpg',
+    deskWatch1: imgFolder + 'presentation/deskWatch1.jpg',
+    deskWatch2: imgFolder + 'presentation/deskWatch2.jpg',
+    waterSys1: imgFolder + 'presentation/waterSys1.jpg',
+    waterSys2: imgFolder + 'presentation/waterSys2.jpg',
+    waterSys3: imgFolder + 'presentation/waterSys3.jpg',
+    waterSys4: imgFolder + 'presentation/waterSys4.jpg',
 }
 
-export class External {
+export class ExternalImage {
     static githubGeneralStats = 'https://github-readme-stats.vercel.app/api?username=Khaoz-Topsy&amp;show_icons=true&amp;line_height=24';
     static githubLanguageStats = 'https://github-readme-stats.vercel.app/api/top-langs?username=Khaoz-Topsy';
     static assistantNmsLoader = 'https://raw.githubusercontent.com/AssistantNMS/nms-loader/main/loader.svg';
+    static steamKhaozTopsyReplay2022 = 'https://shared.cloudflare.steamstatic.com/social_sharing/replay2022/735ddf8c28214ed2f5b7e90613f3b80da0770266.webp';
 }
 
 export const getImageUrlsFromImageClass = (classToUse: any): Array<string> => {

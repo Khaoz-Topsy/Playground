@@ -106,6 +106,7 @@ export const PowerPrezzApplet: React.FC<IProps> = (props: IProps) => {
             {...props}
             isFullscreen={true}
             classNames="prezz"
+            customName={slideToLoad}
             sidebar={
                 (slideToLoad != null)
                     ? null

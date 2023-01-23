@@ -4,7 +4,7 @@ import { imageFile, linkFile, markDownFile, objFile, prezzFile, videoFile } from
 import { sortByPropDesc } from '../helper/sortHelper';
 import { translate } from '../integration/i18n';
 import { LocaleKey } from '../localization/LocaleKey';
-import { AppletIcon, Backgrounds, External, FileIcon, MiscIcon, Presentation } from './appImage';
+import { AppletIcon, Backgrounds, ExternalImage, FileIcon, MiscIcon, Presentation } from './appImage';
 import { DesktopIcons } from './desktopIconList';
 import { DownloadFile } from './documentFile';
 import { allVisibleApps, KnownApplets } from './knownApplets';
@@ -52,7 +52,7 @@ export const getFilesOnDisk = (): IFolder => {
 
     const documentFolderEntelectTBFolderIndex = docFolder?.addSubFolder?.(new Folder({ name: 'Entelect Tech & Borrel' as any }));
     const entelectTBFolder = getFolder(docFolder, documentFolderEntelectTBFolderIndex);
-    entelectTBFolder?.addFile({ ...KnownApplets.powerPrezz });
+    // entelectTBFolder?.addFile({ ...KnownApplets.powerPrezz });
     for (const prop in knownSlides.EntelectTechAndBorrel2022) {
         const value = (knownSlides.EntelectTechAndBorrel2022 as any)[prop];
         if (value != null) entelectTBFolder?.addFile(prezzFile(value));
@@ -61,6 +61,7 @@ export const getFilesOnDisk = (): IFolder => {
     entelectTBFolder?.addFile(imageFile('bg2.png' as any, Presentation.entelectbg2, [Presentation.entelectbg2]));
     entelectTBFolder?.addFile(videoFile('sadiolaGold.mp4' as any, Presentation.sadiolaGold));
     entelectTBFolder?.addFile(videoFile('studyingAtUJ.mp4' as any, Presentation.studyingAtUJ));
+    entelectTBFolder?.addFile(videoFile('babysitGeneralManager.mp4' as any, Presentation.babysitGeneralManager));
 
     // getFolder(rootFolder, documentFolderIndex)?.addFile?.(markDownFile(LocaleKey.readMe, MarkdownFile.secrets));
     for (const background of Backgrounds) {
@@ -104,7 +105,7 @@ export const getFilesOnDisk = (): IFolder => {
     assistantNMSCDFolder?.addFile(linkFile('NMS Enhanced Images' as any, FileIcon.nmsEnhancedImages, site.assistantApps.nms.nmscd.enhancedImages));
     // End Folder
     assistantNMSFolder?.addFile({ ...KnownApplets.twitterTimeline, meta: { src: site.assistantApps.nms.twitter } });
-    assistantNMSFolder?.addFile(imageFile('loader.svg' as any, External.assistantNmsLoader, [External.assistantNmsLoader]));
+    assistantNMSFolder?.addFile(imageFile('loader.svg' as any, ExternalImage.assistantNmsLoader, [ExternalImage.assistantNmsLoader]));
 
     const assistantSMSFolderIndex = rootFolder.addSubFolder(new Folder({ name: LocaleKey.assistantSMS, imgUrl: AppletIcon.folderSMS }));
     const assistantSMSFolder = getFolder(rootFolder, assistantSMSFolderIndex);

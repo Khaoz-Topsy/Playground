@@ -25,7 +25,11 @@ export const entelectSlideBackgroundLookup: any = {
     },
     rabobank: {
         id: 'rabobank',
-        render: () => (<img src={Presentation.rabobank} alt="rabobank background" className="fullscreen-sway" />),
+        render: () => (<img src={Presentation.rabobank} alt="rabobank background" className="fullscreen-bg sway" />),
+    },
+    gaming: {
+        id: 'gaming',
+        render: () => (<img src={Presentation.gaming} alt="gaming background" className="fullscreen-bg" />),
     },
 };
 
