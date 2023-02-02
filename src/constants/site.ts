@@ -53,6 +53,7 @@ export const site = {
         discordInviteEmbed: 'https://discord.com/widget?id=625007826913198080&theme=dark',
         patreon: 'https://www.patreon.com/AssistantApps',
         youtube: 'https://www.youtube.com/channel/UCpKNMVk7ZWvBk-psQQZqz5w',
+        mastodon: 'https://nomanssky.social/@assistantnms',
         nms: {
             api: 'https://api.nmsassistant.com',
             website: 'https://nmsassistant.com',

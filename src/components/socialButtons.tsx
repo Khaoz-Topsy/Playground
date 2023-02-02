@@ -118,6 +118,14 @@ export const AssistantNmsTwitter: React.FC = () => {
     );
 }
 
+export const AssistantNmsMastodon: React.FC = () => {
+    return (
+        <BasicBtn href={site.assistantApps.mastodon} buttonClass="mastodon" label="@AssistantNMS">
+            <BasicImage imageUrl="/assets/img/social/mastodon.svg" />
+        </BasicBtn>
+    );
+}
+
 export const AssistantAppsGithub: React.FC = () => (<GithubButton href={site.assistantApps.github} label="AssistantApps Organization" />);
 export const AssistantNmsGithub: React.FC = () => (<GithubButton href={site.assistantApps.nms.github} label="No Man's Sky Organization" />);
 export const AssistantSmsGithubOrg: React.FC = () => (<GithubButton href={site.assistantApps.sms.githubOrg} label="Scrap Mechanic Organization" />);

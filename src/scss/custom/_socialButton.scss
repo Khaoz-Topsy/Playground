@@ -43,35 +43,40 @@ $iconWidth: 26;
         color: #ffffff;
         background: #484848;
     }
-    
+
     &.twitter {
         color: #ffffff;
         background: #5aa4eb;
     }
-    
+
     &.discord {
         color: #ffffff;
         background: #7289da;
         cursor: unset;
     }
-    
+
     &.youtube {
         color: #ffffff;
         background: #cc0000;
     }
-    
+
     &.twitch {
         color: #ffffff;
-        background: #9146FF;
+        background: #9146ff;
     }
-    
+
     &.linkedin {
         color: #ffffff;
         background: #1a81b9;
     }
-    
+
     &.steam {
         color: #ffffff;
         background: linear-gradient(-60deg, #00adee, #007aa7);
+    }
+
+    &.mastodon {
+        color: #ffffff;
+        background: #282c37;
     }
 }

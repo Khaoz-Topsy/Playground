@@ -27,7 +27,7 @@ export const SettingPersonalSocials: React.FC = () => {
             </SettingItemSection>
             <hr />
             <SimpleGrid minChildWidth="300px" columnGap="10px" rowGap="10px" className="mt1">
-                <BasicLazyImage imageUrl="https://github-readme-stats.vercel.app/api?username=Khaoz-Topsy&amp;show_icons=true&amp;hide_border=true&amp;theme=github_dark" alt="Github Stats" classNames="mt1 m-h-auto" />
+                <BasicLazyImage imageUrl="https://github-readme-stats-git-masterrstaa-rickstaa.vercel.app/api?username=Khaoz-Topsy&amp;show_icons=true&amp;hide_border=true&amp;theme=github_dark&amp;include_all_commits=true&amp;role=owner,collaborator&amp;date_format=%5BY%20%5DM%20j" alt="Github Stats" classNames="mt1 m-h-auto" />
                 <BasicLazyImage imageUrl="https://github-readme-streak-stats.herokuapp.com?user=Khaoz-Topsy&amp;theme=github-dark-blue&amp;hide_border=true&amp;date_format=%5BY%20%5DM%20j" alt="Github streak Stats" classNames="mt1 m-h-auto" />
                 <BasicLazyImage imageUrl="https://lanyard.cnrad.dev/api/602500691726172161" alt="Discord status" classNames="mt1 m-h-auto" style={{ width: '100%' }} />
                 <BasicLazyImage imageUrl="https://github-readme-stats.vercel.app/api/top-langs?username=Khaoz-Topsy&amp;show_icons=true&amp;hide_border=true&amp;theme=tokyonight" alt="Github Language Stats" classNames="mt1 m-h-auto" />

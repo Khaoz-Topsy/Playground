@@ -4,7 +4,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import {
     AssistantAppsDiscord, AssistantAppsGithub,
     AssistantNmsTwitter, AssistantNmsYoutube, AssistantNmsGithub,
-    AssistantSmsGithubOrg, AssistantSmsGithubApp,
+    AssistantSmsGithubOrg, AssistantSmsGithubApp, AssistantNmsMastodon,
 } from '../../../socialButtons';
 import { SettingItemSection } from '../settingItemSection';
 
@@ -22,6 +22,7 @@ export const SettingOtherSocials: React.FC = () => {
                     <AssistantNmsTwitter />
                     <AssistantNmsYoutube />
                     <AssistantNmsGithub />
+                    <AssistantNmsMastodon />
                 </SimpleGrid>
             </SettingItemSection>
             <SettingItemSection heading="Scrap Mechanic" showDivider={false}>
@@ -33,4 +34,3 @@ export const SettingOtherSocials: React.FC = () => {
         </div>
     );
 }
-

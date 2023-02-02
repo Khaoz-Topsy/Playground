@@ -171,7 +171,7 @@ export const imagesToPrecache = () => {
         error,
         getImageUrlsFromImageClass(AppletIcon),
         getImageUrlsFromImageClass(FileIcon),
-        getImageUrlsFromImageClass(External),
+        getImageUrlsFromImageClass(ExternalImage),
     ];
     for (const background of Backgrounds) {
         images.push(background.url);
