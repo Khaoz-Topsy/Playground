@@ -11,6 +11,7 @@ export enum LocaleKey {
   vsCode,
   assistantNMS,
   assistantSMS,
+  assistantDKM,
   assistantHYT,
   assistantApps,
   musicPlayer,

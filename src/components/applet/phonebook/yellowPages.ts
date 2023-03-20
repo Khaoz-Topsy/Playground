@@ -44,6 +44,11 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     url: 'https://docs.assistantapps.com',
                 },
                 {
+                    name: 'Web Components',
+                    description: '',
+                    url: 'https://webcomp.assistantapps.com',
+                },
+                {
                     name: 'Stream Toys',
                     description: '',
                     url: 'https://stream.assistantapps.com',
@@ -81,17 +86,17 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                 {
                     name: 'API Admin dashboard',
                     description: '',
-                    url: 'https://tools.nmsassistant.com',
-                },
-                {
-                    name: 'APK hosting site',
-                    description: '',
-                    url: 'https://apk.nmsassistant.com',
+                    url: site.assistantApps.nms.webTools,
                 },
                 {
                     name: 'Github Org',
                     description: '',
                     url: site.assistantApps.nms.github,
+                },
+                {
+                    name: 'APK hosting site',
+                    description: '',
+                    url: site.assistantApps.nms.apk,
                 },
             ]
         },
@@ -129,9 +134,29 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     url: site.assistantApps.nms.nmscd.status,
                 },
                 {
+                    name: 'NMS Update Status',
+                    description: '',
+                    url: site.assistantApps.nms.nmscd.update,
+                },
+                {
                     name: 'More NMSCD Projects',
                     description: '',
                     url: site.assistantApps.nms.nmscd.projectsList,
+                },
+            ]
+        },
+        {
+            name: 'NoMansSky.Social' as any,
+            pages: [
+                {
+                    name: 'Mastodon Instance',
+                    description: '',
+                    url: site.assistantApps.nms.nmssocial.website,
+                },
+                {
+                    name: 'Emoji list',
+                    description: '',
+                    url: site.assistantApps.nms.nmssocial.emojis,
                 },
             ]
         },
@@ -152,6 +177,26 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'Github Org',
                     description: '',
                     url: site.assistantApps.sms.githubOrg,
+                },
+            ]
+        },
+        {
+            name: LocaleKey.assistantDKM,
+            pages: [
+                {
+                    name: 'Homepage',
+                    description: '',
+                    url: site.assistantApps.dkm.homepage,
+                },
+                {
+                    name: 'WebApp',
+                    description: '',
+                    url: site.assistantApps.dkm.webapp,
+                },
+                {
+                    name: 'Github Org',
+                    description: '',
+                    url: site.assistantApps.dkm.githubOrg,
                 },
             ]
         },
@@ -191,53 +236,23 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                 {
                     name: 'Playground',
                     description: '',
-                    url: 'https://playground.kurtlourens.com',
+                    url: site.kurt.playground,
                 },
                 {
                     name: translate(LocaleKey.monitor),
                     description: '',
                     url: site.kurt.monitor,
                 },
-                // {
-                //     name: 'IoT',
-                //     description: '',
-                //     url: site.kurt.khaoznet.iot,
-                // },
                 {
                     name: 'MemeDeck',
                     description: '',
                     url: site.kurt.memedeck,
                 },
-                // {
-                //     name: 'Directory of websites',
-                //     description: '',
-                //     url: site.kurt.khaoznet.homepage,
-                // },
-                // {
-                //     name: 'PlexMedia',
-                //     description: '',
-                //     url: site.kurt.khaoznet.plexmedia,
-                // },
                 {
                     name: 'Cards Against Humanity',
                     description: '',
                     url: site.kurt.khaoznet.cah,
                 },
-                // {
-                //     name: 'Passport',
-                //     description: '',
-                //     url: site.kurt.khaoznet.passport,
-                // },
-                // {
-                //     name: 'Zooqle',
-                //     description: '',
-                //     url: site.kurt.khaoznet.zooqle,
-                // },
-                // {
-                //     name: 'Download',
-                //     description: '',
-                //     url: site.kurt.khaoznet.download,
-                // },
             ]
         },
         {
@@ -272,21 +287,6 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'WebApp',
                     description: '',
                     url: site.assistantApps.hyt.webapp,
-                },
-            ]
-        },
-        {
-            name: 'TennoDex' as any,
-            pages: [
-                // {
-                //     name: 'API documentation (Swagger)',
-                //     description: '',
-                //     url: site.assistantApps.hyt.api,
-                // },
-                {
-                    name: 'WebApp',
-                    description: '',
-                    url: site.tennodex.webapp,
                 },
             ]
         },
@@ -332,6 +332,16 @@ export const YellowPagesList = (): Array<IYellowPagesGroup> => {
                     name: 'Download',
                     description: '',
                     url: site.kurt.khaoznet.download,
+                },
+                {
+                    name: 'TennoDex WebApp',
+                    description: '',
+                    url: site.tennodex.webapp,
+                },
+                {
+                    name: 'TennoDex API documentation',
+                    description: '',
+                    url: site.tennodex.api,
                 },
             ]
         },

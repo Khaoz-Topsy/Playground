@@ -22,6 +22,7 @@ export const site = {
         googlePlay: 'https://play.google.com/store/apps/details?id=com.kurt_lourens_cv',
         spotifyPublicLikedSongs: 'https://open.spotify.com/embed/playlist/51e9Jvs1ioj0eOeXnHpgUA',
         twitchLivePlayer: 'https://player.twitch.tv/?channel=khaoztopsy&parent=playground.kurtlourens.com&muted=true',
+        playground: 'https://playground.kurtlourens.com',
         monitor: 'https://monitor.kurtlourens.com/KhaozNet-AssistantNMS-AssistantApps-RedRubyIT',
         steam: 'https://steamcommunity.com/id/Khaoz-Topsy',
         discord: 'KhaozTopsy#1000',
@@ -64,6 +65,8 @@ export const site = {
             windowsStore: 'https://apps.microsoft.com/store/detail/assistant-for-no-mans-sky/9NQLF7XD0LF3',
             twitter: 'https://twitter.com/AssistantNMS',
             github: 'https://github.com/AssistantNMS',
+            webTools: 'https://tools.nmsassistant.com',
+            apk: 'https://apk.nmsassistant.com',
             nmscd: {
                 website: 'https://nmscd.com',
                 projectsList: 'https://nmscd.com/projects.html',
@@ -75,7 +78,12 @@ export const site = {
                 atlasPass: 'https://atlaspass.nmscd.com/',
                 communitySearch: 'https://community.nmscd.com/',
                 status: 'https://status.nmscd.com/',
-            }
+                update: 'https://update.nmscd.com/',
+            },
+            nmssocial: {
+                website: 'https://nomanssky.social',
+                emojis: 'https://emoji.nomanssky.social',
+            },
         },
         sms: {
             api: 'https://api.scrapassistant.com',
@@ -85,6 +93,11 @@ export const site = {
             githubOrg: 'https://github.com/AssistantSMS',
             githubApp: 'https://github.com/AssistantSMS/App',
             vscodeUrlForApp: 'https://github1s.com/AssistantSMS/App/blob/master/README.md',
+        },
+        dkm: {
+            homepage: 'https://assistantapps.com/dkm',
+            webapp: 'https://dinkum.assistantapps.com',
+            githubOrg: 'https://github.com/AssistantDKM',
         },
         hyt: {
             api: 'https://api.hytaleassistant.com',
